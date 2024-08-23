@@ -1,3 +1,3 @@
-function y = my_add(a, b)
-    y = a + b;
-end
+yy = 2; % Perform addition
+assignin('base', 'yy', yy);
+disp(yy);   % Display result (optional for debugging)

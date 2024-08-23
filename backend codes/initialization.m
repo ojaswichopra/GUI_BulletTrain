@@ -11,6 +11,7 @@ N_hr=input('Enter the number of hours of train scheduling per day = ');
 n=N_hr*N;   %total no. of trains
 x=((n-1)*(60/N))*60;    %starting time of last train in second
 % time_rapid_train=7620;   %time taken by one rapid train (Mumbai to Sabarmati) is 2hr 7min i.e 7620 sec
+// fetch from data files - train time tavble 
 time_each_stop_train=10680;   %time taken by one each stop train (Mumbai to Sabarmati) is 2hr 58min i.e 10680 sec
 y=x+time_each_stop_train;    %ending time of last train in second i.e no. of rows
 

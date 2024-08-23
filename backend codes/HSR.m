@@ -10,7 +10,7 @@ Rp = 0.1;  % primary side resistance (ohm)
 Xp = 0.05;  % primary side reactance (ohm)
 Rs = 0.05;  % secondary side resistance (ohm)
 Xs = 0.1;  % secondary side reactance (ohm)
-Zn=1;       %grounding impedence (ohm)
+Zn=1;      % grounding impedence (ohm)
 % AUTOTRANSFORMER DATA
 zg = 0.1564 + 0.0997i;         % leakage impedance
 zm = (101.4 + 279.1i)*1000;    % magetising impedance
@@ -60,7 +60,7 @@ zm = (101.4 + 279.1i)*1000;    % magetising impedance
 row=100;                %% homogenous earth conducting resistsivity
 f=50;                   %% frequency
 w=2*pi*f;               %% omega-2*pi*f
-Ga= 1.435; %% gauge %
+% Ga= 1.435; %% gauge %
 Ch= 5.0; %% contact height%%
 Mh= 6.5; %%messenger wire height%%
 nFh=8.7; %% negative feeder height%%
