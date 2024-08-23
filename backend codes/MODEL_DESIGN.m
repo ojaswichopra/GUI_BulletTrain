@@ -18,6 +18,7 @@ Zshort=i*4; %short circuit impedance of source
 Z1=((4*Za+Zshort)+(Zb+Zshort)+(Zc+Zshort)+(4*a1^2*Zs1))/(8*a1^2);
 Z2 = ((Zb+Zshort)+(Zc+Zshort)+(a2^2)*Zs2)/(2*a2^2);
 
+%% // datafile, initialisation, HSR  Will they be stored in workspace? (not through functions)
 
 %% Ybus Matrix for Main Winding YcrfM %%
 
