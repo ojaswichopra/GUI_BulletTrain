@@ -1,20 +1,29 @@
-clear
-clc
-close all
-format long;
-datafile;
-D=each_stop_train_data(:,3);   %distance covered (m) at each second for each stop train
-P=each_stop_train_data(:,4);   %power consumed (kW) at each second for each stop train
+
+%distance in km of all the TSSs measured from mumbai
+TSS = [5 55 105 155 205 255 305 355 405 455 505];
+
+%distance in km of all the ATs measured from mumbai
+AT = [3 13 23 33 43	53 63 73 83	93 103 113 123 133 143 153 163 173 183 193 203 213 223 233 243 253 263 273 283 293 303 313 323 333 343 353 363 373 383 393 403 413 423 433 443 453 463 473 483 493 503 513];
+
+fid=fopen('Mumbai_Ahm_all_stop_train_schedule.txt','r');
+header=fscanf(fid,'%s %s %s %s',[4 1]);
+train_data_1=fscanf(fid,'%f %f %f %f',[4 10680]);  
+% Here "10680" is the time (in sec) taken by the train to complete the route 
+% (should be taken as an input from the user while executing load flow)
+train_data=train_data_1';
+fclose(fid);
+
+D=train_data(:,3);   %distance covered (m) at each second for each stop train
+P=train_data(:,4);   %power consumed (kW) at each second for each stop train
 N=input('enter the no. of trains running per hour = ');   % 3 trains running per hour (N=3)
 % N_hr=16;    % the no. of hours of train scheduling per day (from morning 6 am to night 10 pm)
 N_hr=input('Enter the number of hours of train scheduling per day = ');
 n=N_hr*N;   %total no. of trains
 x=((n-1)*(60/N))*60;    %starting time of last train in second
 % time_rapid_train=7620;   %time taken by one rapid train (Mumbai to Sabarmati) is 2hr 7min i.e 7620 sec
-// fetch from data files - train time tavble 
-time_each_stop_train=10680;   %time taken by one each stop train (Mumbai to Sabarmati) is 2hr 58min i.e 10680 sec
-y=x+time_each_stop_train;    %ending time of last train in second i.e no. of rows
-
+% time_each_stop_train=10680;   %time taken by one each stop train (Mumbai to Sabarmati) is 2hr 58min i.e 10680 sec
+train_time=10680;  %time (sec) taken by one train to complete the route (the user input value should be used)
+y=x+train_time;    %ending time of last train in second i.e no. of rows
 z=n+1;   %no. of columns
 distance=zeros(y,z);
 power=-100*ones(y,z);
@@ -26,7 +35,7 @@ end
 
 for j=1:n
 p=1+(((j-1)*(60/N))*60);
-q=p+time_each_stop_train-1;
+q=p+train_time-1;
 distance(p:q,(j+1))=D;
 power(p:q,(j+1))=P;
 end
