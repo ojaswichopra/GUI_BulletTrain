@@ -30,4 +30,5 @@ for n_time=1:1:NT_T
           tTSS_M(x_dTss_M,:)=tTSS(n_time,:);
         x_dTss_M=x_dTss_M+1;
     end
+    percentage_completion_2=(n_time/NT_T)*100   %percentage of total computation completed
 end

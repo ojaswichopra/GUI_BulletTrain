@@ -1,7 +1,4 @@
-clear;
-clc;
-close all
-tic;
+
 initialization;
 
 i_A=-10*ones(l_a-1,10);
@@ -135,5 +132,6 @@ for i_b=1:length(i_e)
        end
     end
 end
+percentage_completion_1=(i_d/y)*100   %percentage of total computation completed
 end
-toc;
+
