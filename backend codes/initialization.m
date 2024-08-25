@@ -7,8 +7,8 @@ AT = [3 13 23 33 43	53 63 73 83	93 103 113 123 133 143 153 163 173 183 193 203 2
 
 fid=fopen('Mumbai_Ahm_all_stop_train_schedule.txt','r');
 header=fscanf(fid,'%s %s %s %s',[4 1]);
-train_data_1=fscanf(fid,'%f %f %f %f',[4 10680]);  
-% Here "10680" is the time (in sec) taken by the train to complete the route 
+train_data_1=fscanf(fid,'%f %f %f %f',[4 10680]);
+% Here "10680" is the time (in sec) taken by the train to complete the route
 % (should be taken as an input from the user while executing load flow)
 train_data=train_data_1';
 fclose(fid);
@@ -34,23 +34,23 @@ for t=1:y
 end
 
 for j=1:n
-p=1+(((j-1)*(60/N))*60);
-q=p+train_time-1;
-distance(p:q,(j+1))=D;
-power(p:q,(j+1))=P;
+    p=1+(((j-1)*(60/N))*60);
+    q=p+train_time-1;
+    distance(p:q,(j+1))=D;
+    power(p:q,(j+1))=P;
 end
 
- TSS=TSS*10^3;   %distance of TSS in meters
- N_TSS=length(TSS);  %no. of TSS
- l_a=2*N_TSS+1;
- d(1)=0; %starting point
- d(2:2:l_a)=TSS;
- for h=2:2:(l_a-3)
-     u=d(h);
-     v=d(h+2);
-     w=(v-u)/2;
-     d(h+1)=d(h)+w;
- end
+TSS=TSS*10^3;   %distance of TSS in meters
+N_TSS=length(TSS);  %no. of TSS
+l_a=2*N_TSS+1;
+d(1)=0; %starting point
+d(2:2:l_a)=TSS;
+for h=2:2:(l_a-3)
+    u=d(h);
+    v=d(h+2);
+    w=(v-u)/2;
+    d(h+1)=d(h)+w;
+end
 d(l_a)=d(l_a-1)+(25*10^3);   %ending point i.e. last SP is assumed to be roughly at 25km away from the last TSS.
 %distance (in meter) of all the TSSs and the section posts measured from Mumbai i.e. [0 TSS1 SP1 TSS2 SP2..........TSSn SPn].
 %It is assumed that in the middle of two consecutive TSSs, one SP is located.
