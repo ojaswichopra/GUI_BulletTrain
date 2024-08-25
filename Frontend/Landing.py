@@ -1,7 +1,5 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
 from streamlit_extras.add_vertical_space import add_vertical_space
-import streamlit_shadcn_ui as ui
 
 title = "GUI Bullet Train"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
@@ -37,17 +35,21 @@ def main():
             align-items: center;
             justify-content: center;
         }
+        .title {
+            text-align: center;
+        }
     </style>
     """,
         unsafe_allow_html=True,
     )
     
-    add_vertical_space(5)
+    st.markdown("<h1 class='title'>Graphical User Interface</h1>", unsafe_allow_html=True)
+    add_vertical_space(1)
     col1, col2 = st.columns(2)
 
     with col1:
         if st.button('Make system data'):
-            st.write("Button 1 clicked!")
+            st.switch_page("pages/Make_System_Data.py")
         if st.button('Execute load flow'):
             st.write("Button 3 clicked!")
         if st.button('Perform harmonic analysis'):

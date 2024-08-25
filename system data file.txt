@@ -2,16 +2,16 @@ Number of TSS:
 11
 
 Distance (in km) of all the TSSs measured from the starting point:
-5   55  105  155  205  255  305  355  405  455  505 
+5 55 105 155 205 255 305 355 405 455 505
 
 Number of AT:
 52
 
 Distance (in km) of all the ATs measured from the starting point:
-3   13   23   33   43   53   63   73   83   93  103  113  123  133  143  153  163  173  183  193  203  213  223  233  243  253  263  273  283  293  303  313  323  333  343  353  363  373  383  393  403  413  423  433  443  453  463  473  483  493  503  513 
+3 13 23 33 43 53 63 73 83 93 103 113 123 133 143 153 163 173 183 193 203 213 223 233 243 253 263 273 283 293 303 313 323 333 343 353 363 373 383 393 403 413 423 433 443 453 463 473 483 493 503 513
 
 TSS primary voltage (Kv):
-132
+132.0
 
 TSS secondary voltage (Kv):
 27.5
@@ -29,10 +29,10 @@ Secondary side reactance (ohm):
 0.1
 
 Rail Grounding impedance (ohm):
-1
+1.0
 
 TSS (source side) short circuit MVA:
-5000
+5000.0
 
 AT leakage resistance (ohm):
 0.1564
@@ -41,65 +41,65 @@ AT leakage reactance (ohm):
 0.0997
 
 AT magnetising resistance (ohm):
-101400
+101400.0
 
 AT magnetising reactance (ohm):
-279100
+279100.0
 
-homogenous earth conducting resistivity:
-100
+Homogenous earth conducting resistivity:
+100.0
 
-frequency (Hz):
-50
+Frequency (Hz):
+50.0
 
 Number of conductors (contact, rail, feeder, messenger, earth):
 5
 
-contact wire height (m) measured from rail:
-5
+Contact wire height (m) measured from rail:
+5.0
 
-messenger wire height (m) measured from rail:
+Messenger wire height (m) measured from rail:
 6.5
 
-feeder wire height (m) measured from rail:
+Feeder wire height (m) measured from rail:
 8.7
 
-feeder wire distance (m) measured from centre (rail):
+Feeder wire distance (m) measured from centre (rail):
 3.9175
 
-earth (ground) wire height (m) measured from rail:
-6
+Earth (ground) wire height (m) measured from rail:
+6.0
 
-earth (ground) wire distance (m) measured from centre (rail):
+Earth (ground) wire distance (m) measured from centre (rail):
 3.2675
 
-diameter (mm) of contact wire:
+Diameter (mm) of contact wire:
 15.49
 
-resistance (ohm/km) of contact wire:
+Resistance (ohm/km) of contact wire:
 0.1451
 
-diameter (mm) of messenger wire:
+Diameter (mm) of messenger wire:
 17.5
 
-resistance (ohm/km) of messenger wire:
+Resistance (ohm/km) of messenger wire:
 0.794
 
-diameter (mm) of earth(ground) wire:
+Diameter (mm) of earth(ground) wire:
 16.3
 
-resistance (ohm/km) of earth(ground) wire:
+Resistance (ohm/km) of earth(ground) wire:
 0.2143
 
-diameter (mm) of feeder wire:
+Diameter (mm) of feeder wire:
 23.4
 
-resistance (ohm/km) of feeder wire:
+Resistance (ohm/km) of feeder wire:
 0.056
 
-diameter (mm) of rail:
-146
+Diameter (mm) of rail:
+146.0
 
-resistance (ohm/km) of rail:
+Resistance (ohm/km) of rail:
 0.024
 
