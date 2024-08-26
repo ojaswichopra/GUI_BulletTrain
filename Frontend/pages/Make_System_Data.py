@@ -1,32 +1,9 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
-import os
 from streamlit_option_menu import option_menu
 
 # Define the path to your system data file
 file_path = "../system data file.txt"
-
-# Function to read and parse the existing data from the text file
-def read_data(file_path):
-    """Reads the existing data from the file and returns it as a dictionary."""
-    data = {}
-    if os.path.exists(file_path):
-        with open(file_path, 'r') as file:
-            lines = file.readlines()
-            i = 0
-            while i < len(lines):
-                line = lines[i].strip()
-                if line:  # If line is not empty, assume it's a key
-                    key = line
-                    i += 1
-                    if i < len(lines):
-                        value = lines[i].strip()
-                        data[key] = value
-                i += 1  # Move to the next line (either a blank or a key)
-    else:
-        # If the file doesn't exist, return an empty dictionary
-        st.warning("Existing System Data File not found. Please Prepare fresh data.")
-    return data
 
 # Function to write the updated data back to the text file
 def write_data(file_path, data):
@@ -34,8 +11,6 @@ def write_data(file_path, data):
         for key, value in data.items():
             file.write(f"{key}\n{value}\n\n")
 
-# Read existing data or create a new file if it does not exist
-existing_data = read_data(file_path)
 
 def main():
     # Default values for placeholders
@@ -166,9 +141,9 @@ def main():
                 try:
                     # Convert text inputs to integers or floats where applicable
                     num_tss = int(num_tss or default_values["Number of TSS:"])
-                    distance_tss = (distance_tss or default_values["Distance (in km) of all the TSSs measured from the starting point:"])
+                    distance_tss = list(map(float, distance_tss.split() or default_values["Distance (in km) of all the TSSs measured from the starting point:"].split()))
                     num_at = int(num_at or default_values["Number of AT:"])
-                    distance_at = distance_at or default_values["Distance (in km) of all the ATs measured from the starting point:"]
+                    distance_at = list(map(float, distance_at.split() or default_values["Distance (in km) of all the ATs measured from the starting point:"].split()))
                     primary_voltage = float(primary_voltage or default_values["TSS primary voltage (Kv):"])
                     secondary_voltage = float(secondary_voltage or default_values["TSS secondary voltage (Kv):"])
                     primary_resistance = float(primary_resistance or default_values["Primary side resistance (ohm):"])
@@ -237,18 +212,31 @@ def main():
                     "Resistance (ohm/km) of feeder wire:": feeder_wire_resistance,
                     "Diameter (mm) of rail:": rail_diameter,
                     "Resistance (ohm/km) of rail:": rail_resistance,
-                }
+                    }
 
                     write_data(file_path,new_data)
                     st.success("Data saved successfully!")
+                    
                 except ValueError as e:
                     st.error(f"Error in data conversion: {e}")
                     
     elif selected == "Edit Existing Data":
-        st.write("Edit existing data here.")
-        # Add your existing data editing functionality here
+        
+        uploaded_file = st.file_uploader("Upload a .txt file", type="txt")
+
+        if uploaded_file is not None:
+            # Read the uploaded file
+            file_content = uploaded_file.getvalue().decode("utf-8")
+
+            # Text area for editing file content
+            edited_content = st.text_area("Edit the data below:", file_content, height=300)
+
+            if st.button("Save Updated Data"):
+                # Save the updated content back to a file
+                with open(file_path, "w") as file:
+                    file.write(edited_content)
+                st.success("Data saved successfully!")
 
 
 if __name__ == "__main__":
     main()
-
