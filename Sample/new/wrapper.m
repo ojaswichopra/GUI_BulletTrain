@@ -1,5 +1,4 @@
 function wrapper()
-    s1;
-    s2;
-    s3;
+    clc;
+    A(6);
 end
