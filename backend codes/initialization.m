@@ -10,7 +10,7 @@ header=fscanf(fid,'%s %s %s %s',[4 1]);
 train_data_1=fscanf(fid,'%f %f %f %f',[4 10680]);
 % Here "10680" is the time (in sec) taken by the train to complete the route
 % (should be taken as an input from the user while executing load flow)
-train_data=train_data_1';
+train_data=train_data_1;
 fclose(fid);
 
 D=train_data(:,3);   %distance covered (m) at each second for each stop train
