@@ -139,6 +139,7 @@ def main():
         
         # Extract the data using the function
         extracted_data = extract_system_data(content)
+        st.success(f"File saved.")
         
     
     timetable_file = st.file_uploader("Upload Train Timetable (.txt)", type="txt")
@@ -161,7 +162,7 @@ def main():
     train_time = st.number_input("Enter the time (in seconds) taken by one train to complete the route", min_value=0)
     
     if st.button("Submit"):
-        if not system_data_file or not timetable_file or N <= 0 or H_hr <= 0 or train_time <= 0:
+        if not system_data_file or not timetable_file or N <= 0 or N_hr <= 0 or train_time <= 0:
                 st.warning("Please provide all the inputs correctly!")
         else:
             # Perform the load flow calculations here

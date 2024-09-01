@@ -45,6 +45,36 @@
 
 % prameter insert in matrix format (the parameter are taken in the format
 % of X- cordinate, y co-ordinate, self radius, resistance)
+zg = lresistance + lreactance*1i;    % leakage impedance
+    zm = mresistance + mreactance*1i;    % magetising impedance
+
+    % inserting the data for OHE PARAMETER Calculation 
+    % row = earth_resistivity;           % homogenous earth conducting resistivity
+    % f   = frequency;              % frequency
+    w = 2 * pi * f;          % omega-2*pi*f
+    % n1 = num_conductors;    % no of conductors (contact, rail, feeder, messenger, earth)
+    % Ch = contact_wire_height;        % contact wire height (m) measured from rail
+    % Mh = messenger_wire_height;             % messenger wire height (m) measured from rail
+    % nFh= feeder_wire_height;            % feeder wire height (m) measured from rail
+    % nFd= feeder_wire_distance;    % feeder wire distance (m) measured from centre (rail)
+    % gh = earth_wire_height;               % earth (ground) wire height (m) measured from rail
+    % gd = earth_wire_distance;            % earth (ground) wire distance (m) measured from centre (rail)
+    % Inserting wire parameter 
+    rad_C = contact_wire_diameter/(2*1000);    % radius (m) of contact wire
+    % Resistance_C = contact_wire_resistance;      % resistance of contact wire (ohm per km)
+
+    rad_M1 = messenger_wire_diameter/(2*1000);   % radius (m) of messenger wire
+    % Resistance_M1 = messenger_wire_resistance;         % resistance of messenger wire (ohm per km)
+
+    rad_G = earth_wire_diameter/(2*1000);   % radius (m) of Earth/ground wire
+    % Resistance_G = earth_wire_resistance;         % resistance of Earth/ground wire (ohm per km)
+
+    rad_F = feeder_wire_diameter/(2*1000);     % radius (m) of feeder wire
+    % Resistance_F = feeder_wire_resistance;        % resistance of feeder wire (ohm per km)
+
+    rad_R1 = rail_diameter/(2*1000);      % radius (m) of Rail 1
+    % Resistance_R1 = rail_resistance;      % resistance of Rail 1 (ohm per km)
+
 para=[0 Ch rad_C Resistance_C;
     (0) 0 rad_R1 Resistance_R1;
     (-nFd) nFh rad_F Resistance_F;

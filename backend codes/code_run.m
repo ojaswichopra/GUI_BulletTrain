@@ -1,62 +1,7 @@
-function code_run(tss_distances,at_distances,NN, n_hr, train_time1, tss_primary_voltage,tss_secondary_voltage,primary_resistance,primary_reactance,secondary_resistance, secondary_reactance,rail_grounding_impedance,short_circuit_mva,at_leakage_resistance,at_leakage_reactance,at_magnetising_resistance,at_magnetising_reactance,earth_resistivity,frequency,num_conductors,contact_wire_height,messenger_wire_height,feeder_wire_height,feeder_wire_distance,earth_wire_height,earth_wire_distance,contact_wire_diameter,contact_wire_resistance,messenger_wire_diameter,messenger_wire_resistance,earth_wire_diameter,earth_wire_resistance,feeder_wire_diameter,feeder_wire_resistance,rail_diameter,rail_resistance)
+function code_run(TSS, AT, N, N_hr,train_time, Vp, Vs, Rp, Xp, Rs, Xs, Zn, short_ckt_MVA, lresistance, lreactance, mresistance, mreactance, row, f, n1, Ch, Mh, nFh, nFd, gh, gd, contact_wire_diameter, Resistance_C, messenger_wire_diameter, Resistance_M1, earth_wire_diameter, Resistance_G, feeder_wire_diameter, Resistance_F, rail_diameter, Resistance_R1 )
     
     tic
-    clc; close all; clearvars; format longG
-
-    global TSS AT N N_hr Vp Vs Rp Xp Rs Xs Zn short_ckt_MVA lresistance lreactance mresistance  mreactance zg zm row f w n1 Ch Mh nFh nFd gh gd rad_C Resistance_C rad_M1 Resistance_M1 rad_G Resistance_G rad_F Resistance_F rad_R1 Resistance_R1 train_time;
-    
-    TSS = tss_distances;
-    AT = at_distances;
-    N = NN;
-    N_hr = n_hr;
-
-    % SCOTT Transformer data
-    Vp = tss_primary_voltage;% primary voltage (KV)
-    Vs = tss_secondary_voltage;  % secondary voltage (KV)
-    Rp = primary_resistance;% primary side resistance (ohm)
-    Xp = primary_reactance; % primary side reactance (ohm)
-    Rs = secondary_resistance;% secondary side resistance (ohm)
-    Xs = secondary_reactance;% secondary side reactance (ohm)
-    Zn = rail_grounding_impedance;   %grounding impedence (ohm)
-    short_ckt_MVA  = short_circuit_mva;% TSS (source side) short circuit MVA
-
-    % AUTOTRANSFORMER DATA
-    lresistance = at_leakage_resistance;
-    lreactance = at_leakage_reactance;
-    mresistance = at_magnetising_resistance;
-    mreactance = at_magnetising_reactance;
-
-    zg = lresistance + lreactance*1i;    % leakage impedance
-    zm = mresistance + mreactance*1i;    % magetising impedance
-
-    % inserting the data for OHE PARAMETER Calculation 
-    row = earth_resistivity;           % homogenous earth conducting resistivity
-    f   = frequency;              % frequency
-    w = 2 * pi * f;          % omega-2*pi*f
-    n1 = num_conductors;    % no of conductors (contact, rail, feeder, messenger, earth)
-    Ch = contact_wire_height;        % contact wire height (m) measured from rail
-    Mh = messenger_wire_height;             % messenger wire height (m) measured from rail
-    nFh= feeder_wire_height;            % feeder wire height (m) measured from rail
-    nFd= feeder_wire_distance;    % feeder wire distance (m) measured from centre (rail)
-    gh = earth_wire_height;               % earth (ground) wire height (m) measured from rail
-    gd = earth_wire_distance;            % earth (ground) wire distance (m) measured from centre (rail)
-    % Inserting wire parameter 
-    rad_C = contact_wire_diameter/(2*1000);    % radius (m) of contact wire
-    Resistance_C = contact_wire_resistance;      % resistance of contact wire (ohm per km)
-
-    rad_M1 = messenger_wire_diameter/(2*1000);   % radius (m) of messenger wire
-    Resistance_M1 = messenger_wire_resistance;         % resistance of messenger wire (ohm per km)
-
-    rad_G = earth_wire_diameter/(2*1000);   % radius (m) of Earth/ground wire
-    Resistance_G = earth_wire_resistance;         % resistance of Earth/ground wire (ohm per km)
-
-    rad_F = feeder_wire_diameter/(2*1000);     % radius (m) of feeder wire
-    Resistance_F = feeder_wire_resistance;        % resistance of feeder wire (ohm per km)
-
-    rad_R1 = rail_diameter/(2*1000);      % radius (m) of Rail 1
-    Resistance_R1 = rail_resistance;      % resistance of Rail 1 (ohm per km)
-
-    train_time = train_time1;
+    format longG
 
     Line_data_bus_data_bus_type_normal;        %% calling for data creaction for whole traction network from TSS1 to TSS11%%
     separate_line_data;
