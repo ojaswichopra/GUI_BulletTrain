@@ -1,16 +1,14 @@
 
 %distance in km of all the TSSs measured from mumbai
-%TSS = [5 55 105 155 205 255 305 355 405 455 505];
+TSS = cell2mat(TSS);
+AT = cell2mat(AT);
 
-%distance in km of all the ATs measured from mumbai
-%AT = [3 13 23 33 43	53 63 73 83	93 103 113 123 133 143 153 163 173 183 193 203 213 223 233 243 253 263 273 283 293 303 313 323 333 343 353 363 373 383 393 403 413 423 433 443 453 463 473 483 493 503 513];
-
-fid=fopen('train_timetable.txt','r');
+fid=fopen('Mumbai_Ahm_all_stop_train_schedule.txt','r');
 header=fscanf(fid,'%s %s %s %s',[4 1]);
-train_data_1=fscanf(fid,'%f %f %f %f',[4 10680]);
+train_data_1=fscanf(fid,'%f %f %f %f',[4 train_time]);
 % Here "10680" is the time (in sec) taken by the train to complete the route
 % (should be taken as an input from the user while executing load flow)
-train_data=train_data_1;
+train_data=train_data_1';
 fclose(fid);
 
 D=train_data(:,3);   %distance covered (m) at each second for each stop train
