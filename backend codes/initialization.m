@@ -1,6 +1,8 @@
 
 %distance in km of all the TSSs measured from mumbai
+TSS = num2cell(TSS);
 TSS = cell2mat(TSS);
+AT = num2cell(AT);
 AT = cell2mat(AT);
 
 fid=fopen('Mumbai_Ahm_all_stop_train_schedule.txt','r');
