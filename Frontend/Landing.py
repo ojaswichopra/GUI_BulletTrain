@@ -1,5 +1,7 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
+from oct2py import Oct2Py
+import os
 
 title = "GUI Bullet Train"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
@@ -65,7 +67,14 @@ def main():
         if st.button('Calculate OHE temerature rise'):
             st.write("Button 1 clicked!")
         if st.button('See output'):
-            st.write("Button 1 clicked!")
+            oc = Oct2Py()
+            oc.eval("cd('../backend codes')")
+            oc.eval(f"trial({1},{2})")
+            print("Load flow executed successfully!")
+            if os.path.isfile('../backend codes/trail.mat'):
+                st.write(f"File exists.")
+            else:
+                st.write(f"No.")
 
 
 if __name__ == "__main__":
