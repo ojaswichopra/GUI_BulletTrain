@@ -69,10 +69,10 @@ def main():
         if st.button('See output'):
             oc = Oct2Py()
             print(oc.eval('pwd'))
-            oc.eval('cd("../backend_codes")')
+            oc.eval('cd("backend_codes")')
             oc.eval(f"trial({1},{2})")
             print("Load flow executed successfully!")
-            if os.path.isfile("../backend_codes/trail.mat"):
+            if os.path.isfile("backend_codes/trail.mat"):
                 st.write(f"File exists.")
             else:
                 st.write(f"No.")
