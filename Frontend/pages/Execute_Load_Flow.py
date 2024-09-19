@@ -15,7 +15,7 @@ def run_backend_process(extracted_data, N, N_hr, train_time):
 
 
 # Define the path to your system data file
-file_path = "../system data file.txt"
+file_path = "system data file.txt"
 
 
 def extract_system_data(file_content):

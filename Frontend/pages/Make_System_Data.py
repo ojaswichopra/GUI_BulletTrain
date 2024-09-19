@@ -3,7 +3,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_option_menu import option_menu
 
 # Define the path to your system data file
-file_path = "../system data file.txt"
+file_path = "system data file.txt"
 
 # Function to write the updated data back to the text file
 def write_data(file_path, data):
