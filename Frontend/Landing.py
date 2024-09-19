@@ -68,6 +68,7 @@ def main():
             st.write("Button 1 clicked!")
         if st.button('See output'):
             oc = Oct2Py()
+            print(oc.eval('pwd'))
             oc.eval('cd("../backend_codes")')
             oc.eval(f"trial({1},{2})")
             print("Load flow executed successfully!")
