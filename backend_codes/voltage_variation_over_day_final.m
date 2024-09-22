@@ -1,8 +1,10 @@
-clc
-clear all
+% clc
+% clearvars
+format longG
 tic
-load("variable_code_Zshort_Zg_3train_hour.mat");
-total_distance_from_start_point= input('Enter the distance from starting point for voltage profile of entire day in kM');
+load("variable_load_flow_mum_to_ahm_each_stop.mat");
+total_distance_from_start_point= input(['Enter the distance (in Km) from starting point ' ...
+'at which the voltage profile over entire durations of train scheduling needs to be investigated']);
 total_distance_from_start_point=total_distance_from_start_point*1000;
 d_index_length=length(d);
 for i_ddd=1:1:d_index_length
@@ -101,20 +103,17 @@ if check_winding==1 %%% For teaser winding%%%%
     end
     %plot(time_points,abs(Voltage_distance));
     subplot(3,1,1)
-    plot(time_points/60,abs(Voltage_distance(:,1)));
-    title('Contact wire Voltage magnitude','FontWeight','bold')
-    xlabel('Time (minute)','FontWeight','bold')
-    ylabel('Voltage magnitude (kV)','FontWeight','bold')
+    plot(time_points,abs(Voltage_distance(:,1)));
+    xlabel('Time (sec)','FontWeight','bold')
+    ylabel('Contact voltage magnitude (kV)','FontWeight','bold')
     subplot(3,1,2)
-    plot(time_points/60,abs(Voltage_distance(:,2)));
-    title('Rail wire Voltage magnitude','FontWeight','bold')
-    xlabel('Time (minute)','FontWeight','bold')
-    ylabel('Voltage magnitude (kV)','FontWeight','bold')
+    plot(time_points,abs(Voltage_distance(:,2)));
+    xlabel('Time (sec)','FontWeight','bold')
+    ylabel('Rail voltage magnitude (kV)','FontWeight','bold')
     subplot(3,1,3)
-    plot(time_points/60,abs(Voltage_distance(:,3)));
-    title('Feeder wire Voltage magnitude','FontWeight','bold')
-    xlabel('Time (minute)','FontWeight','bold')
-    ylabel('Voltage magnitude (kV)','FontWeight','bold')
+    plot(time_points,abs(Voltage_distance(:,3)));
+    xlabel('Time (sec)','FontWeight','bold')
+    ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
 
 else %%%% Main Winding side %%%%
     ntt=length(dTSS_M(:,1));
@@ -173,19 +172,16 @@ else %%%% Main Winding side %%%%
     end
     %plot(time_points,abs(Voltage_distance_M));
     subplot(3,1,1)
-    plot(time_points/60,abs(Voltage_distance_M(:,1)));
-    title('Contact wire Voltage magnitude','FontWeight','bold')
-    xlabel('Time (minute)','FontWeight','bold')
-    ylabel('Voltage magnitude (kV)','FontWeight','bold')
+    plot(time_points,abs(Voltage_distance_M(:,1)));
+    xlabel('Time (sec)','FontWeight','bold')
+    ylabel('Contact voltage magnitude (kV)','FontWeight','bold')
     subplot(3,1,2)
-    plot(time_points/60,abs(Voltage_distance_M(:,2)));
-    title('Rail wire Voltage magnitude','FontWeight','bold')
-    xlabel('Time (minute)','FontWeight','bold')
-    ylabel('Voltage magnitude (kV)','FontWeight','bold')
+    plot(time_points,abs(Voltage_distance_M(:,2)));
+    xlabel('Time (sec)','FontWeight','bold')
+    ylabel('Rail voltage magnitude (kV)','FontWeight','bold')
     subplot(3,1,3)
-    plot(time_points/60,abs(Voltage_distance_M(:,3)));
-    title('Feeder wire Voltage magnitude','FontWeight','bold')
-    xlabel('Time (minute)','FontWeight','bold')
-    ylabel('Voltage magnitude (kV)','FontWeight','bold')
+    plot(time_points,abs(Voltage_distance_M(:,3)));
+    xlabel('Time (sec)','FontWeight','bold')
+    ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
 end
 toc

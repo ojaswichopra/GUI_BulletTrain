@@ -70,20 +70,15 @@ for jj_track_no=1:1:length(d_modified)
 
 end
 
-
 subplot(3,1,1)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)));
-title('Contact wire Voltage magnitude')
-xlabel('Distance (kM)')
-ylabel('Voltage magnitude (kV)')
-%set(gca,'XTick',[5 55 105 155 205 255 305 355 405 455 505],'XTickLabel',{'TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS'})
- subplot(3,1,2)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,3)));
-title('Rail wire Voltage magnitude')
-xlabel('Distance (kM)')
-ylabel('Voltage magnitude (kV)')
+plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)),"Color",'r');
+xlabel('Distance (Km)','FontWeight','bold')
+ylabel('Contact voltage magnitude (kV)','FontWeight','bold')
+subplot(3,1,2)
+plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,3)),"Color",'g');
+xlabel('Distance (Km)','FontWeight','bold')
+ylabel('Rail voltage magnitude (kV)','FontWeight','bold')
 subplot(3,1,3)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,4)));
-title('Feeder wire Voltage magnitude')
-xlabel('Distance (kM)')
-ylabel('Voltage magnitude (kV)')
+plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,4)),"Color",'b');
+xlabel('Distance (Km)','FontWeight','bold')
+ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
