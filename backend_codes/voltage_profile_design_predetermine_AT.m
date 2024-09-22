@@ -4,7 +4,7 @@ ind_at_cond=ismember(d_at,AT);
 AT_points=find(ind_at_cond==1);
 ind_TSS_cond=ismember(d_TSS,TSS);
 TSS_points=find(ind_TSS_cond==1);
- PRE_det_posi=[AT_points];
+ PRE_det_posi=AT_points;
 PRE_det_position=sort(PRE_det_posi,'ascend');
 n_length_det_posi= length(PRE_det_position);
 pre_det_Voltage_distance_matrix_whole=zeros(n_length_det_posi,4);
@@ -21,18 +21,15 @@ tiledlayout(3,1);
 nexttile
 bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,2)));
 %xlim([1 ,length(pre_det_Voltage_distance_matrix_whole)])
-title('Contact wire Voltage magnitude')
-xlabel('AT Numbers')
-ylabel('Voltage magnitude (kV)')
+xlabel('AT Numbers','FontWeight','bold')
+ylabel('Contact voltage magnitude (kV)','FontWeight','bold')
 nexttile
 bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,3)));
 %xlim([1 ,length(pre_det_Voltage_distance_matrix_whole)])
-title('Rail wire Voltage magnitude')
-xlabel('AT Numbers')
-ylabel('Voltage magnitude (kV)')
+xlabel('AT Numbers','FontWeight','bold')
+ylabel('Rail voltage magnitude (kV)','FontWeight','bold')
 nexttile
 bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,4)));
 %xlim([1 ,length(pre_det_Voltage_distance_matrix_whole)])
-title('Feeder wire Voltage magnitude')
-xlabel('AT Numbers')
-ylabel('Voltage magnitude (kV)')
+xlabel('AT Numbers','FontWeight','bold')
+ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')

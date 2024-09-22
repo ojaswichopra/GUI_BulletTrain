@@ -1,16 +1,17 @@
-clc
- clear all
- tic
- load("variable_code_Zshort_Zg_3train_hour.mat");
-no_of_train=input('enter the no. of trains running per hour = ');
-train_number=input('enter the trains number or name = ');
+% clc
+% clearvars
+format longG
+tic
+load("variable_load_flow_mum_to_ahm_each_stop.mat");
+no_of_train=input('Enter the number of trains running per hour = ');
+train_number=input('Enter the train number to see its voltage profile ');
 train_intervals=60*60/no_of_train;
 train_time_space=(train_number-1)*train_intervals;
-train1_position=length(each_stop_train_data(:,1));
+train1_position=length(train_data(:,1));
 for t_i= 1:1:train1_position
-    ct_train_pos=each_stop_train_data(t_i,3);
-    train1_time(t_i)=each_stop_train_data(t_i,1)+train_time_space;
-    train_distance_from_start(t_i)=each_stop_train_data(t_i,3)/1000;
+    ct_train_pos=train_data(t_i,3);
+    train1_time(t_i)=train_data(t_i,1)+train_time_space;
+    train_distance_from_start(t_i)=train_data(t_i,3)/1000;
     d_index_length=length(d);
     for i_ddd=1:1:d_index_length
         if ct_train_pos<=d(i_ddd)
@@ -76,22 +77,22 @@ voltage_train_rail_abs= transpose(abs(voltage_train_rail));
 % plot(train_distance_from_start,voltage_train_rail_abs);
 subplot(4,1,1)
 plot(train1_time/60,voltage_train_abs);
-title(['Contact voltage of train no ', int2str(train_number),' vs Time'])
+title(['Contact voltage of train number ', int2str(train_number),' vs Time'])
 xlabel('Time (minute)','FontWeight','bold')
 ylabel('Voltage Magnitude (kV)','FontWeight','bold')
 subplot(4,1,2)
 plot(train_distance_from_start,voltage_train_abs);
-title(['Contact voltage of train no ', int2str(train_number),' vs Distance'])
+title(['Contact voltage of train number ', int2str(train_number),' vs Distance'])
 xlabel('Distance (Km)','FontWeight','bold')
 ylabel('Voltage Magnitude (kV)','FontWeight','bold')
 subplot(4,1,3)
 plot(train1_time/60,voltage_train_rail_abs);
-title(['Rail voltage of train no ', int2str(train_number),' vs Time'])
+title(['Rail voltage of train number ', int2str(train_number),' vs Time'])
 xlabel('Time (minute)','FontWeight','bold')
 ylabel('Voltage Magnitude (kV)','FontWeight','bold')
 subplot(4,1,4)
 plot(train_distance_from_start,voltage_train_rail_abs);
-title(['Rail voltage of train no ', int2str(train_number),' vs Distance'])
+title(['Rail voltage of train number ', int2str(train_number),' vs Distance'])
 xlabel('Distance (Km)','FontWeight','bold')
 ylabel('Voltage Magnitude (kV)','FontWeight','bold')
 

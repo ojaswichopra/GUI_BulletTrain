@@ -45,30 +45,32 @@ def main():
         unsafe_allow_html=True,
     )
     
-    st.markdown("<h1 class='title'>Graphical User Interface</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Output of Load Flow</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button('Make system data'):
+        if st.button('Voltage profile at a particular time instant'):
             st.switch_page("pages/Make_System_Data.py")
-        if st.button('Execute load flow'):
+        if st.button('Voltage profile of a particular train'):
             st.switch_page("pages/Execute_Load_Flow.py")
-        if st.button('Perform harmonic analysis'):
+        if st.button('MVA profile of AT'):
             st.write("Button 1 clicked!")
-        if st.button('Calculate induced voltage'):
+        if st.button('Maximum MVA of all AT'):
             st.write("Button 1 clicked!")
 
     with col2:
-        if st.button('Prepare train timetable'):
+        if st.button('Voltage profile at a particular distance'):
             st.write("Button 2 clicked!")
-        if st.button('Perform short circuit analysis'):
+        if st.button('MVA profile of TSS'):
             st.write("Button 4 clicked!")
-        if st.button('Calculate OHE temerature rise'):
+        if st.button('Maximum MVA of all TSS'):
             st.write("Button 1 clicked!")
-        if st.button('See output'):
-            st.switch_page("pages/Load_Flow_Output.py")
-
+        if st.button('Voltage unbalance profile of TSS'):
+            st.write("Button 1 clicked!")
+    
+    if st.button('Maximum voltage unbalance of all TSS'):
+        st.write("Button 1 clicked!")
 
 if __name__ == "__main__":
     main()

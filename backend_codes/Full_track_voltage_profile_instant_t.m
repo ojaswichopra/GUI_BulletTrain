@@ -1,12 +1,13 @@
-clc
-clear all
+% clc
+% clearvars
+format longG
 tic
-load("variable_code_Zshort_Zg_3train_hour.mat");
+load("variable_load_flow_mum_to_ahm_each_stop.mat");
 track_TSS_no=length(TSS);
 track_length_file;
 % track_TSS_no=input('Enter the TSS number for which track voltage profile needs to be check');
-track_time_1= input('Enter the time instant in second (sec) for getting voltage profile along the track');
-x_reso= input('Enter the distance resolution for voltage profile along the track');
+track_time_1= input('Enter the time instant (in sec) at which the voltage profile of the track needs to be investigated');
+x_reso= input('Enter the distance resolution (in meter)');
 points_index(1)=0;
 points_index_M(1)=0;
 for n_track=1:1:track_TSS_no
