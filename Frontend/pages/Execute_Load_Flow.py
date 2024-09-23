@@ -2,7 +2,6 @@ import os
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from oct2py import Oct2Py
-import streamlit as st
 import multiprocessing
 from pages.run_loadflow import run_oct2py  # Import the backend function directly
 
