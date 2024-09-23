@@ -1,6 +1,10 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
+<<<<<<< HEAD
 from run_loadflow import oc
+=======
+from oct2py import Oct2Py
+>>>>>>> a6b21b859934a8cd5093e7439821c631fce9c22b
 import os
 
 title = "GUI Bullet Train"
@@ -15,10 +19,13 @@ def authenticated_menu():
     # st.sidebar.page_link("pages/1_Listings.py", label="Companies List")  
 
 
+<<<<<<< HEAD
 def loadMatFile():
     oc.eval("loadMat()")
 
 
+=======
+>>>>>>> a6b21b859934a8cd5093e7439821c631fce9c22b
 def main():
 
     # Settings
@@ -78,5 +85,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+<<<<<<< HEAD
     loadMatFile()
+=======
+>>>>>>> a6b21b859934a8cd5093e7439821c631fce9c22b
     # authenticated_menu()
