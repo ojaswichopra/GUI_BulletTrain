@@ -1,0 +1,6 @@
+matlab==0.1
+oct2py==5.7.2
+streamlit==1.37.1
+streamlit_extras==0.4.7
+streamlit_option_menu==0.3.12
+octave_kernel==0.36.0
