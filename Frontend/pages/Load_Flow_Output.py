@@ -78,6 +78,6 @@ def main():
         st.write("Button 1 clicked!")
 
 if __name__ == "__main__":
-    main()
     loadMatFile()
+    main()
     # authenticated_menu()
