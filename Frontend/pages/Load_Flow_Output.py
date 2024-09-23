@@ -1,19 +1,18 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from run_loadflow import oc
-from oct2py import Oct2Py
 import os
 
 title = "GUI Bullet Train"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 layout = "centered"
 
+
 selection = None
 
 # sidebar page links
-def authenticated_menu():
-    st.sidebar.empty()
-    # st.sidebar.page_link("pages/1_Listings.py", label="Companies List")  
+def clear_page():
+    st.empty() 
 
 
 def loadMatFile():
@@ -56,7 +55,7 @@ def main():
 
     with col1:
         if st.button('Voltage profile at a particular time instant'):
-            st.switch_page("pages/Make_System_Data.py")
+            st.switch_page("pages/Voltage_Profile.py")
         if st.button('Voltage profile of a particular train'):
             st.switch_page("pages/Execute_Load_Flow.py")
         if st.button('MVA profile of AT'):
