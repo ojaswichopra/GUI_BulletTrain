@@ -1,28 +1,20 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
-from run_loadflow import oc
-import os
-
-title = "GUI Bullet Train"
-page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
-layout = "centered"
-
-
-selection = None
-
-# sidebar page links
-def clear_page():
-    st.empty() 
-
+from pages.run_loadflow import oc
+# Initialize session state variable
+if 'loadMat' not in st.session_state:
+    st.session_state.loadMat = False
 
 def loadMatFile():
     oc.eval("loadMat()")
-
-
+    st.session_state.loadMat = True
+    
 def main():
-
-    # Settings
-    st.set_page_config(page_title=title, page_icon=page_icon, layout=layout)
+    if st.session_state.loadMat == False:
+        st.success("Rendering Variables...")
+        loadMatFile()
+        st.empty()
+          
     st.markdown(
         """
     <style>
@@ -77,6 +69,5 @@ def main():
         st.write("Button 1 clicked!")
 
 if __name__ == "__main__":
-    loadMatFile()
     main()
-    # authenticated_menu()
+
