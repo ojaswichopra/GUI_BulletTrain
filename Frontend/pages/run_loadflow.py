@@ -1,10 +1,6 @@
 from oct2py import Oct2Py
-
-
 oc = Oct2Py()
 oc.eval('cd("../../backend_codes")')
-
-
 
 def run_oct2py(extracted_data, N, N_hr, train_time):    
     oc.eval(f"""
