@@ -1,3 +1,6 @@
+# 7. Maximum MVA of all AT
+# connecteed backend file - "AT_maximum_MVA.m".
+
 import os
 import streamlit as st
 from run_loadflow import oc
@@ -29,12 +32,11 @@ st.markdown(
         unsafe_allow_html=True,
     )
 
-#AT_MVA_profile.png -> name of plot in backend
+#AT_maximum_MVA.png -> name of plot in backend
 
-AT_no = st.number_input("Enter the AT number to see its MVA profile", min_value=0)
-
-if st.button("Show MVA Profile"):
-    oc.eval(f"AT_MVA_profile({AT_no})")
-    image_path = os.path.join(os.path.dirname(__file__), '../../backend_codes/AT_MVA_profile.png')
+if st.button("Show maximum MVA of all AT"):
+    oc.eval("AT_maximum_MVA")
+    image_path = os.path.join(os.path.dirname(__file__), '../../backend_codes/AT_maximum_MVA.png')
     img = Image.open(image_path)
-    st.image(img, caption="AT MVA Profile", use_column_width=True)
+    st.image(img, caption="AT Maximum MVA", use_column_width=True)
+

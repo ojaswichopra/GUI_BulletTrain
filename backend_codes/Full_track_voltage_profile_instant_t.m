@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-% clc
-% clearvars
-format longG
-tic
-load("variable_load_flow_mum_to_ahm_each_stop.mat");
-track_TSS_no=length(TSS);
-track_length_file;
-% track_TSS_no=input('Enter the TSS number for which track voltage profile needs to be check');
-track_time_1= input('Enter the time instant (in sec) at which the voltage profile of the track needs to be investigated');
-x_reso= input('Enter the distance resolution (in meter)');
-points_index(1)=0;
-points_index_M(1)=0;
-for n_track=1:1:track_TSS_no
-=======
 function Full_track_voltage_profile_instant_t(track_time_1,x_reso)
     % clc
     % clearvars
@@ -27,7 +12,6 @@ function Full_track_voltage_profile_instant_t(track_time_1,x_reso)
     points_index(1)=0;
     points_index_M(1)=0;
     for n_track=1:1:track_TSS_no
->>>>>>> 290f858c096447826f9dc532f1ec82dfe9cfba72
 
         track_time=track_time_1+((n_track-1)*y);
         %%% For Teaser side Voltage profile %%%%%
@@ -132,30 +116,6 @@ function Full_track_voltage_profile_instant_t(track_time_1,x_reso)
 
 
 
-<<<<<<< HEAD
-Voltage_distance_matrix_T(:,1)=distance_points_new_T;
-Voltage_distance_matrix_T(:,2)=V_profile_new_T(:,1);
-Voltage_distance_matrix_T(:,3)=V_profile_new_T(:,2);
-Voltage_distance_matrix_T(:,4)=V_profile_new_T(:,3);
-
-Voltage_distance_matrix_M(:,1)=distance_points_new_M;
-Voltage_distance_matrix_M(:,2)=V_profile_new_M(:,1);
-Voltage_distance_matrix_M(:,3)=V_profile_new_M(:,2);
-Voltage_distance_matrix_M(:,4)=V_profile_new_M(:,3);
-
-voltage_profile_design;
-toc
-
-% plot(distance_points,abs(V_profile_T))
-% hold on
-% plot(distance_points_new_M,abs(V_profile_new_M))
-% subplot(3,1,1)
-% plot(distance_points_new_M,abs(V_profile_new_M(:,1)));
-% subplot(3,1,2)
-% plot(distance_points_new_M,abs(V_profile_new_M(:,2)));
-% subplot(3,1,3)
-% plot(distance_points_new_M,abs(V_profile_new_M(:,3)));
-=======
             V_profile_M(xx_f+1,:)=transpose( transpose(V_profile_M(xx_f,:))-((x_reso*z1/1000)*I_line_current_track_M));
             distance_points_M(xx_f+1)=xx_f*x_reso;
 
@@ -197,4 +157,3 @@ toc
     % subplot(3,1,3)
     % plot(distance_points_new_M,abs(V_profile_new_M(:,3)));
 end
->>>>>>> 290f858c096447826f9dc532f1ec82dfe9cfba72
