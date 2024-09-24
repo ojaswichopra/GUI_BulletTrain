@@ -3,7 +3,7 @@ function Full_track_voltage_profile_instant_t(track_time_1,x_reso)
     % clearvars
     format longG
     tic
-    load("variable_load_flow_mum_to_ahm_each_stop.mat");
+    % load("variable_load_flow_mum_to_ahm_each_stop.mat");
     track_TSS_no=length(TSS);
     track_length_file;
     % track_TSS_no=input('Enter the TSS number for which track voltage profile needs to be check');
@@ -113,9 +113,6 @@ function Full_track_voltage_profile_instant_t(track_time_1,x_reso)
 
                 I_line_current_track_M=[0;0;0]; %included program for introducing I_line_current_track =0 if ii_x> LL(max)
             end
-
-
-
             V_profile_M(xx_f+1,:)=transpose( transpose(V_profile_M(xx_f,:))-((x_reso*z1/1000)*I_line_current_track_M));
             distance_points_M(xx_f+1)=xx_f*x_reso;
 
@@ -147,13 +144,17 @@ function Full_track_voltage_profile_instant_t(track_time_1,x_reso)
     voltage_profile_design;
     toc
 
-    % plot(distance_points,abs(V_profile_T))
-    % hold on
-    % plot(distance_points_new_M,abs(V_profile_new_M))
-    % subplot(3,1,1)
-    % plot(distance_points_new_M,abs(V_profile_new_M(:,1)));
-    % subplot(3,1,2)
-    % plot(distance_points_new_M,abs(V_profile_new_M(:,2)));
-    % subplot(3,1,3)
-    % plot(distance_points_new_M,abs(V_profile_new_M(:,3)));
+    plot(distance_points,abs(V_profile_T))
+    hold on
+    plot(distance_points_new_M,abs(V_profile_new_M))
+    subplot(3,1,1)
+    plot(distance_points_new_M,abs(V_profile_new_M(:,1)));
+    subplot(3,1,2)
+    plot(distance_points_new_M,abs(V_profile_new_M(:,2)));
+    subplot(3,1,3)
+    plot(distance_points_new_M,abs(V_profile_new_M(:,3)));
+
+    % Save the plot as an image
+    desired_filename = '../Plots/Full_track_voltage_profile_instant_t.png';  % Replace 'desired_name' with your file name
+    saveas(gcf, desired_filename);
 end
