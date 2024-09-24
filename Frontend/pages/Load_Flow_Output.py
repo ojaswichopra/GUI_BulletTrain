@@ -59,7 +59,7 @@ def main():
         if st.button('Voltage profile of a particular train'):
             st.switch_page("pages/Execute_Load_Flow.py")
         if st.button('MVA profile of AT'):
-            st.write("Button 1 clicked!")
+            st.switch_page("pages/MVA_Profile_of_AT.py")
         if st.button('Maximum MVA of all AT'):
             st.write("Button 1 clicked!")
 
