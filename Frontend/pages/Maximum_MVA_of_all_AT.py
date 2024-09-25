@@ -49,6 +49,14 @@ def main():
         img = Image.open(image_path)
         st.image(img, caption="AT maximum MVA of all AT", use_column_width=True)
 
+        with open(image_path, "rb") as file:
+            btn = st.download_button(
+                label="Download Plot",
+                data=file,
+                file_name="AT_maximum_MVA.png",  # Replace with the desired download filename
+                mime="image/png"
+            )
+
 
 if __name__ == "__main__":
     main()
