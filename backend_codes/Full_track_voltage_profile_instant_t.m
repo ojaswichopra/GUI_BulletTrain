@@ -1,4 +1,4 @@
-function Full_track_voltage_profile_instant_t(track_time_1,x_reso)
+function Full_track_voltage_profile_instant_t(track_time_1,x_reso,d, TSS, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td, dTSS_T, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, z1, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_M,Ic_line_mag_Md,Ic_line_ang_Md,Ir_line_mag_Md,Ir_line_ang_Md,If_line_mag_Md,If_line_ang_Md)
     % clc
     % clearvars
     format longG
@@ -144,17 +144,16 @@ function Full_track_voltage_profile_instant_t(track_time_1,x_reso)
     voltage_profile_design;
     toc
 
-    plot(distance_points,abs(V_profile_T))
-    hold on
-    plot(distance_points_new_M,abs(V_profile_new_M))
-    subplot(3,1,1)
-    plot(distance_points_new_M,abs(V_profile_new_M(:,1)));
-    subplot(3,1,2)
-    plot(distance_points_new_M,abs(V_profile_new_M(:,2)));
-    subplot(3,1,3)
-    plot(distance_points_new_M,abs(V_profile_new_M(:,3)));
+    % plot(distance_points,abs(V_profile_T))
+    % hold on
+    % plot(distance_points_new_M,abs(V_profile_new_M))
+    % subplot(3,1,1)
+    % plot(distance_points_new_M,abs(V_profile_new_M(:,1)));
+    % subplot(3,1,2)
+    % plot(distance_points_new_M,abs(V_profile_new_M(:,2)));
+    % subplot(3,1,3)
+    % plot(distance_points_new_M,abs(V_profile_new_M(:,3)));
 
     % Save the plot as an image
-    desired_filename = '../Plots/Full_track_voltage_profile_instant_t.png';  % Replace 'desired_name' with your file name
-    saveas(gcf, desired_filename);
+
 end

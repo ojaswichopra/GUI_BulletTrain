@@ -51,25 +51,24 @@ def main():
         if st.button('Voltage profile at a particular time instant'):
             st.switch_page("pages/Voltage_Profile.py")
         if st.button('Voltage profile of a particular train'):
-            st.switch_page("pages/Execute_Load_Flow.py")
+            st.switch_page("pages/Voltage_Profile_Train.py")
         if st.button('MVA profile of AT'):
             st.switch_page("pages/MVA_Profile_of_AT.py")
         if st.button('Maximum MVA of all AT'):
-            st.write("Button 1 clicked!")
+            st.switch_page("pages/Maximum_MVA_of_all_AT.py")
+        if st.button('Maximum voltage unbalance of all TSS'):
+            st.switch_page("pages/Maximum_voltage_unbalance_of_all_TSS.py")
 
     with col2:
         if st.button('Voltage profile at a particular distance'):
-            st.write("Button 2 clicked!")
+            st.switch_page("pages/Voltage_Profile_Distance.py")
         if st.button('MVA profile of TSS'):
-            st.write("Button 4 clicked!")
+           st.switch_page("pages/MVA_Profile_of_TSS.py")
         if st.button('Maximum MVA of all TSS'):
-            st.write("Button 1 clicked!")
+            st.switch_page("pages/Maximum_MVA_of_all_TSS.py")
         if st.button('Voltage unbalance profile of TSS'):
-            st.write("Button 1 clicked!")
+            st.switch_page("pages/Voltage_profile_unbalance.py")
     
-    if st.button('Maximum voltage unbalance of all TSS'):
-        st.write("Button 1 clicked!")
-
 if __name__ == "__main__":
     main()
 
