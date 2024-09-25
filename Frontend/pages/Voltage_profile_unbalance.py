@@ -1,12 +1,9 @@
-
-# 6. Maximum MVA of all TSS
+# Voltage unbalance profile of TSS
 
 
 import os
 import streamlit as st
 from PIL import Image
-# Create an Oct2Py instance once
-
 
 def main():
     # if 'oc' in st.session_state:
@@ -39,15 +36,20 @@ def main():
             unsafe_allow_html=True,
         )
 
-    #AT_MVA_profile.png -> name of plot in backend
+    #.png -> name of plot in backend
 
-    st.markdown("<h1 class='title'>Maximum MVA of all TSS</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Voltage unbalance profile of TSS</h1>", unsafe_allow_html=True)
+    
+    TSS_input_no = st.number_input("Enter the TSS number to see its voltage unbalance profile.", min_value=0)
 
+    if st.button("Show TSS voltage unbalance profile"):
+        st.session_state.oc.eval("setenv('GNUTERM', 'gnuplot')")
+        Unb = st.session_state.oc.pull('Unb')
+        st.session_state.oc.eval(f"TSS_voltage_unbalance_profile({int(TSS_input_no)}, Unb)")
+        image_path = '../Plots/TSS_voltage_unbalance_profile.png'
+        img = Image.open(image_path)
+        st.image(img, caption="AT maximum MVA of all AT", use_column_width=True)
 
-    if st.button("Show maximum MVA of all TSS"):
-        s_apprant_power_MVA_mag = st.session_state.oc.pull('s_apprant_power_MVA_mag')
-        maximum_mva_tss = st.session_state.oc.eval(f"TSS_maximum_MVA(s_apprant_power_MVA_mag)")
-        st.table(maximum_mva_tss)
 
 if __name__ == "__main__":
     main()

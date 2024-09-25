@@ -5,8 +5,8 @@ from PIL import Image
 
 
 def main():
-    if 'oc' in st.session_state:
-        st.success("OC Instance up and running") #checking instance 
+    # if 'oc' in st.session_state:
+    #     st.success("OC Instance up and running") #checking instance 
 
 
     st.markdown(
