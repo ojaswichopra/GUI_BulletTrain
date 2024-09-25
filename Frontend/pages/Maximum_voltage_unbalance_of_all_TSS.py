@@ -1,5 +1,5 @@
 
-# 6. Maximum MVA of all TSS
+# 6. Maximum voltage unbalance of all TSS
 
 
 import os
@@ -41,13 +41,13 @@ def main():
 
     #AT_MVA_profile.png -> name of plot in backend
 
-    st.markdown("<h1 class='title'>Maximum MVA of all TSS</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Maximum Voltage unbalance of all TSS</h1>", unsafe_allow_html=True)
 
 
-    if st.button("Show maximum MVA of all TSS"):
-        s_apprant_power_MVA_mag = st.session_state.oc.pull('s_apprant_power_MVA_mag')
-        maximum_mva_tss = st.session_state.oc.eval(f"TSS_maximum_MVA(s_apprant_power_MVA_mag)")
-        st.table(maximum_mva_tss)
+    if st.button("Show maximum voltage unbalance of all TSS"):
+        Unb = st.session_state.oc.pull('Unb')
+        maximum_voltage_unbalance = st.session_state.oc.eval(f"TSS_maximum_voltage_unbalance(Unb)")
+        st.table(maximum_voltage_unbalance)
 
 if __name__ == "__main__":
     main()
