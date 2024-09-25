@@ -1,4 +1,4 @@
-function voltage_profile_design_predetermine_AT()
+function voltage_profile_design_predetermine_AT(Voltage_distance_matrix_whole,AT,TSS)
     d_at=transpose(abs(Voltage_distance_matrix_whole(:,1)));
     d_TSS=transpose((Voltage_distance_matrix_whole(:,1)));
     ind_at_cond=ismember(d_at,AT);
@@ -34,4 +34,7 @@ function voltage_profile_design_predetermine_AT()
     %xlim([1 ,length(pre_det_Voltage_distance_matrix_whole)])
     xlabel('AT Numbers','FontWeight','bold')
     ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
+    desired_filename = '../Plots/function voltage_profile_design_predetermine_AT.png';
+    saveas(gcf, desired_filename);
+
 end

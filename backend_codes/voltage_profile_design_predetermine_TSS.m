@@ -1,4 +1,4 @@
-function voltage_profile_design_predetermine_TSS()
+function voltage_profile_design_predetermine_TSS(Voltage_distance_matrix_whole,AT,TSS)
     d_at=transpose(abs(Voltage_distance_matrix_whole(:,1)));
     d_TSS=transpose((Voltage_distance_matrix_whole(:,1)));
     ind_at_cond=ismember(d_at,AT);
@@ -21,16 +21,18 @@ function voltage_profile_design_predetermine_TSS()
     % bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,2)));
     %bar(abs(pre_det_Voltage_distance))
     tiledlayout(3,1);
-    nexttile
+    nexttile;
     bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,2)));
-    xlabel('TSS Numbers','FontWeight','bold')
-    ylabel('Contact voltage magnitude (kV)','FontWeight','bold')
-    nexttile
+    xlabel('TSS Numbers','FontWeight','bold');
+    ylabel('Contact voltage magnitude (kV)','FontWeight','bold');
+    nexttile;
     bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,3)));
-    xlabel('TSS Numbers','FontWeight','bold')
-    ylabel('Rail voltage magnitude (kV)','FontWeight','bold')
-    nexttile
+    xlabel('TSS Numbers','FontWeight','bold');
+    ylabel('Rail voltage magnitude (kV)','FontWeight','bold');
+    nexttile;
     bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,4)));
-    xlabel('TSS Numbers','FontWeight','bold')
-    ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
+    xlabel('TSS Numbers','FontWeight','bold');
+    ylabel('Feeder voltage magnitude (kV)','FontWeight','bold');
+    desired_filename = '../Plots/function voltage_profile_design_predetermine_TSS.png';
+    saveas(gcf, desired_filename);
 end

@@ -82,3 +82,8 @@ subplot(3,1,3)
 plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,4)),"Color",'b');
 xlabel('Distance (Km)','FontWeight','bold')
 ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
+
+save('Voltage_distance_matrix_whole.mat', 'Voltage_distance_matrix_whole');
+
+desired_filename = '../Plots/Full_track_voltage_profile_instant_t.png';  % Replace 'desired_name' with your file name
+saveas(gcf, desired_filename);
