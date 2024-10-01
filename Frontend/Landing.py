@@ -24,7 +24,8 @@ def read_text_file(file_path):
         # Process the content to determine its structure
         if len(content) == 1:  # Single line
             values = content[0].split()
-            numeric_values = [float(v) for v in values if v.replace('.', '', 1).isdigit()]
+            # Adjusted to handle negative values
+            numeric_values = [float(v) for v in values if is_numeric(v)]
 
             if len(numeric_values) == 1:
                 # Store as scalar
@@ -37,7 +38,8 @@ def read_text_file(file_path):
             array_2d = []
             for line in content:
                 values = line.split()
-                numeric_values = [float(v) for v in values if v.replace('.', '', 1).isdigit()]
+                # Adjusted to handle negative values
+                numeric_values = [float(v) for v in values if is_numeric(v)]
 
                 if numeric_values:  # If there are numeric values
                     array_2d.append(numeric_values)
@@ -57,6 +59,14 @@ def read_text_file(file_path):
     except ValueError:
         print("Error converting values to numeric.")
         return None
+
+# Helper function to check if a string can be converted to a float
+def is_numeric(value):
+    try:
+        float(value)
+        return True
+    except ValueError:
+        return False
 
 title = "GUI Bullet Train"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
@@ -125,7 +135,9 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-
+    x = read_text_file('../variable_text_files/Ic_line_ang_Td.txt')
+    print(x.shape)
+    print(x)
     
     st.markdown("<h1 class='title'>Graphical User Interface</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
