@@ -44,7 +44,6 @@ def main():
         Vc_ang_Md = workspace_variables['Vc_ang_Md']
         VR_mag_Md = workspace_variables['VR_mag_Md']
         VR_ang_Md = workspace_variables['VR_ang_Md']
-        print(train_data.shape)
         oc.push('train_data', train_data)
         oc.push('d', d)
         oc.push('dTSS', dTSS)
@@ -73,3 +72,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    if st.button("Back"):
+        st.switch_page("pages/Load_Flow_Output.py")

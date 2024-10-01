@@ -3,7 +3,7 @@ import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from oct2py import Oct2Py
 import multiprocessing
-from run_loadflow import run_oct2py  # Import the backend function directly
+from pages.run_loadflow import run_oct2py  # Import the backend function directly
 
 def run_backend_process(extracted_data, N, N_hr, train_time):
     # Run the backend function in a new process
@@ -173,4 +173,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    if st.button("Back"):
+        st.switch_page("Landing.py")
 

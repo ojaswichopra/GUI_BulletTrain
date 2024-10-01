@@ -110,42 +110,47 @@ def main():
                 mime="image/png"
             )
         
-    # if os.path.isfile('../backend_codes/Voltage_distance_matrix_whole.mat'):
-    #     AT = oc.pull('AT')
-    #     TSS = oc.pull('TSS')
-    #     col1, col2 = st.columns(2)
-    #     oc.eval(f"load('Voltage_distance_matrix_whole.mat')")
-    #     Voltage_distance_matrix_whole = oc.pull('Voltage_distance_matrix_whole')
-    #     with col1:
-    #         if st.button("Voltage profile of all TSSs at the entered time instant"):
-    #             oc.eval(f"voltage_profile_design_predetermine_TSS(Voltage_distance_matrix_whole,AT,TSS)")
-    #             image_path = '../Plots/voltage_profile_design_predetermine_TSS.png'
-    #             img = Image.open(image_path)
-    #             st.image(img, caption="voltage_profile_design_predetermine_TSS", use_column_width=True)
+    if os.path.isfile('../backend_codes/Voltage_distance_matrix_whole.mat'):
+        AT = workspace_variables['AT']
+        TSS = workspace_variables['TSS']
+        oc.push('AT', AT)
+        oc.push('TSS', TSS)
+        
+        col1, col2 = st.columns(2)
+        oc.eval(f"load('Voltage_distance_matrix_whole.mat')")
+        Voltage_distance_matrix_whole = oc.pull('Voltage_distance_matrix_whole')
+        with col1:
+            if st.button("Voltage profile of all TSSs at the entered time instant"):
+                oc.eval(f"voltage_profile_design_predetermine_TSS(Voltage_distance_matrix_whole,AT,TSS)")
+                image_path = '../Plots/voltage_profile_design_predetermine_TSS.png'
+                img = Image.open(image_path)
+                st.image(img, caption="", use_column_width=True)
 
-    #             with open(image_path, "rb") as file:
-    #                 btn = st.download_button(
-    #                     label="Download Plot",
-    #                     data=file,
-    #                     file_name="voltage_profile_design_predetermine_TSS.png",  # Replace with the desired download filename
-    #                     mime="image/png"
-    #                 )
+                with open(image_path, "rb") as file:
+                    btn = st.download_button(
+                        label="Download Plot",
+                        data=file,
+                        file_name="voltage_profile_design_predetermine_TSS.png",  # Replace with the desired download filename
+                        mime="image/png"
+                    )
 
-    #     with col2:
-    #         if st.button("Voltage profile of all ATs at the entered time instant"):
-    #             oc.eval(f"voltage_profile_design_predetermine_AT(Voltage_distance_matrix_whole,AT,TSS)")
-    #             image_path = '../Plots/voltage_profile_design_predetermine_AT.png'
-    #             img = Image.open(image_path)
-    #             st.image(img, caption="voltage_profile_design_predetermine_AT", use_column_width=True)
+        with col2:
+            if st.button("Voltage profile of all ATs at the entered time instant"):
+                oc.eval(f"voltage_profile_design_predetermine_AT(Voltage_distance_matrix_whole,AT,TSS)")
+                image_path = '../Plots/voltage_profile_design_predetermine_AT.png'
+                img = Image.open(image_path)
+                st.image(img, caption="", use_column_width=True)
 
-    #             with open(image_path, "rb") as file:
-    #                 btn = st.download_button(
-    #                     label="Download Plot",
-    #                     data=file,
-    #                     file_name="voltage_profile_design_predetermine_AT.png",  # Replace with the desired download filename
-    #                     mime="image/png"
-    #                         )
+                with open(image_path, "rb") as file:
+                    btn = st.download_button(
+                        label="Download Plot",
+                        data=file,
+                        file_name="voltage_profile_design_predetermine_AT.png",  # Replace with the desired download filename
+                        mime="image/png"
+                            )
             
 
 if __name__ == "__main__":
     main()
+    if st.button("Back"):
+        st.switch_page("pages/Load_Flow_Output.py")

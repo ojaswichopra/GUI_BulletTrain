@@ -20,19 +20,24 @@ function voltage_profile_design_predetermine_TSS(Voltage_distance_matrix_whole,A
     pre_det_Voltage_distance=[pre_det_Voltage_distance_matrix_whole(:,2) pre_det_Voltage_distance_matrix_whole(:,3) pre_det_Voltage_distance_matrix_whole(:,4)];
     % bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,2)));
     %bar(abs(pre_det_Voltage_distance))
-    tiledlayout(3,1);
-    nexttile;
-    bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,2)));
-    xlabel('TSS Numbers','FontWeight','bold');
-    ylabel('Contact voltage magnitude (kV)','FontWeight','bold');
-    nexttile;
-    bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,3)));
-    xlabel('TSS Numbers','FontWeight','bold');
-    ylabel('Rail voltage magnitude (kV)','FontWeight','bold');
-    nexttile;
-    bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,4)));
-    xlabel('TSS Numbers','FontWeight','bold');
-    ylabel('Feeder voltage magnitude (kV)','FontWeight','bold');
-    desired_filename = '../Plots/function voltage_profile_design_predetermine_TSS.png';
+    % Create the first subplot (3 rows, 1 column, first plot)
+    subplot(3, 1, 1);
+    bar(abs(pre_det_Voltage_distance_matrix_whole(:, 1)), abs(pre_det_Voltage_distance_matrix_whole(:, 2)));
+    xlabel('TSS Numbers', 'FontWeight', 'bold');
+    ylabel('Contact voltage magnitude (kV)', 'FontWeight', 'bold');
+
+    % Create the second subplot (3 rows, 1 column, second plot)
+    subplot(3, 1, 2);
+    bar(abs(pre_det_Voltage_distance_matrix_whole(:, 1)), abs(pre_det_Voltage_distance_matrix_whole(:, 3)));
+    xlabel('TSS Numbers', 'FontWeight', 'bold');
+    ylabel('Rail voltage magnitude (kV)', 'FontWeight', 'bold');
+
+    % Create the third subplot (3 rows, 1 column, third plot)
+    subplot(3, 1, 3);
+    bar(abs(pre_det_Voltage_distance_matrix_whole(:, 1)), abs(pre_det_Voltage_distance_matrix_whole(:, 4)));
+    xlabel('TSS Numbers', 'FontWeight', 'bold');
+    ylabel('Feeder voltage magnitude (kV)', 'FontWeight', 'bold');
+
+    desired_filename = '../Plots/voltage_profile_design_predetermine_TSS.png';
     saveas(gcf, desired_filename);
 end
