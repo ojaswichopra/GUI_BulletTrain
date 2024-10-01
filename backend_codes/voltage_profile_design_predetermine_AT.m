@@ -18,23 +18,27 @@ function voltage_profile_design_predetermine_AT(Voltage_distance_matrix_whole,AT
     pre_det_Voltage_distance=[pre_det_Voltage_distance_matrix_whole(:,2) pre_det_Voltage_distance_matrix_whole(:,3) pre_det_Voltage_distance_matrix_whole(:,4)];
     % bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,2)));
     %bar(abs(pre_det_Voltage_distance))
-    tiledlayout(3,1);
-    nexttile
-    bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,2)));
-    %xlim([1 ,length(pre_det_Voltage_distance_matrix_whole)])
-    xlabel('AT Numbers','FontWeight','bold')
-    ylabel('Contact voltage magnitude (kV)','FontWeight','bold')
-    nexttile
-    bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,3)));
-    %xlim([1 ,length(pre_det_Voltage_distance_matrix_whole)])
-    xlabel('AT Numbers','FontWeight','bold')
-    ylabel('Rail voltage magnitude (kV)','FontWeight','bold')
-    nexttile
-    bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,4)));
-    %xlim([1 ,length(pre_det_Voltage_distance_matrix_whole)])
-    xlabel('AT Numbers','FontWeight','bold')
-    ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
-    desired_filename = '../Plots/function voltage_profile_design_predetermine_AT.png';
+    % Create the first subplot (3 rows, 1 column, first plot)
+    subplot(3, 1, 1);
+    bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)), abs(pre_det_Voltage_distance_matrix_whole(:,2)));
+    xlabel('AT Numbers', 'FontWeight', 'bold');
+    ylabel('Contact voltage magnitude (kV)', 'FontWeight', 'bold');
+    % xlim([1, length(pre_det_Voltage_distance_matrix_whole)]); % Uncomment if x-axis limit is needed
+
+    % Create the second subplot (3 rows, 1 column, second plot)
+    subplot(3, 1, 2);
+    bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)), abs(pre_det_Voltage_distance_matrix_whole(:,3)));
+    xlabel('AT Numbers', 'FontWeight', 'bold');
+    ylabel('Rail voltage magnitude (kV)', 'FontWeight', 'bold');
+    % xlim([1, length(pre_det_Voltage_distance_matrix_whole)]); % Uncomment if x-axis limit is needed
+
+    % Create the third subplot (3 rows, 1 column, third plot)
+    subplot(3, 1, 3);
+    bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)), abs(pre_det_Voltage_distance_matrix_whole(:,4)));
+    xlabel('AT Numbers', 'FontWeight', 'bold');
+    ylabel('Feeder voltage magnitude (kV)', 'FontWeight', 'bold');
+    % xlim([1, length(pre_det_Voltage_distance_matrix_whole)]); % Uncomment if x-axis limit is needed
+    desired_filename = '../Plots/voltage_profile_design_predetermine_AT.png';
     saveas(gcf, desired_filename);
 
 end
