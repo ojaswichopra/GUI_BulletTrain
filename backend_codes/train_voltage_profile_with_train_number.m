@@ -3,6 +3,7 @@ function train_voltage_profile_with_train_number(no_of_train,train_number,train_
     % clearvars
     format longG
     tic
+    train_data
 
 
     train_intervals=60*60/no_of_train;
