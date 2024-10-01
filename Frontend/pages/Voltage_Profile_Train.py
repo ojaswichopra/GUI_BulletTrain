@@ -36,7 +36,7 @@ def main():
         d = workspace_variables['d']
         dTSS = workspace_variables['dTSS']
         y = workspace_variables['y']
-        Vc_mag_Td = workspace_variables['Vc_mag_Td']
+        Vc_mag_Td = workspace_variables['Vc_mag_Td']    
         Vc_ang_Td = workspace_variables['Vc_ang_Td']
         VR_mag_Td = workspace_variables['VR_mag_Td']
         VR_ang_Td = workspace_variables['VR_ang_Td']
