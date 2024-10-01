@@ -3,18 +3,6 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 # from pages.run_loadflow import oc
 from oct2py import Oct2Py
 
-# # Create an Oct2Py instance once
-if 'oc' not in st.session_state:
-    st.success("Creating oct2py instance and rendering variables")
-    st.session_state.oc = Oct2Py()  # Create an Oct2Py instance
-    st.session_state.oc.eval('cd("../backend_codes")')  # Change to backend directory
-    st.session_state.oc.eval('load("variable_load_flow_mum_to_ahm_each_stop.mat")')  # Load the .mat file
-    st.session_state.mat_loaded = True  # Set the loaded flag
-
-# # Initialize session state variable
-# if 'loadMat' not in st.session_state:
-#     st.session_state.loadMat = False
-
     
 def main():  
     st.markdown(

@@ -117,18 +117,6 @@ def main():
         [data-testid="collapsedControl"] {
             display: none
         }
-        .stButton button {
-            width: 100px;
-            height: 100%;
-            background-color: #007BFF;
-            color: white;
-            font-size: 20px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
         .title {
             text-align: center;
         }
