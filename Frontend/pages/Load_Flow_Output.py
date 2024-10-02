@@ -56,7 +56,10 @@ def main():
             st.switch_page("pages/Maximum_MVA_of_all_TSS.py")
         if st.button('Voltage unbalance profile of TSS'):
             st.switch_page("pages/Voltage_profile_unbalance.py")
+        if st.button("Back"):
+            st.switch_page("Landing.py")
     
 if __name__ == "__main__":
     main()
+    
 

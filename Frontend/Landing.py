@@ -135,9 +135,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    x = read_text_file('../variable_text_files/Ic_line_ang_Td.txt')
-    print(x.shape)
-    print(x)
+
     
     st.markdown("<h1 class='title'>Graphical User Interface</h1>", unsafe_allow_html=True)
     add_vertical_space(1)

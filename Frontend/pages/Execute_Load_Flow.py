@@ -173,4 +173,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    if st.button("Back"):
+        st.switch_page("Landing.py")
 

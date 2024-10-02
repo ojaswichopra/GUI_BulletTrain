@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_option_menu import option_menu
+import json
 
 # Define the path to your system data file
 file_path = "system data file.txt"
@@ -81,6 +82,9 @@ def main():
     )
 
     if selected == "Prepare Fresh Data":
+        # Initialize a session state variable to store the edited content
+        if 'edited_content' not in st.session_state:
+            st.session_state.edited_content = ""
         with st.form("prepare_fresh_data_form"):
             st.write("Enter fresh values for system data:")
 
@@ -204,9 +208,21 @@ def main():
 
                     write_data(file_path,new_data)
                     st.success("Data saved successfully!")
+                    # Save the updated content back to the session state
+                    formatted_text = "\n\n".join([f"{key}\n{value}" for key, value in new_data.items()])  # Format key-value pairs
+                    # Store the formatted plain text in session state
+                    st.session_state.edited_content = formatted_text
                     
                 except ValueError as e:
                     st.error(f"Error in data conversion: {e}")
+        # If the content has been saved, offer the download button outside the form
+        if st.session_state.edited_content:
+            st.download_button(
+                label="Download updated file",
+                data=st.session_state.edited_content,
+                file_name="updated_file.txt",  # File name for download
+                mime="text/plain"
+            )    
                     
     elif selected == "Edit Existing Data":
         
@@ -224,7 +240,15 @@ def main():
                 with open(file_path, "w") as file:
                     file.write(edited_content)
                 st.success("Data saved successfully!")
-
+                # Offer the file for download
+                st.download_button(
+                    label="Download updated file",
+                    data=edited_content,
+                    file_name="system_data.txt",  # File name for download
+                    mime="text/plain"
+                )
 
 if __name__ == "__main__":
     main()
+    if st.button("Back"):
+        st.switch_page("Landing.py")
