@@ -30,7 +30,7 @@ def main():
     st.markdown("<h1 class='title'>Voltage profile at a particular time instant</h1>", unsafe_allow_html=True)
 
 
-    track_time_1 = st.number_input("Enter the TSS number for which track voltage profile needs to be check", min_value=0)
+    track_time_1 = st.number_input("Enter the time instant (in sec) at the which the voltage profile of track needs to be investigated", min_value=0)
     x_reso = st.number_input("Enter the distance resolution (in meter)", min_value=0)
     
     if st.button("Submit"):

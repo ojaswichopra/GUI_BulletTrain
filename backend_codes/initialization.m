@@ -5,7 +5,7 @@ TSS = cell2mat(TSS);
 AT = num2cell(AT);
 AT = cell2mat(AT);
 
-fid=fopen('Mumbai_Ahm_all_stop_train_schedule.txt','r');
+fid=fopen('train_timetable.txt','r');
 header=fscanf(fid,'%s %s %s %s',[4 1]);
 train_data_1=fscanf(fid,'%f %f %f %f',[4 train_time]);
 % Here "10680" is the time (in sec) taken by the train to complete the route
