@@ -19,6 +19,14 @@ function voltage_profile_design_predetermine_AT(Voltage_distance_matrix_whole,AT
     % bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,2)));
     %bar(abs(pre_det_Voltage_distance))
     % Create the first subplot (3 rows, 1 column, first plot)
+    figureHandle = figure;
+
+    % Get screen size from root object (0)
+    screenSize = get(0, 'ScreenSize');
+
+    % Set the figure to match the screen size
+    set(figureHandle, 'Position', screenSize);
+    
     subplot(3, 1, 1);
     bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)), abs(pre_det_Voltage_distance_matrix_whole(:,2)));
     xlabel('AT Numbers', 'FontWeight', 'bold');
