@@ -102,4 +102,3 @@ Diameter (mm) of rail:
 
 Resistance (ohm/km) of rail:
 0.024
-
