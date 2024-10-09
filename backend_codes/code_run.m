@@ -25,7 +25,7 @@ function code_run(TSS, AT, N, N_hr,train_time, Vp, Vs, Rp, Xp, Rs, Xs, Zn, short
     end
     TSS_MVA_voltage_unbalance_source_code;
     AT_MVA_source_code;
-    save('variable_load_flow_mum_to_ahm_each_stop.mat');  
+    variable_storing_as_text;  
     % saving the workspace variables generated after executing the load flow of Mumbai to Ahmedabad track 
     % with each-stop trains running on the track
     toc
