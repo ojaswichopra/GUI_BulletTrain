@@ -33,7 +33,7 @@ hiddenimports += [
 ]
 
 datas += copy_metadata('streamlit_extras')
-datas += [('Frontend/*', 'Frontend'),('Frontend/pages/*', 'Frontend/pages'),('backend_codes/*', 'backend_codes'),('Plots/', 'Plots')]
+datas += [('Frontend/*', 'Frontend'),('Frontend/pages/*', 'Frontend/pages'),('backend_codes/*', 'backend_codes'),('Plots/', 'Plots'), ('variable_text_files/*', 'variable_text_files')]
 
 a = Analysis(
     ['my_app.py'],

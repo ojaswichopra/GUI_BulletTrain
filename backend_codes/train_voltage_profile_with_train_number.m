@@ -3,6 +3,7 @@ function train_voltage_profile_with_train_number(no_of_train,train_number,train_
     % clearvars
     format longG
     tic
+    graphics_toolkit ("gnuplot")
     train_data
 
 
@@ -76,6 +77,14 @@ function train_voltage_profile_with_train_number(no_of_train,train_number,train_
     % plot(train1_time,voltage_train_rail_abs);
     % subplot(2,1,2)
     % plot(train_distance_from_start,voltage_train_rail_abs);
+    figureHandle = figure;
+
+    % Get screen size from root object (0)
+    screenSize = get(0, 'ScreenSize');
+
+    % Set the figure to match the screen size
+    set(figureHandle, 'Position', screenSize);
+    
     subplot(4,1,1)
     plot(train1_time/60,voltage_train_abs);
     title(['Contact voltage of train number ', int2str(train_number),' vs Time'])
