@@ -26,6 +26,9 @@ function code_run(TSS, AT, N, N_hr,train_time, Vp, Vs, Rp, Xp, Rs, Xs, Zn, short
         percentage_completion_3=(nt*100)/NT   %percentage of total computation completed
         % Write progress to the file using fopen
         % Open the file for writing
+        if percentage_completion_3 == 100
+        break; % Exit the loop when i equals 5
+        end 
         fid = fopen(progress_file, 'w');
         fprintf(fid, '%.2f\n', percentage_completion_3);  % Write progress to file with seven decimal places
         fclose(fid);
@@ -35,5 +38,9 @@ function code_run(TSS, AT, N, N_hr,train_time, Vp, Vs, Rp, Xp, Rs, Xs, Zn, short
     variable_storing_as_text;  
     % saving the workspace variables generated after executing the load flow of Mumbai to Ahmedabad track 
     % with each-stop trains running on the track
+    fid = fopen(progress_file, 'w');
+    fprintf(fid, '%.2f\n', 100);  % Write progress to file with seven decimal places
+    fclose(fid);
+    send_email_notification;
     toc
 end
