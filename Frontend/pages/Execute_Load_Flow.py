@@ -4,6 +4,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from oct2py import Oct2Py
 import multiprocessing
 from pages.run_loadflow import run_oct2py  # Import the backend function directly
+import time
 
 def run_backend_process(extracted_data, N, N_hr, train_time):
     # Run the backend function in a new process
@@ -11,6 +12,23 @@ def run_backend_process(extracted_data, N, N_hr, train_time):
         target=run_oct2py, args=(extracted_data, N, N_hr, train_time)
     )
     backend_process.start()
+    
+def initialize_progress():
+    progress_file = '../backend_codes/progress_file.txt'
+    # Overwrite the file with '0.0' regardless of its state
+    with open(progress_file, 'w') as f:
+        f.write('0.0')  # Write 0.0 as the initial value
+
+def read_progress():
+    progress_file = '../backend_codes/progress_file.txt'
+    if os.path.exists(progress_file):
+        with open(progress_file, 'r') as f:
+            content = f.read().strip()  # Read and strip whitespace
+            if content:  # Check if content is not empty
+                return content  # Convert to float if not empty
+            else:
+                return 0.0  # Return 0.0 if the content is empty
+    return 0.0  # Return 0.0 if the file doesn't exist
 
 
 # Define the path to your system data file
@@ -170,6 +188,18 @@ def main():
             
             # oc.eval(f"code_run({extracted_data['tss_distances']},{extracted_data['at_distances']},{N},{N_hr},{train_time},{extracted_data['tss_primary_voltage']},{extracted_data['tss_secondary_voltage']},{extracted_data['primary_resistance']},{extracted_data['primary_reactance']},{extracted_data['secondary_resistance']},{extracted_data['secondary_reactance']},{extracted_data['rail_grounding_impedance']},{extracted_data['short_circuit_mva']},{extracted_data['at_leakage_resistance']},{extracted_data['at_leakage_reactance']},{extracted_data['at_magnetising_resistance']},{extracted_data['at_magnetising_reactance']},{extracted_data['earth_resistivity']},{extracted_data['frequency']},{extracted_data['num_conductors']},{extracted_data['contact_wire_height']},{extracted_data['messenger_wire_height']},{extracted_data['feeder_wire_height']},{extracted_data['feeder_wire_distance']},{extracted_data['earth_wire_height']},{extracted_data['earth_wire_distance']},{extracted_data['contact_wire_diameter']},{extracted_data['contact_wire_resistance']},{extracted_data['messenger_wire_diameter']},{extracted_data['messenger_wire_resistance']},{extracted_data['earth_wire_diameter']},{extracted_data['earth_wire_resistance']},{extracted_data['feeder_wire_diameter']},{extracted_data['feeder_wire_resistance']},{extracted_data['rail_diameter']},{extracted_data['rail_resistance']})")            
             # st.success("Load flow executed successfully!")
+            # Progress bar
+            progress_bar = st.progress(0)
+            initialize_progress()
+            # Continuously check for progress
+            while True:
+                progress = read_progress()
+                progress_bar.progress(float(progress)/100)  # Update the progress bar
+                print("here",progress)
+                if float(progress) >= 100:
+                    st.success("Load Flow executed successfully!")
+                    break
+                time.sleep(10)  # Sleep for a second before checking again
 
 if __name__ == "__main__":
     main()
