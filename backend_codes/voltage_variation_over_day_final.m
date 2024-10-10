@@ -2,6 +2,7 @@ function voltage_variation_over_day_final(total_distance_from_start_point,d, dTS
     % clearvars
     format longG
     tic
+    graphics_toolkit ("gnuplot")
 
     total_distance_from_start_point=total_distance_from_start_point*1000;
     d_index_length=length(d);
@@ -100,6 +101,14 @@ function voltage_variation_over_day_final(total_distance_from_start_point,d, dTS
             point_i=point_i+1;
         end
         %plot(time_points,abs(Voltage_distance));
+        figureHandle = figure;
+
+        % Get screen size from root object (0)
+        screenSize = get(0, 'ScreenSize');
+    
+        % Set the figure to match the screen size
+        set(figureHandle, 'Position', screenSize);
+
         subplot(3,1,1)
         plot(time_points,abs(Voltage_distance(:,1)));
         xlabel('Time (sec)','FontWeight','bold')
@@ -169,6 +178,14 @@ function voltage_variation_over_day_final(total_distance_from_start_point,d, dTS
             point_i=point_i+1;
         end
         %plot(time_points,abs(Voltage_distance_M));
+        figureHandle = figure;
+
+        % Get screen size from root object (0)
+        screenSize = get(0, 'ScreenSize');
+    
+        % Set the figure to match the screen size
+        set(figureHandle, 'Position', screenSize);
+        
         subplot(3,1,1)
         plot(time_points,abs(Voltage_distance_M(:,1)));
         xlabel('Time (sec)','FontWeight','bold')

@@ -1,3 +1,4 @@
+graphics_toolkit ("gnuplot")
 length_profile_T=length(Voltage_distance_matrix_T);
 length_profile_M=length(Voltage_distance_matrix_M);
 total_length_profile=length_profile_M+length_profile_T;
@@ -69,6 +70,14 @@ for jj_track_no=1:1:length(d_modified)
     profile_winding_position=profile_winding_position+1;
 
 end
+
+figureHandle = figure;
+
+% Get screen size from root object (0)
+screenSize = get(0, 'ScreenSize');
+
+% Set the figure to match the screen size
+set(figureHandle, 'Position', screenSize);
 
 subplot(3,1,1)
 plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)),"Color",'r');
