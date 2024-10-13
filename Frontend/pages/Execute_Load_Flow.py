@@ -177,7 +177,7 @@ N_hr = st.number_input("Enter the number of hours of train scheduling per day", 
 train_time = st.number_input("Enter the time (in seconds) taken by one train to complete the route", min_value=0)
 global recipient
 recipient = st.text_input("Enter email address to which you would like to recive load flow information")
-recipient = 'ojaswichopra06@gmail.com'
+# recipient = 'ojaswichopra06@gmail.com'
 
 if st.button("Submit"):
     if not system_data_file or not timetable_file or N <= 0 or N_hr <= 0 or train_time <= 0:
