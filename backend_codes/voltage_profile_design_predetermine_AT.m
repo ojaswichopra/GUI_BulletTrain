@@ -19,6 +19,7 @@ function voltage_profile_design_predetermine_AT(Voltage_distance_matrix_whole,AT
     % bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)),abs(pre_det_Voltage_distance_matrix_whole(:,2)));
     %bar(abs(pre_det_Voltage_distance))
     % Create the first subplot (3 rows, 1 column, first plot)
+    graphics_toolkit ("gnuplot")
     figureHandle = figure;
 
     % Get screen size from root object (0)
