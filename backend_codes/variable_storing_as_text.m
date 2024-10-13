@@ -336,11 +336,11 @@ end
 fclose(fileID);
 %%%
  %%%%
- fileID = fopen('../variable_text_files/S_apprant_power_MVA_mag.txt', 'w');
+ fileID = fopen('../variable_text_files/s_apprant_power_MVA_mag.txt', 'w');
 
  %Write data to the file (row-wise)
- for row = 1:size(S_apprant_power_MVA_mag, 1)
-     fprintf(fileID, [repmat('%f ', 1, size(s_apprant_power_MVA_mag, 2)) '\n'], S_apprant_power_MVA_mag(row, :));
+ for row = 1:size(s_apprant_power_MVA_mag, 1)
+     fprintf(fileID, [repmat('%f ', 1, size(s_apprant_power_MVA_mag, 2)) '\n'], s_apprant_power_MVA_mag(row, :));
  end
  % Close the file
  fclose(fileID);
