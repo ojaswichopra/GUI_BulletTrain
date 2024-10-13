@@ -1,5 +1,12 @@
 tic
 
+folderPath = '../variable_text_files';
+
+% Check if the directory exists; if not, create it
+if ~exist(folderPath, 'dir')
+    mkdir(folderPath);
+end
+
 fileID = fopen('../variable_text_files/dTSS.txt', 'w');
 
 %Write data to the file (row-wise)
