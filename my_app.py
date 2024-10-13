@@ -1,20 +1,13 @@
 import os
-import subprocess
+import sys
+# # Install required packages from requirements.txt
+requirements_path = os.path.join(os.path.dirname(__file__), 'Frontend', 'requirements.txt')
+os.system(f"pip install -r {requirements_path}")
 
-# Path to the requirements.txt file
-requirements_path = os.path.join(os.path.dirname(__file__), 'requirements.txt')
 
-# Install the necessary dependencies
-try:
-    print("Installing dependencies from requirements.txt...")
-    subprocess.check_call([os.sys.executable, "-m", "pip", "install", "-r", requirements_path])
-    print("Dependencies installed successfully.")
-except subprocess.CalledProcessError as e:
-    print(f"Failed to install dependencies: {e}")
-    exit(1)
 
 # Path to the entry point of your Streamlit app
 frontend_path = os.path.join(os.path.dirname(__file__), 'Frontend', 'Landing.py') 
 
 # Use os.system to run the streamlit app
-os.system(f"streamlit run {frontend_path}")
+os.system(f"streamlit run {frontend_path} --server.headless=true --server.enableXsrfProtection=false --server.enableCORS=false")
