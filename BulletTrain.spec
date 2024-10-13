@@ -16,6 +16,8 @@ tmp_ret = collect_all('oct2py')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 tmp_ret = collect_all('multiprocessing')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
+tmp_ret = collect_all('subprocess')
+datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 tmp_ret = collect_all('PIL')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 tmp_ret = collect_all('streamlit_option_menu')
@@ -33,7 +35,7 @@ hiddenimports += [
 ]
 
 datas += copy_metadata('streamlit_extras')
-datas += [('Frontend/*', 'Frontend'),('Frontend/pages/*', 'Frontend/pages'),('backend_codes/*', 'backend_codes'),('Plots/', 'Plots'), ('variable_text_files/*', 'variable_text_files')]
+datas += [('Frontend/Landing.py', 'Frontend'),('Frontend/system data file.txt', 'Frontend'),('Frontend/__pycache__/*', 'Frontend/__pycache__'),('Frontend/pages/*', 'Frontend/pages'), ('backend_codes/*', 'backend_codes'),('Plots/', 'Plots'), ('variable_text_files/*', 'variable_text_files'),('Frontend/requirements.txt', 'Frontend')]
 
 a = Analysis(
     ['my_app.py'],
