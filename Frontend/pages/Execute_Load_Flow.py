@@ -174,7 +174,7 @@ timetable_file = st.file_uploader("Upload Train Timetable (.txt)", type="txt")
 train_time = 0
 print(train_time)
 if timetable_file is not None:
-    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '../backend_codes')
+    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../backend_codes')
 
     # Create the directory if it doesn't exist
     os.makedirs(save_directory, exist_ok=True)
@@ -182,8 +182,7 @@ if timetable_file is not None:
     # Step 4: Save the file in the backend folder
     with open(os.path.join(save_directory, desired_filename), "wb") as f:
         f.write(timetable_file.getbuffer())
-    
-    train_time, _ = count_rows_columns('../backend_codes/train_timetable.txt')
+        
     st.success(f"File saved.")
 
 
@@ -192,9 +191,13 @@ N = st.number_input("Enter the number of trains running per hour", min_value=0)
 N_hr = st.number_input("Enter the number of hours of train scheduling per day", min_value=0)
 global recipient
 recipient = st.text_input("Enter email address to which you would like to recive load flow information")
-# recipient = 'ojaswichopra06@gmail.com'
 
 if st.button("Submit"):
+    # Check if the file exists
+    if os.path.exists('../backend_codes/train_timetable.txt'):
+        # If the file exists, proceed with the operation
+        train_time, _ = count_rows_columns('../backend_codes/train_timetable.txt')
+        print(f"Train time: {train_time}")
     print(train_time)
     if not system_data_file or not timetable_file or N <= 0 or N_hr <= 0 or train_time <= 0:
             st.warning("Please provide all the inputs correctly!")
