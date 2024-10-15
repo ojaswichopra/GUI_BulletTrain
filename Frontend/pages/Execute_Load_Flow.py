@@ -30,6 +30,19 @@ def read_progress():
                 return 0.0  # Return 0.0 if the content is empty
     return 0.0  # Return 0.0 if the file doesn't exist
 
+def count_rows_columns(file_path):
+    with open(file_path, 'r') as file:
+        # Read the lines of the file
+        lines = file.readlines()
+
+        # The number of rows is the number of data lines (excluding the header)
+        num_rows = len(lines) - 1
+
+        # Split the header line to determine the number of columns
+        num_columns = len(lines[0].split())
+
+    return num_rows, num_columns
+
 
 # Define the path to your system data file
 file_path = "system data file.txt"
@@ -158,6 +171,8 @@ if system_data_file is not None:
     
 
 timetable_file = st.file_uploader("Upload Train Timetable (.txt)", type="txt")
+train_time = 0
+print(train_time)
 if timetable_file is not None:
     save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../backend_codes')
 
@@ -167,19 +182,23 @@ if timetable_file is not None:
     # Step 4: Save the file in the backend folder
     with open(os.path.join(save_directory, desired_filename), "wb") as f:
         f.write(timetable_file.getbuffer())
-    
+        
     st.success(f"File saved.")
 
 
 # Input fields for other parameters
 N = st.number_input("Enter the number of trains running per hour", min_value=0)
 N_hr = st.number_input("Enter the number of hours of train scheduling per day", min_value=0)
-train_time = st.number_input("Enter the time (in seconds) taken by one train to complete the route", min_value=0)
 global recipient
 recipient = st.text_input("Enter email address to which you would like to recive load flow information")
-# recipient = 'ojaswichopra06@gmail.com'
 
 if st.button("Submit"):
+    # Check if the file exists
+    if os.path.exists('../backend_codes/train_timetable.txt'):
+        # If the file exists, proceed with the operation
+        train_time, _ = count_rows_columns('../backend_codes/train_timetable.txt')
+        print(f"Train time: {train_time}")
+    print(train_time)
     if not system_data_file or not timetable_file or N <= 0 or N_hr <= 0 or train_time <= 0:
             st.warning("Please provide all the inputs correctly!")
     else:
