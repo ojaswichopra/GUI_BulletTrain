@@ -159,7 +159,7 @@ if system_data_file is not None:
 
 timetable_file = st.file_uploader("Upload Train Timetable (.txt)", type="txt")
 if timetable_file is not None:
-    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '../backend_codes')
+    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../backend_codes')
 
     # Create the directory if it doesn't exist
     os.makedirs(save_directory, exist_ok=True)
