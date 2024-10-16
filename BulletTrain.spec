@@ -35,7 +35,7 @@ hiddenimports += [
 ]
 
 datas += copy_metadata('streamlit_extras')
-datas += [('Frontend/Landing.py', 'Frontend'),('Frontend/system data file.txt', 'Frontend'),('Frontend/__pycache__/*', 'Frontend/__pycache__'),('Frontend/pages/*', 'Frontend/pages'), ('backend_codes/*', 'backend_codes'),('Plots/', 'Plots'), ('variable_text_files/*', 'variable_text_files'),('Frontend/requirements.txt', 'Frontend')]
+datas += [('Frontend/Landing.py', 'Frontend'),('Frontend/__pycache__/*', 'Frontend/__pycache__'),('Frontend/pages/*', 'Frontend/pages'), ('backend_codes/*', 'backend_codes'),('Plots/', 'Plots'), ('variable_text_files/*', 'variable_text_files'),('Frontend/requirements.txt', 'Frontend')]
 
 a = Analysis(
     ['my_app.py'],
