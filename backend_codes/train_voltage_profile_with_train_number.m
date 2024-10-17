@@ -4,14 +4,14 @@ function train_voltage_profile_with_train_number(no_of_train,train_number,train_
     format longG
     tic
     graphics_toolkit ("gnuplot")
-    train_data;
+    train_data
 
 
     train_intervals=60*60/no_of_train;
     train_time_space=(train_number-1)*train_intervals;
     train1_position=length(train_data(:,1));
     for t_i= 1:1:train1_position
-        ct_train_pos=train_data(t_i,3)
+        ct_train_pos=train_data(t_i,3);
         train1_time(t_i)=train_data(t_i,1)+train_time_space;
         train_distance_from_start(t_i)=train_data(t_i,3)/1000;
         d_index_length=length(d);
@@ -44,8 +44,9 @@ function train_voltage_profile_with_train_number(no_of_train,train_number,train_
         end
 
         check_winding=winding_defination(d_index-1);
-        cond_int=isinteger((d_index-1)/2);
-        if cond_int==1
+        odd_check=mod((d_index-1),2);
+        % cond_int=isinteger((d_index-1)/2);
+        if odd_check==0 %cond_int==1
             length_tss=ct_train_pos-d(d_index-1);
         else
             length_tss=d(d_index)-ct_train_pos;
