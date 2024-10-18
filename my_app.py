@@ -2,6 +2,7 @@ import os
 import sys
 # # Install required packages from requirements.txt
 requirements_path = os.path.join(os.path.dirname(__file__), 'Frontend', 'requirements.txt')
+os.system(f"python -m pip install --upgrade pip")
 os.system(f"pip install -r {requirements_path}")
 
 

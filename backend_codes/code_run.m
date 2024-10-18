@@ -38,11 +38,10 @@ function code_run(TSS, AT, N, N_hr,train_time, Vp, Vs, Rp, Xp, Rs, Xs, Zn, short
     variable_storing_as_text;  
     % saving the workspace variables generated after executing the load flow of Mumbai to Ahmedabad track 
     % with each-stop trains running on the track
-    
     send_email_notification;
     fid = fopen(progress_file, 'w');
     fprintf(fid, '%.2f\n', 100);  % Write progress to file with seven decimal places
     fclose(fid);
-
+    
     toc
 end
