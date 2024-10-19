@@ -1,0 +1,5 @@
+sub_station_line_index=find(linedata(:,1)==1);
+sub_station_current_catenary_sample=Ic_line_mag_T(sub_station_line_index(1))*(cosd(Ic_line_ang_T(sub_station_line_index(1)))+i*sind(Ic_line_ang_T(sub_station_line_index(1))))+Ic_line_mag_T(sub_station_line_index(2))*(cosd(Ic_line_ang_T(sub_station_line_index(2)))+i*sind(Ic_line_ang_T(sub_station_line_index(2))));
+sub_station_catenary_current(nt)=sub_station_current_catenary_sample;
+sub_station_current_feeder_sample=If_line_mag_T(sub_station_line_index(1))*(cosd(If_line_ang_T(sub_station_line_index(1)))+i*sind(If_line_ang_T(sub_station_line_index(1))))+If_line_mag_T(sub_station_line_index(2))*(cosd(If_line_ang_T(sub_station_line_index(2)))+i*sind(If_line_ang_T(sub_station_line_index(2))));
+sub_station_feeder_current(nt)=sub_station_current_feeder_sample;
