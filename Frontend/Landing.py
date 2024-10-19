@@ -145,7 +145,7 @@ def main():
         if st.button('Make system data'):
             st.switch_page("pages/Make_System_Data.py")
         if st.button('Execute load flow'):
-            st.switch_page("pages/Execute_Load_Flow.py")
+            st.switch_page("pages/Execute_Load_Flow_Interface.py")
         if st.button('Perform harmonic analysis'):
             st.write("Button 1 clicked!")
         if st.button('Calculate induced voltage'):
