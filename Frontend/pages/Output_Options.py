@@ -5,8 +5,8 @@ import os
 from pages.workspace import workspace_variables
 import numpy as np
 oc = Oct2Py() 
-oc.eval('cd("../backend_codes")') 
-    
+oc.eval('cd("../EN-50641")') 
+
 def read_text_file(file_path):
     try:
         with open(file_path, 'r') as file:
@@ -68,13 +68,6 @@ def is_numeric(value):
     except ValueError:
         return False
 
-title = "GUI Bullet Train"
-page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
-layout = "centered"
-
-selection = None
-
-
 def load_workspace_variables():
     
     
@@ -103,6 +96,22 @@ def load_workspace_variables():
         
         ## Reading from text file - 
         workspace_variables[var] = read_text_file(f'../variable_text_files/{var}.txt')
+
+
+
+
+def load_EN_workspace():
+    #steps:
+    #first load the .mat file using oc.. then push the variables from oc to workspace
+    oc.load('required_variable_load_flow_standard.mat')
+
+
+
+title = "Output Options"
+page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
+layout = "centered"
+
+selection = None
 
 
 
@@ -137,32 +146,19 @@ def main():
     )
 
     
-    st.markdown("<h1 class='title'>Graphical User Interface</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Select the output module</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button('Make system data'):
-            st.switch_page("pages/Make_System_Data.py")
-        if st.button('Execute load flow'):
-            st.switch_page("pages/Execute_Load_Flow.py")
-        if st.button('Perform harmonic analysis'):
-            st.write("Button 1 clicked!")
-        if st.button('Calculate induced voltage'):
-            st.write("Button 1 clicked!")
-
+        if st.button('Output of load flow'):
+            load_workspace_variables()
+            st.switch_page("pages/Load_Flow_Output.py")
+    
     with col2:
-        if st.button('Prepare train timetable'):
-            st.write("Button 2 clicked!")
-        if st.button('Perform short circuit analysis'):
-            st.write("Button 4 clicked!")
-        if st.button('Calculate OHE temerature rise'):
-            st.write("Button 1 clicked!")
-        if st.button('See output'):
-            st.switch_page("pages/Output_Options.py")
-
-
+        if st.button('Output of EN-50641 standard'):
+            load_EN_workspace()
+            st.switch_page("")
 
 if __name__ == "__main__":
     main()
-    # authenticated_menu()
