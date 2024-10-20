@@ -20,8 +20,19 @@ def main():
                 text-align: center;
             }
             .table-container {
+                display: flex;
+                justify-content: center; /* Center the table container */
                 margin: auto;
-                width: 80%;  /* Adjust as needed */
+                width: 100%;  /* Full width */
+            }
+            .styled-table {
+                width: 80%;  /* Set table width */
+                border-collapse: collapse;
+            }
+            .styled-table th,
+            .styled-table td {
+                padding: 10px;  /* Add padding for broader columns */
+                text-align: center;  /* Center text in cells */
             }
             .download-button {
                 display: flex;
@@ -49,10 +60,13 @@ def main():
     flattened_mva_values = maximum_mva_tss[0] 
 
     # Create DataFrame from the flattened values
-    maximum_mva_tss_df = pd.DataFrame(flattened_mva_values, columns=["MVA Values"])
+    maximum_mva_tss_df = pd.DataFrame({
+        "MVA Value": flattened_mva_values  # Your existing voltage unbalance data
+    })
     
     # Create a new column for labels starting from 1
-    maximum_mva_tss_df.index += 1  # Start index from 1
+    maximum_mva_tss_df.index = range(1, len(maximum_mva_tss_df) + 1)
+    maximum_mva_tss_df.rename_axis("TSS Number", inplace=True)
 
     add_vertical_space(3)
 
@@ -68,7 +82,7 @@ def main():
 
     # Display the table with center-aligned text
     st.markdown("<div class='table-container'>", unsafe_allow_html=True)  # Centering the table
-    st.table(styled_table)
+    st.dataframe(styled_table, use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
     # Add a download button for the DataFrame
