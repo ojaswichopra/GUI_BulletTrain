@@ -21,8 +21,19 @@ def main():
                 text-align: center;
             }
             .table-container {
+                display: flex;
+                justify-content: center; /* Center the table container */
                 margin: auto;
-                width: 80%;  /* Adjust as needed */
+                width: 100%;  /* Full width */
+            }
+            .styled-table {
+                width: 80%;  /* Set table width */
+                border-collapse: collapse;
+            }
+            .styled-table th,
+            .styled-table td {
+                padding: 10px;  /* Add padding for broader columns */
+                text-align: center;  /* Center text in cells */
             }
             .download-button {
                 display: flex;
@@ -47,25 +58,30 @@ def main():
     # Evaluate the function and get the result
     maximum_voltage_unbalance = oc.eval(f"TSS_maximum_voltage_unbalance(Unb)")
 
-    # Assuming the result is a 1D array, convert it to a DataFrame
-    maximum_voltage_unbalance_df = pd.DataFrame(maximum_voltage_unbalance[0], columns=["Voltage Unbalance"])
+    # Assuming the result is a 1D array, convert it to a DataFrame with two columns
+    maximum_voltage_unbalance_df = pd.DataFrame({
+        "Maximum Voltage Unbalance(%)": maximum_voltage_unbalance[0]  # Your existing voltage unbalance data
+    })
 
-    # Create a new column for labels starting from 1
-    maximum_voltage_unbalance_df.index += 1  # Start index from 1
+    # Create a new index starting from 1
+    maximum_voltage_unbalance_df.index = range(1, len(maximum_voltage_unbalance_df) + 1)
 
-    # Center-align the DataFrame content
-    styled_table = maximum_voltage_unbalance_df.style.set_table_attributes('style="margin:auto; width:80%;"')\
-                        .set_table_styles([{
-                            'selector': 'th',
-                            'props': [('text-align', 'center')]
-                        }, {
-                            'selector': 'td',
-                            'props': [('text-align', 'center')]
-                        }])
+    # Rename the index axis
+    maximum_voltage_unbalance_df.rename_axis("TSS Number", inplace=True)
 
-    # Display the table with center-aligned text using st.dataframe
+    # Center-align the DataFrame content and create a styled HTML table
+    styled_table = maximum_voltage_unbalance_df.style.set_table_attributes('class="styled-table"') \
+        .set_table_styles([{
+            'selector': 'th',
+            'props': [('text-align', 'center')]
+        }, {
+            'selector': 'td',
+            'props': [('text-align', 'center')]
+        }])
+
+    # Display the table with the index label using st.dataframe
     st.markdown("<div class='table-container'>", unsafe_allow_html=True)  # Centering the table
-    st.table(styled_table)
+    st.dataframe(styled_table, use_container_width=True)  # Ensure it uses full width
     st.markdown("</div>", unsafe_allow_html=True)
 
     # Add a download button for the DataFrame
