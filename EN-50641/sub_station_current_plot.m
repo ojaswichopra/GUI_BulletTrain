@@ -5,7 +5,7 @@ function sub_station_current_plot(sub_station_catenary_current,sub_station_feede
     % load('required_variable_load_flow_standard.mat')
     %pkg uninstall matgeom
     %pkg install -forge matgeom
-
+    graphics_toolkit ("gnuplot")
     pkg load mapping
 
     li_len=length(sub_station_catenary_current);
