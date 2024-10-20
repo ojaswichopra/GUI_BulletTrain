@@ -3,7 +3,7 @@ function sub_station_voltage_plot(Vc_mag_Td,Vf_mag_Td)
     % ##clear all
     tic
     % load('required_variable_load_flow_standard.mat')
-
+    graphics_toolkit ("gnuplot")
     %  substation_voltage=[0; Vc_mag_Td(:,1)];
 
     % Create a figure handle
