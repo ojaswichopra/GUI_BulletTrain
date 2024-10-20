@@ -39,13 +39,13 @@ def main():
         if st.button('Speed and Tractive Effort of Train 101'):
             st.switch_page('pages/EN_speed_tractive_effort_train_101.py')
         if st.button('Current and Voltage profile of Train 101 along the track'):
-            st.switch_page()
+            st.switch_page('pages/EN_current_voltage_profile.py')
     
     with col2:
         if st.button('Contact and Feeder bus bar voltage at the substation'):
-            st.switch()
+            st.switch_page('pages/EN_contact_feeder_voltage.py')
         if st.button('Contact and Feeder total current at the substation'):
-            st.switch()
+            st.switch_page('pages/EN_contact_feeder_current.py')
 
 
 
