@@ -26,6 +26,18 @@ def main():
         .title {
             text-align: center;
         }
+        .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 10px 30px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
     </style>
     """,
         unsafe_allow_html=True,
@@ -56,10 +68,14 @@ def main():
             st.switch_page("pages/Maximum_MVA_of_all_TSS.py")
         if st.button('Voltage unbalance profile of TSS'):
             st.switch_page("pages/Voltage_profile_unbalance.py")
-        if st.button("Back"):
-            st.switch_page("Landing.py")
     
 if __name__ == "__main__":
     main()
+    st.markdown(
+        f"""
+        <a href="/Load_Flow_Output_Options" target="_self" class="custom-button">Back</a>
+        """,
+        unsafe_allow_html=True
+    )
     
 
