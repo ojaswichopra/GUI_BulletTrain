@@ -54,17 +54,10 @@ def main():
         oc.push('VR_ang_Td', VR_ang_Td)
         pTSS_T = en_workspace['pTSS_T']
         oc.push('pTSS_T', pTSS_T)
-        Vc_mag_Md = en_workspace['Vc_mag_Md']
-        oc.push('Vc_mag_Md', Vc_mag_Md)
-        Vc_ang_Md = en_workspace['Vc_ang_Md']
-        oc.push('Vc_ang_Md', Vc_ang_Md)
-        VR_mag_Md = en_workspace['VR_mag_Md']
-        oc.push('VR_mag_Md', VR_mag_Md)
-        VR_ang_Md = en_workspace['VR_ang_Md']
-        oc.push('VR_ang_Md', VR_ang_Md)
+        
 
 
-        oc.eval(f"train_101_voltage_current_profile(HS_train_A_F_data,d,line_data_M_emp,dTSS,y_whole,Vc_mag_Td,y,Vc_ang_Td,VR_mag_Td,VR_ang_Td,pTSS_T,Vc_mag_Md,Vc_ang_Md,VR_mag_Md,VR_ang_Md)")
+        oc.eval(f"train_101_voltage_current_profile(HS_train_A_F_data,d,line_data_M_emp,dTSS,y_whole,Vc_mag_Td,y,Vc_ang_Td,VR_mag_Td,VR_ang_Td,pTSS_T)")
         image_path = '../Plots/voltage_current_profile.png'
         img = Image.open(image_path)
         st.image(img, caption="", use_column_width=True)
