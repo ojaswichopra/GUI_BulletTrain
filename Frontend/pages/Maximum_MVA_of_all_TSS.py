@@ -61,7 +61,7 @@ def main():
 
     # Create DataFrame from the flattened values
     maximum_mva_tss_df = pd.DataFrame({
-        "MVA Value": flattened_mva_values  # Your existing voltage unbalance data
+        "Maximum MVA Value": flattened_mva_values  # Your existing voltage unbalance data
     })
     
     # Create a new column for labels starting from 1

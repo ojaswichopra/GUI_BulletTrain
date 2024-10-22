@@ -1,8 +1,21 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
+import numpy as np
+ 
 
-    
-def main():  
+
+title = "Output Options"
+page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
+layout = "centered"
+
+selection = None
+
+
+
+def main():
+
+    # Settings
+    st.set_page_config(page_title=title, page_icon=page_icon, layout=layout)
     st.markdown(
         """
     <style>
@@ -40,27 +53,18 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    
-    st.markdown("<h1 class='title'>Output of EN-50641 standard</h1>", unsafe_allow_html=True)
+
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button('Train timetable plot'):
-            st.switch_page('pages/EN_Train_Timetable.py')
-        if st.button('Speed and Tractive Effort of Train 101'):
-            st.switch_page('pages/EN_speed_tractive_effort_train_101.py')
-        if st.button('Current and Voltage profile of Train 101 along the track'):
-            st.switch_page('pages/EN_current_voltage_profile.py')
+        if st.button('Normal Operating Condition'):
+            st.switch_page("pages/Load_Flow_Output.py")
     
     with col2:
-        if st.button('Contact and Feeder bus bar voltage at the substation'):
-            st.switch_page('pages/EN_contact_feeder_voltage.py')
-        if st.button('Contact and Feeder total current at the substation'):
-            st.switch_page('pages/EN_contact_feeder_current.py')
-
-
-
+        if st.button('TSS Outage Condition'):
+            st.switch_page("pages/Load_Flow_Output_Outage.py")
+            
 
 if __name__ == "__main__":
     main()
@@ -70,4 +74,3 @@ if __name__ == "__main__":
         """,
         unsafe_allow_html=True
     )
-    
