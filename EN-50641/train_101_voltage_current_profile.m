@@ -1,4 +1,4 @@
-function train_101_voltage_current_profile(HS_train_A_F_data,d,line_data_M_emp,dTSS,y_whole,Vc_mag_Td,y,Vc_ang_Td,VR_mag_Td,VR_ang_Td,pTSS_T,Vc_mag_Md,Vc_ang_Md,VR_mag_Md,VR_ang_Md)
+function train_101_voltage_current_profile(HS_train_A_F_data,d,line_data_M_emp,dTSS,y_whole,Vc_mag_Td,y,Vc_ang_Td,VR_mag_Td,VR_ang_Td,pTSS_T)
     % ##clc
     % ##clear all
     tic
