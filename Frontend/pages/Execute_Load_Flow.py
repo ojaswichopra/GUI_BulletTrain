@@ -76,67 +76,67 @@ def extract_system_data(file_content):
         elif "Distance (in km) of all the ATs" in line:
             data['at_distances'] = eval(lines[i+1].strip())
         elif "TSS primary voltage (Kv):" in line:
-            data['tss_primary_voltage'] = float(lines[i+1].strip())
+            data['tss_primary_voltage'] = round(float(lines[i+1].strip()), 2)
         elif "TSS secondary voltage (Kv):" in line:
-            data['tss_secondary_voltage'] = float(lines[i+1].strip())
+            data['tss_secondary_voltage'] = round(float(lines[i+1].strip()), 2)
         elif "Primary side resistance (ohm):" in line:
-            data['primary_resistance'] = float(lines[i+1].strip())
+            data['primary_resistance'] = round(float(lines[i+1].strip()), 2)
         elif "Primary side reactance (ohm):" in line:
-            data['primary_reactance'] = float(lines[i+1].strip())
+            data['primary_reactance'] = round(float(lines[i+1].strip()), 2)
         elif "Secondary side resistance (ohm):" in line:
-            data['secondary_resistance'] = float(lines[i+1].strip())
+            data['secondary_resistance'] = round(float(lines[i+1].strip()), 2)
         elif "Secondary side reactance (ohm):" in line:
-            data['secondary_reactance'] = float(lines[i+1].strip())
+            data['secondary_reactance'] = round(float(lines[i+1].strip()), 2)
         elif "Rail Grounding impedance (ohm):" in line:
-            data['rail_grounding_impedance'] = float(lines[i+1].strip())
+            data['rail_grounding_impedance'] = round(float(lines[i+1].strip()), 2)
         elif "TSS (source side) short circuit MVA:" in line:
-            data['short_circuit_mva'] = float(lines[i+1].strip())
+            data['short_circuit_mva'] = round(float(lines[i+1].strip()), 2)
         elif "AT leakage resistance (ohm):" in line:
-            data['at_leakage_resistance'] = float(lines[i+1].strip())
+            data['at_leakage_resistance'] = round(float(lines[i+1].strip()), 2)
         elif "AT leakage reactance (ohm):" in line:
-            data['at_leakage_reactance'] = float(lines[i+1].strip())
+            data['at_leakage_reactance'] = round(float(lines[i+1].strip()), 2)
         elif "AT magnetising resistance (ohm):" in line:
-            data['at_magnetising_resistance'] = float(lines[i+1].strip())
+            data['at_magnetising_resistance'] = round(float(lines[i+1].strip()), 2)
         elif "AT magnetising reactance (ohm):" in line:
-            data['at_magnetising_reactance'] = float(lines[i+1].strip())
+            data['at_magnetising_reactance'] = round(float(lines[i+1].strip()), 2)
         elif "Homogenous earth conducting resistivity:" in line:
-            data['earth_resistivity'] = float(lines[i+1].strip())
+            data['earth_resistivity'] = round(float(lines[i+1].strip()), 2)
         elif "Frequency (Hz):" in line:
-            data['frequency'] = float(lines[i+1].strip())
+            data['frequency'] = round(float(lines[i+1].strip()), 2)
         elif "Number of conductors" in line:
             data['num_conductors'] = int(lines[i+1].strip())
         elif "Contact wire height (m) measured from rail:" in line:
-            data['contact_wire_height'] = float(lines[i+1].strip())
+            data['contact_wire_height'] = round(float(lines[i+1].strip()), 2)
         elif "Messenger wire height (m) measured from rail:" in line:
-            data['messenger_wire_height'] = float(lines[i+1].strip())
+            data['messenger_wire_height'] = round(float(lines[i+1].strip()), 2)
         elif "Feeder wire height (m) measured from rail:" in line:
-            data['feeder_wire_height'] = float(lines[i+1].strip())
+            data['feeder_wire_height'] = round(float(lines[i+1].strip()), 2)
         elif "Feeder wire distance (m) measured from centre (rail):" in line:
-            data['feeder_wire_distance'] = float(lines[i+1].strip())
+            data['feeder_wire_distance'] = round(float(lines[i+1].strip()), 2)
         elif "Earth (ground) wire height (m) measured from rail:" in line:
-            data['earth_wire_height'] = float(lines[i+1].strip())
+            data['earth_wire_height'] = round(float(lines[i+1].strip()), 2)
         elif "Earth (ground) wire distance (m) measured from centre (rail):" in line:
-            data['earth_wire_distance'] = float(lines[i+1].strip())
+            data['earth_wire_distance'] = round(float(lines[i+1].strip()), 2)
         elif "Diameter (mm) of contact wire:" in line:
-            data['contact_wire_diameter'] = float(lines[i+1].strip())
+            data['contact_wire_diameter'] = round(float(lines[i+1].strip()), 2)
         elif "Resistance (ohm/km) of contact wire:" in line:
-            data['contact_wire_resistance'] = float(lines[i+1].strip())
+            data['contact_wire_resistance'] = round(float(lines[i+1].strip()), 2)
         elif "Diameter (mm) of messenger wire:" in line:
-            data['messenger_wire_diameter'] = float(lines[i+1].strip())
+            data['messenger_wire_diameter'] = round(float(lines[i+1].strip()), 2)
         elif "Resistance (ohm/km) of messenger wire:" in line:
-            data['messenger_wire_resistance'] = float(lines[i+1].strip())
+            data['messenger_wire_resistance'] = round(float(lines[i+1].strip()), 2)
         elif "Diameter (mm) of earth(ground) wire:" in line:
-            data['earth_wire_diameter'] = float(lines[i+1].strip())
+            data['earth_wire_diameter'] = round(float(lines[i+1].strip()), 2)
         elif "Resistance (ohm/km) of earth(ground) wire:" in line:
-            data['earth_wire_resistance'] = float(lines[i+1].strip())
+            data['earth_wire_resistance'] = round(float(lines[i+1].strip()), 2)
         elif "Diameter (mm) of feeder wire:" in line:
-            data['feeder_wire_diameter'] = float(lines[i+1].strip())
+            data['feeder_wire_diameter'] = round(float(lines[i+1].strip()), 2)
         elif "Resistance (ohm/km) of feeder wire:" in line:
-            data['feeder_wire_resistance'] = float(lines[i+1].strip())
+            data['feeder_wire_resistance'] = round(float(lines[i+1].strip()), 2)
         elif "Diameter (mm) of rail:" in line:
-            data['rail_diameter'] = float(lines[i+1].strip())
+            data['rail_diameter'] = round(float(lines[i+1].strip()), 2)
         elif "Resistance (ohm/km) of rail:" in line:
-            data['rail_resistance'] = float(lines[i+1].strip())
+            data['rail_resistance'] = round(float(lines[i+1].strip()), 2)
 
     return data
 
