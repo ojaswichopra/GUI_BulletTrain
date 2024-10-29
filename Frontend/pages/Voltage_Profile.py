@@ -51,7 +51,6 @@ def main():
         Ir_line_ang_Td = workspace_variables['Ir_line_ang_Td']
         If_line_mag_Td = workspace_variables['If_line_mag_Td']
         If_line_ang_Td = workspace_variables['If_line_ang_Td']
-        z1 = workspace_variables['z1']
         Vc_mag_Md = workspace_variables['Vc_mag_Md']
         Vc_ang_Md = workspace_variables['Vc_ang_Md']
         VR_mag_Md = workspace_variables['VR_mag_Md']
@@ -82,7 +81,6 @@ def main():
         oc.push('Ir_line_ang_Td', Ir_line_ang_Td)
         oc.push('If_line_mag_Td', If_line_mag_Td)
         oc.push('If_line_ang_Td', If_line_ang_Td)
-        oc.push('z1', z1)
         oc.push('Vc_mag_Md', Vc_mag_Md)
         oc.push('Vc_ang_Md', Vc_ang_Md)
         oc.push('VR_mag_Md', VR_mag_Md)
@@ -97,7 +95,7 @@ def main():
         oc.push('If_line_mag_Md', If_line_mag_Md)
         oc.push('If_line_ang_Md', If_line_ang_Md)
 
-        oc.eval(f"Full_track_voltage_profile_instant_t({track_time_1},{x_reso},d, TSS, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td, dTSS_T, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, z1, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_M,Ic_line_mag_Md,Ic_line_ang_Md,Ir_line_mag_Md,Ir_line_ang_Md,If_line_mag_Md,If_line_ang_Md)")
+        oc.eval(f"Full_track_voltage_profile_instant_t({track_time_1},{x_reso},d, TSS, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td, dTSS_T, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td,  Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_M,Ic_line_mag_Md,Ic_line_ang_Md,Ir_line_mag_Md,Ir_line_ang_Md,If_line_mag_Md,If_line_ang_Md)")
         image_path = '../Plots/Full_track_voltage_profile_instant_t.png'
         img = Image.open(image_path)
         st.image(img, caption="", use_column_width=True)

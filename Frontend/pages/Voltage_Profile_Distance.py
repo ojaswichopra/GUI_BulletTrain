@@ -46,7 +46,6 @@ def main():
         VR_ang_Td = workspace_variables['VR_ang_Td']
         Vf_mag_Td = workspace_variables['Vf_mag_Td']
         Vf_ang_Td = workspace_variables['Vf_ang_Td']
-        z1 = workspace_variables['z1']
         y = workspace_variables['y']
         dTSS_M = workspace_variables['dTSS_M']
         Ic_line_mag_Md = workspace_variables['Ic_line_mag_Md']
@@ -76,7 +75,6 @@ def main():
         oc.push('VR_ang_Td', VR_ang_Td)
         oc.push('Vf_mag_Td', Vf_mag_Td)
         oc.push('Vf_ang_Td', Vf_ang_Td)
-        oc.push('z1', z1)
         oc.push('y', y)
         oc.push('dTSS_M', dTSS_M)
         oc.push('Ic_line_mag_Md', Ic_line_mag_Md)
@@ -92,7 +90,7 @@ def main():
         oc.push('Vf_mag_Md', Vf_mag_Md)
         oc.push('Vf_ang_Md', Vf_ang_Md)
 
-        oc.eval(f"voltage_variation_over_day_final({total_distance_from_start_point},d, dTSS_T, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td, z1, y, dTSS_M, Ic_line_mag_Md, Ic_line_ang_Md, Ir_line_mag_Md, Ir_line_ang_Md, If_line_mag_Md, If_line_ang_Md, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md)")
+        oc.eval(f"voltage_variation_over_day_final({total_distance_from_start_point},d, dTSS_T, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td,y, dTSS_M, Ic_line_mag_Md, Ic_line_ang_Md, Ir_line_mag_Md, Ir_line_ang_Md, If_line_mag_Md, If_line_ang_Md, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md)")
         image_path = '../Plots/Voltage_Profile_Distance.png'
         img = Image.open(image_path)
         st.image(img, caption="", use_column_width=True)

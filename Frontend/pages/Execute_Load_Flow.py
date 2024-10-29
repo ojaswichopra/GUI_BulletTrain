@@ -5,6 +5,7 @@ from oct2py import Oct2Py
 import multiprocessing
 from pages.run_loadflow import run_oct2py  # Import the backend function directly
 import time
+from pages.run_loadflow import email_recip
 
 def run_backend_process(extracted_data, N, N_hr, train_time):
     # Run the backend function in a new process
@@ -191,6 +192,8 @@ N = st.number_input("Enter the number of trains running per hour", min_value=0)
 N_hr = st.number_input("Enter the number of hours of train scheduling per day", min_value=0)
 global recipient
 recipient = st.text_input("Enter email address to which you would like to recive load flow information")
+email_recip = recipient
+
 
 if st.button("Submit"):
     # Check if the file exists

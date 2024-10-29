@@ -1,9 +1,22 @@
-function Full_track_voltage_profile_instant_t(track_time_1,x_reso,d, TSS, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td, dTSS_T, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, z1, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_M,Ic_line_mag_Md,Ic_line_ang_Md,Ir_line_mag_Md,Ir_line_ang_Md,If_line_mag_Md,If_line_ang_Md)
+function Full_track_voltage_profile_instant_t(track_time_1,x_reso,d, TSS, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td, dTSS_T, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_M,Ic_line_mag_Md,Ic_line_ang_Md,Ir_line_mag_Md,Ir_line_ang_Md,If_line_mag_Md,If_line_ang_Md)
     % clc
     % clearvars
     format longG
     tic
     % load("variable_load_flow_mum_to_ahm_each_stop.mat");
+
+    %loading back the complex variable z1 from its text file
+    z1_loaded = load("../variable_text_files/z1.txt");
+    % Determine the number of columns
+    num_cols = size(z1_loaded, 2) / 2;  % Total columns divided by 2
+
+    % Separate real and imaginary parts
+    real_parts = z1_loaded(:, 1:num_cols);           % First half for real parts
+    imag_parts = z1_loaded(:, num_cols+1:end);       % Second half for imaginary parts
+
+    % Combine real and imaginary parts to reconstruct the complex variable z1
+    z1 = real_parts + 1i * imag_parts;
+
     track_TSS_no=length(TSS);
     track_length_file;
     % track_TSS_no=input('Enter the TSS number for which track voltage profile needs to be check');
