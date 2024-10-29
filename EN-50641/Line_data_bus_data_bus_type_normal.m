@@ -167,14 +167,14 @@ for i_b=1:length(i_e)
        % elseif (i_e(i_b)>d(i_y+1) && i_e(i_b)<=d(i_y+2))
            i_C(i_d,1:(l_b_tmp+1))=[i_C(i_d,1:l_b_tmp),i_e(i_b)];
            i_C(i_d,1:(l_b_tmp+1))=sort(i_C(i_d,1:(l_b_tmp+1)));
-           f=find(i_C(i_d,1:(l_b_tmp+1))==i_e(i_b));
-           temp_3=i_D(i_d,f:l_b_tmp-1);
-           i_D(i_d,f)=i_f(i_b);
-           i_D(i_d,1:l_b_tmp)=[i_D(i_d,1:f),temp_3];
+           ff=find(i_C(i_d,1:(l_b_tmp+1))==i_e(i_b));
+           temp_3=i_D(i_d,ff:l_b_tmp-1);
+           i_D(i_d,ff)=i_f(i_b);
+           i_D(i_d,1:l_b_tmp)=[i_D(i_d,1:ff),temp_3];
            pTSS(i_d,1:l_b_tmp)=i_D(i_d,1:l_b_tmp);
-           temp_4=i_E(i_d,f:l_b_tmp-1);
-           i_E(i_d,f)=2;
-           i_E(i_d,1:l_b_tmp)=[i_E(i_d,1:f),temp_4];
+           temp_4=i_E(i_d,ff:l_b_tmp-1);
+           i_E(i_d,ff)=2;
+           i_E(i_d,1:l_b_tmp)=[i_E(i_d,1:ff),temp_4];
            tTSS(i_d,1:l_b_tmp)=i_E(i_d,1:l_b_tmp);
            i_h(1,1:l_b_tmp-1)=linspace(2,l_b_tmp,l_b_tmp-1);
            for i_i_2=1:l_b_tmp-1
@@ -240,14 +240,14 @@ l_b_tmp=l_b_F_A;
 for i_b=1:length(i_e)
            i_C_F_A(i_d,1:(l_b_tmp+1))=[i_C_F_A(i_d,1:l_b_tmp),i_e(i_b)];
            i_C_F_A(i_d,1:(l_b_tmp+1))=sort(i_C_F_A(i_d,1:(l_b_tmp+1)));
-           f=find(i_C_F_A(i_d,1:(l_b_tmp+1))==i_e(i_b));
-           temp_3=i_D_F_A(i_d,f:l_b_tmp-1);
-           i_D_F_A(i_d,f)=i_f(i_b);
-           i_D_F_A(i_d,1:l_b_tmp)=[i_D_F_A(i_d,1:f),temp_3];
+           ff=find(i_C_F_A(i_d,1:(l_b_tmp+1))==i_e(i_b));
+           temp_3=i_D_F_A(i_d,ff:l_b_tmp-1);
+           i_D_F_A(i_d,ff)=i_f(i_b);
+           i_D_F_A(i_d,1:l_b_tmp)=[i_D_F_A(i_d,1:ff),temp_3];
            pTSS_F_A(i_d,1:l_b_tmp)=i_D_F_A(i_d,1:l_b_tmp);
-           temp_4=i_E_F_A(i_d,f:l_b_tmp-1);
-           i_E_F_A(i_d,f)=2;
-           i_E_F_A(i_d,1:l_b_tmp)=[i_E_F_A(i_d,1:f),temp_4];
+           temp_4=i_E_F_A(i_d,ff:l_b_tmp-1);
+           i_E_F_A(i_d,ff)=2;
+           i_E_F_A(i_d,1:l_b_tmp)=[i_E_F_A(i_d,1:ff),temp_4];
            tTSS_F_A(i_d,1:l_b_tmp)=i_E_F_A(i_d,1:l_b_tmp);
            i_h_F_A(1,1:l_b_tmp-1)=linspace(2,l_b_tmp,l_b_tmp-1);
            for i_i_2=1:l_b_tmp-1

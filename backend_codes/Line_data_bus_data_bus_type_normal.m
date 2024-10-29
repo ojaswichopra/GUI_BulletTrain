@@ -1,4 +1,3 @@
-
 initialization;
 
 i_A=-10*ones(l_a-1,10);
@@ -94,14 +93,14 @@ for i_b=1:length(i_e)
        if (i_e(i_b)>d(i_y) && i_e(i_b)<=d(i_y+1))
            i_C((i_y-1)*y+i_d,1:(l_b_tmp(i_y)+1))=[i_C((i_y-1)*y+i_d,1:l_b_tmp(i_y)),i_e(i_b)];
            i_C((i_y-1)*y+i_d,1:(l_b_tmp(i_y)+1))=sort(i_C((i_y-1)*y+i_d,1:(l_b_tmp(i_y)+1)));
-           f=find(sort(i_C((i_y-1)*y+i_d,1:(l_b_tmp(i_y)+1)),'descend')==i_e(i_b));
-           temp_1=i_D((i_y-1)*y+i_d,f:l_b_tmp(i_y)-1);
-           i_D((i_y-1)*y+i_d,f)=i_f(i_b);
-           i_D((i_y-1)*y+i_d,1:l_b_tmp(i_y))=[i_D((i_y-1)*y+i_d,1:f),temp_1];
+           ff=find(sort(i_C((i_y-1)*y+i_d,1:(l_b_tmp(i_y)+1)),'descend')==i_e(i_b));
+           temp_1=i_D((i_y-1)*y+i_d,ff:l_b_tmp(i_y)-1);
+           i_D((i_y-1)*y+i_d,ff)=i_f(i_b);
+           i_D((i_y-1)*y+i_d,1:l_b_tmp(i_y))=[i_D((i_y-1)*y+i_d,1:ff),temp_1];
            pTSS((i_y-1)*y+i_d,1:l_b_tmp(i_y))=i_D((i_y-1)*y+i_d,1:l_b_tmp(i_y));
-           temp_2=i_E((i_y-1)*y+i_d,f:l_b_tmp(i_y)-1);
-           i_E((i_y-1)*y+i_d,f)=2;
-           i_E((i_y-1)*y+i_d,1:l_b_tmp(i_y))=[i_E((i_y-1)*y+i_d,1:f),temp_2];
+           temp_2=i_E((i_y-1)*y+i_d,ff:l_b_tmp(i_y)-1);
+           i_E((i_y-1)*y+i_d,ff)=2;
+           i_E((i_y-1)*y+i_d,1:l_b_tmp(i_y))=[i_E((i_y-1)*y+i_d,1:ff),temp_2];
            tTSS((i_y-1)*y+i_d,1:l_b_tmp(i_y))=i_E((i_y-1)*y+i_d,1:l_b_tmp(i_y));
            i_h(i_y,1:l_b_tmp(i_y)-1)=linspace(l_b_tmp(i_y)+1,3,l_b_tmp(i_y)-1);
            for i_i_1=1:l_b_tmp(i_y)-1
@@ -113,14 +112,14 @@ for i_b=1:length(i_e)
        elseif (i_e(i_b)>d(i_y+1) && i_e(i_b)<=d(i_y+2))
            i_C(i_y*y+i_d,1:(l_b_tmp(i_y+1)+1))=[i_C(i_y*y+i_d,1:l_b_tmp(i_y+1)),i_e(i_b)];
            i_C(i_y*y+i_d,1:(l_b_tmp(i_y+1)+1))=sort(i_C(i_y*y+i_d,1:(l_b_tmp(i_y+1)+1)));
-           f=find(i_C(i_y*y+i_d,1:(l_b_tmp(i_y+1)+1))==i_e(i_b));
-           temp_3=i_D(i_y*y+i_d,f:l_b_tmp(i_y+1)-1);
-           i_D(i_y*y+i_d,f)=i_f(i_b);
-           i_D(i_y*y+i_d,1:l_b_tmp(i_y+1))=[i_D(i_y*y+i_d,1:f),temp_3];
+           ff=find(i_C(i_y*y+i_d,1:(l_b_tmp(i_y+1)+1))==i_e(i_b));
+           temp_3=i_D(i_y*y+i_d,ff:l_b_tmp(i_y+1)-1);
+           i_D(i_y*y+i_d,ff)=i_f(i_b);
+           i_D(i_y*y+i_d,1:l_b_tmp(i_y+1))=[i_D(i_y*y+i_d,1:ff),temp_3];
            pTSS(i_y*y+i_d,1:l_b_tmp(i_y+1))=i_D(i_y*y+i_d,1:l_b_tmp(i_y+1));
-           temp_4=i_E(i_y*y+i_d,f:l_b_tmp(i_y+1)-1);
-           i_E(i_y*y+i_d,f)=2;
-           i_E(i_y*y+i_d,1:l_b_tmp(i_y+1))=[i_E(i_y*y+i_d,1:f),temp_4];
+           temp_4=i_E(i_y*y+i_d,ff:l_b_tmp(i_y+1)-1);
+           i_E(i_y*y+i_d,ff)=2;
+           i_E(i_y*y+i_d,1:l_b_tmp(i_y+1))=[i_E(i_y*y+i_d,1:ff),temp_4];
            tTSS(i_y*y+i_d,1:l_b_tmp(i_y+1))=i_E(i_y*y+i_d,1:l_b_tmp(i_y+1));
            i_h(i_y+1,1:l_b_tmp(i_y+1)-1)=linspace(2,l_b_tmp(i_y+1),l_b_tmp(i_y+1)-1);
            for i_i_2=1:l_b_tmp(i_y+1)-1
@@ -134,4 +133,3 @@ for i_b=1:length(i_e)
 end
 percentage_completion_1=(i_d/y)*100   %percentage of total computation completed
 end
-
