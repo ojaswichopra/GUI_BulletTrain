@@ -3,7 +3,7 @@ import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from oct2py import Oct2Py
 import multiprocessing
-from pages.run_loadflow import run_oct2py, email_recip  # Import the backend function directly
+from pages.run_loadflow import run_oct2py  # Import the backend function directly
 import time
 
 def run_backend_process(extracted_data, N, N_hr, train_time):
@@ -191,9 +191,8 @@ N = st.number_input("Enter the number of trains running per hour", min_value=0)
 N_hr = st.number_input("Enter the number of hours of train scheduling per day", min_value=0)
 global recipient
 recipient = st.text_input("Enter email address to which you would like to recive load flow information")
-email_recip = recipient
-print(email_recip)
-
+with open('../variable_text_files/email.txt', 'w') as file:
+    file.write(recipient)
 
 if st.button("Submit"):
     # Check if the file exists
