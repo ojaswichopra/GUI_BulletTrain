@@ -41,7 +41,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-
+    st.markdown("<h1 class='title'>TSS Outage Condition</h1>", unsafe_allow_html=True)
     c1,c2 = st.columns(2)
     with c1:
         if st.button("One TSS Outage"):
