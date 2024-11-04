@@ -42,7 +42,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-
+    st.markdown("<h1 class='title'>Execute Load Flow</h1>", unsafe_allow_html=True)
     c1,c2 = st.columns(2)
     with c1:
         if st.button("EN-50641 Standard Validation"):
