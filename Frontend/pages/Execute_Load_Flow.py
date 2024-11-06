@@ -191,8 +191,7 @@ N = st.number_input("Enter the number of trains running per hour", min_value=0)
 N_hr = st.number_input("Enter the number of hours of train scheduling per day", min_value=0)
 global recipient
 recipient = st.text_input("Enter email address to which you would like to recive load flow information")
-with open('../variable_text_files/email.txt', 'w') as file:
-    file.write(recipient)
+
 
 if st.button("Submit"):
     # Check if the file exists
@@ -205,6 +204,8 @@ if st.button("Submit"):
             st.warning("Please provide all the inputs correctly!")
     else:
         # Perform the load flow calculations here
+        with open('../variable_text_files/email.txt', 'w') as file:
+            file.write(recipient)
         run_backend_process(extracted_data, N, N_hr, train_time)
         st.success("Load Flow Initiated!!")
         # oc = Oct2Py()
