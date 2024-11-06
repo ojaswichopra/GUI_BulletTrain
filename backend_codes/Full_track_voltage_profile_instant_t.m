@@ -17,6 +17,7 @@ function Full_track_voltage_profile_instant_t(track_time_1,x_reso,d, TSS, y, Vc_
     % Combine real and imaginary parts to reconstruct the complex variable z1
     z1 = real_parts + 1i * imag_parts;
 
+    disp(z1)
 
     track_TSS_no=length(TSS);
     track_length_file;
