@@ -29,7 +29,7 @@ i_D=zeros((l_a-3)*y,10);
  %Train= bus type 2
 i_E=[ones((l_a-3)*y,1),3*ones((l_a-3)*y,9)];
 
-N_TSS_O=input('enter the TSS number which is out of service = ');
+% N_TSS_O=input('enter the TSS number which is out of service = ');
 
 j_a=2*N_TSS_O-1;
 j_b=2*N_TSS_O;        %the corresponding out of service windings 

@@ -14,7 +14,7 @@ function voltage_variation_over_day_final(total_distance_from_start_point,d, dTS
 
     % Combine real and imaginary parts to reconstruct the complex variable z1
     z1 = real_parts + 1i * imag_parts;
-
+    disp(total_distance_from_start_point)
 
     total_distance_from_start_point=total_distance_from_start_point*1000;
     d_index_length=length(d);
