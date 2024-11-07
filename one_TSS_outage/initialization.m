@@ -5,10 +5,10 @@
 datafile;
 D=each_stop_train_data(:,3);   %distance covered (m) at each second for each stop train
 P=each_stop_train_data(:,4);   %power consumed (kW) at each second for each stop train
-N=input('enter the no. of trains running per hour = ');
+% N=input('enter the no. of trains running per hour = ');
 N_train_per_hour=N;
 % N_hr=16;    % the no. of hours of train scheduling per day (from morning 6 am to night 10 pm)
-N_hr=input('enter the no. of hours of train scheduling per day = ');
+% N_hr=input('enter the no. of hours of train scheduling per day = ');
 n=N_hr*N;   %total no. of trains
 x=((n-1)*(60/N))*60;    %starting time of last train in second
 % time_rapid_train=7620;   %time taken by one rapid train (Mumbai to Sabarmati) is 2hr 7min i.e 7620 sec
