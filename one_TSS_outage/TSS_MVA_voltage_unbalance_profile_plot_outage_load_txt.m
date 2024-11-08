@@ -1,4 +1,4 @@
-function [maximum_mva, maximum_unbalance] = TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt()
+function [maximum_mva, maximum_unbalance] = TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt(TSS,N_TSS_O,dTSS_T,s_apprant_power_MVA_mag,Unb,tt_time)
 
     % load("TSS.txt");
     % load("N_TSS_O.txt");
@@ -8,9 +8,6 @@ function [maximum_mva, maximum_unbalance] = TSS_MVA_voltage_unbalance_profile_pl
     % load("Unb.txt");
     % load("tt_time.txt");
     graphics_toolkit ("gnuplot")
-    track_TSS_no=length(TSS)-length(N_TSS_O);           %% total no of TSS in track
-    ntt=length(dTSS_T(:,1));            %% total time interval of whole day operation
-    for n_track=1:1:track_TSS_no
     figureHandle = figure;
 
     % Get screen size from root object (0)
@@ -18,7 +15,11 @@ function [maximum_mva, maximum_unbalance] = TSS_MVA_voltage_unbalance_profile_pl
 
     % Set the figure to match the screen size
     set(figureHandle, 'Position', screenSize);
-    mn
+    
+    track_TSS_no=length(TSS)-length(N_TSS_O);           %% total no of TSS in track
+    ntt=length(dTSS_T(:,1));            %% total time interval of whole day operation
+    for n_track=1:1:track_TSS_no
+    
     subplot(track_TSS_no,1,n_track);
     plot(tt_time/60,s_apprant_power_MVA_mag(:,n_track))
     if n_track<N_TSS_O
@@ -33,6 +34,11 @@ function [maximum_mva, maximum_unbalance] = TSS_MVA_voltage_unbalance_profile_pl
     % maximum_mva_sec(n_track)=max(Mva_sec_abs(:,n_track));
     maximum_unbalance(n_track)=max(Unb(:,n_track));
     end
+
+    desired_filename = '../Plots/oTo_TSS_MVA_voltage_unbalance.png';
+    saveas(gcf, desired_filename);
+    
     maximum_mva
     maximum_unbalance
+
 end

@@ -53,8 +53,8 @@ def main():
         if st.button('Voltage profile of full track at particular time instant'):
             st.switch_page("")
     with col2:
-        if st.button('TSS MVA Profile'):
-            st.switch_page("")
+        if st.button('TSS MVA Profile & Unbalance profile'):
+            st.switch_page("pages/oTo_TSS_MVA_unbalance_profile.py")
 
     
 if __name__ == "__main__":

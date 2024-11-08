@@ -25,7 +25,6 @@ def main():
 
     st.markdown("<h1 class='title'>TSS MVA Profile and unbalance profile</h1>", unsafe_allow_html=True)
 
-    train_number = st.number_input("Enter the train number", min_value=0)
 
     oc.eval("setenv('GNUTERM', 'gnuplot')")
 
@@ -37,17 +36,16 @@ def main():
     oc.push('dTSS_T', dTSS_T)
     s_apprant_power_MVA_mag = oTo_workspace['s_apprant_power_MVA_mag']
     oc.push('s_apprant_power_MVA_mag', s_apprant_power_MVA_mag)
-    Mva_sec_abs = oTo_workspace['Mva_sec_abs']
-    oc.push('Mva_sec_abs', Mva_sec_abs)
+    # Mva_sec_abs = oTo_workspace['Mva_sec_abs']
+    # oc.push('Mva_sec_abs', Mva_sec_abs)
     Unb = oTo_workspace['Unb']
     oc.push('Unb', Unb)
     tt_time = oTo_workspace['tt_time']
     oc.push('tt_time', tt_time)
 
+    maximum_mva, maximum_unbalance = oc.eval(f"TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt(TSS,N_TSS_O,dTSS_T,s_apprant_power_MVA_mag,Unb,tt_time)")
     
-
-    oc.eval(f"train_voltage_profile_with_train_number_outage_load_txt({train_number}, N_train_per_hour, each_stop_train_data, d, N_TSS_O, N_TSS, Vc_mag_Td, VR_mag_Td, Vf_mag_Td, Vc_ang_Td, VR_ang_Td, Vf_ang_Td, Vc_mag_Md, VR_mag_Md, Vf_mag_Md, Vc_ang_Md, VR_ang_Md, Vf_ang_Md, dTSS, y)")
-    image_path = '../Plots/oTo_train_voltage_profile.png'
+    image_path = '../Plots/oTo_TSS_MVA_voltage_unbalance.png'
     img = Image.open(image_path)
     st.image(img, caption="", use_column_width=True)
 
@@ -55,9 +53,80 @@ def main():
         btn = st.download_button(
             label="Download Plot",
             data=file,
-            file_name="oTo_train_voltage_profile.png",  # Replace with the desired download filename
+            file_name="oTo_TSS_MVA_voltage_unbalance.png",  # Replace with the desired download filename
             mime="image/png"
         )
+
+
+    flattened_maximum_mva = maximum_mva[0]
+    maximum_mva_df = pd.DataFrame({
+        "Maximum MVA Value" : flattened_maximum_mva
+    })
+
+    maximum_mva_df.index = range(1, len(maximum_mva_df))
+    maximum_mva_df.rename_axis("TSS Number", inplace=True)
+    add_vertical_space(2)
+    styled_table1 = maximum_mva_df.style.set_table_attributes('style="margin:auto; width:80%;"')\
+                    .set_table_styles([{
+                        'selector': 'th',
+                        'props': [('text-align', 'center')]
+                    }, {
+                        'selector': 'td',
+                        'props': [('text-align', 'center')]
+                    }])
+    
+    # Display the table with center-aligned text
+    st.markdown("<div class='table-container'>", unsafe_allow_html=True)  # Centering the table
+    st.dataframe(styled_table1, use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # Add a download button for the DataFrame
+    csv = maximum_mva_df.to_csv(index=True).encode('utf-8')
+    st.markdown("<div class='download-button'>", unsafe_allow_html=True)
+    st.download_button(
+        label="Download Maximum MVA Values as CSV",
+        data=csv,
+        file_name='maximum_MVA_tss.csv',
+        mime='text/csv',
+        key='download-csv'
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    add_vertical_space(3)
+
+    flattened_maximum_unbalance = maximum_unbalance[0]
+    maximum_unbalance_df = pd.DataFrame({
+        "Maximum Unbalance Value" : flattened_maximum_unbalance
+    })
+
+    maximum_unbalance_df.index = range(1, len(maximum_unbalance_df))
+    maximum_unbalance_df.rename_axis("TSS Number", inplace=True)
+    add_vertical_space(2)
+    styled_table2 = maximum_unbalance_df.style.set_table_attributes('style="margin:auto; width:80%;"')\
+                    .set_table_styles([{
+                        'selector': 'th',
+                        'props': [('text-align', 'center')]
+                    }, {
+                        'selector': 'td',
+                        'props': [('text-align', 'center')]
+                    }])
+    
+    # Display the table with center-aligned text
+    st.markdown("<div class='table-container'>", unsafe_allow_html=True)  # Centering the table
+    st.dataframe(styled_table2, use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # Add a download button for the DataFrame
+    csv = maximum_unbalance_df.to_csv(index=True).encode('utf-8')
+    st.markdown("<div class='download-button'>", unsafe_allow_html=True)
+    st.download_button(
+        label="Download Maximum Unbalance Values as CSV",
+        data=csv,
+        file_name='maximum_unbalance_tss.csv',
+        mime='text/csv',
+        key='download-csv'
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
