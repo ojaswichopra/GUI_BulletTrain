@@ -1,3 +1,4 @@
+graphics_toolkit ("gnuplot")
 length_profile_T=length(Voltage_distance_matrix_T);             %% need to check
 length_profile_M=length(Voltage_distance_matrix_M);
 total_length_profile=length_profile_M+length_profile_T;
@@ -128,6 +129,13 @@ for jj_track_no=1:1:length(d_modified)
 
 end
 
+figureHandle = figure;
+
+% Get screen size from root object (0)
+screenSize = get(0, 'ScreenSize');
+
+% Set the figure to match the screen size
+set(figureHandle, 'Position', [100, 100, 2500, 2000]);
 
 subplot(3,1,1)
 plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)));
@@ -145,3 +153,8 @@ plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole
 title('Feeder wire Voltage magnitude')
 xlabel('Distance (kM)')
 ylabel('Voltage magnitude (kV)')
+
+save('Voltage_distance_matrix_whole.mat', 'Voltage_distance_matrix_whole');
+
+desired_filename = '../Plot_oTo/Full_track_voltage_profile_instant_t_outage_load.png';  % Replace 'desired_name' with your file name
+saveas(gcf, desired_filename);
