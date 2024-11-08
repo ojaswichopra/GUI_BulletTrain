@@ -3,7 +3,9 @@ import streamlit as st
 from PIL import Image
 # Create an Oct2Py instance once
 from pages.oTo_Workspace import oTo_workspace
+from streamlit_extras.add_vertical_space import add_vertical_space
 from oct2py import Oct2Py
+import pandas as pd
 oc = Oct2Py() 
 oc.eval('cd("../one_TSS_outage")') 
 
@@ -43,8 +45,12 @@ def main():
     tt_time = oTo_workspace['tt_time']
     oc.push('tt_time', tt_time)
 
-    maximum_mva, maximum_unbalance = oc.eval(f"TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt(TSS,N_TSS_O,dTSS_T,s_apprant_power_MVA_mag,Unb,tt_time)")
-    
+    maximum_mva, maximum_unbalance = oc.eval(f"TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt(TSS,N_TSS_O,dTSS_T,s_apprant_power_MVA_mag,Unb,tt_time)", nout=2)
+    # maximum_mva = result[0], maximum_unbalance = result[1]
+    # maximum_mva, maximum_unbalance = oc.feval(
+    #     "TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt", 
+    #     TSS, N_TSS_O, dTSS_T, s_apprant_power_MVA_mag, Unb, tt_time
+    # )
     image_path = '../Plots/oTo_TSS_MVA_voltage_unbalance.png'
     img = Image.open(image_path)
     st.image(img, caption="", use_column_width=True)
@@ -62,8 +68,8 @@ def main():
     maximum_mva_df = pd.DataFrame({
         "Maximum MVA Value" : flattened_maximum_mva
     })
-
-    maximum_mva_df.index = range(1, len(maximum_mva_df))
+    # print(maximum_mva_df)
+    maximum_mva_df.index = range(1, len(maximum_mva_df)+1)
     maximum_mva_df.rename_axis("TSS Number", inplace=True)
     add_vertical_space(2)
     styled_table1 = maximum_mva_df.style.set_table_attributes('style="margin:auto; width:80%;"')\
@@ -88,7 +94,7 @@ def main():
         data=csv,
         file_name='maximum_MVA_tss.csv',
         mime='text/csv',
-        key='download-csv'
+        key='download-csv-1'
     )
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -99,7 +105,7 @@ def main():
         "Maximum Unbalance Value" : flattened_maximum_unbalance
     })
 
-    maximum_unbalance_df.index = range(1, len(maximum_unbalance_df))
+    maximum_unbalance_df.index = range(1, len(maximum_unbalance_df)+1)
     maximum_unbalance_df.rename_axis("TSS Number", inplace=True)
     add_vertical_space(2)
     styled_table2 = maximum_unbalance_df.style.set_table_attributes('style="margin:auto; width:80%;"')\
@@ -124,7 +130,7 @@ def main():
         data=csv,
         file_name='maximum_unbalance_tss.csv',
         mime='text/csv',
-        key='download-csv'
+        key='download-csv-2'
     )
     st.markdown("</div>", unsafe_allow_html=True)
 
