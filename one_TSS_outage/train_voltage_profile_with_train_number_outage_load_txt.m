@@ -207,7 +207,7 @@ function train_voltage_profile_with_train_number_outage_load_txt(train_number, N
     xlabel('Distance (Km)','FontWeight','bold')
     ylabel('Voltage Magnitude (kV)','FontWeight','bold')
 
-    desired_filename = '../Plots/oTo_train_voltage_profile.png';
+    desired_filename = '../Plots_oTo/oTo_train_voltage_profile.png';
     saveas(gcf, desired_filename);
     toc
 end
