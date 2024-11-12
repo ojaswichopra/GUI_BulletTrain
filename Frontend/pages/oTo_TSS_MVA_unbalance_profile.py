@@ -25,11 +25,11 @@ def main():
             unsafe_allow_html=True,
         )
 
-    st.markdown("<h1 class='title'>TSS MVA Profile and unbalance profile</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>TSS MVA & Voltage Unbalance profile</h1>", unsafe_allow_html=True)
 
     nn_track = st.number_input("Enter the TSS number for MVA profile", min_value=0)
 
-    if(st.button("Show TSS MVA profile and unbalance profile")):
+    if(st.button("Show TSS MVA and voltage unbalance profile")):
         oc.eval("setenv('GNUTERM', 'gnuplot')")
 
         TSS = oTo_workspace['TSS']
