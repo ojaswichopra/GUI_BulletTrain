@@ -156,5 +156,5 @@ ylabel('Voltage magnitude (kV)')
 
 save('Voltage_distance_matrix_whole.mat', 'Voltage_distance_matrix_whole');
 
-desired_filename = '../Plot_oTo/Full_track_voltage_profile_instant_t_outage_load.png';  % Replace 'desired_name' with your file name
+desired_filename = '../Plots_oTo/Full_track_voltage_profile_instant_t_outage_load.png';  % Replace 'desired_name' with your file name
 saveas(gcf, desired_filename);
