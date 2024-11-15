@@ -1,4 +1,4 @@
-function [maximum_mva,maximum_unbalance] = TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt(nn_track,TSS,N_TSS_O,dTSS_T,s_apprant_power_MVA_mag,Unb,tt_time)
+function TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt(nn_track,TSS,N_TSS_O,dTSS_T,s_apprant_power_MVA_mag,Unb,tt_time)
     % load("TSS.txt");
     % load("N_TSS_O.txt");
     % load("dTSS_T.txt");
@@ -72,6 +72,7 @@ function [maximum_mva,maximum_unbalance] = TSS_MVA_voltage_unbalance_profile_plo
     desired_filename = '../Plots_oTo/oTo_TSS_MVA_voltage_unbalance.png';
     saveas(gcf, desired_filename);
 
-    maximum_mva
-    maximum_unbalance
+    % maximum_mva
+    % maximum_unbalance
+    save('maximum_mva_and_unbalance.mat', 'maximum_mva', 'maximum_unbalance')
 end
