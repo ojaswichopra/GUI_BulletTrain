@@ -135,7 +135,7 @@ figureHandle = figure;
 screenSize = get(0, 'ScreenSize');
 
 % Set the figure to match the screen size
-set(figureHandle, 'Position', [100, 100, 2500, 2000]);
+set(figureHandle, 'Position', screenSize);
 
 subplot(3,1,1)
 plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)));
