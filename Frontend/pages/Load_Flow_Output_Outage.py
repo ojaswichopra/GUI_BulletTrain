@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 import numpy as np
 from pages.oTo_Workspace import oTo_workspace
+from pages.tTo_Workspace import tTo_workspace
 title = "Output Options"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 layout = "centered"
@@ -94,7 +95,18 @@ def load_oTo_workspace():
         ## Reading from text file - 
         oTo_workspace[var] = read_text_file(f'../oTo_text_files/{var}.txt')
 
+def load_tTo_workspace():
+    tTo_variable_names = [
+        'dTSS','dTSS_T','TSS','d','y','Vc_mag_Td','Vc_ang_Td','VR_mag_Td','VR_ang_Td','Vf_mag_Td','Vf_ang_Td',
+        'Ic_line_mag_Td','Ic_line_ang_Td','Ir_line_mag_Td','Ir_line_ang_Td','If_line_mag_Td','If_line_ang_Td',
+        'Vc_mag_Md','Vc_ang_Md','VR_mag_Md','VR_ang_Md','Vf_mag_Md','Vf_ang_Md','dTSS_M','Ic_line_mag_Md','Ic_line_ang_Md',
+        'Ir_line_mag_Md','Ir_line_ang_Md','If_line_mag_Md','If_line_ang_Md','each_stop_train_data','AT','Unb','s_apprant_power_MVA_mag',
+        'N_TSS_O','N_TSS','N_hr','N_train_per_hour','Mva_sec_abs','tt_time'
+    ]
 
+    for var in variable_names:        
+        ## Reading from text file - 
+        tTo_workspace[var] = read_text_file(f'../tTo_text_files/{var}.txt')
 
 def main():
 
@@ -149,7 +161,8 @@ def main():
     
     with col2:
         if st.button('Two Adjacent TSS Outage'):
-            st.switch_page("")
+            load_tTo_workspace()
+            st.switch_page("pages/tTo_output_options.py")
             
 
 if __name__ == "__main__":
