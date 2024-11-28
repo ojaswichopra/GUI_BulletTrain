@@ -104,7 +104,7 @@ def load_tTo_workspace():
         'N_TSS_O','N_TSS','N_hr','N_train_per_hour','Mva_sec_abs','tt_time'
     ]
 
-    for var in variable_names:        
+    for var in tTo_variable_names:        
         ## Reading from text file - 
         tTo_workspace[var] = read_text_file(f'../tTo_text_files/{var}.txt')
 

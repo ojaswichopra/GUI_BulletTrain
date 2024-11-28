@@ -29,7 +29,7 @@ i_D=zeros((l_a-4)*y,20);
 %Train= bus type 2
 i_E=[ones((l_a-4)*y,1),3*ones((l_a-4)*y,19)];
 
-N_TSS_O_str=input('Enter the TSS numbers (in ascending order) which are out of service (separated by comma or space): ','s');
+% N_TSS_O_str=input('Enter the TSS numbers (in ascending order) which are out of service (separated by comma or space): ','s');
 
 N_TSS_O=str2num(N_TSS_O_str);   % Outage TSS numbers (2 TSS outage)
 
