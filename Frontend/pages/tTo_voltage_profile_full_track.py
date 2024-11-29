@@ -30,100 +30,100 @@ def main():
     if(st.button("Show")):
         oc.eval("setenv('GNUTERM', 'gnuplot')")
         
-        AT = oTo_workspace['AT']
+        AT = tTo_workspace['AT']
         oc.push('AT', AT)
 
-        d = oTo_workspace['d']
+        d = tTo_workspace['d']
         oc.push('d', d)
 
-        TSS = oTo_workspace['TSS']
+        TSS = tTo_workspace['TSS']
         oc.push('TSS', TSS)
 
-        N_TSS_O = oTo_workspace['N_TSS_O']
+        N_TSS_O = tTo_workspace['N_TSS_O']
         oc.push('N_TSS_O', N_TSS_O)
 
-        N_TSS = oTo_workspace['N_TSS']
+        N_TSS = tTo_workspace['N_TSS']
         oc.push('N_TSS', N_TSS)
 
-        y = oTo_workspace['y']
+        y = tTo_workspace['y']
         oc.push('y', y)
 
-        Vc_mag_Td = oTo_workspace['Vc_mag_Td']
+        Vc_mag_Td = tTo_workspace['Vc_mag_Td']
         oc.push('Vc_mag_Td', Vc_mag_Td)
 
-        Vc_ang_Td = oTo_workspace['Vc_ang_Td']
+        Vc_ang_Td = tTo_workspace['Vc_ang_Td']
         oc.push('Vc_ang_Td', Vc_ang_Td)
 
-        VR_mag_Td = oTo_workspace['VR_mag_Td']
+        VR_mag_Td = tTo_workspace['VR_mag_Td']
         oc.push('VR_mag_Td', VR_mag_Td)
 
-        VR_ang_Td = oTo_workspace['VR_ang_Td']
+        VR_ang_Td = tTo_workspace['VR_ang_Td']
         oc.push('VR_ang_Td', VR_ang_Td)
 
-        Vf_mag_Td = oTo_workspace['Vf_mag_Td']
+        Vf_mag_Td = tTo_workspace['Vf_mag_Td']
         oc.push('Vf_mag_Td', Vf_mag_Td)
 
-        Vf_ang_Td = oTo_workspace['Vf_ang_Td']
+        Vf_ang_Td = tTo_workspace['Vf_ang_Td']
         oc.push('Vf_ang_Td', Vf_ang_Td)
 
-        Vc_mag_Md = oTo_workspace['Vc_mag_Md']
+        Vc_mag_Md = tTo_workspace['Vc_mag_Md']
         oc.push('Vc_mag_Md', Vc_mag_Md)
 
-        Vc_ang_Md = oTo_workspace['Vc_ang_Md']
+        Vc_ang_Md = tTo_workspace['Vc_ang_Md']
         oc.push('Vc_ang_Md', Vc_ang_Md)
 
-        VR_mag_Md = oTo_workspace['VR_mag_Md']
+        VR_mag_Md = tTo_workspace['VR_mag_Md']
         oc.push('VR_mag_Md', VR_mag_Md)
 
-        VR_ang_Md = oTo_workspace['VR_ang_Md']
+        VR_ang_Md = tTo_workspace['VR_ang_Md']
         oc.push('VR_ang_Md', VR_ang_Md)
 
-        Vf_mag_Md = oTo_workspace['Vf_mag_Md']
+        Vf_mag_Md = tTo_workspace['Vf_mag_Md']
         oc.push('Vf_mag_Md', Vf_mag_Md)
 
-        Vf_ang_Md = oTo_workspace['Vf_ang_Md']
+        Vf_ang_Md = tTo_workspace['Vf_ang_Md']
         oc.push('Vf_ang_Md', Vf_ang_Md)
 
-        dTSS_T = oTo_workspace['dTSS_T']
+        dTSS_T = tTo_workspace['dTSS_T']
         oc.push('dTSS_T', dTSS_T)
 
-        dTSS_M = oTo_workspace['dTSS_M']
+        dTSS_M = tTo_workspace['dTSS_M']
         oc.push('dTSS_M', dTSS_M)
 
-        Ic_line_mag_Td = oTo_workspace['Ic_line_mag_Td']
+        Ic_line_mag_Td = tTo_workspace['Ic_line_mag_Td']
         oc.push('Ic_line_mag_Td', Ic_line_mag_Td)
 
-        Ic_line_ang_Td = oTo_workspace['Ic_line_ang_Td']
+        Ic_line_ang_Td = tTo_workspace['Ic_line_ang_Td']
         oc.push('Ic_line_ang_Td', Ic_line_ang_Td)
 
-        Ir_line_mag_Td = oTo_workspace['Ir_line_mag_Td']
+        Ir_line_mag_Td = tTo_workspace['Ir_line_mag_Td']
         oc.push('Ir_line_mag_Td', Ir_line_mag_Td)
 
-        Ir_line_ang_Td = oTo_workspace['Ir_line_ang_Td']
+        Ir_line_ang_Td = tTo_workspace['Ir_line_ang_Td']
         oc.push('Ir_line_ang_Td', Ir_line_ang_Td)
 
-        If_line_mag_Td = oTo_workspace['If_line_mag_Td']
+        If_line_mag_Td = tTo_workspace['If_line_mag_Td']
         oc.push('If_line_mag_Td', If_line_mag_Td)
 
-        If_line_ang_Td = oTo_workspace['If_line_ang_Td']
+        If_line_ang_Td = tTo_workspace['If_line_ang_Td']
         oc.push('If_line_ang_Td', If_line_ang_Td)
 
-        Ic_line_mag_Md = oTo_workspace['Ic_line_mag_Md']
+        Ic_line_mag_Md = tTo_workspace['Ic_line_mag_Md']
         oc.push('Ic_line_mag_Md', Ic_line_mag_Md)
 
-        Ic_line_ang_Md = oTo_workspace['Ic_line_ang_Md']
+        Ic_line_ang_Md = tTo_workspace['Ic_line_ang_Md']
         oc.push('Ic_line_ang_Md', Ic_line_ang_Md)
 
-        Ir_line_mag_Md = oTo_workspace['Ir_line_mag_Md']
+        Ir_line_mag_Md = tTo_workspace['Ir_line_mag_Md']
         oc.push('Ir_line_mag_Md', Ir_line_mag_Md)
 
-        Ir_line_ang_Md = oTo_workspace['Ir_line_ang_Md']
+        Ir_line_ang_Md = tTo_workspace['Ir_line_ang_Md']
         oc.push('Ir_line_ang_Md', Ir_line_ang_Md)
 
-        If_line_mag_Md = oTo_workspace['If_line_mag_Md']
+        If_line_mag_Md = tTo_workspace['If_line_mag_Md']
         oc.push('If_line_mag_Md', If_line_mag_Md)
 
-        If_line_ang_Md = oTo_workspace['If_line_ang_Md']
+        If_line_ang_Md = tTo_workspace['If_line_ang_Md']
         oc.push('If_line_ang_Md', If_line_ang_Md)
 
         oc.eval(f"Full_track_voltage_profile_instant_t_adjecent_outage_load_file({track_time_1}, {x_reso},AT, d, TSS, N_TSS_O, N_TSS, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_T, dTSS_M, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, Ic_line_mag_Md, Ic_line_ang_Md, Ir_line_mag_Md, Ir_line_ang_Md, If_line_mag_Md, If_line_ang_Md)")

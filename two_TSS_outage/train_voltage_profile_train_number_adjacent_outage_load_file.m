@@ -131,8 +131,8 @@ function train_voltage_profile_train_number_adjacent_outage_load_file(train_numb
     screenSize = get(0, 'ScreenSize');
 
     % Set the figure to match the screen size
-    set(figureHandle, 'Position', screenSize);
-
+    set(figureHandle, 'Position',  [100, 100, 2500, 2000]);
+   
     subplot(4,1,1)
     plot(train1_time/60,voltage_train_abs);
     title(['Contact voltage of train no ', int2str(train_number),' vs Time'])
