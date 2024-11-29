@@ -5,7 +5,7 @@ from PIL import Image
 from pages.tTo_Workspace import tTo_workspace
 from oct2py import Oct2Py
 oc = Oct2Py() 
-oc.eval('cd("../tTo_TSS_outage")') 
+oc.eval('cd("../two_TSS_outage")') 
 
 def main():
 

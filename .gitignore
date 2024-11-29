@@ -1,12 +1,15 @@
 build/
 dist/
 backend_codes/octave-workspace
+two_TSS_outage/octave-workspace
+one_TSS_outage/octave-workspace
 backend_codes/variable_load_flow_mum_to_ahm_each_stop.mat
 backend_codes/Voltage_distance_matrix_whole.mat
 backend_codes/required_variable_load_flow_mum_to_ahm_each_stop.mat
 variable_text_files/
-tTo_text_files/
 oTo_text_files/
+tTo_text_files/
 Frontend/octave-workspace
 EN-50641/required_variable_load_flow_standard.mat
 Load Flow Input/
+bfg.jar
