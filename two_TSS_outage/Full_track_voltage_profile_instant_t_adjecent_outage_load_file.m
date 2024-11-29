@@ -34,7 +34,7 @@ function Full_track_voltage_profile_instant_t_adjecent_outage_load_file(track_ti
     % load("If_line_mag_Md.txt");
     % load("If_line_ang_Md.txt");
 
-    z1_loaded = load("z1.txt");
+    z1_loaded = load("../tTo_text_files/z1.txt");
         % Determine the number of columns
         num_cols = size(z1_loaded, 2) / 2;  % Total columns divided by 2
 
