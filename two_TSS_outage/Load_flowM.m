@@ -44,11 +44,14 @@ while (error>1e-12)
     %error_ang=angle(Vcrf-Vcrf_pre);
     error= (max(error_mag));
     
+      e_error_m(nt)=error;
       flag_itrM(nt)=0;
       itrM=itrM+1;
-      if itrM>300
-          flag_itrM(nt)=1;
-          break;
+      if itrM>40000
+          if error<10
+              flag_itrM(nt)=1;
+              break;
+          end
       end
 % display("itr I_bus")
 I_busM;
