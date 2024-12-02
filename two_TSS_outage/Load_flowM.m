@@ -48,7 +48,7 @@ while (error>1e-12)
       flag_itrM(nt)=0;
       itrM=itrM+1;
       if itrM>40000
-          if error<10
+          if error<12
               flag_itrM(nt)=1;
               break;
           end

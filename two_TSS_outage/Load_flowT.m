@@ -49,7 +49,7 @@ while (error>1e-12)
      flag_itrT(nt)=0;
       itrT=itrT+1;
       if itrT>40000
-          if error<10
+          if error<12
               flag_itrT(nt)=1;
               break;
           end
