@@ -1,5 +1,5 @@
 function maximum_mva_TSS = TSS_maximum_MVA(s_apprant_power_MVA_mag)
-    % clc
+    % 
     % clearvars
     format longG
     tic

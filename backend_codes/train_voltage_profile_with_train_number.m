@@ -1,5 +1,5 @@
 function train_voltage_profile_with_train_number(no_of_train,train_number,train_data, d, dTSS, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md)
-    % clc
+    % 
     % clearvars
     format longG
     tic

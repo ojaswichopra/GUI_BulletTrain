@@ -1,4 +1,4 @@
-% clear all; fclose all;
+% ; fclose all;
 % format long;
 
 %distance in km of all the TSSs measured from mumbai

@@ -1,6 +1,6 @@
 function sub_station_voltage_plot(Vc_mag_Td,Vf_mag_Td)
-    % ##clc
-    % ##clear all
+    % ##
+    % ##
     tic
     % load('required_variable_load_flow_standard.mat')
     graphics_toolkit ("gnuplot")

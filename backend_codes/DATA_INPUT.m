@@ -1,4 +1,4 @@
-%clc;
+%;
 % N1 = input('Enter the no of turn in primary of M winding');
 % N2 = input('Enter the no of turn in secondary of M winding');
 %%Formation of system busdata%%

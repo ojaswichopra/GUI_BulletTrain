@@ -1,6 +1,6 @@
 
-clc
-clear all
+
+
 load("variable_code_Zshort_Zg_3train_hour.mat");
 % Zshort=i*4;
 track_TSS_no=length(TSS);           %% total no of TSS in track

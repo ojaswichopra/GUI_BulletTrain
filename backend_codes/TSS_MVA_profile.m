@@ -1,5 +1,5 @@
 function TSS_MVA_profile(TSS_input_no,s_apprant_power_MVA_mag)
- % clc
+ % 
     % clearvars
     format longG
     tic

@@ -1,5 +1,5 @@
 function AT_maximum_MVA(AT_mva_mag, AT)
-% clc
+% 
     % clearvars
     format longG
     tic

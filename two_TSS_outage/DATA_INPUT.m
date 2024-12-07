@@ -1,4 +1,4 @@
-%clc;
+%;
 
 % Za= input('Enter the primary winding leakage impedance for T winding'); %% primary winding leakage impedance for T winding (Za)%%
 Za = Rp+Xp*i;
