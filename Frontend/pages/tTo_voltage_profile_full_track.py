@@ -139,7 +139,6 @@ def main():
                 mime="image/png"
             )
 
-
 if __name__ == "__main__":
     main()
     if st.button("Back"):

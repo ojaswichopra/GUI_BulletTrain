@@ -1,6 +1,6 @@
 function sub_station_current_plot(sub_station_catenary_current,sub_station_feeder_current)    
-    % ##clc
-    % ##clear all
+    % ##
+    % ##
     tic
     % load('required_variable_load_flow_standard.mat')
     %pkg uninstall matgeom

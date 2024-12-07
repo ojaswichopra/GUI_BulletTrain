@@ -1,6 +1,6 @@
-clc
+
 close all
- clear all
+ 
  tic
  load("double_line2.mat");
  li_len=length(sub_station_catenary_current);

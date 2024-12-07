@@ -1,5 +1,5 @@
-clc
- clear all
+
+ 
  tic
  load("variable_code_Zshort_Zg_3train_hour.mat");
 

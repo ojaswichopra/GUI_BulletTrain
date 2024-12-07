@@ -155,7 +155,7 @@ def main():
         if st.button('Prepare train timetable'):
             st.write("Button 2 clicked!")
         if st.button('Perform short circuit analysis'):
-            st.write("Button 4 clicked!")
+            st.switch_page("pages/Short_Circuit_Analysis.py")
         if st.button('Calculate OHE temerature rise'):
             st.write("Button 1 clicked!")
         if st.button('See output'):

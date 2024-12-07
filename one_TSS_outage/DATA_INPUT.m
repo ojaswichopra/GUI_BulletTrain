@@ -1,4 +1,4 @@
-%clc;
+%;
 
 
 %%Formation of system busdata%%

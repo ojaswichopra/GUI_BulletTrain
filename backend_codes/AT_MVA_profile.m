@@ -1,5 +1,5 @@
 function AT_MVA_profile(AT_input_no, AT_mva_mag)
-    % clc
+    % 
     % clearvars
     format longG
     tic

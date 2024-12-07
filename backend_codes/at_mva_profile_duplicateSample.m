@@ -1,4 +1,4 @@
-% clc
+% 
 % clearvars
 format longG
 tic

@@ -1,5 +1,5 @@
 function speed_TE_plot(HS_train_A_F_data)
-    %clc; close all; clearvars;
+    %; close all; clearvars;
     format longG;
     graphics_toolkit ("gnuplot")
     % load('required_variable_load_flow_standard.mat')

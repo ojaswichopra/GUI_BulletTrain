@@ -1,6 +1,6 @@
 function train_101_voltage_current_profile(HS_train_A_F_data,d,line_data_M_emp,dTSS,y_whole,Vc_mag_Td,y,Vc_ang_Td,VR_mag_Td,VR_ang_Td,pTSS_T)
-    % ##clc
-    % ##clear all
+    % ##
+    % ##
     tic
     % load('required_variable_load_flow_standard.mat')
     graphics_toolkit ("gnuplot")
