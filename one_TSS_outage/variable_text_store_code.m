@@ -1,3 +1,9 @@
+folder = '../oTo_text_files';
+% Check if the folder exists, and if not, create it
+if ~exist(folder, 'dir')
+    mkdir(folder);
+end
+
 fileID = fopen('../oTo_text_files/dTSS.txt', 'w');
 for row = 1:size(dTSS, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS, 2)) '\n'], dTSS(row, :));
