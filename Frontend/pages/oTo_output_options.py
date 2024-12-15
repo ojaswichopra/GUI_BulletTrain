@@ -61,7 +61,7 @@ if __name__ == "__main__":
     main()
     st.markdown(
         f"""
-        <a href="/Load_Flow_Output_Options" target="_self" class="custom-button">Back</a>
+        <a href="/Load_Flow_Output_Outage" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )
