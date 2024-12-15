@@ -176,8 +176,8 @@ if timetable_file is not None:
 # Input fields for other parameters
 N = st.number_input("Enter the number of trains running per hour", min_value=0)
 N_hr = st.number_input("Enter the number of hours of train scheduling per day", min_value=0)
-time_instant_short = st.number_input('Enter the time instant (sec) for short circuit', min_value=0)
-total_distance_from_start_point= st.number_input('Enter the distance from starting point for voltage profile of entire day in kM', min_value=0)
+total_distance_from_start_point= st.number_input('Enter the distance(in Km) from starting point at which short circuit occurs', min_value=0)
+time_instant_short = st.number_input('Enter the time instant (in sec) at which the short circuit occurs at the entered location', min_value=0)
 fault_type_text = st.selectbox(
     "Select Fault Type",
     ("CR fault", "RF fault", "CF fault", "CRF fault"),
