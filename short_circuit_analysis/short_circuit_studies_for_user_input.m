@@ -101,6 +101,6 @@ function short_circuit_studies_for_user_input(TSS, AT, N, N_hr, train_time, time
     post_fault_calculation;
     short_circuit_line_current_cal;
     voltage_update_for_short_circuit_file;
-    Full_track_voltage_profile_instant_t_short_circuit;
-
+    variable_text_store_code;
+    % Full_track_voltage_profile_instant_t_short_circuit;
 end

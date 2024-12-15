@@ -1,20 +1,12 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 import numpy as np
- 
-
-title = "Output Options"
-page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
-layout = "centered"
-
-selection = None
-
-
+from oct2py import Oct2Py
 
 def main():
 
     # Settings
-    st.set_page_config(page_title=title, page_icon=page_icon, layout=layout)
+    # st.set_page_config(page_title=title, page_icon=page_icon, layout=layout)
     st.markdown(
         """
     <style>
@@ -59,8 +51,11 @@ def main():
     with col1:
         if st.button('Output of Load Flow'):
             st.switch_page("pages/Output_Loadflow_Options.py")
-        if st.button('Output of short circuit analysis'):
-            st.switch_page("")
+        if st.button('Output of Short Circuit Analysis'):
+            oc = Oct2Py() 
+            oc.eval('cd("../short_circuit_analysis")') 
+            oc.eval(f"Full_track_voltage_profile_instant_t_short_circuit()")
+            st.switch_page("pages/SCA_output.py")
         if st.button('Output of induced voltage calculations'):
             st.switch_page("")
     
