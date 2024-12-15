@@ -6,7 +6,6 @@ os.system(f"python -m pip install --upgrade pip")
 os.system(f"pip install -r {requirements_path}")
 
 
-
 # Path to the entry point of your Streamlit app
 frontend_path = os.path.join(os.path.dirname(__file__), 'Frontend', 'Landing.py') 
 
