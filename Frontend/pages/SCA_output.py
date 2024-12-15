@@ -2,6 +2,8 @@ import os
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from PIL import Image
+import numpy as np
+
 
 def main():
     st.markdown(
@@ -42,6 +44,10 @@ def main():
         unsafe_allow_html=True,
     )
     
+    
+    
+    st.markdown("<h1 class='title'>Output of Short Circuit Analysis</h1>", unsafe_allow_html=True)
+
     col1, col2 = st.columns(2)
     with col1:
         if st.button('Voltage Profile of the track'):
@@ -75,7 +81,7 @@ if __name__ == "__main__":
     main()
     st.markdown(
         f"""
-        <a href="/Short_Circuit_Analysis" target="_self" class="custom-button">Back</a>
+        <a href="/Output_Options" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )

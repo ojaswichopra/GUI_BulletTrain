@@ -14,7 +14,7 @@ def run_backend_process(extracted_data, N, N_hr, train_time, time_instant_short,
     run_short_circuit(extracted_data, N, N_hr, train_time, time_instant_short, total_distance_from_start_point, fault_type, Z_fault)
     st.success("Short Circuit Analysis Completed!!")
     # if st.button('See Output'):
-    st.switch_page('pages/SCA_output.py')   
+    # st.switch_page('pages/SCA_output.py')   
     
     
 def count_rows_columns(file_path):
