@@ -53,9 +53,9 @@ function TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt(nn_track,TSS,N_T
         plot(tt_time/60,s_apprant_power_MVA_mag(:,nn_track))
     end
 
-    title(['MVA profile of TSS number ',num2str(nn_track_name) ,'.'])
-    xlabel('Time (minute)')
-    ylabel('MVA')
+    title(['MVA profile of TSS number ',num2str(nn_track_name)])
+    xlabel('Time (minute)','FontWeight','bold')
+    ylabel('MVA','FontWeight','bold')
 
     desired_filename = '../Plots_tTo/tTo_TSS_MVA_voltage_unbalance.png';
     saveas(gcf, desired_filename);

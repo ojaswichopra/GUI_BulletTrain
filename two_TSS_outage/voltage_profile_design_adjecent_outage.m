@@ -77,24 +77,24 @@ figureHandle = figure;
 screenSize = get(0, 'ScreenSize');
 
 % Set the figure to match the screen size
-set(figureHandle, 'Position', [100, 100, 2500, 2000]);
+set(figureHandle, 'Position', [100, 100, 1830, 1300]);
 
 subplot(3,1,1)
 plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)));
 title('Contact wire Voltage magnitude')
-xlabel('Distance (kM)')
-ylabel('Voltage magnitude (kV)')
+xlabel('Distance (kM)','FontWeight','bold')
+ylabel('Voltage magnitude (kV)','FontWeight','bold')
 %set(gca,'XTick',[5 55 105 155 205 255 305 355 405 455 505],'XTickLabel',{'TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS'})
  subplot(3,1,2)
 plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,3)));
-title('Rail wire Voltage magnitude')
-xlabel('Distance (kM)')
-ylabel('Voltage magnitude (kV)')
+title('Rail Voltage magnitude')
+xlabel('Distance (kM)','FontWeight','bold')
+ylabel('Voltage magnitude (kV)','FontWeight','bold')
 subplot(3,1,3)
 plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,4)));
 title('Feeder wire Voltage magnitude')
-xlabel('Distance (kM)')
-ylabel('Voltage magnitude (kV)')
+xlabel('Distance (kM)','FontWeight','bold')
+ylabel('Voltage magnitude (kV)','FontWeight','bold')
 
 desired_filename = '../Plots_tTo/tTo_voltage_profile_full_track.png';  % Replace 'desired_name' with your file name
 saveas(gcf, desired_filename);
