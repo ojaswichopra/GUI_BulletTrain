@@ -25,8 +25,8 @@ def main():
 
     st.markdown("<h1 class='title'>Voltage profile of full track at particular time instant</h1>", unsafe_allow_html=True)
 
-    track_time_1 = st.number_input("Enter the time instant in second (sec) for getting voltage profile along the track", min_value=0)
-    x_reso = st.number_input("Enter the distance resolution for voltage profile along the track", min_value=0)
+    track_time_1 = st.number_input("Enter the time instant (in second) for getting voltage profile along the track", min_value=0)
+    x_reso = st.number_input("Enter the distance resolution (in meter) for voltage profile along the track", min_value=0)
     if(st.button("Show")):
         oc.eval("setenv('GNUTERM', 'gnuplot')")
         
