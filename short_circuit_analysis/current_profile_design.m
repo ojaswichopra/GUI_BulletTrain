@@ -74,24 +74,24 @@ graphics_toolkit ("gnuplot")
 figureHandle = figure;
 screenSize = get(0, 'ScreenSize');
 
-set(figureHandle, 'Position', [100, 100, 2500, 2000]);
+set(figureHandle, 'Position', [100, 100, 1830, 1300]);
 
 subplot(3,1,1)
 plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,2)));
 title('Contact wire current magnitude')
-xlabel('Distance (kM)')
-ylabel('current magnitude (kA)')
+xlabel('Distance (kM)','FontWeight','bold')
+ylabel('current magnitude (kA)','FontWeight','bold')
 %set(gca,'XTick',[5 55 105 155 205 255 305 355 405 455 505],'XTickLabel',{'TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS'})
  subplot(3,1,2)
 plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,3)));
-title('Rail wire current magnitude')
-xlabel('Distance (kM)')
-ylabel('current magnitude (kA)')
+title('Rail current magnitude')
+xlabel('Distance (kM)','FontWeight','bold')
+ylabel('current magnitude (kA)','FontWeight','bold')
 subplot(3,1,3)
 plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,4)));
 title('Feeder wire current magnitude')
-xlabel('Distance (kM)')
-ylabel('current magnitude (kA)')
+xlabel('Distance (kM)','FontWeight','bold')
+ylabel('current magnitude (kA)','FontWeight','bold')
 
 desired_filename = '../Plots_SCA/current_profile.png';
 saveas(gcf, desired_filename);

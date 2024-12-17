@@ -84,7 +84,7 @@ function train_voltage_profile_with_train_number(no_of_train,train_number,train_
     screenSize = get(0, 'ScreenSize');
 
     % Set the figure to match the screen size
-    set(figureHandle, 'Position', [100, 100, 2500, 2000]);
+    set(figureHandle, 'Position', [100, 100, 1830, 1300]);
     
     subplot(4,1,1)
     plot(train1_time/60,voltage_train_abs);

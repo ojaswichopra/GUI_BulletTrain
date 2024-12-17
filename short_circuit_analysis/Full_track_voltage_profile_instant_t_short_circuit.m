@@ -1,40 +1,40 @@
-function Full_track_voltage_profile_instant_t_short_circuit()
+function Full_track_voltage_profile_instant_t_short_circuit(TSS, d, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_T, dTSS_M, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, Ic_line_mag_Md, Ic_line_ang_Md, Ir_line_mag_Md, Ir_line_ang_Md, If_line_mag_Md, If_line_ang_Md, time_instant_short, n_tss_fault, faulted_winding_side, linedata_dTSS_T, linedata_dTSS_M)
     % 
     tic
-    load("../SCA_text_files/TSS.txt");
-    load("../SCA_text_files/d.txt");
-    load("../SCA_text_files/y.txt");
-    load("../SCA_text_files/Vc_mag_Td.txt");
-    load("../SCA_text_files/Vc_ang_Td.txt");
-    load("../SCA_text_files/VR_mag_Td.txt");
-    load("../SCA_text_files/VR_ang_Td.txt");
-    load("../SCA_text_files/Vf_mag_Td.txt");
-    load("../SCA_text_files/Vf_ang_Td.txt");
-    load("../SCA_text_files/Vc_mag_Md.txt");
-    load("../SCA_text_files/Vc_ang_Md.txt");
-    load("../SCA_text_files/VR_mag_Md.txt");
-    load("../SCA_text_files/VR_ang_Md.txt");
-    load("../SCA_text_files/Vf_mag_Md.txt");
-    load("../SCA_text_files/Vf_ang_Md.txt");
-    load("../SCA_text_files/dTSS_T.txt");
-    load("../SCA_text_files/dTSS_M.txt");
-    load("../SCA_text_files/Ic_line_mag_Td.txt");
-    load("../SCA_text_files/Ic_line_ang_Td.txt");
-    load("../SCA_text_files/Ir_line_mag_Td.txt");
-    load("../SCA_text_files/Ir_line_ang_Td.txt");
-    load("../SCA_text_files/If_line_mag_Td.txt");
-    load("../SCA_text_files/If_line_ang_Td.txt");
-    load("../SCA_text_files/Ic_line_mag_Md.txt");
-    load("../SCA_text_files/Ic_line_ang_Md.txt");
-    load("../SCA_text_files/Ir_line_mag_Md.txt");
-    load("../SCA_text_files/Ir_line_ang_Md.txt");
-    load("../SCA_text_files/If_line_mag_Md.txt");
-    load("../SCA_text_files/If_line_ang_Md.txt");
-    load("../SCA_text_files/time_instant_short.txt");
-    load("../SCA_text_files/n_tss_fault.txt");
-    load("../SCA_text_files/faulted_winding_side.txt");
-    load("../SCA_text_files/linedata_dTSS_T.txt");
-    load("../SCA_text_files/linedata_dTSS_M.txt");
+    % load("../SCA_text_files/TSS.txt");
+    % load("../SCA_text_files/d.txt");
+    % load("../SCA_text_files/y.txt");
+    % load("../SCA_text_files/Vc_mag_Td.txt");
+    % load("../SCA_text_files/Vc_ang_Td.txt");
+    % load("../SCA_text_files/VR_mag_Td.txt");
+    % load("../SCA_text_files/VR_ang_Td.txt");
+    % load("../SCA_text_files/Vf_mag_Td.txt");
+    % load("../SCA_text_files/Vf_ang_Td.txt");
+    % load("../SCA_text_files/Vc_mag_Md.txt");
+    % load("../SCA_text_files/Vc_ang_Md.txt");
+    % load("../SCA_text_files/VR_mag_Md.txt");
+    % load("../SCA_text_files/VR_ang_Md.txt");
+    % load("../SCA_text_files/Vf_mag_Md.txt");
+    % load("../SCA_text_files/Vf_ang_Md.txt");
+    % load("../SCA_text_files/dTSS_T.txt");
+    % load("../SCA_text_files/dTSS_M.txt");
+    % load("../SCA_text_files/Ic_line_mag_Td.txt");
+    % load("../SCA_text_files/Ic_line_ang_Td.txt");
+    % load("../SCA_text_files/Ir_line_mag_Td.txt");
+    % load("../SCA_text_files/Ir_line_ang_Td.txt");
+    % load("../SCA_text_files/If_line_mag_Td.txt");
+    % load("../SCA_text_files/If_line_ang_Td.txt");
+    % load("../SCA_text_files/Ic_line_mag_Md.txt");
+    % load("../SCA_text_files/Ic_line_ang_Md.txt");
+    % load("../SCA_text_files/Ir_line_mag_Md.txt");
+    % load("../SCA_text_files/Ir_line_ang_Md.txt");
+    % load("../SCA_text_files/If_line_mag_Md.txt");
+    % load("../SCA_text_files/If_line_ang_Md.txt");
+    % load("../SCA_text_files/time_instant_short.txt");
+    % load("../SCA_text_files/n_tss_fault.txt");
+    % load("../SCA_text_files/faulted_winding_side.txt");
+    % load("../SCA_text_files/linedata_dTSS_T.txt");
+    % load("../SCA_text_files/linedata_dTSS_M.txt");
     z1_loaded = load("../SCA_text_files/z1.txt");
         % Determine the number of columns
         num_cols = size(z1_loaded, 2) / 2;  % Total columns divided by 2
