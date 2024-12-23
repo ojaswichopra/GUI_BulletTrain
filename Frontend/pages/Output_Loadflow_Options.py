@@ -6,7 +6,7 @@ from pages.workspace import workspace_variables
 from pages.EN_workspace import en_workspace
 import numpy as np
  
- 
+    
 def load_EN_workspace():
     oc = Oct2Py() 
     oc.eval('cd("../EN-50641")')

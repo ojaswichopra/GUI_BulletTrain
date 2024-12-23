@@ -56,8 +56,7 @@ def main():
             st.switch_page("pages/MVA_Profile_of_AT.py")
         if st.button('Maximum MVA of all AT'):
             st.switch_page("pages/Maximum_MVA_of_all_AT.py")
-        if st.button('Maximum voltage unbalance of all TSS'):
-            st.switch_page("pages/Maximum_voltage_unbalance_of_all_TSS.py")
+        
 
     with col2:
         if st.button('Voltage profile at a particular distance'):
@@ -68,6 +67,11 @@ def main():
             st.switch_page("pages/Maximum_MVA_of_all_TSS.py")
         if st.button('Voltage unbalance profile of TSS'):
             st.switch_page("pages/Voltage_profile_unbalance.py")
+    
+    c1,c2,c3,c4 = st.columns(4)
+    with c2:
+        if st.button('Maximum voltage unbalance of all TSS'):
+            st.switch_page("pages/Maximum_voltage_unbalance_of_all_TSS.py")
     
 if __name__ == "__main__":
     main()

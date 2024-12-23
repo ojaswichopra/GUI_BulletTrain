@@ -18,6 +18,18 @@ def main():
             .title {
                 text-align: center;
             }
+            .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 10px 30px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
         </style>
         """,
             unsafe_allow_html=True,
@@ -84,5 +96,11 @@ def main():
 
 if __name__ == "__main__":
     main()
-    if st.button("Back"):
-        st.switch_page("pages/tTo_output_options.py")
+    # if st.button("Back"):
+    #     st.switch_page("pages/tTo_output_options.py")
+    st.markdown(
+        f"""
+        <a href="/tTo_output_options" target="_self" class="custom-button">Back</a>
+        """,
+        unsafe_allow_html=True
+    )

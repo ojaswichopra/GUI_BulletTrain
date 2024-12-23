@@ -19,6 +19,18 @@ def main():
             .title {
                 text-align: center;
             }
+            .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 10px 30px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
         </style>
         """,
             unsafe_allow_html=True,
@@ -29,29 +41,35 @@ def main():
     st.markdown("<h1 class='title'> Contact and Feeder bus bar voltage at the substation</h1>", unsafe_allow_html=True)
 
 
-    if st.button("Show contact & feeder bus bar voltage"):
-        oc.eval("setenv('GNUTERM', 'gnuplot')")
-        # st.write(workspace_variables)
-        Vc_mag_Td = en_workspace['Vc_mag_Td']
-        oc.push('Vc_mag_Td', Vc_mag_Td)
-        Vf_mag_Td = en_workspace['Vf_mag_Td']
-        oc.push('Vf_mag_Td', Vf_mag_Td)
-        
-        oc.eval(f"sub_station_voltage_plot(Vc_mag_Td,Vf_mag_Td)")
-        image_path = '../Plots/sub_station_voltage.png'
-        img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+    # if st.button("Show contact & feeder bus bar voltage"):
+    oc.eval("setenv('GNUTERM', 'gnuplot')")
+    # st.write(workspace_variables)
+    Vc_mag_Td = en_workspace['Vc_mag_Td']
+    oc.push('Vc_mag_Td', Vc_mag_Td)
+    Vf_mag_Td = en_workspace['Vf_mag_Td']
+    oc.push('Vf_mag_Td', Vf_mag_Td)
+    
+    oc.eval(f"sub_station_voltage_plot(Vc_mag_Td,Vf_mag_Td)")
+    image_path = '../Plots/sub_station_voltage.png'
+    img = Image.open(image_path)
+    st.image(img, caption="", use_column_width=True)
 
-        with open(image_path, "rb") as file:
-            btn = st.download_button(
-                label="Download Plot",
-                data=file,
-                file_name="sub_station_voltage.png",  # Replace with the desired download filename
-                mime="image/png"
-            )
+    with open(image_path, "rb") as file:
+        btn = st.download_button(
+            label="Download Plot",
+            data=file,
+            file_name="sub_station_voltage.png",  # Replace with the desired download filename
+            mime="image/png"
+        )
 
 
 if __name__ == "__main__":
     main()
-    if st.button("Back"):
-        st.switch_page("pages/EN_Output.py")
+    # if st.button("Back"):
+    #     st.switch_page("pages/EN_Output.py")
+    st.markdown(
+    f"""
+    <a href="/EN_Output" target="_self" class="custom-button">Back</a>
+    """,
+    unsafe_allow_html=True
+    )

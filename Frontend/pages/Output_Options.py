@@ -245,14 +245,20 @@ def main():
             oc.eval('cd("../short_circuit_analysis")') 
             oc.eval(f"Full_track_voltage_profile_instant_t_short_circuit(TSS, d, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, Vf_mag_Td, Vf_ang_Td, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_T, dTSS_M, Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, Ic_line_mag_Md, Ic_line_ang_Md, Ir_line_mag_Md, Ir_line_ang_Md, If_line_mag_Md, If_line_ang_Md, time_instant_short, n_tss_fault, faulted_winding_side, linedata_dTSS_T, linedata_dTSS_M)")
             st.switch_page("pages/SCA_output.py")
-        if st.button('Output of induced voltage calculations'):
-            st.switch_page("")
+        # if st.button('Output of induced voltage calculations'):
+        #     st.switch_page("")
     
     with col2:
         if st.button('Output of OHE Temperature Rise Calculation'):
             st.switch_page("")
         if st.button('Output of harmonic analysis'):
             st.switch_page("")
+            
+    c1,c2,c3,c4 = st.columns(4)
+    with c2:
+        if st.button('Output of induced voltage calculations'):
+            st.switch_page("")
+        
 
 if __name__ == "__main__":
     main()
