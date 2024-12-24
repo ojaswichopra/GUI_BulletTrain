@@ -142,7 +142,7 @@ st.markdown(
     .custom-button {
                 display: inline-block;
                 text-decoration: none;
-                padding: 10px 30px;
+                padding: 4px 16px;
                 font-size: 20px;
                 color: #007BFF;
                 border: 2px solid #007BFF; /* Adding a white border */
@@ -158,7 +158,7 @@ st.markdown(
 
 st.markdown("<h1 class='title'>Execute EN-50641 Standard Validation Load Flow</h1>", unsafe_allow_html=True)
 
-add_vertical_space(2)
+add_vertical_space(1)
 # File uploads for system data and train timetable
 system_data_file = st.file_uploader("Upload System Data File (.txt)", type="txt", key="system_data")
 if system_data_file is not None:

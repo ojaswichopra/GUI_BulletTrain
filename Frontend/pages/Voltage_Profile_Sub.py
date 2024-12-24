@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_extras.add_vertical_space import add_vertical_space
 from PIL import Image
 
 st.markdown(
@@ -25,7 +26,7 @@ st.markdown(
             .custom-button {
                 display: inline-block;
                 text-decoration: none;
-                padding: 10px 30px;
+                padding: 4px 16px;
                 font-size: 20px;
                 color: #007BFF;
                 border: 2px solid #007BFF; /* Adding a white border */
@@ -42,7 +43,7 @@ st.markdown(
     #AT_MVA_profile.png -> name of plot in backend
 
 st.markdown("<h1 class='title'>Sub Modules</h1>", unsafe_allow_html=True)
-
+add_vertical_space(1)
 
 col1, col2 = st.columns(2)
 st.session_state.oc.eval(f"load('Voltage_distance_matrix_whole.mat')")

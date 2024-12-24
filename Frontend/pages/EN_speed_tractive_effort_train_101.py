@@ -3,6 +3,7 @@ import streamlit as st
 from PIL import Image
 # Create an Oct2Py instance once
 from pages.EN_workspace import en_workspace
+from streamlit_extras.add_vertical_space import add_vertical_space
 from oct2py import Oct2Py
 oc = Oct2Py() 
 oc.eval('cd("../EN-50641")') 
@@ -22,7 +23,7 @@ def main():
             .custom-button {
                 display: inline-block;
                 text-decoration: none;
-                padding: 10px 30px;
+                padding: 4px 16px;
                 font-size: 20px;
                 color: #007BFF;
                 border: 2px solid #007BFF; /* Adding a white border */
@@ -39,7 +40,7 @@ def main():
    
 
     st.markdown("<h1 class='title'>Speed and Tractive Effort of Train 101</h1>", unsafe_allow_html=True)
-
+    add_vertical_space(1)
 
     # if st.button("Show speed and tractive effort plot"):
     oc.eval("setenv('GNUTERM', 'gnuplot')")

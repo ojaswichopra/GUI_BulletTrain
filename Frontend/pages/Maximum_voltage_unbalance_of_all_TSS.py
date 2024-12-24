@@ -47,7 +47,7 @@ def main():
             .custom-button {
                 display: inline-block;
                 text-decoration: none;
-                padding: 10px 30px;
+                padding: 4px 16px;
                 font-size: 20px;
                 color: #007BFF;
                 border: 2px solid #007BFF; /* Adding a white border */
@@ -62,7 +62,7 @@ def main():
     )
 
     st.markdown("<h1 class='title'>Maximum Voltage Unbalance of all TSS</h1>", unsafe_allow_html=True)
-    add_vertical_space(3)
+    add_vertical_space(1)
 
     Unb = workspace_variables['Unb']
     oc.push('Unb', Unb)

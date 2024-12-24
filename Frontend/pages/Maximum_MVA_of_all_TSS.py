@@ -46,7 +46,7 @@ def main():
             .custom-button {
                 display: inline-block;
                 text-decoration: none;
-                padding: 10px 30px;
+                padding: 4px 16px;
                 font-size: 20px;
                 color: #007BFF;
                 border: 2px solid #007BFF; /* Adding a white border */
@@ -61,7 +61,7 @@ def main():
     )
 
     st.markdown("<h1 class='title'>Maximum MVA of all TSS</h1>", unsafe_allow_html=True)
-
+    add_vertical_space(1)
     s_apprant_power_MVA_mag = workspace_variables['s_apprant_power_MVA_mag']
     oc.push('s_apprant_power_MVA_mag', s_apprant_power_MVA_mag)
     
