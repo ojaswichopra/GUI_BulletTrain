@@ -68,29 +68,31 @@ function timetable_plot(HS_train_A_F_data,HS_train_F_A_data,FR_train_A_F_data,SU
     % Set the figure to match the screen size
     set(figureHandle, 'Position', screenSize);
 
-    plot(distance,time,'LineWidth',1)          % timetable plot of train 101
-    set(gca, 'YDir','reverse')
-    hold on
-    plot(distance_102,time_102,'LineWidth',1)  % timetable plot of train 102
-    set(gca, 'YDir','reverse')
-    hold on
-    plot(distance_103,time_103,'LineWidth',1)  % timetable plot of train 103
-    set(gca, 'YDir','reverse')
-    hold on
-    plot(distance_104,time_104,'LineWidth',1)  % timetable plot of train 104
-    set(gca, 'YDir','reverse')
-    hold on
-    plot(distance_201,time_201,'LineWidth',1)  % timetable plot of train 201
-    set(gca, 'YDir','reverse')
-    hold on
-    plot(distance_301,time_301,'LineWidth',1)  % timetable plot of train 301
-    set(gca, 'YDir','reverse')
-    xlim([0 100.02])
-    legend('Train 101','Train 102','Train 103','Train 104','Train 201','Train 301','FontWeight','bold','NumColumns',2,'Location','southwest')
-    xlabel('Distance (km)','FontWeight','bold')
-    ylabel('Time (minute)','FontWeight','bold')
-    grid on
-    set(gca, 'FontSize', 16);
+    % Plot timetable data for all trains with distinct line styles and colors
+    plot(distance, time, 'LineWidth', 2, 'Color', [0 0.4470 0.7410]); % Train 101 - Blue
+    set(gca, 'YDir', 'reverse');
+    hold on;
+    plot(distance_102, time_102, 'LineWidth', 2, 'Color', [0.8500 0.3250 0.0980]); % Train 102 - Red
+    plot(distance_103, time_103, 'LineWidth', 2, 'Color', [0.9290 0.6940 0.1250]); % Train 103 - Yellow
+    plot(distance_104, time_104, 'LineWidth', 2, 'Color', [0.4940 0.1840 0.5560]); % Train 104 - Purple
+    plot(distance_201, time_201, 'LineWidth', 2, 'Color', [0.4660 0.6740 0.1880]); % Train 201 - Green
+    plot(distance_301, time_301, 'LineWidth', 2, 'Color', [0.3010 0.7450 0.9330]); % Train 301 - Cyan
+
+    % Set axis limits and properties
+    xlim([0 100.02]);
+    xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 14);
+    ylabel('Time (minute)', 'FontWeight', 'bold', 'FontSize', 14);
+    set(gca, 'FontSize', 14, 'LineWidth', 1.5);
+
+    % Add a legend (without NumColumns)
+    legend({'Train 101', 'Train 102', 'Train 103', 'Train 104', 'Train 201', 'Train 301'}, ...
+        'FontWeight', 'bold', 'Location', 'southwest');
+
+    % Add gridlines for clarity
+    grid on;
+
+    % Save the plot with high resolution
     desired_filename = '../Plots/timetable_plot.png';
     saveas(gcf, desired_filename);
+
 end

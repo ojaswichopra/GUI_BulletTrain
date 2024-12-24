@@ -25,15 +25,32 @@ function speed_TE_plot(HS_train_A_F_data)
     % Set the figure to match the screen size
     set(figureHandle, 'Position', screenSize);
 
-    plot(distance,speed,'Color','b','LineWidth',1)
-    hold on
-    plot(distance,tractive_effort,'Color','k','LineWidth',1)
-    xlabel('Distance (km)','FontWeight','bold')
-    ylabel('Speed and Tractive Effort','FontWeight','bold')
-    % xlim([0 100.5])
-    ylim([-300 300])
-    legend('Speed (km/h)','Tractive effort electric (kN)','FontWeight','bold')
-    set(gca, 'FontSize', 16);
+    % Plot speed with blue color and thicker lines
+    plot(distance, speed, 'Color', [0 0.4470 0.7410], 'LineWidth', 2); % Blue
+    hold on;
+
+    % Plot tractive effort with black color and thicker lines
+    plot(distance, tractive_effort, 'Color', [0 0 0], 'LineWidth', 2); % Black
+
+    % Add labels with bold font
+    xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 14);
+    ylabel('Speed and Tractive Effort', 'FontWeight', 'bold', 'FontSize', 14);
+
+    % Set axis limits
+    ylim([-300 300]);
+
+    % Add a legend with bold font
+    legend({'Speed (km/h)', 'Tractive Effort Electric (kN)'}, ...
+        'FontWeight', 'bold', 'FontSize', 14, 'Location', 'best');
+
+    % Add grid for better readability
+    grid on;
+
+    % Set axis font size and line width
+    set(gca, 'FontSize', 14, 'LineWidth', 1.5);
+
+    % Save the plot with high resolution
     desired_filename = '../Plots/speed_te_plot.png';
     saveas(gcf, desired_filename);
+
 end

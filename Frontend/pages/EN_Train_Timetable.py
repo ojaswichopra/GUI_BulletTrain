@@ -37,7 +37,7 @@ def main():
             unsafe_allow_html=True,
         )
 
-    st.markdown("<h1 class='title'>Train timetable plot</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Train Timetable Plot</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
     # if st.button("Show train timetable plot"):
