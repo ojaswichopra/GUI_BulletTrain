@@ -62,6 +62,18 @@ def main():
         .title {
             text-align: center;
         }
+        .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 4px 16px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
     </style>
     """,
         unsafe_allow_html=True,
@@ -77,7 +89,7 @@ def main():
         orientation="horizontal",
         styles={    
         "nav-link": {"font-size": "20px", "text-align": "center", "margin":"0px", "--hover-color": "#ffffff"},
-        "nav-link-selected": {"background-color": "#2B8C0C"},
+        "nav-link-selected": {"background-color": "#007BFF"},
         }   
     )
 
@@ -250,5 +262,11 @@ def main():
 
 if __name__ == "__main__":
     main()
-    if st.button("Back"):
-        st.switch_page("Landing.py")
+    # if st.button("Back"):
+    #     st.switch_page("Landing.py")
+    st.markdown(
+        f"""
+        <a href="/Landing" target="_self" class="custom-button">Back</a>
+        """,
+        unsafe_allow_html=True
+    )

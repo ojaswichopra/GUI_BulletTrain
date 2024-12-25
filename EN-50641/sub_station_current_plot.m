@@ -36,15 +36,31 @@ function sub_station_current_plot(sub_station_catenary_current,sub_station_feede
     % Set the figure to match the screen size
     set(figureHandle, 'Position', screenSize);
 
-    plot(sub_station_catenary_current_abs);
-    hold on
-    plot(sub_station_feeder_current_abs);
-    xlabel('Time (sec)','FontWeight','bold')
-    ylabel('Current Magnitude (Amp)','FontWeight','bold')
-    legend('contact line total current','negative feeder total current','FontWeight','bold')
-    set(gca, 'FontSize', 16);
+    % Plot data with thicker lines and distinguishable colors
+    plot(sub_station_catenary_current_abs, 'LineWidth', 2, 'Color', [0 0.4470 0.7410]); % Blue
+    hold on;
+    plot(sub_station_feeder_current_abs, 'LineWidth', 2, 'Color', [0.8500 0.3250 0.0980]); % Red
 
+    % Add labels with bold text
+    xlabel('Time (sec)', 'FontWeight', 'bold', 'FontSize', 16);
+    ylabel('Current Magnitude (Amp)', 'FontWeight', 'bold', 'FontSize', 16);
+
+    % Add legend with bold font
+    legend({'Contact line total current', 'Negative feeder total current'}, ...
+        'FontWeight', 'bold', 'FontSize', 14, 'Location', 'best');
+
+    % Improve grid visibility
+    grid on;
+
+    % Set axis font size and line width
+    set(gca, 'FontSize', 16, 'LineWidth', 1.5);
+
+    % Set tight axis limits for better visualization
+    axis tight;
+
+    % Save the plot with high resolution
     desired_filename = '../Plots/sub_station_current.png';
     saveas(gcf, desired_filename);
+
     toc
 end

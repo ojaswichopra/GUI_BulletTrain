@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+from streamlit_extras.add_vertical_space import add_vertical_space
 from PIL import Image
 # Create an Oct2Py instance once
 from pages.workspace import workspace_variables
@@ -18,6 +19,18 @@ def main():
             .title {
                 text-align: center;
             }
+            .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 4px 16px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
         </style>
         """,
             unsafe_allow_html=True,
@@ -26,7 +39,7 @@ def main():
     #AT_MVA_profile.png -> name of plot in backend
 
     st.markdown("<h1 class='title'>Voltage Profile at a Particular Distance</h1>", unsafe_allow_html=True)
-
+    add_vertical_space(1)
 
     total_distance_from_start_point = st.number_input("Enter the distance (in Km) from starting point at which the voltage profile over entire durations of train scheduling needs to be investigated'", min_value=0)
     
@@ -106,5 +119,11 @@ def main():
 
 if __name__ == "__main__":
     main()
-    if st.button("Back"):
-        st.switch_page("pages/Load_Flow_Output.py")
+    # if st.button("Back"):
+    #     st.switch_page("pages/Load_Flow_Output.py")
+    st.markdown(
+        f"""
+        <a href="/Load_Flow_Output" target="_self" class="custom-button">Back</a>
+        """,
+        unsafe_allow_html=True
+    )

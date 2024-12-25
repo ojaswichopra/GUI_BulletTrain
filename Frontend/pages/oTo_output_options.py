@@ -29,7 +29,7 @@ def main():
         .custom-button {
                 display: inline-block;
                 text-decoration: none;
-                padding: 10px 30px;
+                padding: 4px 16px;
                 font-size: 20px;
                 color: #007BFF;
                 border: 2px solid #007BFF; /* Adding a white border */
@@ -50,11 +50,15 @@ def main():
     with col1:
         if st.button('Train voltage profile'):
             st.switch_page("pages/oTo_train_voltage_profile.py")
-        if st.button('Voltage profile of full track at particular time instant'):
-            st.switch_page("pages/oTo_voltage_profile_full_track.py")
+        
     with col2:
         if st.button('TSS MVA & Voltage Unbalance profile'):
             st.switch_page("pages/oTo_TSS_MVA_unbalance_profile.py")
+    
+    c1,c2,c3,c4 = st.columns(4)
+    with c2:
+        if st.button('Voltage profile of full track at particular time instant'):
+            st.switch_page("pages/oTo_voltage_profile_full_track.py")
 
     
 if __name__ == "__main__":

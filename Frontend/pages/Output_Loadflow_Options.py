@@ -6,7 +6,7 @@ from pages.workspace import workspace_variables
 from pages.EN_workspace import en_workspace
 import numpy as np
  
- 
+    
 def load_EN_workspace():
     oc = Oct2Py() 
     oc.eval('cd("../EN-50641")')
@@ -69,7 +69,7 @@ def main():
         .custom-button {
                 display: inline-block;
                 text-decoration: none;
-                padding: 10px 30px;
+                padding: 4px 16px;
                 font-size: 20px;
                 color: #007BFF;
                 border: 2px solid #007BFF; /* Adding a white border */
