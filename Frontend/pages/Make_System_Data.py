@@ -1,17 +1,22 @@
+import csv
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_option_menu import option_menu
-import json
 
 # Define the path to your system data file
-file_path = "system data file.txt"
+file_path = "system_data.csv"
 
-# Function to write the updated data back to the text file
+# Function to write the updated data back to the CSV file
 def write_data(file_path, data):
-    with open(file_path, 'w') as file:
+    with open(file_path, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        # Write the header
+        writer.writerow(["Name", "Value"])  # Header row with columns: Name, Value
+        # Write each key-value pair in the same row
         for key, value in data.items():
-            file.write(f"{key}\n{value}\n\n")
-
+            if isinstance(value, (list, tuple)):
+                value = " ".join(map(str, value))  # Join elements with a space or comma
+            writer.writerow([key, value])  # Write key and value in the same row
 
 def main():
     # Default values for placeholders
@@ -94,13 +99,10 @@ def main():
     )
 
     if selected == "Prepare Fresh Data":
-        # Initialize a session state variable to store the edited content
         if 'edited_content' not in st.session_state:
             st.session_state.edited_content = ""
         with st.form("prepare_fresh_data_form"):
             st.write("Enter fresh values for system data:")
-
-            # Taking input for all fields; use placeholders for text inputs
             num_tss = st.text_input("Number of TSS:", placeholder=str(default_values["Number of TSS:"]))
             distance_tss = st.text_input("Distance (in km) of all the TSSs measured from the starting point:", placeholder=default_values["Distance (in km) of all the TSSs measured from the starting point:"])
             num_at = st.text_input("Number of AT:", placeholder=str(default_values["Number of AT:"]))
@@ -137,11 +139,10 @@ def main():
             rail_diameter = st.text_input("Diameter (mm) of rail:", placeholder=str(default_values["Diameter (mm) of rail:"]))
             rail_resistance = st.text_input("Resistance (ohm/km) of rail:", placeholder=str(default_values["Resistance (ohm/km) of rail:"]))
 
-            # Submit button
             submit_button = st.form_submit_button("Save Data")
 
             if submit_button:
-                # Handle the form data
+                # Validate and save data...
                 try:
                     # Convert text inputs to integers or floats where applicable
                     num_tss = int(num_tss or default_values["Number of TSS:"])
@@ -181,41 +182,41 @@ def main():
                     rail_resistance = float(rail_resistance or default_values["Resistance (ohm/km) of rail:"])
                     
                     new_data = {
-                    "Number of TSS:": num_tss,
-                    "Distance (in km) of all the TSSs measured from the starting point:": distance_tss,
-                    "Number of AT:": num_at,
-                    "Distance (in km) of all the ATs measured from the starting point:": distance_at,
-                    "TSS primary voltage (Kv):": primary_voltage,
-                    "TSS secondary voltage (Kv):": secondary_voltage,
-                    "Primary side resistance (ohm):": primary_resistance,
-                    "Primary side reactance (ohm):": primary_reactance,
-                    "Secondary side resistance (ohm):": secondary_resistance,
-                    "Secondary side reactance (ohm):": secondary_reactance,
-                    "Rail Grounding impedance (ohm):": rail_ground_impedance,
-                    "TSS (source side) short circuit MVA:": short_circuit_mva,
-                    "AT leakage resistance (ohm):": at_leakage_resistance,
-                    "AT leakage reactance (ohm):": at_leakage_reactance,
-                    "AT magnetising resistance (ohm):": at_magnetising_resistance,
-                    "AT magnetising reactance (ohm):": at_magnetising_reactance,
-                    "Homogenous earth conducting resistivity:": earth_conducting_resistivity,
-                    "Frequency (Hz):": frequency,
-                    "Number of conductors (contact, rail, feeder, messenger, earth):": num_conductors,
-                    "Contact wire height (m) measured from rail:": contact_wire_height,
-                    "Messenger wire height (m) measured from rail:": messenger_wire_height,
-                    "Feeder wire height (m) measured from rail:": feeder_wire_height,
-                    "Feeder wire distance (m) measured from centre (rail):": feeder_wire_distance,
-                    "Earth (ground) wire height (m) measured from rail:": earth_wire_height,
-                    "Earth (ground) wire distance (m) measured from centre (rail):": earth_wire_distance,
-                    "Diameter (mm) of contact wire:": contact_wire_diameter,
-                    "Resistance (ohm/km) of contact wire:": contact_wire_resistance,
-                    "Diameter (mm) of messenger wire:": messenger_wire_diameter,
-                    "Resistance (ohm/km) of messenger wire:": messenger_wire_resistance,
-                    "Diameter (mm) of earth(ground) wire:": earth_wire_diameter,
-                    "Resistance (ohm/km) of earth(ground) wire:": earth_wire_resistance,
-                    "Diameter (mm) of feeder wire:": feeder_wire_diameter,
-                    "Resistance (ohm/km) of feeder wire:": feeder_wire_resistance,
-                    "Diameter (mm) of rail:": rail_diameter,
-                    "Resistance (ohm/km) of rail:": rail_resistance,
+                        "Number of TSS:": num_tss,
+                        "Distance (in km) of all the TSSs measured from the starting point:": distance_tss,
+                        "Number of AT:": num_at,
+                        "Distance (in km) of all the ATs measured from the starting point:": distance_at,
+                        "TSS primary voltage (Kv):": primary_voltage,
+                        "TSS secondary voltage (Kv):": secondary_voltage,
+                        "Primary side resistance (ohm):": primary_resistance,
+                        "Primary side reactance (ohm):": primary_reactance,
+                        "Secondary side resistance (ohm):": secondary_resistance,
+                        "Secondary side reactance (ohm):": secondary_reactance,
+                        "Rail Grounding impedance (ohm):": rail_ground_impedance,
+                        "TSS (source side) short circuit MVA:": short_circuit_mva,
+                        "AT leakage resistance (ohm):": at_leakage_resistance,
+                        "AT leakage reactance (ohm):": at_leakage_reactance,
+                        "AT magnetising resistance (ohm):": at_magnetising_resistance,
+                        "AT magnetising reactance (ohm):": at_magnetising_reactance,
+                        "Homogenous earth conducting resistivity:": earth_conducting_resistivity,
+                        "Frequency (Hz):": frequency,
+                        "Number of conductors (contact, rail, feeder, messenger, earth):": num_conductors,
+                        "Contact wire height (m) measured from rail:": contact_wire_height,
+                        "Messenger wire height (m) measured from rail:": messenger_wire_height,
+                        "Feeder wire height (m) measured from rail:": feeder_wire_height,
+                        "Feeder wire distance (m) measured from centre (rail):": feeder_wire_distance,
+                        "Earth (ground) wire height (m) measured from rail:": earth_wire_height,
+                        "Earth (ground) wire distance (m) measured from centre (rail):": earth_wire_distance,
+                        "Diameter (mm) of contact wire:": contact_wire_diameter,
+                        "Resistance (ohm/km) of contact wire:": contact_wire_resistance,
+                        "Diameter (mm) of messenger wire:": messenger_wire_diameter,
+                        "Resistance (ohm/km) of messenger wire:": messenger_wire_resistance,
+                        "Diameter (mm) of earth(ground) wire:": earth_wire_diameter,
+                        "Resistance (ohm/km) of earth(ground) wire:": earth_wire_resistance,
+                        "Diameter (mm) of feeder wire:": feeder_wire_diameter,
+                        "Resistance (ohm/km) of feeder wire:": feeder_wire_resistance,
+                        "Diameter (mm) of rail:": rail_diameter,
+                        "Resistance (ohm/km) of rail:": rail_resistance,
                     }
 
                     write_data(file_path,new_data)
@@ -224,49 +225,25 @@ def main():
                     formatted_text = "\n\n".join([f"{key}\n{value}" for key, value in new_data.items()])  # Format key-value pairs
                     # Store the formatted plain text in session state
                     st.session_state.edited_content = formatted_text
-                    
+
                 except ValueError as e:
                     st.error(f"Error in data conversion: {e}")
-        # If the content has been saved, offer the download button outside the form
         if st.session_state.edited_content:
+            # st.download_button(
+            #     label="Download updated file",
+            #     data=st.session_state.edited_content,
+            #     file_name="updated_file.csv",  # File name for download
+            #     mime="text/plain"
+            # )    
             st.download_button(
-                label="Download updated file",
-                data=st.session_state.edited_content,
-                file_name="updated_file.txt",  # File name for download
-                mime="text/plain"
-            )    
-                    
-    elif selected == "Edit Existing Data":
-        
-        uploaded_file = st.file_uploader("Upload a .txt file", type="txt")
+            label="Download CSV",
+            data=open(file_path, "rb").read(),
+            file_name="system_data.csv",
+            mime="text/csv"
+        )
 
-        if uploaded_file is not None:
-            # Read the uploaded file
-            file_content = uploaded_file.getvalue().decode("utf-8")
-
-            # Text area for editing file content
-            edited_content = st.text_area("Edit the data below:", file_content, height=300)
-
-            if st.button("Save Updated Data"):
-                # Save the updated content back to a file
-                with open(file_path, "w") as file:
-                    file.write(edited_content)
-                st.success("Data saved successfully!")
-                # Offer the file for download
-                st.download_button(
-                    label="Download updated file",
-                    data=edited_content,
-                    file_name="system_data.txt",  # File name for download
-                    mime="text/plain"
-                )
 
 if __name__ == "__main__":
     main()
-    # if st.button("Back"):
-    #     st.switch_page("Landing.py")
-    st.markdown(
-        f"""
-        <a href="/Landing" target="_self" class="custom-button">Back</a>
-        """,
-        unsafe_allow_html=True
-    )
+
+
