@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_extras.add_vertical_space import add_vertical_space
 import os
 
 
@@ -28,7 +29,7 @@ def main():
         .custom-button {
                 display: inline-block;
                 text-decoration: none;
-                padding: 10px 30px;
+                padding: 4px 16px;
                 font-size: 20px;
                 color: #007BFF;
                 border: 2px solid #007BFF; /* Adding a white border */
@@ -42,6 +43,7 @@ def main():
         unsafe_allow_html=True,
     )
     st.markdown("<h1 class='title'>Mumbai Ahemadabad Track (each-stop Train)</h1>", unsafe_allow_html=True)
+    add_vertical_space(1)
     c1,c2 = st.columns(2)
     with c1:
         if st.button("Normal Operating Condition"):

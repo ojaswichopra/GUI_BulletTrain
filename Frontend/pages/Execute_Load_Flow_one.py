@@ -148,13 +148,25 @@ st.markdown(
     .title {
         text-align: center;
     }
+    .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 4px 16px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
     
 </style>
 """,
     unsafe_allow_html=True,
 )
 st.markdown("<h1 class='title'>One TSS Outage</h1>", unsafe_allow_html=True)
-add_vertical_space(2)
+add_vertical_space(1)
 
 # File uploads for system data and train timetable
 system_data_file = st.file_uploader("Upload System Data File (.txt)", type="txt", key="system_data")
@@ -218,5 +230,12 @@ if st.button("Submit"):
                 break
             time.sleep(10)  # Sleep for a second before checking again
             
-if st.button("Back"):
-    st.switch_page("pages/Execute_Load_Flow_TSS.py")
+# if st.button("Back"):
+#     st.switch_page("pages/Execute_Load_Flow_TSS.py")
+    
+st.markdown(
+    f"""
+    <a href="/Execute_Load_Flow_TSS" target="_self" class="custom-button">Back</a>
+    """,
+    unsafe_allow_html=True
+)

@@ -23,13 +23,25 @@ def main():
             .title {
                 text-align: center;
             }
+            .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 4px 16px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
         </style>
         """,
             unsafe_allow_html=True,
         )
 
     st.markdown("<h1 class='title'>TSS MVA & Voltage Unbalance profile</h1>", unsafe_allow_html=True)
-
+    add_vertical_space(1)
     nn_track = st.number_input("Enter the TSS number for MVA profile", min_value=0)
 
     if(st.button("Show TSS MVA profile")):
@@ -149,5 +161,11 @@ def main():
 
 if __name__ == "__main__":
     main()
-    if st.button("Back"):
-        st.switch_page("pages/tTo_output_options.py")
+    # if st.button("Back"):
+    #     st.switch_page("pages/tTo_output_options.py")
+    st.markdown(
+        f"""
+        <a href="/tTo_output_options" target="_self" class="custom-button">Back</a>
+        """,
+        unsafe_allow_html=True
+    )

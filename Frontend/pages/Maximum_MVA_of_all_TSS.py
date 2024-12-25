@@ -43,13 +43,25 @@ def main():
             p {
                 text-align: center;
             }
+            .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 4px 16px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
     st.markdown("<h1 class='title'>Maximum MVA of all TSS</h1>", unsafe_allow_html=True)
-
+    add_vertical_space(1)
     s_apprant_power_MVA_mag = workspace_variables['s_apprant_power_MVA_mag']
     oc.push('s_apprant_power_MVA_mag', s_apprant_power_MVA_mag)
     
@@ -97,8 +109,14 @@ def main():
     )
     st.markdown("</div>", unsafe_allow_html=True)
 
-    if st.button("Back"):
-        st.switch_page("pages/Load_Flow_Output.py")
+    # if st.button("Back"):
+    #     st.switch_page("pages/Load_Flow_Output.py")
 
 if __name__ == "__main__":
     main()
+    st.markdown(
+        f"""
+        <a href="/Load_Flow_Output" target="_self" class="custom-button">Back</a>
+        """,
+        unsafe_allow_html=True
+    )

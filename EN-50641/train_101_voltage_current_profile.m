@@ -100,21 +100,26 @@ function train_101_voltage_current_profile(HS_train_A_F_data,d,line_data_M_emp,d
     % Set the figure to match the screen size
     set(figureHandle, 'Position', screenSize);
 
-    subplot(2,1,1)
-    plot(train_distance_from_start,train_current_abs);
-    ylim([-300 400])
-    xlabel('Distance (km)','FontWeight','bold')
-    ylabel('Train Current (Amp)','FontWeight','bold')
-    set(gca, 'FontSize', 16);
-    subplot(2,1,2)
-    plot(train_distance_from_start,voltage_train_abs);
-    xlabel('Distance (km)','FontWeight','bold')
-    ylabel('Train Voltage (kV)','FontWeight','bold')
-    set(gca, 'FontSize', 16);
-    % plot(train_distance_from_start,train_current_ang);
+    % Plot train current profile in the first subplot
+    subplot(2,1,1);
+    plot(train_distance_from_start, train_current_abs, 'LineWidth', 2, 'Color', [0 0.4470 0.7410]); % Blue
+    ylim([-300 400]);
+    xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 14);
+    ylabel('Train Current (Amp)', 'FontWeight', 'bold', 'FontSize', 14);
+    grid on;
+    set(gca, 'FontSize', 14, 'LineWidth', 1.5);
 
+    % Plot train voltage profile in the second subplot
+    subplot(2,1,2);
+    plot(train_distance_from_start, voltage_train_abs, 'LineWidth', 2, 'Color', [0.8500 0.3250 0.0980]); % Red
+    xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 14);
+    ylabel('Train Voltage (kV)', 'FontWeight', 'bold', 'FontSize', 14);
+    grid on;
+    set(gca, 'FontSize', 14, 'LineWidth', 1.5);
 
+    % Save the plot with high resolution
     desired_filename = '../Plots/voltage_current_profile.png';
     saveas(gcf, desired_filename);
+
     toc
 end

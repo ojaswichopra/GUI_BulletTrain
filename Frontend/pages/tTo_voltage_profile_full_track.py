@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+from streamlit_extras.add_vertical_space import add_vertical_space
 from PIL import Image
 # Create an Oct2Py instance once
 from pages.tTo_Workspace import tTo_workspace
@@ -18,13 +19,25 @@ def main():
             .title {
                 text-align: center;
             }
+            .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 4px 16px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
         </style>
         """,
             unsafe_allow_html=True,
         )
 
     st.markdown("<h1 class='title'>Voltage profile of full track at particular time instant</h1>", unsafe_allow_html=True)
-
+    add_vertical_space(1)
     track_time_1 = st.number_input("Enter the time instant (in second) for getting voltage profile along the track", min_value=0)
     x_reso = st.number_input("Enter the distance resolution (in meter) for voltage profile along the track", min_value=0)
     if(st.button("Show")):
@@ -141,5 +154,11 @@ def main():
 
 if __name__ == "__main__":
     main()
-    if st.button("Back"):
-        st.switch_page("pages/tTo_output_options.py")
+    # if st.button("Back"):
+    #     st.switch_page("pages/tTo_output_options.py")
+    st.markdown(
+        f"""
+        <a href="/tTo_output_options" target="_self" class="custom-button">Back</a>
+        """,
+        unsafe_allow_html=True
+    )
