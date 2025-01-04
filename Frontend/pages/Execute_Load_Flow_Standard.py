@@ -5,6 +5,7 @@ from oct2py import Oct2Py
 import multiprocessing
 from pages.run_loadflow import *  # Import the backend function directly
 import time
+import pandas as pd  # Add this import for working with CSV files
 
 
 def run_backend_process(extracted_data):
@@ -47,85 +48,51 @@ def extract_system_data(file_content):
     dict: A dictionary containing the extracted system data.
     """
     # Split the content into lines
-    lines = file_content.splitlines()
-
-    # Dictionary to store the extracted data
-    data = {}
-
-    # Iterate over lines and extract data
-    for i, line in enumerate(lines):
-        # Extract single number values
-        if "Number of TSS:" in line:
-            data['num_tss'] = int(lines[i+1].strip())
-        elif "Distance (in km) of all the TSSs" in line:
-            data['tss_distances'] = eval(lines[i+1].strip())
-        elif "Number of AT:" in line:
-            data['num_at'] = int(lines[i+1].strip())
-        elif "Distance (in km) of all the ATs" in line:
-            data['at_distances'] = eval(lines[i+1].strip())
-        elif "TSS primary voltage (Kv):" in line:
-            data['tss_primary_voltage'] = float(lines[i+1].strip())
-        elif "TSS secondary voltage (Kv):" in line:
-            data['tss_secondary_voltage'] = float(lines[i+1].strip())
-        elif "Primary side resistance (ohm):" in line:
-            data['primary_resistance'] = float(lines[i+1].strip())
-        elif "Primary side reactance (ohm):" in line:
-            data['primary_reactance'] = float(lines[i+1].strip())
-        elif "Secondary side resistance (ohm):" in line:
-            data['secondary_resistance'] = float(lines[i+1].strip())
-        elif "Secondary side reactance (ohm):" in line:
-            data['secondary_reactance'] = float(lines[i+1].strip())
-        elif "Rail Grounding impedance (ohm):" in line:
-            data['rail_grounding_impedance'] = float(lines[i+1].strip())
-        elif "TSS (source side) short circuit MVA:" in line:
-            data['short_circuit_mva'] = float(lines[i+1].strip())
-        elif "AT leakage resistance (ohm):" in line:
-            data['at_leakage_resistance'] = float(lines[i+1].strip())
-        elif "AT leakage reactance (ohm):" in line:
-            data['at_leakage_reactance'] = float(lines[i+1].strip())
-        elif "AT magnetising resistance (ohm):" in line:
-            data['at_magnetising_resistance'] = float(lines[i+1].strip())
-        elif "AT magnetising reactance (ohm):" in line:
-            data['at_magnetising_reactance'] = float(lines[i+1].strip())
-        elif "Homogenous earth conducting resistivity:" in line:
-            data['earth_resistivity'] = float(lines[i+1].strip())
-        elif "Frequency (Hz):" in line:
-            data['frequency'] = float(lines[i+1].strip())
-        elif "Number of conductors" in line:
-            data['num_conductors'] = int(lines[i+1].strip())
-        elif "Contact wire height (m) measured from rail:" in line:
-            data['contact_wire_height'] = float(lines[i+1].strip())
-        elif "Messenger wire height (m) measured from rail:" in line:
-            data['messenger_wire_height'] = float(lines[i+1].strip())
-        elif "Feeder wire height (m) measured from rail:" in line:
-            data['feeder_wire_height'] = float(lines[i+1].strip())
-        elif "Feeder wire distance (m) measured from centre (rail):" in line:
-            data['feeder_wire_distance'] = float(lines[i+1].strip())
-        elif "Earth (ground) wire height (m) measured from rail:" in line:
-            data['earth_wire_height'] = float(lines[i+1].strip())
-        elif "Earth (ground) wire distance (m) measured from centre (rail):" in line:
-            data['earth_wire_distance'] = float(lines[i+1].strip())
-        elif "Diameter (mm) of contact wire:" in line:
-            data['contact_wire_diameter'] = float(lines[i+1].strip())
-        elif "Resistance (ohm/km) of contact wire:" in line:
-            data['contact_wire_resistance'] = float(lines[i+1].strip())
-        elif "Diameter (mm) of messenger wire:" in line:
-            data['messenger_wire_diameter'] = float(lines[i+1].strip())
-        elif "Resistance (ohm/km) of messenger wire:" in line:
-            data['messenger_wire_resistance'] = float(lines[i+1].strip())
-        elif "Diameter (mm) of earth(ground) wire:" in line:
-            data['earth_wire_diameter'] = float(lines[i+1].strip())
-        elif "Resistance (ohm/km) of earth(ground) wire:" in line:
-            data['earth_wire_resistance'] = float(lines[i+1].strip())
-        elif "Diameter (mm) of feeder wire:" in line:
-            data['feeder_wire_diameter'] = float(lines[i+1].strip())
-        elif "Resistance (ohm/km) of feeder wire:" in line:
-            data['feeder_wire_resistance'] = float(lines[i+1].strip())
-        elif "Diameter (mm) of rail:" in line:
-            data['rail_diameter'] = float(lines[i+1].strip())
-        elif "Resistance (ohm/km) of rail:" in line:
-            data['rail_resistance'] = float(lines[i+1].strip())
-
+    # Read the CSV content into a pandas DataFrame
+    df = pd.read_csv(file_content)
+    # Convert the DataFrame to a dictionary for easier access
+    data_dict = df.set_index('Name')['Value'].to_dict()
+    
+    # Extract data into a structured format
+    tss_distances_raw = data_dict.get('Distance (in km) of all the TSSs measured from the starting point:', '')
+    at_distances_raw = data_dict.get('Distance (in km) of all the ATs measured from the starting point:', '')
+    data = {
+        'num_tss': int(data_dict.get('Number of TSS:', 0)),
+        'tss_distances': [float(x) for x in tss_distances_raw.split()] if tss_distances_raw else [],
+        'num_at': int(data_dict.get('Number of AT:', 0)),
+        'at_distances': [float(x) for x in at_distances_raw.split()] if at_distances_raw else [],
+        'tss_primary_voltage': float(data_dict.get('TSS primary voltage (Kv):', 0)),
+        'tss_secondary_voltage': float(data_dict.get('TSS secondary voltage (Kv):', 0)),
+        'primary_resistance': float(data_dict.get('Primary side resistance (ohm):', 0)),
+        'primary_reactance': float(data_dict.get('Primary side reactance (ohm):', 0)),
+        'secondary_resistance': float(data_dict.get('Secondary side resistance (ohm):', 0)),
+        'secondary_reactance': float(data_dict.get('Secondary side reactance (ohm):', 0)),
+        'rail_grounding_impedance': float(data_dict.get('Rail Grounding impedance (ohm):', 0)),
+        'short_circuit_mva': float(data_dict.get('TSS (source side) short circuit MVA:', 0)),
+        'at_leakage_resistance': float(data_dict.get('AT leakage resistance (ohm):', 0)),
+        'at_leakage_reactance': float(data_dict.get('AT leakage reactance (ohm):', 0)),
+        'at_magnetising_resistance': float(data_dict.get('AT magnetising resistance (ohm):', 0)),
+        'at_magnetising_reactance': float(data_dict.get('AT magnetising reactance (ohm):', 0)),
+        'earth_resistivity': float(data_dict.get('Homogenous earth conducting resistivity:', 0)),
+        'frequency': float(data_dict.get('Frequency (Hz):', 0)),
+        'num_conductors': int(data_dict.get('Number of conductors:', 0)),
+        'contact_wire_height': float(data_dict.get('Contact wire height (m) measured from rail:', 0)),
+        'messenger_wire_height': float(data_dict.get('Messenger wire height (m) measured from rail:', 0)),
+        'feeder_wire_height': float(data_dict.get('Feeder wire height (m) measured from rail:', 0)),
+        'feeder_wire_distance': float(data_dict.get('Feeder wire distance (m) measured from centre (rail):', 0)),
+        'earth_wire_height': float(data_dict.get('Earth (ground) wire height (m) measured from rail:', 0)),
+        'earth_wire_distance': float(data_dict.get('Earth (ground) wire distance (m) measured from centre (rail):', 0)),
+        'contact_wire_diameter': float(data_dict.get('Diameter (mm) of contact wire:', 0)),
+        'contact_wire_resistance': float(data_dict.get('Resistance (ohm/km) of contact wire:', 0)),
+        'messenger_wire_diameter': float(data_dict.get('Diameter (mm) of messenger wire:', 0)),
+        'messenger_wire_resistance': float(data_dict.get('Resistance (ohm/km) of messenger wire:', 0)),
+        'earth_wire_diameter': float(data_dict.get('Diameter (mm) of earth(ground) wire:', 0)),
+        'earth_wire_resistance': float(data_dict.get('Resistance (ohm/km) of earth(ground) wire:', 0)),
+        'feeder_wire_diameter': float(data_dict.get('Diameter (mm) of feeder wire:', 0)),
+        'feeder_wire_resistance': float(data_dict.get('Resistance (ohm/km) of feeder wire:', 0)),
+        'rail_diameter': float(data_dict.get('Diameter (mm) of rail:', 0)),
+        'rail_resistance': float(data_dict.get('Resistance (ohm/km) of rail:', 0)),
+    }
     return data
 
 
@@ -160,14 +127,12 @@ st.markdown("<h1 class='title'>Execute EN-50641 Standard Validation Load Flow</h
 
 add_vertical_space(1)
 # File uploads for system data and train timetable
-system_data_file = st.file_uploader("Upload System Data File (.txt)", type="txt", key="system_data")
+system_data_file = st.file_uploader("Upload System Data File (.csv)", type="csv", key="system_data")
 if system_data_file is not None:
-    # Read the content of the file
-    content = system_data_file.read().decode('utf-8')
-    
-    # Extract the data using the function
-    extracted_data = extract_system_data(content)
+    # Extract data from the uploaded CSV file
+    extracted_data = extract_system_data(system_data_file)
     st.success(f"File saved.")
+    # print(extracted_data)
     
     
 timetable_file_HS_AF = st.file_uploader("Upload the timetable of the high-speed (HS) train running from station A to F (.txt)", type="txt")
