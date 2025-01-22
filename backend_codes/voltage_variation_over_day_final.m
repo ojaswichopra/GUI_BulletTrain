@@ -113,26 +113,49 @@ function voltage_variation_over_day_final(total_distance_from_start_point,d, dTS
             point_i=point_i+1;
         end
         %plot(time_points,abs(Voltage_distance));
-        figureHandle = figure;
+        % Create a figure handle
+figureHandle = figure;
 
-        % Get screen size from root object (0)
-        screenSize = get(0, 'ScreenSize');
-    
-        % Set the figure to match the screen size
-        set(figureHandle, 'Position', screenSize);
+% Get screen size from root object (0)
+screenSize = get(0, 'ScreenSize');
 
-        subplot(3,1,1)
-        plot(time_points,abs(Voltage_distance(:,1)));
-        xlabel('Time (sec)','FontWeight','bold')
-        ylabel('Contact voltage magnitude (kV)','FontWeight','bold')
-        subplot(3,1,2)
-        plot(time_points,abs(Voltage_distance(:,2)));
-        xlabel('Time (sec)','FontWeight','bold')
-        ylabel('Rail voltage magnitude (kV)','FontWeight','bold')
-        subplot(3,1,3)
-        plot(time_points,abs(Voltage_distance(:,3)));
-        xlabel('Time (sec)','FontWeight','bold')
-        ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
+% Set the figure to match the screen size
+set(figureHandle, 'Position', [100, 100, 1830, 1300]);
+
+% Define line properties for better visibility
+lineWidth = 2;
+
+% Subplot 1: Contact Voltage Magnitude
+subplot(3, 1, 1);
+plot(time_points, abs(Voltage_distance(:, 1)), 'LineWidth', lineWidth, 'Color', [0.8500 0.3250 0.0980]); % Red line
+xlabel('Time (sec)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Contact voltage magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Contact Voltage Over Time', 'FontWeight', 'bold', 'FontSize', 14);
+% grid on; % Add grid for better readability
+
+% Subplot 2: Rail Voltage Magnitude
+subplot(3, 1, 2);
+plot(time_points, abs(Voltage_distance(:, 2)), 'LineWidth', lineWidth, 'Color', [0.4660 0.6740 0.1880]); % Green line
+xlabel('Time (sec)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Rail voltage magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Rail Voltage Over Time', 'FontWeight', 'bold', 'FontSize', 14);
+% grid on;
+
+% Subplot 3: Feeder Voltage Magnitude
+subplot(3, 1, 3);
+plot(time_points, abs(Voltage_distance(:, 3)), 'LineWidth', lineWidth, 'Color', [0.3010 0.7450 0.9330]); % Blue line
+xlabel('Time (sec)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Feeder voltage magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Feeder Voltage Over Time', 'FontWeight', 'bold', 'FontSize', 14);
+% grid on;
+
+% Set consistent figure background and formatting
+set(gcf, 'Color', 'w'); % White background
+for i = 1:3
+    subplot(3, 1, i);
+    set(gca, 'FontSize', 12, 'LineWidth', 1.2); % Uniform axis properties
+end
+
 
     else %%%% Main Winding side %%%%
         ntt=length(dTSS_M(:,1));
@@ -190,26 +213,49 @@ function voltage_variation_over_day_final(total_distance_from_start_point,d, dTS
             point_i=point_i+1;
         end
         %plot(time_points,abs(Voltage_distance_M));
-        figureHandle = figure;
+        % Create a figure handle
+figureHandle = figure;
 
-        % Get screen size from root object (0)
-        screenSize = get(0, 'ScreenSize');
-    
-        % Set the figure to match the screen size
-        set(figureHandle, 'Position', screenSize);
-        
-        subplot(3,1,1)
-        plot(time_points,abs(Voltage_distance_M(:,1)));
-        xlabel('Time (sec)','FontWeight','bold')
-        ylabel('Contact voltage magnitude (kV)','FontWeight','bold')
-        subplot(3,1,2)
-        plot(time_points,abs(Voltage_distance_M(:,2)));
-        xlabel('Time (sec)','FontWeight','bold')
-        ylabel('Rail voltage magnitude (kV)','FontWeight','bold')
-        subplot(3,1,3)
-        plot(time_points,abs(Voltage_distance_M(:,3)));
-        xlabel('Time (sec)','FontWeight','bold')
-        ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
+% Get screen size from root object (0)
+screenSize = get(0, 'ScreenSize');
+
+% Set the figure to match the screen size
+set(figureHandle, 'Position', [100, 100, 1830, 1300]);
+
+% Line properties for better visualization
+lineWidth = 2;
+
+% Subplot 1: Contact Voltage Magnitude
+subplot(3, 1, 1);
+plot(time_points, abs(Voltage_distance_M(:, 1)), 'LineWidth', lineWidth, 'Color', [0.8500 0.3250 0.0980]); % Red line
+xlabel('Time (sec)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Contact Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Contact Voltage Over Time', 'FontWeight', 'bold', 'FontSize', 14);
+% grid on; % Add grid for better readability
+
+% Subplot 2: Rail Voltage Magnitude
+subplot(3, 1, 2);
+plot(time_points, abs(Voltage_distance_M(:, 2)), 'LineWidth', lineWidth, 'Color', [0.4660 0.6740 0.1880]); % Green line
+xlabel('Time (sec)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Rail Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Rail Voltage Over Time', 'FontWeight', 'bold', 'FontSize', 14);
+% grid on;
+
+% Subplot 3: Feeder Voltage Magnitude
+subplot(3, 1, 3);
+plot(time_points, abs(Voltage_distance_M(:, 3)), 'LineWidth', lineWidth, 'Color', [0.3010 0.7450 0.9330]); % Blue line
+xlabel('Time (sec)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Feeder Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Feeder Voltage Over Time', 'FontWeight', 'bold', 'FontSize', 14);
+% grid on;
+
+% Set consistent figure background and formatting
+set(gcf, 'Color', 'w'); % White background
+for i = 1:3
+    subplot(3, 1, i);
+    set(gca, 'FontSize', 12, 'LineWidth', 1.2); % Uniform axis properties
+end
+
     end
 
     desired_filename = '../Plots/Voltage_Profile_Distance.png';

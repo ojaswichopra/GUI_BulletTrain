@@ -29,21 +29,29 @@ function voltage_profile_design_predetermine_TSS(Voltage_distance_matrix_whole,A
 
     % Set the figure to match the screen size
     set(figureHandle, 'Position', screenSize);
+
+    % Define x-axis values and labels
+    x_values = abs(pre_det_Voltage_distance_matrix_whole(:, 1)); % TSS numbers
+    x_labels = 1:length(x_values); % Sequential numbers as labels
+    x_spacing = 2; % Adjust this value for wider spacing
     
     subplot(3, 1, 1);
     bar(abs(pre_det_Voltage_distance_matrix_whole(:, 1)), abs(pre_det_Voltage_distance_matrix_whole(:, 2)));
+    set(gca, 'XTick', x_values(1:x_spacing:end)); % Increase x-axis spacing
     xlabel('TSS Numbers', 'FontWeight', 'bold');
     ylabel('Contact voltage magnitude (kV)', 'FontWeight', 'bold');
 
     % Create the second subplot (3 rows, 1 column, second plot)
     subplot(3, 1, 2);
     bar(abs(pre_det_Voltage_distance_matrix_whole(:, 1)), abs(pre_det_Voltage_distance_matrix_whole(:, 3)));
+    set(gca, 'XTick', x_values(1:x_spacing:end)); % Increase x-axis spacing
     xlabel('TSS Numbers', 'FontWeight', 'bold');
     ylabel('Rail voltage magnitude (kV)', 'FontWeight', 'bold');
 
     % Create the third subplot (3 rows, 1 column, third plot)
     subplot(3, 1, 3);
     bar(abs(pre_det_Voltage_distance_matrix_whole(:, 1)), abs(pre_det_Voltage_distance_matrix_whole(:, 4)));
+    set(gca, 'XTick', x_values(1:x_spacing:end)); % Increase x-axis spacing
     xlabel('TSS Numbers', 'FontWeight', 'bold');
     ylabel('Feeder voltage magnitude (kV)', 'FontWeight', 'bold');
 
