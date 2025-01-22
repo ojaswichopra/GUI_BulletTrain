@@ -135,24 +135,33 @@ figureHandle = figure;
 screenSize = get(0, 'ScreenSize');
 
 % Set the figure to match the screen size
-set(figureHandle, 'Position', screenSize);
+set(figureHandle, 'Position', [100, 100, 2000, 1500]);
 
-subplot(3,1,1)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)));
-title('Contact wire Voltage magnitude','FontWeight','bold')
-xlabel('Distance (kM)','FontWeight','bold')
-ylabel('Voltage magnitude (kV)','FontWeight','bold')
-%set(gca,'XTick',[5 55 105 155 205 255 305 355 405 455 505],'XTickLabel',{'TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS'})
-subplot(3,1,2)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,3)));
-title('Rail Voltage magnitude','FontWeight','bold')
-xlabel('Distance (kM)','FontWeight','bold')
-ylabel('Voltage magnitude (kV)','FontWeight','bold')
-subplot(3,1,3)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,4)));
-title('Feeder wire Voltage magnitude','FontWeight','bold')
-xlabel('Distance (kM)','FontWeight','bold')
-ylabel('Voltage magnitude (kV)','FontWeight','bold')
+
+% Plot for Contact Wire Voltage Magnitude
+subplot(3, 1, 1);
+plot((Voltage_distance_matrix_whole(:, 1) / 1000), abs(Voltage_distance_matrix_whole(:, 2)), 'LineWidth', 2);
+title('Contact Wire Voltage Magnitude', 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+% grid on;
+
+% Plot for Rail Voltage Magnitude
+subplot(3, 1, 2);
+plot((Voltage_distance_matrix_whole(:, 1) / 1000), abs(Voltage_distance_matrix_whole(:, 3)), 'LineWidth', 2);
+title('Rail Voltage Magnitude', 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+% grid on;
+
+% Plot for Feeder Wire Voltage Magnitude
+subplot(3, 1, 3);
+plot((Voltage_distance_matrix_whole(:, 1) / 1000), abs(Voltage_distance_matrix_whole(:, 4)), 'LineWidth', 2);
+title('Feeder Wire Voltage Magnitude', 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+% grid on;
+
 
 save('Voltage_distance_matrix_whole.mat', 'Voltage_distance_matrix_whole');
 

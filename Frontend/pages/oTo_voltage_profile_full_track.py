@@ -38,7 +38,7 @@ def main():
             unsafe_allow_html=True,
         )
     
-    st.markdown("<h1 class='title'>voltage profile of full track at particular time instant</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Voltage Profile of Full Track at Particular Time Instant</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     track_time_1 = st.number_input("Enter the time instant (in sec) at the which the voltage profile of track needs to be investigated", min_value=0)
     x_reso = st.number_input("Enter the distance resolution (in meter)", min_value=0)
