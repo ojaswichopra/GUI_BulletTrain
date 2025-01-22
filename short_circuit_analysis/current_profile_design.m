@@ -74,24 +74,35 @@ graphics_toolkit ("gnuplot")
 figureHandle = figure;
 screenSize = get(0, 'ScreenSize');
 
-set(figureHandle, 'Position', [100, 100, 1830, 1300]);
+set(figureHandle, 'Position', [100, 100, 1830, 1500]);
 
-subplot(3,1,1)
-plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,2)));
-title('Contact wire current magnitude')
-xlabel('Distance (kM)','FontWeight','bold')
-ylabel('current magnitude (kA)','FontWeight','bold')
-%set(gca,'XTick',[5 55 105 155 205 255 305 355 405 455 505],'XTickLabel',{'TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS'})
- subplot(3,1,2)
-plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,3)));
-title('Rail current magnitude')
-xlabel('Distance (kM)','FontWeight','bold')
-ylabel('current magnitude (kA)','FontWeight','bold')
-subplot(3,1,3)
-plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,4)));
-title('Feeder wire current magnitude')
-xlabel('Distance (kM)','FontWeight','bold')
-ylabel('current magnitude (kA)','FontWeight','bold')
+% Subplot 1: Contact wire current magnitude vs Distance
+subplot(3, 1, 1);
+plot((current_distance_matrix_whole(:, 1) / 1000), abs(current_distance_matrix_whole(:, 2)), 'LineWidth', 2, 'Color', [0.2, 0.6, 0.8]);
+title('Contact Wire Current Magnitude', 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Current Magnitude (kA)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
+grid off;
+
+% Subplot 2: Rail current magnitude vs Distance
+subplot(3, 1, 2);
+plot((current_distance_matrix_whole(:, 1) / 1000), abs(current_distance_matrix_whole(:, 3)), 'LineWidth', 2, 'Color', [0.8, 0.4, 0.4]);
+title('Rail Current Magnitude', 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Current Magnitude (kA)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
+grid off;
+
+% Subplot 3: Feeder wire current magnitude vs Distance
+subplot(3, 1, 3);
+plot((current_distance_matrix_whole(:, 1) / 1000), abs(current_distance_matrix_whole(:, 4)), 'LineWidth', 2, 'Color', [0.6, 0.4, 0.8]);
+title('Feeder Wire Current Magnitude', 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Current Magnitude (kA)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
+grid off;
+
 
 desired_filename = '../Plots_SCA/current_profile.png';
 saveas(gcf, desired_filename);
