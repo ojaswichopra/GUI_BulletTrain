@@ -133,26 +133,45 @@ function train_voltage_profile_train_number_adjacent_outage_load_file(train_numb
     % Set the figure to match the screen size
     set(figureHandle, 'Position',  [100, 100, 2500, 2000]);
    
-    subplot(4,1,1)
-    plot(train1_time/60,voltage_train_abs);
-    title(['Contact voltage of train no ', int2str(train_number),' vs Time'])
-    xlabel('Time (minute)','FontWeight','bold')
-    ylabel('Voltage Magnitude (kV)','FontWeight','bold')
-    subplot(4,1,2)
-    plot(train_distance_from_start,voltage_train_abs);
-    title(['Contact voltage of train no ', int2str(train_number),' vs Distance'])
-    xlabel('Distance (Km)','FontWeight','bold')
-    ylabel('Voltage Magnitude (kV)','FontWeight','bold')
-    subplot(4,1,3)
-    plot(train1_time/60,voltage_train_rail_abs);
-    title(['Rail voltage of train no ', int2str(train_number),' vs Time'])
-    xlabel('Time (minute)','FontWeight','bold')
-    ylabel('Voltage Magnitude (kV)','FontWeight','bold')
-    subplot(4,1,4)
-    plot(train_distance_from_start,voltage_train_rail_abs);
-    title(['Rail voltage of train no ', int2str(train_number),' vs Distance'])
-    xlabel('Distance (Km)','FontWeight','bold')
-    ylabel('Voltage Magnitude (kV)','FontWeight','bold')
+    % Subplot 1: Contact voltage vs Time
+% Subplot 1: Contact voltage vs Time
+subplot(4, 1, 1);
+plot(train1_time / 60, voltage_train_abs, 'LineWidth', 2, 'Color', [0.2, 0.6, 0.8]);
+title(['Contact Voltage of Train No. ', int2str(train_number), ' vs Time'], 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Time (minute)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
+grid off;
+
+% Subplot 2: Contact voltage vs Distance
+subplot(4, 1, 2);
+plot(train_distance_from_start, voltage_train_abs, 'LineWidth',2, 'Color', [0.8, 0.4, 0.4]);
+title(['Contact Voltage of Train No. ', int2str(train_number), ' vs Distance'], 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (Km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
+grid off;
+
+% Subplot 3: Rail voltage vs Time
+subplot(4, 1, 3);
+plot(train1_time / 60, voltage_train_rail_abs, 'LineWidth', 2, 'Color', [0.4, 0.8, 0.4]);
+title(['Rail Voltage of Train No. ', int2str(train_number), ' vs Time'], 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Time (minute)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
+grid off;
+
+% Subplot 4: Rail voltage vs Distance
+subplot(4, 1, 4);
+plot(train_distance_from_start, voltage_train_rail_abs, 'LineWidth', 2, 'Color', [0.6, 0.4, 0.8]);
+title(['Rail Voltage of Train No. ', int2str(train_number), ' vs Distance'], 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (Km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Voltage Magnitude (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
+grid off;
+
+% grid on;
+
     
     desired_filename = '../Plots_tTo/tTo_train_voltage.png';  % Replace 'desired_name' with your file name
     saveas(gcf, desired_filename);

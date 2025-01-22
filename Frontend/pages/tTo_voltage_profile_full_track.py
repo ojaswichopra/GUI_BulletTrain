@@ -40,7 +40,7 @@ def main():
     add_vertical_space(1)
     track_time_1 = st.number_input("Enter the time instant (in second) for getting voltage profile along the track", min_value=0)
     x_reso = st.number_input("Enter the distance resolution (in meter) for voltage profile along the track", min_value=0)
-    if(st.button("Show")):
+    if(st.button("Show Voltage Profile")):
         oc.eval("setenv('GNUTERM', 'gnuplot')")
         
         AT = tTo_workspace['AT']

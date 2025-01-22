@@ -42,20 +42,20 @@ function TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt(nn_track,TSS,N_T
 
     if nn_track<N_TSS_O
         nn_track_name=nn_track;
-        plot(tt_time/60,s_apprant_power_MVA_mag(:,nn_track))
+        plot(tt_time/60,s_apprant_power_MVA_mag(:,nn_track), 'LineWidth', 2, 'Color', [0.2, 0.6, 0.8])
     elseif n_track==N_TSS_O(1)|| n_track==N_TSS_O(2)
         outage_TSS_condition=zeros(length(s_apprant_power_MVA_mag(:,1)),1);
         nn_track_name=nn_track;
-        plot(tt_time/60,outage_TSS_condition(:,1));
+        plot(tt_time/60,outage_TSS_condition(:,1), 'LineWidth', 2, 'Color', [0.2, 0.6, 0.8]);
     else
         nn_track=nn_track-1
         nn_track_name=nn_track+1;
-        plot(tt_time/60,s_apprant_power_MVA_mag(:,nn_track))
+        plot(tt_time/60,s_apprant_power_MVA_mag(:,nn_track), 'LineWidth', 2, 'Color', [0.2, 0.6, 0.8])
     end
 
-    title(['MVA profile of TSS number ',num2str(nn_track_name)])
-    xlabel('Time (minute)','FontWeight','bold')
-    ylabel('MVA','FontWeight','bold')
+    title(['MVA profile of TSS number ',num2str(nn_track_name)], 'FontSize', 14)
+    xlabel('Time (minute)','FontWeight','bold', 'FontSize', 12)
+    ylabel('MVA','FontWeight','bold', 'FontSize', 12)
 
     desired_filename = '../Plots_tTo/tTo_TSS_MVA_voltage_unbalance.png';
     saveas(gcf, desired_filename);
