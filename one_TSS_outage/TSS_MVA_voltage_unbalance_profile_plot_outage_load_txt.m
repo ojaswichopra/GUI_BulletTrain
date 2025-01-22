@@ -53,15 +53,15 @@ function TSS_MVA_voltage_unbalance_profile_plot_outage_load_txt(nn_track,TSS,N_T
     
     if nn_track<N_TSS_O
         nn_track_name=nn_track;
-        plot(tt_time/60,s_apprant_power_MVA_mag(:,nn_track))
+        plot(tt_time/60,s_apprant_power_MVA_mag(:,nn_track), 'LineWidth', 2, 'Color', [0 0.4470 0.7410])
     elseif nn_track==N_TSS_O
         outage_TSS_condition=zeros(length(s_apprant_power_MVA_mag(:,1)),1);
         nn_track_name=nn_track;
-        plot(tt_time/60,outage_TSS_condition(:,1));
+        plot(tt_time/60,outage_TSS_condition(:,1), 'LineWidth', 2, 'Color', [0 0.4470 0.7410]);
     else
         nn_track=nn_track-1
         nn_track_name=nn_track+1;
-        plot(tt_time/60,s_apprant_power_MVA_mag(:,nn_track))
+        plot(tt_time/60,s_apprant_power_MVA_mag(:,nn_track), 'LineWidth', 2, 'Color', [0 0.4470 0.7410])
     end
     
 
