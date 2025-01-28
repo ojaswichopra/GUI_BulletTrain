@@ -7,6 +7,11 @@ import pandas as pd
 import os
 # import Train_Timetable_config
 import pages.Train_Timetable_config as Train_Timetable_config
+
+from pages.reverseGradient import revGrad
+from pages.reverseStoppage import revStoppage
+from pages.reverseTrainLimits import revTrainLimits
+
 # oc = Oct2Py() 
 # oc.eval('cd("../train_timetable")') 
 
@@ -130,8 +135,13 @@ def main():
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "stopage_data_train_time_rapid.xlsx"
             # Step 4: Save the file in the backend folder
-            with open(os.path.join(save_directory, desired_filename), "wb") as f:
-                f.write(train_operation_data.getbuffer())
+            filePath = os.path.join(save_directory, desired_filename)
+
+            
+            # Load the uploaded file directly into a Pandas DataFrame
+            df = pd.read_excel(train_operation_data)           
+            revStoppage(df, filePath)
+
             st.success(f"File saved.")
             
         speed_limit_data = st.file_uploader("Upload Forward Speed Limit Data File (.xlsx)", type="xlsx", key="speed_limit_data")
@@ -141,9 +151,11 @@ def main():
             save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "track_speed_limit.xlsx"
+            filePath = os.path.join(save_directory, desired_filename)
             # Step 4: Save the file in the backend folder
-            with open(os.path.join(save_directory, desired_filename), "wb") as f:
-                f.write(speed_limit_data.getbuffer())
+            # Load the uploaded file directly into a Pandas DataFrame
+            df = pd.read_excel(speed_limit_data)           
+            revTrainLimits(df, filePath, Train_Timetable_config.dist)
         
             st.success(f"File saved.")    
             
@@ -155,9 +167,10 @@ def main():
             save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "gradient_data.xlsx"
+            filePath = os.path.join(save_directory, desired_filename)
             # Step 4: Save the file in the backend folder
-            with open(os.path.join(save_directory, desired_filename), "wb") as f:
-                f.write(gradientData.getbuffer())
+            df = pd.read_excel(gradientData)  
+            revGrad(df, Train_Timetable_config.dist, filePath)
             st.success(f"File saved.")
     
     if st.button("Select Section"):
