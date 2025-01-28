@@ -1,4 +1,8 @@
-function train_sheduling_program_code(M, g, delt, eff, m_decl, a, b, c, max_speed):
+function train_sheduling_program_code(M, g, delt, eff, m_decl, a, b, c, max_speed, sect)
+
+    max_speed = cell2mat(max_speed);
+    sect = cell2mat(sect);
+
     global train_prof;
 
     %initial GA data
@@ -8,8 +12,9 @@ function train_sheduling_program_code(M, g, delt, eff, m_decl, a, b, c, max_spee
     % input track data
     track_data_common_rectified;
     yy=0;
-    for i_section=1:number_of_section
-        section_calculate(i_section);
+    for i_section=sect:sect
+        % section_calculate(i_section);
+        section_calculate;
         % init_data_seed;
 
         % fprintf('calculating %s - %s position-power curve through optimization.......\n....Please wait ......\n', station_names{i_section}, station_names{i_section+1});
