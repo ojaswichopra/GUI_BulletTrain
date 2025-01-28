@@ -153,7 +153,7 @@ def main():
 
     with col2:
         if st.button('Prepare train timetable'):
-            st.switch_page("pages/Train_Timetable.py")
+            st.switch_page("pages/Train_Timetable_Interface.py")
         if st.button('Perform short circuit analysis'):
             st.switch_page("pages/Short_Circuit_Analysis.py")
         if st.button('Calculate OHE temerature rise'):

@@ -1,4 +1,13 @@
-%
+% Then, convert them back to numeric arrays after all necessary processing
+M = cell2mat(M);
+g = cell2mat(g);
+delt = cell2mat(delt);
+eff = cell2mat(eff);
+m_decl = cell2mat(m_decl);
+a = cell2mat(a);
+b = cell2mat(b);
+c = cell2mat(c);
+
 % Train data
 % M = 826;           % train mass in Ton
 % g = 9.81;          % gravitational acceleration

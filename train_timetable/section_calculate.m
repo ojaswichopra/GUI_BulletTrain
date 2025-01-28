@@ -1,4 +1,4 @@
-function section_calculate(i_Section):
+% function section_calculate(i_Section):
 
         init_data_seed;
 
@@ -238,7 +238,7 @@ function section_calculate(i_Section):
             train_prof(ij,5) = 0;     % acceleration
             train_prof(ij,6) = 0;     % force (tractive or braking)
         end
-        file_name = sprintf('Output_%d(%d).txt', i_section, i_section + 1);
+        file_name = sprintf('train_timetable_%d.txt', i_section);
         % fid=fopen('output_vadodara_ahmedabad_01.txt','w');
         fid=fopen(file_name,'w');
         xx = size(train_prof,1);
@@ -248,6 +248,7 @@ function section_calculate(i_Section):
         end
         yy=xx+dura_s;
         fclose(fid);
+        send_email_notification(i_section);
         %     clear best_sol;
 
-end
+% end

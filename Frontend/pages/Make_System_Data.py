@@ -245,5 +245,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Adding a styled back button
+    st.markdown(
+        f"""
+        <a href="/Landing" target="_self" class="custom-button">Back</a>
+        """,
+        unsafe_allow_html=True
+    )
 
 
