@@ -52,7 +52,7 @@ def main():
     
     with c2:
         if st.button("Final Compile"):
-            st.switch_page("")
+            st.switch_page("pages/Train_Timetable_Compile.py")
 
 
 if __name__ == "__main__":
