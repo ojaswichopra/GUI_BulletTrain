@@ -240,7 +240,31 @@ def main():
             data=open(file_path, "rb").read(),
             file_name="system_data.csv",
             mime="text/csv"
-        )
+        )   
+
+    elif selected == "Edit Existing Data":
+        
+        uploaded_file = st.file_uploader("Upload a .txt file", type="txt")
+
+        if uploaded_file is not None:
+            # Read the uploaded file
+            file_content = uploaded_file.getvalue().decode("utf-8")
+
+            # Text area for editing file content
+            edited_content = st.text_area("Edit the data below:", file_content, height=300)
+
+            if st.button("Save Updated Data"):
+                # Save the updated content back to a file
+                with open(file_path, "w") as file:
+                    file.write(edited_content)
+                st.success("Data saved successfully!")
+                # Offer the file for download
+                st.download_button(
+                    label="Download updated file",
+                    data=edited_content,
+                    file_name="system_data.txt",  # File name for download
+                    mime="text/plain"
+                )
 
 
 if __name__ == "__main__":
