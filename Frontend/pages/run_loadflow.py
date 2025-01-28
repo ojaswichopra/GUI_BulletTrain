@@ -36,4 +36,9 @@ def run_short_circuit(extracted_data, N, N_hr, train_time, time_instant_short, t
     """)
     print("Short Circuit executed successfully!")
 
-__all__ = ['run_oct2py', 'run_load_flow_standard','run_oct2py_TSS','run_oct2py_TSS_two','run_short_circuit']
+def run_train_timetable(M, g, delt, eff, m_decl, a, b, c, max_speed, sect):
+    oc.eval('cd("../train_timetable")') 
+    oc.eval(f"""train_sheduling_program_code({M},{g},{delt},{eff},{m_decl},{a},{b},{c},{max_speed},{sect})""")
+    print("Executed successfully!")
+
+__all__ = ['run_oct2py', 'run_load_flow_standard','run_oct2py_TSS','run_oct2py_TSS_two','run_short_circuit','run_train_timetable']
