@@ -1,3 +1,5 @@
+% octave
+% pkg install -forge io
 pkg load io;
 % Read train operation data
 [train_operation_data, txt, raw] = xlsread('stopage_data_train_time_rapid.xlsx');
