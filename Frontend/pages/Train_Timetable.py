@@ -46,16 +46,16 @@ def main():
     st.markdown("<h1 class='title'>Prepare Train Timetable</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     # --- NAVIGATION MENU ---
-    selected = option_menu(
-        menu_title=None,
-        options=["Forward", "Reverse"],
-        icons=["arrow-right-square-fill", "arrow-left-square-fill"],  # https://icons.getbootstrap.com/
-        orientation="horizontal",
-        styles={    
-        "nav-link": {"font-size": "20px", "text-align": "center", "margin":"0px", "--hover-color": "#ffffff"},
-        "nav-link-selected": {"background-color": "#007BFF"},
-        }   
-    )
+    # selected = option_menu(
+    #     menu_title=None,
+    #     options=["Forward", "Reverse"],
+    #     icons=["arrow-right-square-fill", "arrow-left-square-fill"],  # https://icons.getbootstrap.com/
+    #     orientation="horizontal",
+    #     styles={    
+    #     "nav-link": {"font-size": "20px", "text-align": "center", "margin":"0px", "--hover-color": "#ffffff"},
+    #     "nav-link-selected": {"background-color": "#007BFF"},
+    #     }   
+    # )
 
     # st.write("hi")
     # Input fields for the variables
@@ -73,105 +73,98 @@ def main():
     # Track Parameters
     Train_Timetable_config.max_speed = st.number_input("Maximum Speed (km/hr)", value=320.00, min_value=0.0, step=0.01)
     Train_Timetable_config.dist = st.number_input("Total Track Length", value=320.00, min_value=0.0, step=0.01)
-    # train_operation_data = st.file_uploader("Upload Forward Stoppage Data File (.xlsx)", type="xlsx", key="train_operation_data")
-    # if train_operation_data is not None:
-    #     # Extract data from the uploaded CSV file
-    #     # extracted_data = extract_system_data(system_data_file)
-    #     save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
-    #     os.makedirs(save_directory, exist_ok=True)
-    #     desired_filename = "stopage_data_train_time_rapid.xlsx"
-    #     # Step 4: Save the file in the backend folder
-    #     with open(os.path.join(save_directory, desired_filename), "wb") as f:
-    #         f.write(train_operation_data.getbuffer())
+
+    # Let the user choose the direction from a dropdown
+    direction = st.selectbox("Select Direction", ["Forward Direction", "Reverse Direction"])
+
+    if direction == "Forward Direction":
+        st.header("Forward Direction Uploads")
         
-    #     st.success(f"File saved.")
-    
-    if selected == "Forward":
-        train_operation_data = st.file_uploader("Upload Forward Stoppage Data File (.xlsx)", type="xlsx", key="train_operation_data")
+        train_operation_data = st.file_uploader(
+            "Upload Forward Stoppage Data File (.xlsx)", 
+            type="xlsx", 
+            key="train_operation_data_forward"
+        )
         if train_operation_data is not None:
-            # Extract data from the uploaded CSV file
-            # extracted_data = extract_system_data(system_data_file)
-            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
+            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "stopage_data_train_time_rapid.xlsx"
-            # Step 4: Save the file in the backend folder
             with open(os.path.join(save_directory, desired_filename), "wb") as f:
                 f.write(train_operation_data.getbuffer())
-            
-            st.success(f"File saved.")
-        
-        speed_limit_data = st.file_uploader("Upload Forward Speed Limit Data File (.xlsx)", type="xlsx", key="speed_limit_data")
+            st.success("Forward stoppage data file saved.")
+
+        speed_limit_data = st.file_uploader(
+            "Upload Forward Speed Limit Data File (.xlsx)", 
+            type="xlsx", 
+            key="speed_limit_data_forward"
+        )
         if speed_limit_data is not None:
-            # Extract data from the uploaded CSV file
-            # extracted_data = extract_system_data(system_data_file)
-            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
+            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "track_speed_limit.xlsx"
-            # Step 4: Save the file in the backend folder
             with open(os.path.join(save_directory, desired_filename), "wb") as f:
                 f.write(speed_limit_data.getbuffer())
-            st.success(f"File saved.")    
-            
-        
-        gradientData = st.file_uploader("Upload Forward Gradient Data File (.xlsx)", type="xlsx", key="gradientData")
+            st.success("Forward speed limit data file saved.")
+
+        gradientData = st.file_uploader(
+            "Upload Forward Gradient Data File (.xlsx)", 
+            type="xlsx", 
+            key="gradientData_forward"
+        )
         if gradientData is not None:
-            # Extract data from the uploaded CSV file
-            # extracted_data = extract_system_data(system_data_file)
-            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
+            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "gradient_data.xlsx"
-            # Step 4: Save the file in the backend folder
             with open(os.path.join(save_directory, desired_filename), "wb") as f:
                 f.write(gradientData.getbuffer())
-            st.success(f"File saved.")    
+            st.success("Forward gradient data file saved.")
+
+    elif direction == "Reverse Direction":
+        st.header("Reverse Direction Uploads")
         
-        
-    if selected == "Reverse":
-        train_operation_data = st.file_uploader("Upload Reverse Stoppage Data File (.xlsx)", type="xlsx", key="train_operation_data")
+        train_operation_data = st.file_uploader(
+            "Upload Reverse Stoppage Data File (.xlsx)", 
+            type="xlsx", 
+            key="train_operation_data_reverse"
+        )
         if train_operation_data is not None:
-            # Extract data from the uploaded CSV file
-            # extracted_data = extract_system_data(system_data_file)
-            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
+            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "stopage_data_train_time_rapid.xlsx"
-            # Step 4: Save the file in the backend folder
-            filePath = os.path.join(save_directory, desired_filename)
+            with open(os.path.join(save_directory, desired_filename), "wb") as f:
+                f.write(train_operation_data.getbuffer())
+            st.success("Reverse stoppage data file saved.")
 
-            
-            # Load the uploaded file directly into a Pandas DataFrame
-            df = pd.read_excel(train_operation_data)           
-            revStoppage(df, filePath)
-
-            st.success(f"File saved.")
-            
-        speed_limit_data = st.file_uploader("Upload Forward Speed Limit Data File (.xlsx)", type="xlsx", key="speed_limit_data")
+        speed_limit_data = st.file_uploader(
+            "Upload Reverse Speed Limit Data File (.xlsx)", 
+            type="xlsx", 
+            key="speed_limit_data_reverse"
+        )
         if speed_limit_data is not None:
-            # Extract data from the uploaded CSV file
-            # extracted_data = extract_system_data(system_data_file)
-            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
+            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "track_speed_limit.xlsx"
             filePath = os.path.join(save_directory, desired_filename)
-            # Step 4: Save the file in the backend folder
-            # Load the uploaded file directly into a Pandas DataFrame
-            df = pd.read_excel(speed_limit_data)           
+            # Read the file into a DataFrame and process with revTrainLimits
+            df = pd.read_excel(speed_limit_data)
             revTrainLimits(df, filePath, Train_Timetable_config.dist)
-        
-            st.success(f"File saved.")    
-            
-        
-        gradientData = st.file_uploader("Upload Forward Gradient Data File (.xlsx)", type="xlsx", key="gradientData")
+            st.success("Reverse speed limit data file processed and saved.")
+
+        gradientData = st.file_uploader(
+            "Upload Reverse Gradient Data File (.xlsx)", 
+            type="xlsx", 
+            key="gradientData_reverse"
+        )
         if gradientData is not None:
-            # Extract data from the uploaded CSV file
-            # extracted_data = extract_system_data(system_data_file)
-            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
+            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "gradient_data.xlsx"
             filePath = os.path.join(save_directory, desired_filename)
-            # Step 4: Save the file in the backend folder
-            df = pd.read_excel(gradientData)  
+            # Read the file into a DataFrame and process with revGrad
+            df = pd.read_excel(gradientData)
             revGrad(df, Train_Timetable_config.dist, filePath)
-            st.success(f"File saved.")
+            st.success("Reverse gradient data file processed and saved.")
+
     
     if st.button("Select Section"):
         if not os.path.exists('../train_timetable/stopage_data_train_time_rapid.xlsx') or not os.path.exists('../train_timetable/track_speed_limit.xlsx') or not os.path.exists('../train_timetable/gradient_data.xlsx'):
