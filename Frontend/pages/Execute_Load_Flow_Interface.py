@@ -51,7 +51,7 @@ def main():
         
     
     with c2:
-        if st.button("Mumbai Ahemadabad Track (each-stop Train)"):
+        if st.button("Mumbai Ahemadabad Track"):
             st.switch_page("pages/Execute_Load_Flow_MA.py")
 
 

@@ -3,25 +3,26 @@ import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from oct2py import Oct2Py
 import multiprocessing
-from pages.run_loadflow import run_oct2py  # Import the backend function directly
+from PIL import Image
+from pages.run_loadflow import run_load_flow_normal  # Import the backend function directly
 import time
 import pandas as pd
 
-def run_backend_process(extracted_data, N, N_hr, train_time):
+def run_backend_process(extracted_data):
     # Run the backend function in a new process
     backend_process = multiprocessing.Process(
-        target=run_oct2py, args=(extracted_data, N, N_hr, train_time)
+        target=run_load_flow_normal, args=(extracted_data,)
     )
     backend_process.start()
     
 def initialize_progress():
-    progress_file = '../backend_codes/progress_file.txt'
+    progress_file = '../normal_double_track/progress_file.txt'
     # Overwrite the file with '0.0' regardless of its state
     with open(progress_file, 'w') as f:
         f.write('0.0')  # Write 0.0 as the initial value
 
 def read_progress():
-    progress_file = '../backend_codes/progress_file.txt'
+    progress_file = '../normal_double_track/progress_file.txt'
     if os.path.exists(progress_file):
         with open(progress_file, 'r') as f:
             content = f.read().strip()  # Read and strip whitespace
@@ -30,23 +31,6 @@ def read_progress():
             else:
                 return 0.0  # Return 0.0 if the content is empty
     return 0.0  # Return 0.0 if the file doesn't exist
-
-def count_rows_columns(file_path):
-    with open(file_path, 'r') as file:
-        # Read the lines of the file
-        lines = file.readlines()
-
-        # The number of rows is the number of data lines (excluding the header)
-        num_rows = len(lines) - 1
-
-        # Split the header line to determine the number of columns
-        num_columns = len(lines[0].split())
-
-    return num_rows, num_columns
-
-
-# Define the path to your system data file
-file_path = "system data file.txt"
 
 
 def extract_system_data(file_content):
@@ -68,11 +52,11 @@ def extract_system_data(file_content):
     # Extract data into a structured format
     tss_distances_raw = data_dict.get('Distance (in km) of all the TSSs measured from the starting point:', '')
     at_distances_raw = data_dict.get('Distance (in km) of all the ATs measured from the starting point:', '')
+    sp_distances_raw = data_dict.get('Distance (in km) of all the Section Posts (SPs) measured from the starting point:', '')
     data = {
-        'num_tss': int(data_dict.get('Number of TSS:', 0)),
         'tss_distances': [float(x) for x in tss_distances_raw.split()] if tss_distances_raw else [],
-        'num_at': int(data_dict.get('Number of AT:', 0)),
         'at_distances': [float(x) for x in at_distances_raw.split()] if at_distances_raw else [],
+        'sp_distances': [float(x) for x in sp_distances_raw.split()] if at_distances_raw else [],
         'tss_primary_voltage': float(data_dict.get('TSS primary voltage (Kv):', 0)),
         'tss_secondary_voltage': float(data_dict.get('TSS secondary voltage (Kv):', 0)),
         'primary_resistance': float(data_dict.get('Primary side resistance (ohm):', 0)),
@@ -87,7 +71,7 @@ def extract_system_data(file_content):
         'at_magnetising_reactance': float(data_dict.get('AT magnetising reactance (ohm):', 0)),
         'earth_resistivity': float(data_dict.get('Homogenous earth conducting resistivity:', 0)),
         'frequency': float(data_dict.get('Frequency (Hz):', 0)),
-        'num_conductors': int(data_dict.get('Number of conductors:', 0)),
+        'num_conductors': int(data_dict.get('Number of conductors (contact, rail, feeder, messenger, earth):', 0)),
         'contact_wire_height': float(data_dict.get('Contact wire height (m) measured from rail:', 0)),
         'messenger_wire_height': float(data_dict.get('Messenger wire height (m) measured from rail:', 0)),
         'feeder_wire_height': float(data_dict.get('Feeder wire height (m) measured from rail:', 0)),
@@ -144,14 +128,11 @@ if system_data_file is not None:
     # Extract data from the uploaded CSV file
     extracted_data = extract_system_data(system_data_file)
     st.success(f"File saved.")
-    # print(extracted_data)
     
 
 timetable_file_1 = st.file_uploader("Upload Up Track Each Stop Train Timetable (.txt)", type="txt")
-train_time = 0
-print(train_time)
 if timetable_file_1 is not None:
-    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_load_flow_double_track_completed')
+    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_double_track')
 
     # Create the directory if it doesn't exist
     os.makedirs(save_directory, exist_ok=True)
@@ -162,10 +143,8 @@ if timetable_file_1 is not None:
     st.success(f"File saved.")
     
 timetable_file_2 = st.file_uploader("Upload Up Track Rapid Train Timetable (.txt)", type="txt")
-train_time = 0
-print(train_time)
 if timetable_file_2 is not None:
-    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_load_flow_double_track_completed')
+    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_double_track')
 
     # Create the directory if it doesn't exist
     os.makedirs(save_directory, exist_ok=True)
@@ -177,10 +156,8 @@ if timetable_file_2 is not None:
     st.success(f"File saved.")
 
 timetable_file_3 = st.file_uploader("Upload Down Track Each Stop Train Timetable (.txt)", type="txt")
-train_time = 0
-print(train_time)
 if timetable_file_3 is not None:
-    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_load_flow_double_track_completed')
+    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_double_track')
 
     # Create the directory if it doesn't exist
     os.makedirs(save_directory, exist_ok=True)
@@ -192,10 +169,8 @@ if timetable_file_3 is not None:
     st.success(f"File saved.")
     
 timetable_file_4 = st.file_uploader("Upload Down Track Rapid Train Timetable (.txt)", type="txt")
-train_time = 0
-print(train_time)
 if timetable_file_4 is not None:
-    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_load_flow_double_track_completed')
+    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_double_track')
 
     # Create the directory if it doesn't exist
     os.makedirs(save_directory, exist_ok=True)
@@ -207,10 +182,8 @@ if timetable_file_4 is not None:
     st.success(f"File saved.")
     
 chart = st.file_uploader("Upload Train Simulation Chart (.xlsx)", type="xlsx")
-train_time = 0
-print(train_time)
 if chart is not None:
-    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_load_flow_double_track_completed')
+    save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_double_track')
 
     # Create the directory if it doesn't exist
     os.makedirs(save_directory, exist_ok=True)
@@ -224,26 +197,37 @@ if chart is not None:
 global recipient
 recipient = st.text_input("Enter email address to which you would like to recive load flow information")
 
-if st.button("Submit"):
+if st.button("Show Train Simulation Chart"):
     # Check if the file exists
-    if os.path.exists('../backend_codes/train_timetable.txt'):
-        # If the file exists, proceed with the operation
-        train_time, _ = count_rows_columns('../backend_codes/train_timetable.txt')
-        print(f"Train time: {train_time}")
-    print(train_time)
-    if not system_data_file or not timetable_file or N <= 0 or N_hr <= 0 or train_time <= 0:
-            st.warning("Please provide all the inputs correctly!")
+    if not system_data_file or not timetable_file_1 or not timetable_file_2 or not timetable_file_3 or not timetable_file_4:
+        st.warning("Please provide all the inputs correctly!")
     else:
-        # Perform the load flow calculations here
-        with open('../variable_text_files/email.txt', 'w') as file:
-            file.write(recipient)
-        run_backend_process(extracted_data, N, N_hr, train_time)
-        st.success("Load Flow Initiated!!")
-        # oc = Oct2Py()
-        # oc.eval("cd('../../backend_codes')")
+        TSS = extracted_data['tss_distances']
+        AT = extracted_data['at_distances']
+        SP = extracted_data['sp_distances']
+        oc = Oct2Py()
+        oc.eval('cd("../normal_double_track")')
+        oc.eval(f"""initialization_user_chart({TSS},{AT},{SP})""")
+        image_path = '../Plots_normal/Simulation_Chart.png'
+        img = Image.open(image_path)
+        st.image(img, caption="", use_column_width=True)
+
+        with open(image_path, "rb") as file:
+            btn = st.download_button(
+                label="Download Plot",
+                data=file,
+                file_name="Simulation_Chart.png",  # Replace with the desired download filename
+                mime="image/png"
+            )
         
-        # oc.eval(f"code_run({extracted_data['tss_distances']},{extracted_data['at_distances']},{N},{N_hr},{train_time},{extracted_data['tss_primary_voltage']},{extracted_data['tss_secondary_voltage']},{extracted_data['primary_resistance']},{extracted_data['primary_reactance']},{extracted_data['secondary_resistance']},{extracted_data['secondary_reactance']},{extracted_data['rail_grounding_impedance']},{extracted_data['short_circuit_mva']},{extracted_data['at_leakage_resistance']},{extracted_data['at_leakage_reactance']},{extracted_data['at_magnetising_resistance']},{extracted_data['at_magnetising_reactance']},{extracted_data['earth_resistivity']},{extracted_data['frequency']},{extracted_data['num_conductors']},{extracted_data['contact_wire_height']},{extracted_data['messenger_wire_height']},{extracted_data['feeder_wire_height']},{extracted_data['feeder_wire_distance']},{extracted_data['earth_wire_height']},{extracted_data['earth_wire_distance']},{extracted_data['contact_wire_diameter']},{extracted_data['contact_wire_resistance']},{extracted_data['messenger_wire_diameter']},{extracted_data['messenger_wire_resistance']},{extracted_data['earth_wire_diameter']},{extracted_data['earth_wire_resistance']},{extracted_data['feeder_wire_diameter']},{extracted_data['feeder_wire_resistance']},{extracted_data['rail_diameter']},{extracted_data['rail_resistance']})")            
-        # st.success("Load flow executed successfully!")
+if st.button("Execute Load Flow"):
+    if not system_data_file or not timetable_file_1 or not timetable_file_2 or not timetable_file_3 or not timetable_file_4:
+        st.warning("Please provide all the inputs correctly!")
+    else:
+        with open('../normal_text_files/email.txt', 'w') as file:
+            file.write(recipient)
+        run_backend_process(extracted_data)
+        st.success("Load Flow Initiated!!")
         # Progress bar
         progress_bar = st.progress(0)
         initialize_progress()
@@ -256,17 +240,11 @@ if st.button("Submit"):
                 st.success("Load Flow executed successfully!")
                 break
             time.sleep(10)  # Sleep for a second before checking again
+            
 
-# if st.button("Back"):
-#     st.switch_page("pages/Execute_Load_Flow_MA.py")
 st.markdown(
         f"""
         <a href="/Execute_Load_Flow_MA" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )
-
-# if __name__ == "__main__":
-#     main()
-    # if st.button("Back"):
-    #     st.switch_page("Landing.py")

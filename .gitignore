@@ -3,6 +3,7 @@ dist/
 backend_codes/octave-workspace
 two_TSS_outage/octave-workspace
 one_TSS_outage/octave-workspace
+normal_double_track/octave-workspace
 backend_codes/variable_load_flow_mum_to_ahm_each_stop.mat
 backend_codes/Voltage_distance_matrix_whole.mat
 backend_codes/required_variable_load_flow_mum_to_ahm_each_stop.mat
@@ -10,6 +11,7 @@ variable_text_files/
 oTo_text_files/
 tTo_text_files/
 SCA_text_files/
+normal_text_files
 backend_codes/octave-workspace
 Frontend/octave-workspace
 short_circuit_analysis/octave-workspace 

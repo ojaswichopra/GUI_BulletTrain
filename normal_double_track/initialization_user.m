@@ -1,14 +1,20 @@
 
-%distance in km of all the TSSs measured from mumbai
-TSS = [5 55 105 155 205 255 305 355 405 455 505];
 
-%distance in km of all the ATs measured from mumbai
-AT = [3 13 23 33 43	53 63 73 83	93 103 113 123 133 143 153 163 173 183 193 203 213 223 233 243 253 263 273 283 293 303 313 323 333 343 353 363 373 383 393 403 413 423 433 443 453 463 473 483 493 503 513];
+% %distance in km of all the TSSs measured from mumbai
+% TSS = [5 55 105 155 205 255 305 355 405 455 505];
 
-%distance in km of all the Section Posts (SPs) measured from mumbai
-SP=[30	80	130	180	230	280	330	380	430	480	530];
-%It is assumed that in the middle of two consecutive TSSs, one SP is located
+% %distance in km of all the ATs measured from mumbai
+% AT = [3 13 23 33 43	53 63 73 83	93 103 113 123 133 143 153 163 173 183 193 203 213 223 233 243 253 263 273 283 293 303 313 323 333 343 353 363 373 383 393 403 413 423 433 443 453 463 473 483 493 503 513];
 
+% %distance in km of all the Section Posts (SPs) measured from mumbai
+% SP=[30	80	130	180	230	280	330	380	430	480	530];
+% %It is assumed that in the middle of two consecutive TSSs, one SP is located
+TSS = num2cell(TSS);
+TSS = cell2mat(TSS);
+AT = num2cell(AT);
+AT = cell2mat(AT);
+SP = num2cell(SP);
+SP = cell2mat(SP);
 % Open the file for reading
 fileID = fopen('Mumbai_Sabarmati_each_stop_train_schedule (up_track).txt', 'r');
 
@@ -145,12 +151,12 @@ end
 
 D_up_each_stop=each_stop_train_data_up(:,3)*1000;   %distance covered (m) at each second for up-track each stop train
 D_up_rapid=rapid_train_data_up(:,3)*1000;   %distance covered (m) at each second for up-track rapid train
-track_length=D_up_each_stop(end)/1000; % track length (kM)
 P_up_each_stop=each_stop_train_data_up(:,4)*1000;   %power consumed (kW) at each second for up-track each stop train
 P_up_rapid=rapid_train_data_up(:,4)*1000;   %power consumed (kW) at each second for up-track rapid train
 
 D_down_each_stop=each_stop_train_data_down(:,3)*1000;   %distance covered (m) at each second for down-track each stop train
 D_down_rapid=rapid_train_data_down(:,3)*1000;   %distance covered (m) at each second for down-track rapid train
+track_length=max(D_down_each_stop(end),D_down_rapid(end))/1000;  % track length (kM)
 P_down_each_stop=each_stop_train_data_down(:,4)*1000;   %power consumed (kW) at each second for down-track each stop train
 P_down_rapid=rapid_train_data_down(:,4)*1000;   %power consumed (kW) at each second for down-track rapid train
 
@@ -224,8 +230,8 @@ for j = 1:n_up_each_stop
 
     % Annotate train label at the beginning of the line
     text(dist(1), time(1), sprintf('Train %d', train_number_up_each_stop(j)), ...
-         'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
-         'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
+        'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
+        'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
 
     % Update index for next train
     colorIndex = mod(colorIndex, size(colors, 1)) + 1;
@@ -247,8 +253,8 @@ for j = 1:n_up_rapid
 
     % Annotate train label at the beginning of the line
     text(dist(1), time(1), sprintf('Train %d', train_number_up_rapid(j)), ...
-         'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
-         'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
+        'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
+        'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
 
     % Update index for next train
     colorIndex = mod(colorIndex, size(colors, 1)) + 1;
@@ -270,8 +276,8 @@ for j = 1:n_down_each_stop
 
     % Annotate train label at the beginning of the line
     text(dist(1), time(1), sprintf('Train %d', train_number_down_each_stop(j)), ...
-         'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
-         'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
+        'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
+        'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
 
     % Update index for next train
     colorIndex = mod(colorIndex, size(colors, 1)) + 1;
@@ -293,8 +299,8 @@ for j = 1:n_down_rapid
 
     % Annotate train label at the beginning of the line
     text(dist(1), time(1), sprintf('Train %d', train_number_down_rapid(j)), ...
-         'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
-         'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
+        'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
+        'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
 
     % Update index for next train
     colorIndex = mod(colorIndex, size(colors, 1)) + 1;
