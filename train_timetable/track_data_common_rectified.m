@@ -3,10 +3,11 @@
 pkg load io;
 % Read train operation data
 [train_operation_data, txt, raw] = xlsread('stopage_data_train_time_rapid.xlsx');
-station_distances = train_operation_data.distance;
-station_names = train_operation_data.Station;
-station_arrival = train_operation_data.Arrival;
-station_departure = train_operation_data.Departure;
+station_distances = train_operation_data(:, 1);  % First column is distance
+station_arrival = train_operation_data(:, 2);    % Second column is arrival times
+station_departure = train_operation_data(:, 3);  % Third column is departure times
+station_names = txt(2:end, 1);  % Extract station names from text data
+
 stop_data=station_departure-station_arrival;
 total_track_distance = max(station_distances);
 total_intermediate_station = length(station_distances) - 2;
@@ -25,9 +26,9 @@ end
 
 % Read speed limit data
 [speed_limit_data, txt, raw] = xlsread('track_speed_limit.xlsx');
-start_pt_limit = speed_limit_data.limit_start;
-end_pt_limit = speed_limit_data.limit_end;
-speed_limit = speed_limit_data.limit_speed;
+start_pt_limit = speed_limit_data(:, 1);  % Assuming first column is start point of limit
+end_pt_limit = speed_limit_data(:, 2);  % Assuming second column is end point of limit
+speed_limit = speed_limit_data(:, 3);  % Assuming third column is speed limit
 % max_speed = 320;
 % Initialize a vector to store the count of limits per station segment
 limits_count_per_segment = zeros(1, length(station_distances) - 1);
@@ -40,7 +41,7 @@ for i_lin = 1:length(station_distances) - 1
     end_section_distance(i_lin)=end_distance;
     % Count how many speed limits fall within this segment
     count = 0;
-    for j_lin = 1:height(speed_limit_data)
+    for j_lin = 1:length(speed_limit_data)
         limit_start = start_pt_limit(j_lin);
         limit_end = end_pt_limit(j_lin);
 
@@ -79,6 +80,6 @@ end
 % global gradientData;
 
 [gradientData, txt, raw] = xlsread('gradient_data.xlsx');
-start_km = gradientData.start_distance;
-end_km = gradientData.end_distance;
-gradients = gradientData.gradient;
+start_km = gradientData(:, 1);  % Assuming first column is start point of limit
+end_km = gradientData(:, 2);  % Assuming second column is end point of limit
+gradients = gradientData(:, 3);  % Assuming third column is speed limit
