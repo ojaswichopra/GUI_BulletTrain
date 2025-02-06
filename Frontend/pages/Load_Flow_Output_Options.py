@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 import numpy as np
 from pages.workspace import workspace_variables
-
+from pages.normal_workspace import normal_variables
 
 title = "Output Options"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
@@ -75,13 +75,6 @@ def is_numeric(value):
 
 def load_workspace_variables():
     
-    
-    ## Reading using entire workspace - 20mins
-    # oc.eval('load("variable_load_flow_mum_to_ahm_each_stop.mat")')
-    
-    ## Reading using necesaary files only - 8mins 
-    # oc.eval('load("required_variable_load_flow_mum_to_ahm_each_stop.mat")')
-    
     # List of variable names to pull and read from text files
     variable_names = [
         'AT_mva_mag', 'Unb', 's_apprant_power_MVA_mag', 'd', 'dTSS_T',
@@ -102,6 +95,28 @@ def load_workspace_variables():
         ## Reading from text file - 
         workspace_variables[var] = read_text_file(f'../variable_text_files/{var}.txt')
 
+def load_normal_variables():
+    
+    
+    # List of variable names to pull and read from text files
+    variable_names = [
+        'AT_mva_mag_up', 'AT_mva_mag_down', 'Unb', 's_apprant_power_MVA_mag', 'd', 'dTSS_T',
+        'Ic_line_mag_Td', 'Ic_line_ang_Td', 'Ir_line_mag_Td', 'Ir_line_ang_Td',
+        'If_line_mag_Td', 'If_line_ang_Td', 'Vc_mag_Td', 'Vc_ang_Td',
+        'VR_mag_Td', 'VR_ang_Td', 'Vf_mag_Td', 'Vf_ang_Td', 'y',
+        'dTSS_M', 'Ic_line_mag_Md', 'Ic_line_ang_Md', 'Ir_line_mag_Md',
+        'Ir_line_ang_Md', 'If_line_mag_Md', 'If_line_ang_Md', 'Vc_mag_Md',
+        'Vc_ang_Md', 'VR_mag_Md', 'VR_ang_Md', 'Vf_mag_Md', 'Vf_ang_Md',
+        'AT', 'train_data', 'dTSS', 'TSS'
+    ]
+
+    # Loop through each variable name
+    for var in variable_names:
+        # First, try pulling from the Octave workspace
+        # workspace_variables[var] = oc.pull(var)
+        
+        ## Reading from text file - 
+        normal_variables[var] = read_text_file(f'../normal_text_files/{var}.txt')
 
 
 
@@ -154,6 +169,10 @@ def main():
         if st.button('Normal Operating Condition'):
             load_workspace_variables()
             st.switch_page("pages/Load_Flow_Output.py")
+        
+        if st.button('Double Track'):
+            load_normal_variables()
+            st.switch_page("pages/Normal_Load_Flow_Output.py")
     
     with col2:
         if st.button('TSS Outage Condition'):

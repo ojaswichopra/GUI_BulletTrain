@@ -3,6 +3,8 @@ Number of TSS:,11
 Distance (in km) of all the TSSs measured from the starting point:,5.0 55.0 105.0 155.0 205.0 255.0 305.0 355.0 405.0 455.0 505.0
 Number of AT:,52
 Distance (in km) of all the ATs measured from the starting point:,3.0 13.0 23.0 33.0 43.0 53.0 63.0 73.0 83.0 93.0 103.0 113.0 123.0 133.0 143.0 153.0 163.0 173.0 183.0 193.0 203.0 213.0 223.0 233.0 243.0 253.0 263.0 273.0 283.0 293.0 303.0 313.0 323.0 333.0 343.0 353.0 363.0 373.0 383.0 393.0 403.0 413.0 423.0 433.0 443.0 453.0 463.0 473.0 483.0 493.0 503.0 513.0
+Number of SP:,11
+Distance (in km) of all the Section Posts (SPs) measured from the starting point:,30.0 80.0 130.0 180.0 230.0 280.0 330.0 380.0 430.0 480.0 530.0
 TSS primary voltage (Kv):,132.0
 TSS secondary voltage (Kv):,27.5
 Primary side resistance (ohm):,0.1

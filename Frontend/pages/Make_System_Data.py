@@ -25,6 +25,8 @@ def main():
         "Distance (in km) of all the TSSs measured from the starting point:": "5 55 105 155 205 255 305 355 405 455 505",
         "Number of AT:": 52,
         "Distance (in km) of all the ATs measured from the starting point:": "3 13 23 33 43 53 63 73 83 93 103 113 123 133 143 153 163 173 183 193 203 213 223 233 243 253 263 273 283 293 303 313 323 333 343 353 363 373 383 393 403 413 423 433 443 453 463 473 483 493 503 513",
+        "Number of SP:": 11,
+        "Distance (in km) of all the Section Posts (SPs) measured from the starting point:": "30 80 130 180 230 280 330 380 430 480 530",
         "TSS primary voltage (Kv):": 132,
         "TSS secondary voltage (Kv):": 27.5,
         "Primary side resistance (ohm):": 0.1,
@@ -107,6 +109,8 @@ def main():
             distance_tss = st.text_input("Distance (in km) of all the TSSs measured from the starting point:", placeholder=default_values["Distance (in km) of all the TSSs measured from the starting point:"])
             num_at = st.text_input("Number of AT:", placeholder=str(default_values["Number of AT:"]))
             distance_at = st.text_input("Distance (in km) of all the ATs measured from the starting point:", placeholder=default_values["Distance (in km) of all the ATs measured from the starting point:"])
+            num_sp = st.text_input("Number of SP:", placeholder=str(default_values["Number of SP:"]))
+            distance_sp = st.text_input("Distance (in km) of all the Section Posts (SPs) measured from the starting point:", placeholder=default_values["Distance (in km) of all the Section Posts (SPs) measured from the starting point:"])
             primary_voltage = st.text_input("TSS primary voltage (Kv):", placeholder=str(default_values["TSS primary voltage (Kv):"]))
             secondary_voltage = st.text_input("TSS secondary voltage (Kv):", placeholder=str(default_values["TSS secondary voltage (Kv):"]))
             primary_resistance = st.text_input("Primary side resistance (ohm):", placeholder=str(default_values["Primary side resistance (ohm):"]))
@@ -149,6 +153,8 @@ def main():
                     distance_tss = list(map(float, distance_tss.split() or default_values["Distance (in km) of all the TSSs measured from the starting point:"].split()))
                     num_at = int(num_at or default_values["Number of AT:"])
                     distance_at = list(map(float, distance_at.split() or default_values["Distance (in km) of all the ATs measured from the starting point:"].split()))
+                    num_sp = int(num_sp or default_values["Number of SP:"])
+                    distance_sp = list(map(float, distance_sp.split() or default_values["Distance (in km) of all the Section Posts (SPs) measured from the starting point:"].split()))
                     primary_voltage = float(primary_voltage or default_values["TSS primary voltage (Kv):"])
                     secondary_voltage = float(secondary_voltage or default_values["TSS secondary voltage (Kv):"])
                     primary_resistance = float(primary_resistance or default_values["Primary side resistance (ohm):"])
@@ -186,6 +192,8 @@ def main():
                         "Distance (in km) of all the TSSs measured from the starting point:": distance_tss,
                         "Number of AT:": num_at,
                         "Distance (in km) of all the ATs measured from the starting point:": distance_at,
+                        "Number of SP:": num_sp,
+                        "Distance (in km) of all the Section Posts (SPs) measured from the starting point:":distance_sp,
                         "TSS primary voltage (Kv):": primary_voltage,
                         "TSS secondary voltage (Kv):": secondary_voltage,
                         "Primary side resistance (ohm):": primary_resistance,
@@ -228,13 +236,7 @@ def main():
 
                 except ValueError as e:
                     st.error(f"Error in data conversion: {e}")
-        if st.session_state.edited_content:
-            # st.download_button(
-            #     label="Download updated file",
-            #     data=st.session_state.edited_content,
-            #     file_name="updated_file.csv",  # File name for download
-            #     mime="text/plain"
-            # )    
+        if st.session_state.edited_content:   
             st.download_button(
             label="Download CSV",
             data=open(file_path, "rb").read(),
