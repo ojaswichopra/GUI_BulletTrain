@@ -60,7 +60,7 @@ def main():
 
     with col2:
         if st.button('Voltage profile at a particular distance'):
-            st.switch_page("pages/Normal_Voltage_Profile_Distance.py")
+            st.switch_page("pages/Normal_Voltage_Profile_Distance_Options.py")
         if st.button('MVA profile of TSS'):
            st.switch_page("pages/Normal_MVA_Profile_of_TSS.py")
         if st.button('Maximum MVA of all TSS'):
