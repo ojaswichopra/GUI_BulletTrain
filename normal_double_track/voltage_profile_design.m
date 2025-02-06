@@ -1,3 +1,4 @@
+graphics_toolkit ("gnuplot")
 length_profile_T=length(Voltage_distance_matrix_T);
 length_profile_M=length(Voltage_distance_matrix_M);
 total_length_profile=length_profile_M+length_profile_T;
@@ -77,17 +78,51 @@ figureHandle = figure;
 screenSize = get(0, 'ScreenSize');
 
 % Set the figure to match the screen size
-set(figureHandle, 'Position', screenSize);
+set(figureHandle, 'Position', [100, 100, 1830, 1500]);
 
-subplot(3,1,1)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)),"Color",'r');
-xlabel('Distance (Km)','FontWeight','bold')
-ylabel('Contact voltage magnitude (kV)','FontWeight','bold')
-subplot(3,1,2)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,3)),"Color",'g');
-xlabel('Distance (Km)','FontWeight','bold')
-ylabel('Rail voltage magnitude (kV)','FontWeight','bold')
-subplot(3,1,3)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,4)),"Color",'b');
-xlabel('Distance (Km)','FontWeight','bold')
-ylabel('Feeder voltage magnitude (kV)','FontWeight','bold')
+% Custom color palette
+colors = [0.8500 0.3250 0.0980; % Red
+          0.4660 0.6740 0.1880; % Green
+          0.3010 0.7450 0.9330]; % Blue
+
+% Subplot 1: Contact Voltage Magnitude
+subplot(3, 1, 1);
+plot((Voltage_distance_matrix_whole(:,1)/1000), abs(Voltage_distance_matrix_whole(:,2)), ...
+    'LineWidth', 2, 'Color', colors(1, :)); % Red line
+xlabel('Distance (Km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Contact Voltage (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Contact Voltage Magnitude vs Distance', 'FontWeight', 'bold', 'FontSize', 14);
+grid on;
+
+% Subplot 2: Rail Voltage Magnitude
+subplot(3, 1, 2);
+plot((Voltage_distance_matrix_whole(:,1)/1000), abs(Voltage_distance_matrix_whole(:,3)), ...
+    'LineWidth', 2, 'Color', colors(2, :)); % Green line
+xlabel('Distance (Km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Rail Voltage (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Rail Voltage Magnitude vs Distance', 'FontWeight', 'bold', 'FontSize', 14);
+grid on;
+
+% Subplot 3: Feeder Voltage Magnitude
+subplot(3, 1, 3);
+plot((Voltage_distance_matrix_whole(:,1)/1000), abs(Voltage_distance_matrix_whole(:,4)), ...
+    'LineWidth', 2, 'Color', colors(3, :)); % Blue line
+xlabel('Distance (Km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Feeder Voltage (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Feeder Voltage Magnitude vs Distance', 'FontWeight', 'bold', 'FontSize', 14);
+grid on;
+
+% Add a shared background color to the figure
+set(gcf, 'Color', 'w'); % White background
+
+% Set common font and line width for all subplots
+for i = 1:3
+    subplot(3, 1, i);
+    set(gca, 'FontSize', 12, 'LineWidth', 1.2); % Increase font size and axis line width
+end
+
+
+save('Voltage_distance_matrix_whole.mat', 'Voltage_distance_matrix_whole');
+
+desired_filename = '../Plots_normal/Full_UP_track_voltage_profile_instant_t.png';  % Replace 'desired_name' with your file name
+saveas(gcf, desired_filename);

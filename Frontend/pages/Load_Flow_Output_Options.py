@@ -99,16 +99,7 @@ def load_normal_variables():
     
     
     # List of variable names to pull and read from text files
-    variable_names = [
-        'AT_mva_mag_up', 'AT_mva_mag_down', 'Unb', 's_apprant_power_MVA_mag', 'd', 'dTSS_T',
-        'Ic_line_mag_Td', 'Ic_line_ang_Td', 'Ir_line_mag_Td', 'Ir_line_ang_Td',
-        'If_line_mag_Td', 'If_line_ang_Td', 'Vc_mag_Td', 'Vc_ang_Td',
-        'VR_mag_Td', 'VR_ang_Td', 'Vf_mag_Td', 'Vf_ang_Td', 'y',
-        'dTSS_M', 'Ic_line_mag_Md', 'Ic_line_ang_Md', 'Ir_line_mag_Md',
-        'Ir_line_ang_Md', 'If_line_mag_Md', 'If_line_ang_Md', 'Vc_mag_Md',
-        'Vc_ang_Md', 'VR_mag_Md', 'VR_ang_Md', 'Vf_mag_Md', 'Vf_ang_Md',
-        'AT', 'train_data', 'dTSS', 'TSS'
-    ]
+    variable_names = ['AT', 'AT_mva_mag_down', 'AT_mva_mag_up', 'Ic_line_ang_Md_down', 'Ic_line_ang_Md_up', 'Ic_line_ang_Td_down', 'Ic_line_ang_Td_up', 'Ic_line_mag_Md_down', 'Ic_line_mag_Md_up', 'Ic_line_mag_Td_down', 'Ic_line_mag_Td_up', 'If_line_ang_Md_down', 'If_line_ang_Md_up', 'If_line_ang_Td_down', 'If_line_ang_Td_up', 'If_line_mag_Md_down', 'If_line_mag_Md_up', 'If_line_mag_Td_down', 'If_line_mag_Td_up', 'Ir_line_ang_Md_down', 'Ir_line_ang_Md_up', 'Ir_line_ang_Td_down', 'Ir_line_ang_Td_up', 'Ir_line_mag_Md_down', 'Ir_line_mag_Md_up', 'Ir_line_mag_Td_down', 'Ir_line_mag_Td_up', 'Mumbai_Ahm_all_stop_train_schedule', 'TSS', 'Unb', 'VR_ang_Md_down', 'VR_ang_Md_up', 'VR_ang_Td_down', 'VR_ang_Td_up', 'VR_mag_Md_down', 'VR_mag_Md_up', 'VR_mag_Td_down', 'VR_mag_Td_up', 'Vc_ang_Md_down', 'Vc_ang_Md_up', 'Vc_ang_Td_down', 'Vc_ang_Td_up', 'Vc_mag_Md_down', 'Vc_mag_Md_up', 'Vc_mag_Td_down', 'Vc_mag_Td_up', 'Vf_ang_Md_down', 'Vf_ang_Md_up', 'Vf_ang_Td_down', 'Vf_ang_Td_up', 'Vf_mag_Md_down', 'Vf_mag_Md_up', 'Vf_mag_Td_down', 'Vf_mag_Td_up',  'd', 'dTSS_M_down', 'dTSS_M_up', 'dTSS_T_down', 'dTSS_T_up', 'dTSS_down', 'dTSS_up', 'each_stop_train_data_down', 'each_stop_train_data_up', 'rapid_train_data_down', 'rapid_train_data_up', 's_apprant_power_MVA_mag', 'start_time', 'track_length', 'track_type', 'train_number', 'train_type', 'y', 'z1']
 
     # Loop through each variable name
     for var in variable_names:
@@ -161,7 +152,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Mumbai Ahemadabad Track (Each Stop Train)</h1>", unsafe_allow_html=True) 
+    st.markdown("<h1 class='title'>Mumbai Ahemadabad Track</h1>", unsafe_allow_html=True) 
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
