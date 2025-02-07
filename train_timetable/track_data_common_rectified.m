@@ -1,5 +1,8 @@
+% octave
+% pkg install -forge io
+pkg load io;
 % Read train operation data
-train_operation_data = readtable('stopage_data_train_time_rapid.xlsx');
+[train_operation_data, txt, raw] = xlsread('stopage_data_train_time_rapid.xlsx');
 station_distances = train_operation_data.distance;
 station_names = train_operation_data.Station;
 station_arrival = train_operation_data.Arrival;
@@ -21,7 +24,7 @@ for i_section = 1:number_of_section
 end
 
 % Read speed limit data
-speed_limit_data = readtable('track_speed_limit.xlsx');
+[speed_limit_data, txt, raw] = xlsread('track_speed_limit.xlsx');
 start_pt_limit = speed_limit_data.limit_start;
 end_pt_limit = speed_limit_data.limit_end;
 speed_limit = speed_limit_data.limit_speed;
@@ -74,7 +77,8 @@ for i_lin = 1:length(station_distances) - 1
 end
 
 % global gradientData;
-gradientData = readtable('gradient_data.xlsx');
+
+[gradientData, txt, raw] = xlsread('gradient_data.xlsx');
 start_km = gradientData.start_distance;
 end_km = gradientData.end_distance;
 gradients = gradientData.gradient;
