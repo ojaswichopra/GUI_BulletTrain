@@ -142,21 +142,21 @@ def main():
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button('Make system data'):
+        if st.button('Make System Data'):
             st.switch_page("pages/Make_System_Data.py")
-        if st.button('Execute load flow'):
+        if st.button('Execute Load Flow'):
             st.switch_page("pages/Execute_Load_Flow_Interface.py")
-        if st.button('Perform harmonic analysis'):
+        if st.button('Perform Harmonic Analysis'):
             st.write("Button 1 clicked!")
-        if st.button('Calculate induced voltage'):
+        if st.button('Calculate Induced Voltage'):
             st.write("Button 1 clicked!")
 
     with col2:
-        if st.button('Prepare train timetable'):
+        if st.button('Prepare Train Timetable'):
             st.switch_page("pages/Train_Timetable_Interface.py")
-        if st.button('Perform short circuit analysis'):
+        if st.button('Perform Short Circuit Analysis'):
             st.switch_page("pages/Short_Circuit_Analysis.py")
-        if st.button('Calculate OHE temerature rise'):
+        if st.button('Calculate OHE Temerature rise'):
             st.write("Button 1 clicked!")
         if st.button('See output'):
             st.switch_page("pages/Output_Options.py")

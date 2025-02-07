@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 import numpy as np
 from pages.workspace import workspace_variables
-
+from pages.normal_workspace import normal_variables
 
 title = "Output Options"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
@@ -75,13 +75,6 @@ def is_numeric(value):
 
 def load_workspace_variables():
     
-    
-    ## Reading using entire workspace - 20mins
-    # oc.eval('load("variable_load_flow_mum_to_ahm_each_stop.mat")')
-    
-    ## Reading using necesaary files only - 8mins 
-    # oc.eval('load("required_variable_load_flow_mum_to_ahm_each_stop.mat")')
-    
     # List of variable names to pull and read from text files
     variable_names = [
         'AT_mva_mag', 'Unb', 's_apprant_power_MVA_mag', 'd', 'dTSS_T',
@@ -102,6 +95,19 @@ def load_workspace_variables():
         ## Reading from text file - 
         workspace_variables[var] = read_text_file(f'../variable_text_files/{var}.txt')
 
+def load_normal_variables():
+    
+    
+    # List of variable names to pull and read from text files
+    variable_names = ['AT', 'AT_mva_mag_down', 'AT_mva_mag_up', 'Ic_line_ang_Md_down', 'Ic_line_ang_Md_up', 'Ic_line_ang_Td_down', 'Ic_line_ang_Td_up', 'Ic_line_mag_Md_down', 'Ic_line_mag_Md_up', 'Ic_line_mag_Td_down', 'Ic_line_mag_Td_up', 'If_line_ang_Md_down', 'If_line_ang_Md_up', 'If_line_ang_Td_down', 'If_line_ang_Td_up', 'If_line_mag_Md_down', 'If_line_mag_Md_up', 'If_line_mag_Td_down', 'If_line_mag_Td_up', 'Ir_line_ang_Md_down', 'Ir_line_ang_Md_up', 'Ir_line_ang_Td_down', 'Ir_line_ang_Td_up', 'Ir_line_mag_Md_down', 'Ir_line_mag_Md_up', 'Ir_line_mag_Td_down', 'Ir_line_mag_Td_up', 'Mumbai_Ahm_all_stop_train_schedule', 'TSS', 'Unb', 'VR_ang_Md_down', 'VR_ang_Md_up', 'VR_ang_Td_down', 'VR_ang_Td_up', 'VR_mag_Md_down', 'VR_mag_Md_up', 'VR_mag_Td_down', 'VR_mag_Td_up', 'Vc_ang_Md_down', 'Vc_ang_Md_up', 'Vc_ang_Td_down', 'Vc_ang_Td_up', 'Vc_mag_Md_down', 'Vc_mag_Md_up', 'Vc_mag_Td_down', 'Vc_mag_Td_up', 'Vf_ang_Md_down', 'Vf_ang_Md_up', 'Vf_ang_Td_down', 'Vf_ang_Td_up', 'Vf_mag_Md_down', 'Vf_mag_Md_up', 'Vf_mag_Td_down', 'Vf_mag_Td_up',  'd', 'dTSS_M_down', 'dTSS_M_up', 'dTSS_T_down', 'dTSS_T_up', 'dTSS_down', 'dTSS_up', 'each_stop_train_data_down', 'each_stop_train_data_up', 'rapid_train_data_down', 'rapid_train_data_up', 's_apprant_power_MVA_mag', 'start_time', 'track_length', 'track_type', 'train_number', 'train_type', 'y', 'z1']
+
+    # Loop through each variable name
+    for var in variable_names:
+        # First, try pulling from the Octave workspace
+        # workspace_variables[var] = oc.pull(var)
+        
+        ## Reading from text file - 
+        normal_variables[var] = read_text_file(f'../normal_text_files/{var}.txt')
 
 
 
@@ -146,7 +152,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Mumbai Ahemadabad Track (Each Stop Train)</h1>", unsafe_allow_html=True) 
+    st.markdown("<h1 class='title'>Mumbai Ahemadabad Track</h1>", unsafe_allow_html=True) 
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
@@ -154,6 +160,10 @@ def main():
         if st.button('Normal Operating Condition'):
             load_workspace_variables()
             st.switch_page("pages/Load_Flow_Output.py")
+        
+        if st.button('Double Track'):
+            load_normal_variables()
+            st.switch_page("pages/Normal_Load_Flow_Output.py")
     
     with col2:
         if st.button('TSS Outage Condition'):

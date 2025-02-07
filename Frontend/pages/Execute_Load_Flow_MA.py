@@ -42,12 +42,14 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Mumbai Ahemadabad Track (each-stop Train)</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Mumbai Ahemadabad Track</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     c1,c2 = st.columns(2)
     with c1:
         if st.button("Normal Operating Condition"):
             st.switch_page("pages/Execute_Load_Flow.py")
+        if st.button("Double Track"):
+            st.switch_page("pages/Execute_Load_Flow_Double_Track.py")
     
     with c2:
         if st.button("TSS Outage Condition"): 

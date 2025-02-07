@@ -22,7 +22,7 @@ function gra = track_grad_forward(s,start_km,end_km,gradients)
     gra = 0;
     
     % Determine the gradient for the given distance
-    for i = 1:height(gradients)
+    for i = 1:length(gradients)
         if s >= start_km(i) && s < end_km(i)
             gra = gradients(i) / 1000; % Convert to per meter
             return; % Exit once the gradient is found
