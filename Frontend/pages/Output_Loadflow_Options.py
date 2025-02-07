@@ -92,7 +92,7 @@ def main():
             st.switch_page("pages/EN_Output.py")
     
     with col2:
-        if st.button('Mumbai Ahemadabad Track (Each Stop Train)'):
+        if st.button('Mumbai Ahemadabad Track'):
             st.switch_page("pages/Load_Flow_Output_Options.py")
             
 
