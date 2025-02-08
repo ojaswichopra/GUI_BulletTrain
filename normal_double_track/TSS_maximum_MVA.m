@@ -1,7 +1,10 @@
-% clc
-% clearvars
-format longG
-tic
-%load("variable_load_flow_mum_to_ahm_each_stop.mat");
-s_apprant_power_MVA_mag = load("s_apprant_power_MVA_mag.txt");
-maximum_mva_TSS=max(s_apprant_power_MVA_mag)
+function maximum_mva_TSS = TSS_maximum_MVA(s_apprant_power_MVA_mag)
+    % clc
+    % clearvars
+    format longG
+    tic
+    %load("variable_load_flow_mum_to_ahm_each_stop.mat");
+    % s_apprant_power_MVA_mag = load("s_apprant_power_MVA_mag.txt");
+    maximum_mva_TSS=max(s_apprant_power_MVA_mag)
+    toc
+end
