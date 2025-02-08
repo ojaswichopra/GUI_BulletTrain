@@ -9,7 +9,7 @@ import pages.Train_Timetable_config as Train_Timetable_config
 import pandas as pd
 
 # Read the Excel file
-train_operation_data = pd.read_excel("../train_timetable/stopage_data_train_time_rapid.xlsx")
+train_operation_data = pd.read_csv("../train_timetable/stopage_data_train_time_rapid.csv")
 
 # Extract necessary columns
 station_names = train_operation_data["Station"].tolist()

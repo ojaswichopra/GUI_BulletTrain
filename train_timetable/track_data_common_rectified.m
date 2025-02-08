@@ -2,14 +2,26 @@
 % pkg install -forge io
 pkg load io;
 % Read train operation data
-[train_operation_data, txt, raw] = xlsread('stopage_data_train_time_rapid.xlsx');
-station_distances = train_operation_data(:, 1);  % First column is distance
-station_arrival = train_operation_data(:, 2);    % Second column is arrival times
-station_departure = train_operation_data(:, 3);  % Third column is departure times
-station_names = txt(2:end, 1);  % Extract station names from text data
+train_operation_data = csvread('stopage_data_train_time_rapid.csv', 1, 1); % Skip header row, start from 2nd column
 
-stop_data=station_departure-station_arrival;
+% Read station distances, arrival, and departure times
+station_distances = train_operation_data(:, 1);  % First column: distances
+station_arrival = train_operation_data(:, 2);    % Second column: arrival times
+station_departure = train_operation_data(:, 3);  % Third column: departure times
+
+% Read station names from the first column as text
+fid = fopen('stopage_data_train_time_rapid.csv', 'r');
+txt = textscan(fid, '%s %f %f %f', 'Delimiter', ',', 'HeaderLines', 1);
+fclose(fid);
+station_names = txt{1}; % First column as station names
+
+% Compute stop durations
+stop_data = station_departure - station_arrival;
+
+% Compute total track distance
 total_track_distance = max(station_distances);
+
+% Compute number of intermediate stations and sections
 total_intermediate_station = length(station_distances) - 2;
 number_of_section = total_intermediate_station + 1;
 
@@ -25,11 +37,14 @@ for i_section = 1:number_of_section
 end
 
 % Read speed limit data
-[speed_limit_data, txt, raw] = xlsread('track_speed_limit.xlsx');
-start_pt_limit = speed_limit_data(:, 1);  % Assuming first column is start point of limit
-end_pt_limit = speed_limit_data(:, 2);  % Assuming second column is end point of limit
-speed_limit = speed_limit_data(:, 3);  % Assuming third column is speed limit
-% max_speed = 320;
+% Load CSV file
+speed_limit_data = csvread('track_speed_limit.csv', 1, 0); % Skip header row, start from first column
+
+% Extract speed limit data
+start_pt_limit = speed_limit_data(:, 1);  % First column: start point of limit
+end_pt_limit = speed_limit_data(:, 2);    % Second column: end point of limit
+speed_limit = speed_limit_data(:, 3);     % Third column: speed limit
+
 % Initialize a vector to store the count of limits per station segment
 limits_count_per_segment = zeros(1, length(station_distances) - 1);
 
@@ -78,8 +93,10 @@ for i_lin = 1:length(station_distances) - 1
 end
 
 % global gradientData;
+% Load CSV file
+gradientData = csvread('gradient_data.csv', 1, 0); % Skip header row, start from first column
 
-[gradientData, txt, raw] = xlsread('gradient_data.xlsx');
-start_km = gradientData(:, 1);  % Assuming first column is start point of limit
-end_km = gradientData(:, 2);  % Assuming second column is end point of limit
-gradients = gradientData(:, 3);  % Assuming third column is speed limit
+% Extract gradient data
+start_km = gradientData(:, 1);  % First column: start point (in km)
+end_km = gradientData(:, 2);    % Second column: end point (in km)
+gradients = gradientData(:, 3); % Third column: gradient values

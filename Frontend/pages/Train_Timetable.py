@@ -88,10 +88,12 @@ def main():
         if train_operation_data is not None:
             save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
-            desired_filename = "stopage_data_train_time_rapid.xlsx"
-            with open(os.path.join(save_directory, desired_filename), "wb") as f:
-                f.write(train_operation_data.getbuffer())
-            st.success("Forward stoppage data file saved.")
+            desired_filename = "stopage_data_train_time_rapid.csv"
+            df = pd.read_excel(train_operation_data)
+            csv_path = os.path.join(save_directory, desired_filename)
+            # Save as CSV (comma-separated)
+            df.to_csv(csv_path, index=False)  # index=False prevents adding an extra index column
+            st.success("Forward stoppage data file saved as CSV.")
 
         speed_limit_data = st.file_uploader(
             "Upload Forward Speed Limit Data File (.xlsx)", 
@@ -101,10 +103,12 @@ def main():
         if speed_limit_data is not None:
             save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
-            desired_filename = "track_speed_limit.xlsx"
-            with open(os.path.join(save_directory, desired_filename), "wb") as f:
-                f.write(speed_limit_data.getbuffer())
-            st.success("Forward speed limit data file saved.")
+            desired_filename = "track_speed_limit.csv"
+            df = pd.read_excel(speed_limit_data)
+            csv_path = os.path.join(save_directory, desired_filename)
+            # Save as CSV (comma-separated)
+            df.to_csv(csv_path, index=False)  # index=False prevents adding an extra index column
+            st.success("Forward stoppage data file saved as CSV.")
 
         gradientData = st.file_uploader(
             "Upload Forward Gradient Data File (.xlsx)", 
@@ -114,10 +118,12 @@ def main():
         if gradientData is not None:
             save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
-            desired_filename = "gradient_data.xlsx"
-            with open(os.path.join(save_directory, desired_filename), "wb") as f:
-                f.write(gradientData.getbuffer())
-            st.success("Forward gradient data file saved.")
+            desired_filename = "gradient_data.csv"
+            df = pd.read_excel(gradientData)
+            csv_path = os.path.join(save_directory, desired_filename)
+            # Save as CSV (comma-separated)
+            df.to_csv(csv_path, index=False)  # index=False prevents adding an extra index column
+            st.success("Forward stoppage data file saved as CSV.")
 
     elif direction == "Reverse Direction":
         st.header("Reverse Direction Uploads")
@@ -171,7 +177,7 @@ def main():
 
     
     if st.button("Select Section"):
-        if not os.path.exists('../train_timetable/stopage_data_train_time_rapid.xlsx') or not os.path.exists('../train_timetable/track_speed_limit.xlsx') or not os.path.exists('../train_timetable/gradient_data.xlsx'):
+        if not os.path.exists('../train_timetable/stopage_data_train_time_rapid.csv') or not os.path.exists('../train_timetable/track_speed_limit.csv') or not os.path.exists('../train_timetable/gradient_data.csv'):
             st.warning("Please Upload All Files")
         else:
             st.switch_page("pages/Train_Timetable_Section.py")
