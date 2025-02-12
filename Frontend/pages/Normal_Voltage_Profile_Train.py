@@ -5,6 +5,7 @@ from PIL import Image
 # Create an Oct2Py instance once
 from pages.normal_workspace import normal_variables
 from oct2py import Oct2Py
+import numpy as np
 oc = Oct2Py() 
 oc.eval('cd("../normal_double_track")') 
 
@@ -40,8 +41,15 @@ def main():
     st.markdown("<h1 class='title'>Voltage Profile of a Particular Train</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
+    # Assuming normal_variables is a dictionary containing a DataFrame
+    train_numbers = np.unique(normal_variables['train_number'])    # Get unique train numbers
+    train_numbers = train_numbers.astype(int)
+    # Dropdown for selecting a train number
+    entered_train_number = st.selectbox("Select the train number to see its voltage profile", train_numbers)
+
+    # st.write(f"Selected Train Number: {entered_train_number}")
     #no_of_train = st.number_input("Enter the number of trains running per hour", min_value=0)
-    entered_train_number = st.number_input("Enter the train number to see its voltage profile", min_value=0)
+    # entered_train_number = st.number_input("Enter the train number to see its voltage profile", min_value=0)
     
     if st.button("Submit"):
         oc.eval("setenv('GNUTERM', 'gnuplot')")
