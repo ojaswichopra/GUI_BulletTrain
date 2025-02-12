@@ -118,7 +118,7 @@ rapid_train_data_down = cell2mat(dataRows);
 pkg load io; % Load the io package (needed for xlsread)
 
 % Read the Excel file
-[train_simulation_data, txt, raw] = xlsread('train simulation chart.xlsx');
+train_simulation_data = dlmread('train simulation chart.csv', ',', 1, 0);
 
 train_number=train_simulation_data(:,1);  % train number
 track_type=train_simulation_data(:,2);  % track type (1-Up, 2-Down)

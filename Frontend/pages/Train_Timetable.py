@@ -134,19 +134,17 @@ def main():
             key="train_operation_data_reverse"
         )
         if train_operation_data is not None:
-            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../train_timetable')
+            save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
-            desired_filename = "stopage_data_train_time_rapid.xlsx"
-            # Step 4: Save the file in the backend folder
-            filePath = os.path.join(save_directory, desired_filename)
-            # Load the uploaded file directly into a Pandas DataFrame
-            df = pd.read_excel(train_operation_data)           
-            revStoppage(df, filePath)
-
-            st.success(f"File saved.")
+            desired_filename = "stopage_data_train_time_rapid.csv"
+            df = pd.read_excel(train_operation_data)
+            csv_path = os.path.join(save_directory, desired_filename)
+            # Save as CSV (comma-separated)
+            df.to_csv(csv_path, index=False)  # index=False prevents adding an extra index column
+            st.success("Forward stoppage data file saved as CSV.")
 
         speed_limit_data = st.file_uploader(
-            "Upload Reverse Speed Limit Data File (.xlsx)", 
+            "Upload Forward Speed Limit Data File (.xlsx)", 
             type="xlsx", 
             key="speed_limit_data_reverse"
         )
@@ -161,7 +159,7 @@ def main():
             st.success("Reverse speed limit data file processed and saved.")
 
         gradientData = st.file_uploader(
-            "Upload Reverse Gradient Data File (.xlsx)", 
+            "Upload Forward Gradient Data File (.xlsx)", 
             type="xlsx", 
             key="gradientData_reverse"
         )
