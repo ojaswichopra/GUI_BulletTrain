@@ -72,7 +72,7 @@ def main():
     
     # Track Parameters
     Train_Timetable_config.max_speed = st.number_input("Maximum Speed (km/hr)", value=320.00, min_value=0.0, step=0.01)
-    Train_Timetable_config.dist = st.number_input("Total Track Length", value=320.00, min_value=0.0, step=0.01)
+    # Train_Timetable_config.dist = st.number_input("Total Track Length", value=320.00, min_value=0.0, step=0.01)
 
     # Let the user choose the direction from a dropdown
     direction = st.selectbox("Select Direction", ["Forward Direction", "Reverse Direction"])
@@ -129,7 +129,7 @@ def main():
         st.header("Reverse Direction Uploads")
         
         train_operation_data = st.file_uploader(
-            "Upload Reverse Stoppage Data File (.xlsx)", 
+            "Upload Reverse Stoppage Data File (.xlsx) - upload it first", 
             type="xlsx", 
             key="train_operation_data_reverse"
         )
@@ -138,6 +138,7 @@ def main():
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "stopage_data_train_time_rapid.csv"
             df = pd.read_excel(train_operation_data)
+            Train_Timetable_config.dist = df['Distance'].iloc[-1]
             csv_path = os.path.join(save_directory, desired_filename)
             # Save as CSV (comma-separated)
             df.to_csv(csv_path, index=False)  # index=False prevents adding an extra index column
