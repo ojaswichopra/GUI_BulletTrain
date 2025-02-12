@@ -1,12 +1,8 @@
 import pandas as pd
 
-# Load the spreadsheet
-
-# Function to adjust distances relative to station B and filter rows within track length
 def revTrainLimits(data, output_file_path, track_length):
-    
-    # input_data = pd.read_excel(input_file_path)   
     adjusted_data = []
+    
     for _, row in data.iterrows():
         new_start = max(0, track_length - row['limit_end'])
         new_end = max(0, track_length - row['limit_start'])
@@ -16,12 +12,18 @@ def revTrainLimits(data, output_file_path, track_length):
             continue
         if new_end > track_length:
             new_end = track_length
+        
         adjusted_data.append({
             'limit_start_from_B': new_start,
             'limit_end_from_B': new_end,
             'limit_speed': row['limit_speed']
         })
+
     adjusted_df = pd.DataFrame(adjusted_data)
     dataToSave = adjusted_df.sort_values(by='limit_start_from_B').reset_index(drop=True)
-    output_data.to_excel(output_file_path, index=False)
+
+    # Corrected variable name
+    dataToSave.to_excel(output_file_path, index=False)
+    
     print(f"Processed file saved to {output_file_path}")
+    

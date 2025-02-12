@@ -181,13 +181,13 @@ if timetable_file_4 is not None:
         
     st.success(f"File saved.")
     
-chart = st.file_uploader("Upload Train Simulation Chart (.xlsx)", type="xlsx")
+chart = st.file_uploader("Upload Train Simulation Chart (.csv)", type="csv")
 if chart is not None:
     save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_double_track')
 
     # Create the directory if it doesn't exist
     os.makedirs(save_directory, exist_ok=True)
-    desired_filename = "train simulation chart.xlsx"
+    desired_filename = "train simulation chart.csv"
     # Step 4: Save the file in the backend folder
     with open(os.path.join(save_directory, desired_filename), "wb") as f:
         f.write(chart.getbuffer())
@@ -206,6 +206,7 @@ if st.button("Show Train Simulation Chart"):
         AT = extracted_data['at_distances']
         SP = extracted_data['sp_distances']
         oc = Oct2Py()
+        oc.eval("setenv('GNUTERM', 'gnuplot')")
         oc.eval('cd("../normal_double_track")')
         oc.eval(f"""initialization_user_chart({TSS},{AT},{SP})""")
         image_path = '../Plots_normal/Simulation_Chart.png'
