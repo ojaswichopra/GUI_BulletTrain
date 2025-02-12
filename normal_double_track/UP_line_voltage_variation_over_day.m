@@ -1,5 +1,5 @@
 function UP_line_voltage_variation_over_day(total_distance_from_start_point, d, dTSS_T_up, Ic_line_mag_Td_up, Ic_line_ang_Td_up, Ir_line_mag_Td_up, Ir_line_ang_Td_up, If_line_mag_Td_up, If_line_ang_Td_up, Vc_mag_Td_up, Vc_ang_Td_up, VR_mag_Td_up, VR_ang_Td_up, Vf_mag_Td_up, Vf_ang_Td_up, y, dTSS_M_up, Ic_line_mag_Md_up, Ic_line_ang_Md_up, Ir_line_mag_Md_up, Ir_line_ang_Md_up, If_line_mag_Md_up, If_line_ang_Md_up, Vc_mag_Md_up, Vc_ang_Md_up, VR_mag_Md_up, VR_ang_Md_up, Vf_mag_Md_up, Vf_ang_Md_up)
-
+    graphics_toolkit ("gnuplot")
     format longG
     tic
     % load("required_variable_load_flow_mum_to_ahm_each_stop.mat");
