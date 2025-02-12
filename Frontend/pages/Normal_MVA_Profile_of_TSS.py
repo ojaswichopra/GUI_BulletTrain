@@ -70,7 +70,7 @@ if __name__ == "__main__":
     #     st.switch_page("pages/Load_Flow_Output.py")
     st.markdown(
         f"""
-        <a href="/Load_Flow_Output" target="_self" class="custom-button">Back</a>
+        <a href="/Normal_Load_Flow_Output" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )
