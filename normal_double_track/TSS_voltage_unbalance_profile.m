@@ -3,6 +3,7 @@ function TSS_voltage_unbalance_profile(TSS_input_no, Unb)
     % clearvars
     format longG
     tic
+    graphics_toolkit ("gnuplot")
     %load("variable_load_flow_mum_to_ahm_each_stop.mat");
     % Unb = load("Unb.txt");
     % TSS_input_no=input('Enter the TSS number to see its voltage unbalance profile');

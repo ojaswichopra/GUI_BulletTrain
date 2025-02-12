@@ -59,7 +59,7 @@ def main():
         oc.push('AT_mva_mag_down', AT_mva_mag_down)
 
                 
-        oc.eval(f"AT_MVA_Profile(AT_mva_mag_up, AT_mva_mag_down, {AT_UP_down}, {AT_input_no})")
+        oc.eval(f"AT_MVA_profile(AT_mva_mag_up, AT_mva_mag_down, {AT_UP_down}, {AT_input_no})")
         image_path = '../Plots_normal/AT_MVA_profile.png'
         img = Image.open(image_path)
         st.image(img, caption="", use_column_width=True)
@@ -79,7 +79,7 @@ if __name__ == "__main__":
     #     st.switch_page("pages/Load_Flow_Output.py")
     st.markdown(
         f"""
-        <a href="/Load_Flow_Output" target="_self" class="custom-button">Back</a>
+        <a href="/Normal_Load_Flow_Output" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )
