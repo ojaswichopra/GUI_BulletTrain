@@ -138,7 +138,7 @@ def main():
             os.makedirs(save_directory, exist_ok=True)
             desired_filename = "stopage_data_train_time_rapid.csv"
             df = pd.read_excel(train_operation_data)
-            Train_Timetable_config.dist = df['Distance'].iloc[-1]
+            Train_Timetable_config.dist = df['distance'].iloc[-1]
             csv_path = os.path.join(save_directory, desired_filename)
             # Save as CSV (comma-separated)
             df.to_csv(csv_path, index=False)  # index=False prevents adding an extra index column
