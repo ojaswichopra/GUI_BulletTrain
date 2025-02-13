@@ -3,6 +3,7 @@ function TSS_MVA_profile(TSS_input_no, s_apprant_power_MVA_mag)
     % clearvars
     format longG
     tic
+    graphics_toolkit ("gnuplot")
     % load("load_flow_mum_to_sab_double_today.mat");
     % s_apprant_power_MVA_mag = load("s_apprant_power_MVA_mag.txt");
     % TSS_input_no=input('Enter the TSS number to see its MVA profile');
