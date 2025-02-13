@@ -1,14 +1,19 @@
 
-%distance in km of all the TSSs measured from mumbai
-TSS = [5 55 105 155 205 255 305 355 405 455 505];
+% %distance in km of all the TSSs measured from mumbai
+% TSS = [5 55 105 155 205 255 305 355 405 455 505];
 
-%distance in km of all the ATs measured from mumbai
-AT = [3 13 23 33 43	53 63 73 83	93 103 113 123 133 143 153 163 173 183 193 203 213 223 233 243 253 263 273 283 293 303 313 323 333 343 353 363 373 383 393 403 413 423 433 443 453 463 473 483 493 503 513];
+% %distance in km of all the ATs measured from mumbai
+% AT = [3 13 23 33 43	53 63 73 83	93 103 113 123 133 143 153 163 173 183 193 203 213 223 233 243 253 263 273 283 293 303 313 323 333 343 353 363 373 383 393 403 413 423 433 443 453 463 473 483 493 503 513];
 
-%distance in km of all the Section Posts (SPs) measured from mumbai
-SP=[30	80	130	180	230	280	330	380	430	480	530];
+% %distance in km of all the Section Posts (SPs) measured from mumbai
+% SP=[30	80	130	180	230	280	330	380	430	480	530];
 %It is assumed that in the middle of two consecutive TSSs, one SP is located
-
+TSS = num2cell(TSS);
+TSS = cell2mat(TSS);
+AT = num2cell(AT);
+AT = cell2mat(AT);
+SP = num2cell(SP);
+SP = cell2mat(SP);
 % Open the file for reading
 fileID = fopen('Mumbai_Sabarmati_each_stop_train_schedule (up_track).txt', 'r');
 
@@ -110,8 +115,8 @@ fclose(fileID);
 rapid_train_data_down = cell2mat(dataRows);
 
 % Read the data from the Excel file
-train_simulation_data_table = readtable('train simulation chart.xlsx', 'VariableNamingRule', 'preserve');
-train_simulation_data=table2array(train_simulation_data_table);
+train_simulation_data = dlmread('train simulation chart.csv', ',', 1, 0);
+
 train_number=train_simulation_data(:,1);  % train number
 track_type=train_simulation_data(:,2);  % track type (1-Up, 2-Down)
 train_type=train_simulation_data(:,3);  % train type (1-Each stop, 2-Rapid)

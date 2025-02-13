@@ -129,7 +129,6 @@ if system_data_file is not None:
     extracted_data = extract_system_data(system_data_file)
     st.success(f"File saved.")
     
-
 timetable_file_1 = st.file_uploader("Upload Up Track Each Stop Train Timetable (.txt)", type="txt")
 if timetable_file_1 is not None:
     save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',  '../normal_double_track')
@@ -199,7 +198,7 @@ recipient = st.text_input("Enter email address to which you would like to recive
 
 if st.button("Show Train Simulation Chart"):
     # Check if the file exists
-    if not system_data_file or not timetable_file_1 or not timetable_file_2 or not timetable_file_3 or not timetable_file_4:
+    if not system_data_file or not timetable_file_1 or not timetable_file_2 or not timetable_file_3 or not timetable_file_4 or not chart:
         st.warning("Please provide all the inputs correctly!")
     else:
         TSS = extracted_data['tss_distances']
@@ -222,7 +221,7 @@ if st.button("Show Train Simulation Chart"):
             )
         
 if st.button("Execute Load Flow"):
-    if not system_data_file or not timetable_file_1 or not timetable_file_2 or not timetable_file_3 or not timetable_file_4:
+    if not system_data_file or not timetable_file_1 or not timetable_file_2 or not timetable_file_3 or not timetable_file_4 or not chart:
         st.warning("Please provide all the inputs correctly!")
     else:
         with open('../normal_text_files/email.txt', 'w') as file:

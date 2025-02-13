@@ -1,6 +1,6 @@
 function initialization_user_chart(TSS, AT, SP)
     graphics_toolkit ("gnuplot")
-    % %distance in km of all the TSSs measured from mumbai
+    %distance in km of all the TSSs measured from mumbai
     % TSS = [5 55 105 155 205 255 305 355 405 455 505];
 
     % %distance in km of all the ATs measured from mumbai
@@ -9,7 +9,6 @@ function initialization_user_chart(TSS, AT, SP)
     % %distance in km of all the Section Posts (SPs) measured from mumbai
     % SP=[30	80	130	180	230	280	330	380	430	480	530];
     % %It is assumed that in the middle of two consecutive TSSs, one SP is located
-    % Create a figure handle
     figureHandle = figure;
 
     % Get screen size from root object (0)
@@ -124,25 +123,19 @@ function initialization_user_chart(TSS, AT, SP)
     % Convert the cell array to a 2D numeric array
     rapid_train_data_down = cell2mat(dataRows);
 
-    pkg load io; % Load the io package (needed for xlsread)
-
-    % Read the Excel file
+    % Read the data from the Excel file
     train_simulation_data = dlmread('train simulation chart.csv', ',', 1, 0);
 
     train_number = train_simulation_data(:,1);  % Train number
     track_type = train_simulation_data(:,2);    % Track type (1-Up, 2-Down)
     train_type = train_simulation_data(:,3);    % Train type (1-Each stop, 2-Rapid)
-    start_time = train_simulation_data(:,4);    % Start time in minutes  % train starting time (in minute)
-    % disp(length(train_simulation_data))
-    % disp(train_number)
-    % disp(track_type)
-    % disp(train_type)
-    % disp(start_time)
+    start_time = train_simulation_data(:,4);  % train starting time (in minute)
+
     n_up_each_stop=0;  % total no. of up-track each stop trains (initialisation)
     n_up_rapid=0;  % total no. of up-track rapid trains (initialisation)
     n_down_each_stop=0;   % total no. of down-track each stop trains (initialisation)
     n_down_rapid=0;   % total no. of down-track rapid trains (initialisation)
-    for ii=1:length(train_simulation_data)
+    for ii=1:length(train_simulation_data) 
         if (track_type(ii)==1 && train_type(ii)==1)
             n_up_each_stop=n_up_each_stop+1;
             train_number_up_each_stop(n_up_each_stop,1)=train_number(ii);  % up-track each stop train numbers
@@ -164,12 +157,12 @@ function initialization_user_chart(TSS, AT, SP)
 
     D_up_each_stop=each_stop_train_data_up(:,3)*1000;   %distance covered (m) at each second for up-track each stop train
     D_up_rapid=rapid_train_data_up(:,3)*1000;   %distance covered (m) at each second for up-track rapid train
+    track_length=D_up_each_stop(end)/1000; % track length (kM)
     P_up_each_stop=each_stop_train_data_up(:,4)*1000;   %power consumed (kW) at each second for up-track each stop train
     P_up_rapid=rapid_train_data_up(:,4)*1000;   %power consumed (kW) at each second for up-track rapid train
 
     D_down_each_stop=each_stop_train_data_down(:,3)*1000;   %distance covered (m) at each second for down-track each stop train
     D_down_rapid=rapid_train_data_down(:,3)*1000;   %distance covered (m) at each second for down-track rapid train
-    track_length=max(D_down_each_stop(end),D_down_rapid(end))/1000;  % track length (kM)
     P_down_each_stop=each_stop_train_data_down(:,4)*1000;   %power consumed (kW) at each second for down-track each stop train
     P_down_rapid=rapid_train_data_down(:,4)*1000;   %power consumed (kW) at each second for down-track rapid train
 
@@ -224,7 +217,7 @@ function initialization_user_chart(TSS, AT, SP)
     end
 
     % Create distinct colors using the 'hsv' colormap
-    colors = hsv(length(train_number));
+    colors = hsv(length(train_number)); 
 
     colorIndex = 1;  % Initialize color index
 
@@ -240,12 +233,12 @@ function initialization_user_chart(TSS, AT, SP)
 
         % Plot distance vs time with unique color
         plot(dist, time, 'Color', colors(colorIndex, :), 'LineWidth', 1.5)
-
+        
         % Annotate train label at the beginning of the line
         text(dist(1), time(1), sprintf('Train %d', train_number_up_each_stop(j)), ...
             'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
             'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
-
+        
         % Update index for next train
         colorIndex = mod(colorIndex, size(colors, 1)) + 1;
         hold on
@@ -263,12 +256,12 @@ function initialization_user_chart(TSS, AT, SP)
 
         % Plot distance vs time with unique color
         plot(dist, time, 'Color', colors(colorIndex, :), 'LineWidth', 1.5)
-
+        
         % Annotate train label at the beginning of the line
         text(dist(1), time(1), sprintf('Train %d', train_number_up_rapid(j)), ...
             'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
             'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
-
+        
         % Update index for next train
         colorIndex = mod(colorIndex, size(colors, 1)) + 1;
         hold on
@@ -286,12 +279,12 @@ function initialization_user_chart(TSS, AT, SP)
 
         % Plot distance vs time with unique color
         plot(dist, time, 'Color', colors(colorIndex, :), 'LineWidth', 1.5)
-
+        
         % Annotate train label at the beginning of the line
         text(dist(1), time(1), sprintf('Train %d', train_number_down_each_stop(j)), ...
             'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
             'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
-
+        
         % Update index for next train
         colorIndex = mod(colorIndex, size(colors, 1)) + 1;
         hold on
@@ -309,12 +302,12 @@ function initialization_user_chart(TSS, AT, SP)
 
         % Plot distance vs time with unique color
         plot(dist, time, 'Color', colors(colorIndex, :), 'LineWidth', 1.5)
-
+        
         % Annotate train label at the beginning of the line
         text(dist(1), time(1), sprintf('Train %d', train_number_down_rapid(j)), ...
             'FontSize', 9, 'FontWeight', 'bold', 'Color', colors(colorIndex, :), ...
             'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom');
-
+        
         % Update index for next train
         colorIndex = mod(colorIndex, size(colors, 1)) + 1;
         hold on
@@ -374,11 +367,11 @@ function initialization_user_chart(TSS, AT, SP)
     d(1)=0; %starting point
     d(2:2:l_a)=TSS;
     d(3:2:l_a+1)=SP;
-    % graphics_toolkit("gnuplot"); % Set gnuplot as the graphics backend
     %distance (in meter) of all the TSSs and the section posts measured from Mumbai i.e. [0 TSS1 SP1 TSS2 SP2..........TSSn SPn].
-    desired_filename = '../Plots_normal/Simulation_Chart.png';
+    desired_filename = '../Plots_oTo_double/Simulation_Chart.png';
     saveas(gcf, desired_filename);
 end
+
 
 
 

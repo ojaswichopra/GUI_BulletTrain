@@ -3,7 +3,7 @@ tic
 % initialization;
 initialization_user;
 
-N_TSS_O=input('enter the TSS number which is out of service = ');
+% N_TSS_O=input('enter the TSS number which is out of service = ');
 
 j_a=2*N_TSS_O-1;
 j_b=2*N_TSS_O;        %the corresponding out of service windings
