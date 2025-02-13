@@ -54,8 +54,8 @@ def main():
     with c2:
         if st.button("TSS Outage Condition"): 
             st.switch_page("pages/Execute_Load_Flow_TSS.py")
-            st.page_link("pages/Execute_Load_Flow_one.py", label="One TSS Outage", icon="1️⃣")
-            st.page_link("pages/Execute_Load_Flow_two.py", label="Two Adjacent TSS Outage", icon="2️⃣")
+            # st.page_link("pages/Execute_Load_Flow_one.py", label="One TSS Outage", icon="1️⃣")
+            # st.page_link("pages/Execute_Load_Flow_two.py", label="Two Adjacent TSS Outage", icon="2️⃣")
 
 
 if __name__ == "__main__":

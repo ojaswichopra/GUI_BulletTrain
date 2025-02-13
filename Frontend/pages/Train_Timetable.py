@@ -151,7 +151,7 @@ def main():
         if speed_limit_data is not None:
             save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
-            desired_filename = "track_speed_limit.xlsx"
+            desired_filename = "track_speed_limit.csv"
             filePath = os.path.join(save_directory, desired_filename)
             # Read the file into a DataFrame and process with revTrainLimits
             df = pd.read_excel(speed_limit_data)
@@ -166,7 +166,7 @@ def main():
         if gradientData is not None:
             save_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '../train_timetable')
             os.makedirs(save_directory, exist_ok=True)
-            desired_filename = "gradient_data.xlsx"
+            desired_filename = "gradient_data.csv"
             filePath = os.path.join(save_directory, desired_filename)
             # Read the file into a DataFrame and process with revGrad
             df = pd.read_excel(gradientData)
