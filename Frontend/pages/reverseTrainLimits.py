@@ -23,7 +23,7 @@ def revTrainLimits(data, output_file_path, track_length):
     dataToSave = adjusted_df.sort_values(by='limit_start_from_B').reset_index(drop=True)
 
     # Corrected variable name
-    dataToSave.to_excel(output_file_path, index=False)
+    dataToSave.to_csv(output_file_path, index=False)
     
     print(f"Processed file saved to {output_file_path}")
     

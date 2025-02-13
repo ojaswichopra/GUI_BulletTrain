@@ -31,7 +31,7 @@ def revGrad(data, dist, output_path):
     new_data = new_data.sort_values(by='start_distance').reset_index(drop=True)
 
     # Save the new data to the specified output path
-    new_data.to_excel(output_path, index=False)
+    new_data.to_csv(output_path, index=False)
 
 # # Example usage
 # file_path = 'gradient_data.xlsx'  # Path to the input file
