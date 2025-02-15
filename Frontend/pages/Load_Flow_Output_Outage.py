@@ -3,6 +3,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 import numpy as np
 from pages.oTo_Workspace import oTo_workspace
 from pages.tTo_Workspace import tTo_workspace
+from pages.oTo_double_Workspace import oTo_double_workspace
 title = "Output Options"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 layout = "centered"
@@ -108,6 +109,14 @@ def load_tTo_workspace():
         ## Reading from text file - 
         tTo_workspace[var] = read_text_file(f'../tTo_text_files/{var}.txt')
 
+def load_oTo_double_workspace():
+    oTo_double_var_names = [
+        'N_TSS_O', 'N_TSS', 'tt_time', 'dTSS_up', 'dTSS_down', 'dTSS_T_up', 'dTSS_T_down', 'dTSS_M_up', 'dTSS_M_down', 'TSS', 'd', 'y', 'Vc_mag_Td_down', 'Vc_ang_Td_down', 'VR_mag_Td_down', 'VR_ang_Td_down', 'Vf_mag_Td_down', 'Vf_ang_Td_down', 'Vc_mag_Td_up', 'Vc_ang_Td_up', 'VR_mag_Td_up', 'VR_ang_Td_up', 'Vf_mag_Td_up', 'Vf_ang_Td_up', 'Ic_line_mag_Td_up', 'Ic_line_ang_Td_up', 'Ir_line_mag_Td_up', 'Ir_line_ang_Td_up', 'If_line_mag_Td_up', 'If_line_ang_Td_up', 'Ic_line_mag_Td_down', 'Ic_line_ang_Td_down', 'Ir_line_mag_Td_down', 'Ir_line_ang_Td_down', 'If_line_mag_Td_down', 'If_line_ang_Td_down', 'z1', 'Vc_mag_Md_up', 'Vc_ang_Md_up', 'VR_mag_Md_up', 'VR_ang_Md_up', 'Vf_mag_Md_up', 'Vf_ang_Md_up', 'Vc_mag_Md_down', 'Vc_ang_Md_down', 'VR_mag_Md_down', 'VR_ang_Md_down', 'Vf_mag_Md_down', 'Vf_ang_Md_down', 'Ic_line_mag_Md_up', 'Ic_line_ang_Md_up', 'Ir_line_mag_Md_up', 'Ir_line_ang_Md_up', 'If_line_mag_Md_up', 'If_line_ang_Md_up', 'Ic_line_mag_Md_down', 'Ic_line_ang_Md_down', 'Ir_line_mag_Md_down', 'Ir_line_ang_Md_down', 'If_line_mag_Md_down', 'If_line_ang_Md_down', 'AT_mva_mag_up', 'AT_mva_mag_down', 'AT', 'Unb', 's_apprant_power_MVA_mag', 'train_number', 'track_type', 'train_type', 'start_time', 'each_stop_train_data_up', 'rapid_train_data_up', 'each_stop_train_data_down', 'rapid_train_data_down', 'track_length'
+    ]
+    for var in oTo_double_var_names:        
+        ## Reading from text file - 
+        oTo_double_workspace[var] = read_text_file(f'../oTo_double_text_files/{var}.txt')
+
 def main():
 
     # Settings
@@ -158,6 +167,9 @@ def main():
         if st.button('One TSS Outage'):
             load_oTo_workspace()
             st.switch_page("pages/oTo_output_options.py")
+        if st.button('One TSS Outage - Double track')
+            load_oTo_double_workspace()
+            st.switch_page("pages/oTo_output_options_double.py")
     
     with col2:
         if st.button('Two Adjacent TSS Outage'):
