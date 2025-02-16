@@ -774,5 +774,7 @@ function train_voltage_profile_with_train_number_outage_load_txt(entered_train_n
         xlabel('Distance (Km) Sabarmati-Mumbai','FontWeight','bold')
         ylabel('Voltage Magnitude (kV)','FontWeight','bold')
     end
-
+    desired_filename = '../Plots_oTo_double/train_voltage_profile_with_train_number_outage_load_txt.png';  % Replace 'desired_name' with your file name
+    saveas(gcf, desired_filename);
     toc
+end

@@ -53,7 +53,7 @@ def main():
         if st.button('Voltage profile of a particular train'):
             st.switch_page("pages/oTo_double_voltage_profile_train.py") 
         if st.button('MVA profile of AT'):
-            st.switch_page("pages/.py") 
+            st.switch_page("pages/oTo_double_mva_profile_AT.py") 
         if st.button('Maximum MVA of all AT'):
             st.switch_page("pages/.py") 
         
@@ -62,9 +62,9 @@ def main():
         if st.button('Voltage profile at a particular distance'):
             st.switch_page("pages/.py")
         if st.button('MVA profile of TSS'):
-           st.switch_page("pages/.py") 
+           st.switch_page("pages/oTo_double_mva_profile_TSS.py") 
         if st.button('Maximum MVA of all TSS'):
-            st.switch_page("pages/.py") 
+            st.switch_page("pages/oTo_double_maximum_mva_of_all_TSS.py") 
         if st.button('Voltage unbalance profile of TSS'):
             st.switch_page("pages/.py") 
     
