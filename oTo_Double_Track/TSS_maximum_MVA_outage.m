@@ -3,6 +3,7 @@ function TSS_maximum_MVA_outage(TSS, N_TSS_O, dTSS_T_up, Unb, tt_time, s_apprant
     % clearvars
     format longG
     tic
+    graphics_toolkit ("gnuplot")
     % load("load_flow_mum_to_sab_double_today.mat");
     TSS=load("TSS.txt");
     N_TSS_O=load("N_TSS_O.txt");
