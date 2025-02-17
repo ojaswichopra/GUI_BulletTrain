@@ -37,31 +37,23 @@ def main():
 
     #AT_MVA_profile.png -> name of plot in backend
 
-    st.markdown("<h1 class='title'>Maximum MVA of all TSS</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Maximum MVA of all AT</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
-    if st.button("Show maximum MVA of all TSS"):
+    if st.button("Show maximum MVA of all AT"):
         oc.eval("setenv('GNUTERM', 'gnuplot')")
 
-        TSS = oTo_double_workspace['TSS']
-        N_TSS_O = oTo_double_workspace['N_TSS_O']
-        dTSS_T_up = oTo_double_workspace['dTSS_T_up']
+        AT_mva_mag_up = oTo_double_workspace['AT_mva_mag_up']
+        AT_mva_mag_down = oTo_double_workspace['AT_mva_mag_down']
+        AT = oTo_double_workspace['AT']
        
-        oc.push('TSS', TSS)
-        oc.push('N_TSS_O', N_TSS_O)
-        oc.push('dTSS_T_up', dTSS_T_up)
+        oc.push('AT_mva_mag_up', AT_mva_mag_up)
+        oc.push('AT_mva_mag_down', AT_mva_mag_down)
+        oc.push('AT', AT)
         
-        Unb = oTo_double_workspace['Unb']
-        tt_time = oTo_double_workspace['tt_time']
-        s_apprant_power_MVA_mag = oTo_double_workspace['s_apprant_power_MVA_mag']
-       
-        oc.push('Unb', Unb)
-        oc.push('tt_time', tt_time)
-        oc.push('s_apprant_power_MVA_mag', s_apprant_power_MVA_mag)
-
                 
-        oc.eval(f"TSS_maximum_MVA_outage(TSS, N_TSS_O, dTSS_T_up, Unb, tt_time, s_apprant_power_MVA_mag)")
-        image_path = '../Plots_oTo_double/TSS_maximum_MVA_outage.png'
+        oc.eval(f"AT_maximum_MVA_outage(AT_mva_mag_up, AT_mva_mag_down, AT)")
+        image_path = '../Plots_oTo_double/AT_maximum_MVA_outage.png'
         img = Image.open(image_path)
         st.image(img, caption="", use_column_width=True)
 
@@ -69,7 +61,7 @@ def main():
             btn = st.download_button(
                 label="Download Plot",
                 data=file,
-                file_name="TSS_maximum_MVA_outage.png",  # Replace with the desired download filename
+                file_name="AT_maximum_MVA_outage.png",  # Replace with the desired download filename
                 mime="image/png"
             )
 

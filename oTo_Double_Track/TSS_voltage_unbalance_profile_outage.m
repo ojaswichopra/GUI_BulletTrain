@@ -1,7 +1,9 @@
+function TSS_voltage_unbalance_profile_outage(TSS_input_no,TSS, N_TSS_O, dTSS_T_up, Unb, tt_time)
 % clc
 % clearvars
 format longG
 tic
+graphics_toolkit ("gnuplot")
 % load("load_flow_mum_to_sab_double_today.mat");
 TSS=load("TSS.txt");
 N_TSS_O=load("N_TSS_O.txt");
@@ -11,7 +13,7 @@ Unb=load("Unb.txt");
 tt_time=load("tt_time.txt");
 
 % s_apprant_power_MVA_mag = load("s_apprant_power_MVA_mag.txt");
-TSS_input_no=input('Enter the TSS number to see its MVA profile');
+% TSS_input_no=input('Enter the TSS number to see its MVA profile');
 track_TSS_no=length(TSS)-length(N_TSS_O);           %% total no of TSS in track
 
 if TSS_input_no<N_TSS_O
@@ -64,6 +66,8 @@ else
     ylabel('Percentage unbalance','FontWeight','bold')
 
     %     plot(tt_time/60,s_apprant_power_MVA_mag(:,TSS_input_no))
+    desired_filename = '../Plots_oTo_double/TSS_voltage_unbalance_profile_outage.png';  % Replace 'desired_name' with your file name
+    saveas(gcf, desired_filename);
 end
 
 
