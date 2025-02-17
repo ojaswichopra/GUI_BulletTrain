@@ -54,6 +54,8 @@ def main():
     with c2:
         if st.button("Two Adjacent TSS Outage"): 
             st.switch_page("pages/Execute_Load_Flow_two.py")
+        if st.button("Two Adjacent TSS Outage Double Track"):
+            st.switch_page("pages/Execute_Load_Flow_tTo.py")
 
 
 if __name__ == "__main__":

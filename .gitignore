@@ -13,6 +13,7 @@ tTo_text_files/
 SCA_text_files/
 normal_text_files/
 oTo_double_text_files/
+tTo_double_text_files/
 backend_codes/octave-workspace
 Frontend/octave-workspace
 short_circuit_analysis/octave-workspace 

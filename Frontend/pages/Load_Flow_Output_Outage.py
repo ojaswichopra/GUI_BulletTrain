@@ -167,7 +167,7 @@ def main():
         if st.button('One TSS Outage'):
             load_oTo_workspace()
             st.switch_page("pages/oTo_output_options.py")
-        if st.button('One TSS Outage - Double track')
+        if st.button('One TSS Outage - Double track'):
             load_oTo_double_workspace()
             st.switch_page("pages/oTo_output_options_double.py")
     
