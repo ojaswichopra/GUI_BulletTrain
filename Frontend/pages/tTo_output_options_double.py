@@ -43,7 +43,7 @@ def main():
         unsafe_allow_html=True,
     )
     
-    st.markdown("<h1 class='title'>One TSS Output options - double track</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Two TSS Output options - double track</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
@@ -51,27 +51,25 @@ def main():
         if st.button('Voltage profile at a particular time instant'):
             st.switch_page("pages/.py")
         if st.button('Voltage profile of a particular train'):
-            st.switch_page("pages/oTo_double_voltage_profile_train.py") 
+            st.switch_page("pages/tTo_double_train_voltage_profile.py") 
         if st.button('MVA profile of AT'):
-            st.switch_page("pages/oTo_double_mva_profile_AT.py") 
+            st.switch_page("pages/tTo_double_mva_profile_AT.py") 
         if st.button('Maximum MVA of all AT'):
-            st.switch_page("pages/oTo_double_maximum_mva_of_all_AT.py") 
+            st.switch_page("pages/tTo_double_maximum_mva_of_all_AT.py") 
         
 
     with col2:
-        if st.button('Voltage profile at a particular distance'):
-            st.switch_page("pages/.py")
         if st.button('MVA profile of TSS'):
-           st.switch_page("pages/oTo_double_mva_profile_TSS.py") 
+           st.switch_page("pages/tTo_double_mva_profile_TSS.py") 
         if st.button('Maximum MVA of all TSS'):
-            st.switch_page("pages/oTo_double_maximum_mva_of_all_TSS.py") 
+            st.switch_page("pages/tTo_double_maximum_mva_of_all_TSS.py") 
         if st.button('Voltage unbalance profile of TSS'):
-            st.switch_page("pages/oTo_double_voltage_unbalance_profile_TSS.py") 
+            st.switch_page("pages/tTo_double_voltage_unbalance_profile_TSS.py") 
     
     c1,c2,c3,c4 = st.columns(4)
     with c2:
         if st.button('Maximum voltage unbalance of all TSS'):
-            st.switch_page("pages/oTo_double_maximum_voltage_unbalance_all_TSS.py") #tbd
+            st.switch_page("pages/tTo_double_maximum_voltage_unbalance_all_TSS.py") #tbd
     
 if __name__ == "__main__":
     main()
