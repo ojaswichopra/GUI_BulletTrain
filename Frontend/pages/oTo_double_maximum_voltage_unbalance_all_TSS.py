@@ -6,7 +6,7 @@ from PIL import Image
 from pages.oTo_double_Workspace import oTo_double_workspace
 from oct2py import Oct2Py
 oc = Oct2Py() 
-oc.eval('cd("../oTo_double_track")') 
+oc.eval('cd("../oTo_Double_track")') 
 
 def main():
     st.markdown(

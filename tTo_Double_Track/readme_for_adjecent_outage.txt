@@ -11,7 +11,7 @@ step 6 -> now module to get train voltage , voltage variation throughout the tra
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-%% module to get any train voltage %%
+%% module to get any train voltage %% ==> done
 
 step 1-> open the file name "train_voltage_profile_with_train_number_adjacent_outage_load_file.m" .
 s
@@ -43,7 +43,7 @@ step 4 -> Run "Full_Down_track_voltage_profile_instant_t_outage.m" to get the vo
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-4. MVA profile of TSS
+4. MVA profile of TSS ==> DONE
 
 step 1 -> Open the backend code "TSS_MVA_profile_outage.m".
 step 2 -> Change the load command in "load("variable_load_flow_mum_to_ahm_each_stop.mat")" as "load("FILE_NAME.mat")". (Here, the ".mat" file, which has been saved after the load flow execution, needs to be loaded)
@@ -53,7 +53,7 @@ step 5 -> After the code is run completely, a figure will be displayed. The user
 
 
 
-5. MVA profile of AT
+5. MVA profile of AT ==> done
 
 step 1 -> Open the backend code "AT_MVA_profile_outage.m".
 step 2 -> Change the load command in "load("variable_load_flow_mum_to_ahm_each_stop.mat")" as "load("FILE_NAME.mat")". (Here, the ".mat" file, which has been saved after the load flow execution, needs to be loaded)
@@ -61,8 +61,8 @@ step 3 -> Run the backend code "AT_MVA_profile.m"
 step 4 -> Enter the AT number to see its MVA profile. (This is the user input)
 step 5 -> After the code is run completely, a figure will be displayed. The user should be able to save that figure based on his/her interest.
 
-
-6. Maximum MVA of all TSS
+ 
+6. Maximum MVA of all TSS  ==> DONE
 
 step 1 -> Open the backend code "TSS_maximum_MVA_outage.m".
 step 2 -> Change the load command in "load("variable_load_flow_mum_to_ahm_each_stop.mat")" as "load("FILE_NAME.mat")". (Here, the ".mat" file, which has been saved after the load flow execution, needs to be loaded)
@@ -70,14 +70,14 @@ step 3 -> Run the backend code "TSS_maximum_MVA.m"
 step 4 -> After the code is run completely, the maximum MVA values of all TSS will be displayed on the command window. Create a Table on GUI showing these maximum MVA values of all TSS (refer to the figure TSS_maximum_MVA_table_ref.png).
 step 5 -> The user should be able to save the table based on his/her interest.
 
-7. Maximum MVA of all AT
+7. Maximum MVA of all AT  ==> DONE
 
 step 1 -> Open the backend code "AT_maximum_MVA_outage.m".
 step 2 -> Change the load command in "load("variable_load_flow_mum_to_ahm_each_stop.mat")" as "load("FILE_NAME.mat")". (Here, the ".mat" file, which has been saved after the load flow execution, needs to be loaded)
 step 3 -> Run the backend code "AT_maximum_MVA.m"
 step 4 -> After the code is run completely, a figure will be displayed. The user should be able to save that figure based on his/her interest.
 
-8. Voltage unbalance profile of TSS
+8. Voltage unbalance profile of TSS ==> DONE
 
 step 1 -> Open the backend code "TSS_voltage_unbalance_profile_outage.m".
 step 2 -> Change the load command in "load("variable_load_flow_mum_to_ahm_each_stop.mat")" as "load("FILE_NAME.mat")". (Here, the ".mat" file, which has been saved after the load flow execution, needs to be loaded)
@@ -85,7 +85,7 @@ step 3 -> Run the backend code "TSS_voltage_unbalance_profile.m"
 step 4 -> Enter the TSS number to see its voltage unbalance profile. (This is the user input)
 step 5 -> After the code is run completely, a figure will be displayed. The user should be able to save that figure based on his/her interest.
 
-9. Maximum voltage unbalance of all TSS
+9. Maximum voltage unbalance of all TSS ==> DONE
 
 step 1 -> Open the backend code "TSS_maximum_voltage_unbalance_outage.m".
 step 2 -> Change the load command in "load("variable_load_flow_mum_to_ahm_each_stop.mat")" as "load("FILE_NAME.mat")". (Here, the ".mat" file, which has been saved after the load flow execution, needs to be loaded)
