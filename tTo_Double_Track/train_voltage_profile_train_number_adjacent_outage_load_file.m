@@ -1,4 +1,4 @@
-function train_voltage_profile_with_train_number_adjacent_outage_load_file(entered_train_number,d, dTSS_T_up, Vc_mag_Td_up, Vc_ang_Td_up, VR_mag_Td_up, VR_ang_Td_up, Vf_mag_Td_up, Vf_ang_Td_up, dTSS_M_down, Vc_mag_Md_down, Vc_ang_Md_down, VR_mag_Md_down, VR_ang_Md_down, Vf_mag_Md_down, Vf_ang_Md_down, y, dTSS_M_up, dTSS_up, dTSS_down, Vc_mag_Md_up, Vc_ang_Md_up, VR_mag_Md_up, VR_ang_Md_up, Vf_mag_Md_up, Vf_ang_Md_up, dTSS_T_down, Vc_mag_Td_down, Vc_ang_Td_down, VR_mag_Td_down, VR_ang_Td_down, Vf_mag_Td_down, Vf_ang_Td_down, train_number, track_type, train_type, start_time, each_stop_train_data_up, rapid_train_data_up, each_stop_train_data_down, rapid_train_data_down, track_length)
+function train_voltage_profile_train_number_adjacent_outage_load_file(entered_train_number,d, dTSS_T_up, Vc_mag_Td_up, Vc_ang_Td_up, VR_mag_Td_up, VR_ang_Td_up, Vf_mag_Td_up, Vf_ang_Td_up, dTSS_M_down, Vc_mag_Md_down, Vc_ang_Md_down, VR_mag_Md_down, VR_ang_Md_down, Vf_mag_Md_down, Vf_ang_Md_down, y, dTSS_M_up, dTSS_up, dTSS_down, Vc_mag_Md_up, Vc_ang_Md_up, VR_mag_Md_up, VR_ang_Md_up, Vf_mag_Md_up, Vf_ang_Md_up, dTSS_T_down, Vc_mag_Td_down, Vc_ang_Td_down, VR_mag_Td_down, VR_ang_Td_down, Vf_mag_Td_down, Vf_ang_Td_down, train_number, track_type, train_type, start_time, each_stop_train_data_up, rapid_train_data_up, each_stop_train_data_down, rapid_train_data_down, track_length)
     format longG
     tic
     
@@ -551,7 +551,7 @@ function train_voltage_profile_with_train_number_adjacent_outage_load_file(enter
         xlabel('Distance (Km) Sabarmati-Mumbai','FontWeight','bold')
         ylabel('Voltage Magnitude (kV)','FontWeight','bold')
         
-    desired_filename = '../Plots_tTo_double/train_voltage_profile_with_train_number_adjacent_outage_load_file.png';  % Replace 'desired_name' with your file name
+    desired_filename = '../Plots_tTo_double/train_voltage_profile_train_number_adjacent_outage_load_file.png';  % Replace 'desired_name' with your file name
     saveas(gcf, desired_filename);
     end
 end

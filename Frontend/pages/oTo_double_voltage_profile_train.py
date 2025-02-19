@@ -54,6 +54,10 @@ def main():
     if st.button("Submit"):
         oc.eval("setenv('GNUTERM', 'gnuplot')")
 
+
+        N_TSS_O = oTo_double_workspace['N_TSS_O']
+        N_TSS = oTo_double_workspace['N_TSS']
+
         d = oTo_double_workspace['d']
         dTSS_T_up = oTo_double_workspace['dTSS_T_up']
         Vc_mag_Td_up = oTo_double_workspace['Vc_mag_Td_up']
@@ -96,6 +100,8 @@ def main():
         rapid_train_data_down = oTo_double_workspace['rapid_train_data_down']
         track_length = oTo_double_workspace['track_length']
 
+        oc.push('N_TSS_O', N_TSS_O)
+        oc.push('N_TSS', N_TSS)
 
         oc.push('d', d)
         oc.push('dTSS_T_up', dTSS_T_up)
