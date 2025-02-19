@@ -5,12 +5,12 @@ format longG
 tic
 graphics_toolkit ("gnuplot")
 % load("load_flow_mum_to_sab_double_today.mat");
-TSS=load("TSS.txt");
-N_TSS_O=load("N_TSS_O.txt");
-dTSS_T_up=load("dTSS_T_up.txt");
+% TSS=load("TSS.txt");
+% N_TSS_O=load("N_TSS_O.txt");
+% dTSS_T_up=load("dTSS_T_up.txt");
 
-Unb=load("Unb.txt");
-tt_time=load("tt_time.txt");
+% Unb=load("Unb.txt");
+% tt_time=load("tt_time.txt");
 
 % s_apprant_power_MVA_mag = load("s_apprant_power_MVA_mag.txt");
 % TSS_input_no=input('Enter the TSS number to see its MVA profile');
