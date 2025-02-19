@@ -19,7 +19,7 @@ function Full_up_track_voltage_profile_2_outage(N_TSS_O, N_TSS, track_time_1,x_r
     % Ir_line_ang_Td_up = load("Ir_line_ang_Td_up.txt");
     % If_line_mag_Td_up = load("If_line_mag_Td_up.txt");
     % If_line_ang_Td_up = load("If_line_ang_Td_up.txt");
-
+    tic
     %loading back the complex variable z1 from its text file
     z1_loaded = load("../tTo_double_text_files/z1.txt");
     % Determine the number of columns

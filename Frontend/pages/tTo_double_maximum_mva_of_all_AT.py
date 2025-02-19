@@ -40,30 +40,30 @@ def main():
     st.markdown("<h1 class='title'>Maximum MVA of all AT</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
-    if st.button("Show maximum MVA of all AT"):
-        oc.eval("setenv('GNUTERM', 'gnuplot')")
+    # if st.button("Show maximum MVA of all AT"):
+    oc.eval("setenv('GNUTERM', 'gnuplot')")
 
-        AT_mva_mag_up = tTo_double_workspace['AT_mva_mag_up']
-        AT_mva_mag_down = tTo_double_workspace['AT_mva_mag_down']
-        AT = tTo_double_workspace['AT']
-       
-        oc.push('AT_mva_mag_up', AT_mva_mag_up)
-        oc.push('AT_mva_mag_down', AT_mva_mag_down)
-        oc.push('AT', AT)
-        
-                
-        oc.eval(f"AT_maximum_MVA_outage(AT_mva_mag_up, AT_mva_mag_down, AT)")
-        image_path = '../Plots_tTo_double/AT_maximum_MVA_outage.png'
-        img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+    AT_mva_mag_up = tTo_double_workspace['AT_mva_mag_up']
+    AT_mva_mag_down = tTo_double_workspace['AT_mva_mag_down']
+    AT = tTo_double_workspace['AT']
+    
+    oc.push('AT_mva_mag_up', AT_mva_mag_up)
+    oc.push('AT_mva_mag_down', AT_mva_mag_down)
+    oc.push('AT', AT)
+    
+            
+    oc.eval(f"AT_maximum_MVA_outage(AT_mva_mag_up, AT_mva_mag_down, AT)")
+    image_path = '../Plots_tTo_double/AT_maximum_MVA_outage.png'
+    img = Image.open(image_path)
+    st.image(img, caption="", use_column_width=True)
 
-        with open(image_path, "rb") as file:
-            btn = st.download_button(
-                label="Download Plot",
-                data=file,
-                file_name="AT_maximum_MVA_outage.png",  # Replace with the desired download filename
-                mime="image/png"
-            )
+    with open(image_path, "rb") as file:
+        btn = st.download_button(
+            label="Download Plot",
+            data=file,
+            file_name="AT_maximum_MVA_outage.png",  # Replace with the desired download filename
+            mime="image/png"
+        )
 
 
 if __name__ == "__main__":
