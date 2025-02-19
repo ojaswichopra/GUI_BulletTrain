@@ -49,7 +49,7 @@ def main():
 
     with col1:
         if st.button('Voltage profile at a particular time instant'):
-            st.switch_page("pages/.py")
+            st.switch_page("pages/tTo_Voltage_Profile_Options.py")
         if st.button('Voltage profile of a particular train'):
             st.switch_page("pages/tTo_double_train_voltage_profile.py") 
         if st.button('MVA profile of AT'):
@@ -64,10 +64,7 @@ def main():
         if st.button('Maximum MVA of all TSS'):
             st.switch_page("pages/tTo_double_maximum_mva_of_all_TSS.py") 
         if st.button('Voltage unbalance profile of TSS'):
-            st.switch_page("pages/tTo_double_voltage_unbalance_profile_TSS.py") 
-    
-    c1,c2,c3,c4 = st.columns(4)
-    with c2:
+            st.switch_page("pages/tTo_double_voltage_unbalance_profile_TSS.py")
         if st.button('Maximum voltage unbalance of all TSS'):
             st.switch_page("pages/tTo_double_maximum_voltage_unbalance_all_TSS.py") #tbd
     

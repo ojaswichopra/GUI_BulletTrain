@@ -1,3 +1,4 @@
+graphics_toolkit ("gnuplot")
 length_profile_T=length(Voltage_distance_matrix_T);
 length_profile_M=length(Voltage_distance_matrix_M);
 total_length_profile=length_profile_M+length_profile_T;
@@ -72,19 +73,58 @@ for jj_track_no=1:1:length(d_modified)
 end
 
 
-subplot(3,1,1)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)));
-title('Contact wire Voltage magnitude')
-xlabel('Distance (kM)')
-ylabel('Voltage magnitude (kV)')
-%set(gca,'XTick',[5 55 105 155 205 255 305 355 405 455 505],'XTickLabel',{'TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS'})
- subplot(3,1,2)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,3)));
-title('Rail wire Voltage magnitude')
-xlabel('Distance (kM)')
-ylabel('Voltage magnitude (kV)')
-subplot(3,1,3)
-plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,4)));
-title('Feeder wire Voltage magnitude')
-xlabel('Distance (kM)')
-ylabel('Voltage magnitude (kV)')
+% Create a figure handle
+figureHandle = figure;
+
+% Get screen size from root object (0)
+screenSize = get(0, 'ScreenSize');
+
+% Set the figure to match the screen size
+set(figureHandle, 'Position', [100, 100, 1830, 1500]);
+
+% Custom color palette
+colors = [0.8500 0.3250 0.0980; % Red
+          0.4660 0.6740 0.1880; % Green
+          0.3010 0.7450 0.9330]; % Blue
+
+% Subplot 1: Contact Voltage Magnitude
+subplot(3, 1, 1);
+plot((Voltage_distance_matrix_whole(:,1)/1000), abs(Voltage_distance_matrix_whole(:,2)), ...
+    'LineWidth', 2, 'Color', colors(1, :)); % Red line
+xlabel('Distance (Km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Contact Voltage (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Contact Voltage Magnitude vs Distance', 'FontWeight', 'bold', 'FontSize', 14);
+grid on;
+
+% Subplot 2: Rail Voltage Magnitude
+subplot(3, 1, 2);
+plot((Voltage_distance_matrix_whole(:,1)/1000), abs(Voltage_distance_matrix_whole(:,3)), ...
+    'LineWidth', 2, 'Color', colors(2, :)); % Green line
+xlabel('Distance (Km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Rail Voltage (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Rail Voltage Magnitude vs Distance', 'FontWeight', 'bold', 'FontSize', 14);
+grid on;
+
+% Subplot 3: Feeder Voltage Magnitude
+subplot(3, 1, 3);
+plot((Voltage_distance_matrix_whole(:,1)/1000), abs(Voltage_distance_matrix_whole(:,4)), ...
+    'LineWidth', 2, 'Color', colors(3, :)); % Blue line
+xlabel('Distance (Km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Feeder Voltage (kV)', 'FontWeight', 'bold', 'FontSize', 12);
+title('Feeder Voltage Magnitude vs Distance', 'FontWeight', 'bold', 'FontSize', 14);
+grid on;
+
+% Add a shared background color to the figure
+set(gcf, 'Color', 'w'); % White background
+
+% Set common font and line width for all subplots
+for i = 1:3
+    subplot(3, 1, i);
+    set(gca, 'FontSize', 12, 'LineWidth', 1.2); % Increase font size and axis line width
+end
+
+
+save('Voltage_distance_matrix_whole.mat', 'Voltage_distance_matrix_whole');
+
+desired_filename = '../Plots_tTo_double/Full_up_track_voltage_profile_2_outage.png';  % Replace 'desired_name' with your file name
+saveas(gcf, desired_filename);
