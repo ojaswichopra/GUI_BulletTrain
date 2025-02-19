@@ -40,38 +40,38 @@ def main():
     st.markdown("<h1 class='title'>Maximum MVA of all TSS</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
-    if st.button("Show maximum MVA of all TSS"):
-        oc.eval("setenv('GNUTERM', 'gnuplot')")
+    # if st.button("Show maximum MVA of all TSS"):
+    oc.eval("setenv('GNUTERM', 'gnuplot')")
 
-        TSS = tTo_double_workspace['TSS']
-        N_TSS_O = tTo_double_workspace['N_TSS_O']
-        dTSS_T_up = tTo_double_workspace['dTSS_T_up']
-       
-        oc.push('TSS', TSS)
-        oc.push('N_TSS_O', N_TSS_O)
-        oc.push('dTSS_T_up', dTSS_T_up)
-        
-        Unb = tTo_double_workspace['Unb']
-        tt_time = tTo_double_workspace['tt_time']
-        s_apprant_power_MVA_mag = tTo_double_workspace['s_apprant_power_MVA_mag']
-       
-        oc.push('Unb', Unb)
-        oc.push('tt_time', tt_time)
-        oc.push('s_apprant_power_MVA_mag', s_apprant_power_MVA_mag)
+    TSS = tTo_double_workspace['TSS']
+    N_TSS_O = tTo_double_workspace['N_TSS_O']
+    dTSS_T_up = tTo_double_workspace['dTSS_T_up']
+    
+    oc.push('TSS', TSS)
+    oc.push('N_TSS_O', N_TSS_O)
+    oc.push('dTSS_T_up', dTSS_T_up)
+    
+    Unb = tTo_double_workspace['Unb']
+    tt_time = tTo_double_workspace['tt_time']
+    s_apprant_power_MVA_mag = tTo_double_workspace['s_apprant_power_MVA_mag']
+    
+    oc.push('Unb', Unb)
+    oc.push('tt_time', tt_time)
+    oc.push('s_apprant_power_MVA_mag', s_apprant_power_MVA_mag)
 
-                
-        oc.eval(f"TSS_maximum_MVA_outage(TSS, N_TSS_O, dTSS_T_up, Unb, tt_time, s_apprant_power_MVA_mag)")
-        image_path = '../Plots_tTo_double/TSS_maximum_MVA_outage.png'
-        img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+            
+    oc.eval(f"TSS_maximum_MVA_outage(TSS, N_TSS_O, dTSS_T_up, Unb, tt_time, s_apprant_power_MVA_mag)")
+    image_path = '../Plots_tTo_double/TSS_maximum_MVA_outage.png'
+    img = Image.open(image_path)
+    st.image(img, caption="", use_column_width=True)
 
-        with open(image_path, "rb") as file:
-            btn = st.download_button(
-                label="Download Plot",
-                data=file,
-                file_name="TSS_maximum_MVA_outage.png",  # Replace with the desired download filename
-                mime="image/png"
-            )
+    with open(image_path, "rb") as file:
+        btn = st.download_button(
+            label="Download Plot",
+            data=file,
+            file_name="TSS_maximum_MVA_outage.png",  # Replace with the desired download filename
+            mime="image/png"
+        )
 
 
 if __name__ == "__main__":

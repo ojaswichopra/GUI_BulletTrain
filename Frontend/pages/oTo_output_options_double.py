@@ -68,10 +68,10 @@ def main():
         if st.button('Voltage unbalance profile of TSS'):
             st.switch_page("pages/oTo_double_voltage_unbalance_profile_TSS.py") 
     
-    c1,c2,c3,c4 = st.columns(4)
-    with c2:
-        if st.button('Voltage profile at a particular distance'):
-            st.switch_page("pages/.py") #tbd
+    # c1,c2,c3,c4 = st.columns(4)
+    # with c2:
+    #     if st.button('Voltage profile at a particular distance'):
+    #         st.switch_page("pages/.py") #tbd
     
 if __name__ == "__main__":
     main()

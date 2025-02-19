@@ -40,35 +40,35 @@ def main():
     st.markdown("<h1 class='title'>Maximum voltage unbalance of all TSS</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
-    if st.button("Show maximum voltage unbalance of all TSS"):
-        oc.eval("setenv('GNUTERM', 'gnuplot')")
+    # if st.button("Show maximum voltage unbalance of all TSS"):
+    oc.eval("setenv('GNUTERM', 'gnuplot')")
 
-        TSS = oTo_double_workspace['TSS']
-        N_TSS_O = oTo_double_workspace['N_TSS_O']
-        dTSS_T_up = oTo_double_workspace['dTSS_T_up']
-       
-        oc.push('TSS', TSS)
-        oc.push('N_TSS_O', N_TSS_O)
-        oc.push('dTSS_T_up', dTSS_T_up)
+    TSS = oTo_double_workspace['TSS']
+    N_TSS_O = oTo_double_workspace['N_TSS_O']
+    dTSS_T_up = oTo_double_workspace['dTSS_T_up']
+    
+    oc.push('TSS', TSS)
+    oc.push('N_TSS_O', N_TSS_O)
+    oc.push('dTSS_T_up', dTSS_T_up)
 
-        Unb = oTo_double_workspace['Unb']
-        tt_time = oTo_double_workspace['tt_time']
-       
-        oc.push('Unb', Unb)
-        oc.push('tt_time', tt_time)
-        
-                
-        oc.eval(f"TSS_maximum_voltage_unbalance_outage(TSS, N_TSS_O, dTSS_T_up, Unb, tt_time)")
-        image_path = '../Plots_oTo_double/TSS_maximum_voltage_unbalance_outage.png'
-        img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+    Unb = oTo_double_workspace['Unb']
+    tt_time = oTo_double_workspace['tt_time']
+    
+    oc.push('Unb', Unb)
+    oc.push('tt_time', tt_time)
+    
+            
+    oc.eval(f"TSS_maximum_voltage_unbalance_outage(TSS, N_TSS_O, dTSS_T_up, Unb, tt_time)")
+    image_path = '../Plots_oTo_double/TSS_maximum_voltage_unbalance_outage.png'
+    img = Image.open(image_path)
+    st.image(img, caption="", use_column_width=True)
 
-        with open(image_path, "rb") as file:
-            btn = st.download_button(
-                label="Download Plot",
-                data=file,
-                file_name="TSS_maximum_voltage_unbalance_outage.png",  # Replace with the desired download filename
-                mime="image/png"
+    with open(image_path, "rb") as file:
+        btn = st.download_button(
+            label="Download Plot",
+            data=file,
+            file_name="TSS_maximum_voltage_unbalance_outage.png",  # Replace with the desired download filename
+            mime="image/png"
             )
 
 
