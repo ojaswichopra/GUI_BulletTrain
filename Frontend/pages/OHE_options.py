@@ -1,12 +1,13 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
-from oct2py import Oct2Py
-import os
-from pages.workspace import workspace_variables
+from pages.normal_workspace import normal_variables
 import numpy as np
-oc = Oct2Py() 
-oc.eval('cd("../backend_codes")') 
-    
+ 
+title = "Output Options"
+page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
+layout = "centered"
+
+selection = None
 def read_text_file(file_path):
     try:
         with open(file_path, 'r') as file:
@@ -67,34 +68,11 @@ def is_numeric(value):
         return True
     except ValueError:
         return False
-
-title = "GUI Bullet Train"
-page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
-layout = "centered"
-
-selection = None
-
-
-def load_workspace_variables():
     
-    
-    ## Reading using entire workspace - 20mins
-    # oc.eval('load("variable_load_flow_mum_to_ahm_each_stop.mat")')
-    
-    ## Reading using necesaary files only - 8mins 
-    # oc.eval('load("required_variable_load_flow_mum_to_ahm_each_stop.mat")')
-    
-    # List of variable names to pull and read from text files
+def load_normal_workspace():
+        # List of variable names to pull and read from text files
     variable_names = [
-        'AT_mva_mag', 'Unb', 's_apprant_power_MVA_mag', 'd', 'dTSS_T',
-        'Ic_line_mag_Td', 'Ic_line_ang_Td', 'Ir_line_mag_Td', 'Ir_line_ang_Td',
-        'If_line_mag_Td', 'If_line_ang_Td', 'Vc_mag_Td', 'Vc_ang_Td',
-        'VR_mag_Td', 'VR_ang_Td', 'Vf_mag_Td', 'Vf_ang_Td', 'z1', 'y',
-        'dTSS_M', 'Ic_line_mag_Md', 'Ic_line_ang_Md', 'Ir_line_mag_Md',
-        'Ir_line_ang_Md', 'If_line_mag_Md', 'If_line_ang_Md', 'Vc_mag_Md',
-        'Vc_ang_Md', 'VR_mag_Md', 'VR_ang_Md', 'Vf_mag_Md', 'Vf_ang_Md',
-        'AT', 'train_data', 'dTSS', 'TSS'
-    ]
+        'Ic_line_mag_Td_up', 'Ir_line_mag_Td_up', 'If_line_mag_Td_up', 'Ic_line_mag_Md_up', 'Ir_line_mag_Md_up', 'If_line_mag_Md_up', 'Ic_line_mag_Td_down', 'Ir_line_mag_Td_down', 'If_line_mag_Td_down', 'Ic_line_mag_Md_down', 'Ir_line_mag_Md_down', 'If_line_mag_Md_down', 'y', 'N_TSS', 'd', 'rad_C', 'rad_R1', 'rad_F', 'Resistance_C', 'Resistance_R1', 'Resistance_F' ]
 
     # Loop through each variable name
     for var in variable_names:
@@ -102,9 +80,7 @@ def load_workspace_variables():
         # workspace_variables[var] = oc.pull(var)
         
         ## Reading from text file - 
-        workspace_variables[var] = read_text_file(f'../variable_text_files/{var}.txt')
-
-
+        normal_variables[var] = read_text_file(f'../normal_text_files/{var}.txt')
 
 def main():
 
@@ -131,38 +107,41 @@ def main():
         .title {
             text-align: center;
         }
+        .custom-button {
+                display: inline-block;
+                text-decoration: none;
+                padding: 4px 16px;
+                font-size: 20px;
+                color: #007BFF;
+                border: 2px solid #007BFF; /* Adding a white border */
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+                text-align: center;
+                margin: 10px 0;
+            }
     </style>
     """,
         unsafe_allow_html=True,
     )
-
-    
-    st.markdown("<h1 class='title'>Graphical User Interface</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Calculate OHE Temperature Rise</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button('Make System Data'):
-            st.switch_page("pages/Make_System_Data.py")
-        if st.button('Execute Load Flow'):
-            st.switch_page("pages/Execute_Load_Flow_Interface.py")
-        if st.button('Perform Harmonic Analysis'):
-            st.write("Button 1 clicked!")
-        if st.button('Calculate Induced Voltage'):
-            st.write("Button 1 clicked!")
-
+        if st.button('Normal Condition'):
+            load_normal_workspace()
+            st.switch_page("pages/OHE_normal_options.py")
+    
     with col2:
-        if st.button('Prepare Train Timetable'):
-            st.switch_page("pages/Train_Timetable_Interface.py")
-        if st.button('Perform Short Circuit Analysis'):
-            st.switch_page("pages/Short_Circuit_Analysis.py")
-        if st.button('Calculate OHE Temerature rise'):
-            st.switch_page("pages/OHE_input.py")
-        if st.button('See output'):
-            st.switch_page("pages/Output_Options.py")
-
-
+        if st.button('TSS Outage Condition'):
+            st.switch_page("pages/.py")
+            
 
 if __name__ == "__main__":
     main()
-    # authenticated_menu()
+    st.markdown(
+        f"""
+        <a href="/OHE_input" target="_self" class="custom-button">Back</a>
+        """,
+        unsafe_allow_html=True
+    )
