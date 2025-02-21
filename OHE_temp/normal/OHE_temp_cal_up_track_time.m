@@ -340,55 +340,33 @@ function OHE_temp_cal_up_track_time(time_instant, Ic_line_mag_Td_up, Ir_line_mag
             track_temp_f(i_f,1)=T_f_track((i_e-1)*y+time_instant);
         end
     end
-    figureHandle = figure;
+   figureHandle = figure;
 
     % Get screen size from root object (0)
     screenSize = get(0, 'ScreenSize');
 
     % Set the figure to match the screen size
-    set(figureHandle, 'Position', [100, 100, 2500, 2000]);
+    set(figureHandle, 'Position', [100, 100, 1830, 1300]);
 
-    % Main figure with title
     figure('Name','OHE Temperature Along the Track at a Particular Time Instant')
+    subplot(3,1,1)
+    plot(track_distance/1000,track_temp_c,"color",'r')
+    xlabel('Distance (km)')
+    ylabel('Contact wire temp (deg cel)')
+    subplot(3,1,2)
+    plot(track_distance/1000,track_temp_r,"color",'g')
+    xlabel('Distance (km)')
+    ylabel('Rail temp (deg cel)')
+    subplot(3,1,3)
+    plot(track_distance/1000,track_temp_f,"color",'b')
+    xlabel('Distance (km)')
+    ylabel('Feeder wire temp (deg cel)')
 
-    set(gcf, 'PaperPositionMode', 'auto');  % Ensures proper scaling
-
-    % First subplot - Contact Wire Temperature
-    subplot('Position', [0.12 0.72 0.78 0.22])  % [left bottom width height]
-    plot(track_distance/1000, track_temp_c, "color", 'r', 'LineWidth', 1.5)
-    xlabel('Distance (km)', 'FontSize', 10, 'FontWeight', 'bold')
-    ylabel('Contact wire temp (°C)', 'FontSize', 10, 'FontWeight', 'bold')
-    title('Contact Wire Temperature', 'FontSize', 11, 'FontWeight', 'bold')
-
-    % Second subplot - Rail Temperature (shifted down)
-    subplot('Position', [0.12 0.41 0.78 0.22])
-    plot(track_distance/1000, track_temp_r, "color", 'g', 'LineWidth', 1.5)
-    xlabel('Distance (km)', 'FontSize', 10, 'FontWeight', 'bold')
-    ylabel('Rail temp (°C)', 'FontSize', 10, 'FontWeight', 'bold')
-    title('Rail Temperature', 'FontSize', 11, 'FontWeight', 'bold')
-
-    % Third subplot - Feeder Wire Temperature (shifted down further)
-    subplot('Position', [0.12 0.10 0.78 0.22])
-    plot(track_distance/1000, track_temp_f, "color", 'b', 'LineWidth', 1.5)
-    xlabel('Distance (km)', 'FontSize', 10, 'FontWeight', 'bold')
-    ylabel('Feeder wire temp (°C)', 'FontSize', 10, 'FontWeight', 'bold')
-    title('Feeder Wire Temperature', 'FontSize', 11, 'FontWeight', 'bold')
-
-    % Find all axes in the figure
-    allAxes = findall(gcf, 'Type', 'axes');
-
-    % Adjust X-axis ticks for better readability
-    set(allAxes, 'XLim', [0 d(end)/1000], 'XTick', linspace(0, d(end)/1000, 10), 'FontSize', 10);
-
-    % Rotate X-axis labels for better readability
-    for ax = allAxes'
-        xtickangle(ax, 45);
-    end
-
-    % Improve figure aesthetics
-    set(gcf, 'Color', 'w'); % White background
-    set(gca, 'FontSize', 10, 'LineWidth', 1.5);
-
+    
+    allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+    set(allAxes, 'XLim', [0 d(end)/1000], 'XTick', d/1000, 'FontSize', 8); % Set font size and weight
+    allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
+    set(allLines, 'LineWidth', 1.2);          % Set the line width to 1.5
     % Save the figure
     desired_filename = '../../Plots_OHE/OHE_temp_cal_up_track_time.png';
     saveas(gcf, desired_filename);
