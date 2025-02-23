@@ -62,4 +62,12 @@ def run_train_timetable(M, g, delt, eff, m_decl, a, b, c, max_speed, sect):
     oc.eval(f"""train_sheduling_program_code({M},{g},{delt},{eff},{m_decl},{a},{b},{c},{max_speed},{sect})""")
     print("Executed successfully!")
 
-__all__ = ['run_oct2py', 'run_load_flow_standard','run_oct2py_TSS','run_oct2py_TSS_two','run_short_circuit','run_train_timetable','run_load_flow_normal', 'run_oct2py_oTo', 'run_oct2py_tTo']
+def run_short_circuit_double(extracted_data, time_instant_short, total_distance_from_start_point, fault_type, Z_fault, track_up_down):
+    oc.eval('cd("../short_circuit_double_track")')
+    oc.eval(f"""
+        short_circuit_studies_for_user_input({extracted_data['tss_distances']},{extracted_data['at_distances']},{extracted_data['sp_distances']},{extracted_data['tss_primary_voltage']},{extracted_data['tss_secondary_voltage']},{extracted_data['primary_resistance']},{extracted_data['primary_reactance']},{extracted_data['secondary_resistance']},{extracted_data['secondary_reactance']},{extracted_data['rail_grounding_impedance']},{extracted_data['short_circuit_mva']},{extracted_data['at_leakage_resistance']},{extracted_data['at_leakage_reactance']},{extracted_data['at_magnetising_resistance']},{extracted_data['at_magnetising_reactance']},{extracted_data['earth_resistivity']},{extracted_data['frequency']},{extracted_data['num_conductors']},{extracted_data['contact_wire_height']},{extracted_data['messenger_wire_height']},{extracted_data['feeder_wire_height']},{extracted_data['feeder_wire_distance']},{extracted_data['earth_wire_height']},{extracted_data['earth_wire_distance']},{extracted_data['contact_wire_diameter']},{extracted_data['contact_wire_resistance']},{extracted_data['messenger_wire_diameter']},{extracted_data['messenger_wire_resistance']},{extracted_data['earth_wire_diameter']},{extracted_data['earth_wire_resistance']},{extracted_data['feeder_wire_diameter']},{extracted_data['feeder_wire_resistance']},{extracted_data['rail_diameter']},{extracted_data['rail_resistance']}, {time_instant_short},{total_distance_from_start_point},{fault_type},{Z_fault}, {track_up_down})
+    """)
+    print("Short Circuit executed successfully!")
+
+
+__all__ = ['run_short_circuit_double', 'run_oct2py', 'run_load_flow_standard','run_oct2py_TSS','run_oct2py_TSS_two','run_short_circuit','run_train_timetable','run_load_flow_normal', 'run_oct2py_oTo', 'run_oct2py_tTo']

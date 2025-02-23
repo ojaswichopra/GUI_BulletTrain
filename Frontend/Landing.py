@@ -155,7 +155,7 @@ def main():
         if st.button('Prepare Train Timetable'):
             st.switch_page("pages/Train_Timetable_Interface.py")
         if st.button('Perform Short Circuit Analysis'):
-            st.switch_page("pages/Short_Circuit_Analysis.py")
+            st.switch_page("pages/SCA_execute_options.py")
         if st.button('Calculate OHE Temerature rise'):
             st.switch_page("pages/OHE_input.py")
         if st.button('See output'):
