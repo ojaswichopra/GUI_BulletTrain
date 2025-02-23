@@ -1,123 +1,124 @@
-fileID = fopen('dTSS_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/dTSS_up.txt', 'w');
 for row = 1:size(dTSS_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_up, 2)) '\n'], dTSS_up(row, :));
 end
 fclose(fileID);
-fileID = fopen('dTSS_down.txt', 'w');
+
+fileID = fopen('../SCA_double_text_files/dTSS_down.txt', 'w');
 for row = 1:size(dTSS_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_down, 2)) '\n'], dTSS_down(row, :));
 end
 fclose(fileID);
 
-
-
-fileID = fopen('dTSS_T_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/dTSS_T_up.txt', 'w');
 for row = 1:size(dTSS_T_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_T_up, 2)) '\n'], dTSS_T_up(row, :));
 end
 fclose(fileID);
-fileID = fopen('dTSS_T_down.txt', 'w');
+
+fileID = fopen('../SCA_double_text_files/dTSS_T_down.txt', 'w');
 for row = 1:size(dTSS_T_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_T_down, 2)) '\n'], dTSS_T_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('dTSS_M_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/dTSS_M_up.txt', 'w');
 for row = 1:size(dTSS_M_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_M_up, 2)) '\n'], dTSS_M_up(row, :));
 end
 fclose(fileID);
-fileID = fopen('dTSS_M_down.txt', 'w');
+
+fileID = fopen('../SCA_double_text_files/dTSS_M_down.txt', 'w');
 for row = 1:size(dTSS_M_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_M_down, 2)) '\n'], dTSS_M_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('TSS.txt', 'w');
+fileID = fopen('../SCA_double_text_files/TSS.txt', 'w');
 for row = 1:size(TSS, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(TSS, 2)) '\n'], TSS(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('d.txt', 'w');
+fileID = fopen('../SCA_double_text_files/d.txt', 'w');
 for row = 1:size(d, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(d, 2)) '\n'], d(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('y.txt', 'w');
+fileID = fopen('../SCA_double_text_files/y.txt', 'w');
 for row = 1:size(y, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(y, 2)) '\n'], y(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vc_mag_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vc_mag_Td_down.txt', 'w');
 for row = 1:size(Vc_mag_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vc_mag_Td_down, 2)) '\n'], Vc_mag_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vc_ang_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vc_ang_Td_down.txt', 'w');
 for row = 1:size(Vc_ang_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vc_ang_Td_down, 2)) '\n'], Vc_ang_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('VR_mag_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/VR_mag_Td_down.txt', 'w');
 for row = 1:size(VR_mag_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(VR_mag_Td_down, 2)) '\n'], VR_mag_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('VR_ang_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/VR_ang_Td_down.txt', 'w');
 for row = 1:size(VR_ang_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(VR_ang_Td_down, 2)) '\n'], VR_ang_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vf_mag_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vf_mag_Td_down.txt', 'w');
 for row = 1:size(Vf_mag_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_mag_Td_down, 2)) '\n'], Vf_mag_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vf_ang_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vf_ang_Td_down.txt', 'w');
 for row = 1:size(Vf_ang_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_ang_Td_down, 2)) '\n'], Vf_ang_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vc_mag_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vc_mag_Td_up.txt', 'w');
 for row = 1:size(Vc_mag_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vc_mag_Td_up, 2)) '\n'], Vc_mag_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vc_ang_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vc_ang_Td_up.txt', 'w');
 for row = 1:size(Vc_ang_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vc_ang_Td_up, 2)) '\n'], Vc_ang_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('VR_mag_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/VR_mag_Td_up.txt', 'w');
 for row = 1:size(VR_mag_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(VR_mag_Td_up, 2)) '\n'], VR_mag_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('VR_ang_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/VR_ang_Td_up.txt', 'w');
 for row = 1:size(VR_ang_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(VR_ang_Td_up, 2)) '\n'], VR_ang_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vf_mag_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vf_mag_Td_up.txt', 'w');
 for row = 1:size(Vf_mag_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_mag_Td_up, 2)) '\n'], Vf_mag_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vf_ang_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vf_ang_Td_up.txt', 'w');
 for row = 1:size(Vf_ang_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_ang_Td_up, 2)) '\n'], Vf_ang_Td_up(row, :));
 end
@@ -130,235 +131,224 @@ fclose(fileID);
 % end
 % fclose(fileID);
 
-fileID = fopen('Ic_line_mag_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ic_line_mag_Td_up.txt', 'w');
 for row = 1:size(Ic_line_mag_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_mag_Td_up, 2)) '\n'], Ic_line_mag_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ic_line_ang_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ic_line_ang_Td_up.txt', 'w');
 for row = 1:size(Ic_line_ang_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_ang_Td_up, 2)) '\n'], Ic_line_ang_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ir_line_mag_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ir_line_mag_Td_up.txt', 'w');
 for row = 1:size(Ir_line_mag_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ir_line_mag_Td_up, 2)) '\n'], Ir_line_mag_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ir_line_ang_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ir_line_ang_Td_up.txt', 'w');
 for row = 1:size(Ir_line_ang_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ir_line_ang_Td_up, 2)) '\n'], Ir_line_ang_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('If_line_mag_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/If_line_mag_Td_up.txt', 'w');
 for row = 1:size(If_line_mag_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_mag_Td_up, 2)) '\n'], If_line_mag_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('If_line_ang_Td_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/If_line_ang_Td_up.txt', 'w');
 for row = 1:size(If_line_ang_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_ang_Td_up, 2)) '\n'], If_line_ang_Td_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ic_line_mag_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ic_line_mag_Td_down.txt', 'w');
 for row = 1:size(Ic_line_mag_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_mag_Td_down, 2)) '\n'], Ic_line_mag_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ic_line_ang_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ic_line_ang_Td_down.txt', 'w');
 for row = 1:size(Ic_line_ang_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_ang_Td_down, 2)) '\n'], Ic_line_ang_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ir_line_mag_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ir_line_mag_Td_down.txt', 'w');
 for row = 1:size(Ir_line_mag_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ir_line_mag_Td_down, 2)) '\n'], Ir_line_mag_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ir_line_ang_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ir_line_ang_Td_down.txt', 'w');
 for row = 1:size(Ir_line_ang_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ir_line_ang_Td_down, 2)) '\n'], Ir_line_ang_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('If_line_mag_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/If_line_mag_Td_down.txt', 'w');
 for row = 1:size(If_line_mag_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_mag_Td_down, 2)) '\n'], If_line_mag_Td_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('If_line_ang_Td_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/If_line_ang_Td_down.txt', 'w');
 for row = 1:size(If_line_ang_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_ang_Td_down, 2)) '\n'], If_line_ang_Td_down(row, :));
 end
 fclose(fileID);
 
 % Open the file for writing complex variable z1
-fileID = fopen('z1.txt', 'w');
-
-% Write real and imaginary parts
+fileID = fopen('../SCA_double_text_files/z1.txt', 'w');
 for row = 1:size(z1, 1)
     fprintf(fileID, [repmat('%.16g, %.16g ', 1, size(z1, 2)) '\n'], real(z1(row, :)), imag(z1(row, :)));
 end
-
-% Close the file
 fclose(fileID);
 
-fileID = fopen('Vc_mag_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vc_mag_Md_up.txt', 'w');
 for row = 1:size(Vc_mag_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vc_mag_Md_up, 2)) '\n'], Vc_mag_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vc_ang_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vc_ang_Md_up.txt', 'w');
 for row = 1:size(Vc_ang_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vc_ang_Md_up, 2)) '\n'], Vc_ang_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('VR_mag_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/VR_mag_Md_up.txt', 'w');
 for row = 1:size(VR_mag_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(VR_mag_Md_up, 2)) '\n'], VR_mag_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('VR_ang_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/VR_ang_Md_up.txt', 'w');
 for row = 1:size(VR_ang_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(VR_ang_Md_up, 2)) '\n'], VR_ang_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vf_mag_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vf_mag_Md_up.txt', 'w');
 for row = 1:size(Vf_mag_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_mag_Md_up, 2)) '\n'], Vf_mag_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vf_ang_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vf_ang_Md_up.txt', 'w');
 for row = 1:size(Vf_ang_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_ang_Md_up, 2)) '\n'], Vf_ang_Md_up(row, :));
 end
 fclose(fileID);
 
-
-fileID = fopen('Vc_mag_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vc_mag_Md_down.txt', 'w');
 for row = 1:size(Vc_mag_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vc_mag_Md_down, 2)) '\n'], Vc_mag_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vc_ang_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vc_ang_Md_down.txt', 'w');
 for row = 1:size(Vc_ang_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vc_ang_Md_down, 2)) '\n'], Vc_ang_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('VR_mag_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/VR_mag_Md_down.txt', 'w');
 for row = 1:size(VR_mag_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(VR_mag_Md_down, 2)) '\n'], VR_mag_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('VR_ang_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/VR_ang_Md_down.txt', 'w');
 for row = 1:size(VR_ang_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(VR_ang_Md_down, 2)) '\n'], VR_ang_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vf_mag_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vf_mag_Md_down.txt', 'w');
 for row = 1:size(Vf_mag_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_mag_Md_down, 2)) '\n'], Vf_mag_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Vf_ang_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Vf_ang_Md_down.txt', 'w');
 for row = 1:size(Vf_ang_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_ang_Md_down, 2)) '\n'], Vf_ang_Md_down(row, :));
 end
 fclose(fileID);
 
-% fileID = fopen('dTSS_M.txt', 'w');
-% for row = 1:size(dTSS_M, 1)
-%     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_M, 2)) '\n'], dTSS_M(row, :));
-% end
-% fclose(fileID);
-
-fileID = fopen('Ic_line_mag_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ic_line_mag_Md_up.txt', 'w');
 for row = 1:size(Ic_line_mag_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_mag_Md_up, 2)) '\n'], Ic_line_mag_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ic_line_ang_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ic_line_ang_Md_up.txt', 'w');
 for row = 1:size(Ic_line_ang_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_ang_Md_up, 2)) '\n'], Ic_line_ang_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ir_line_mag_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ir_line_mag_Md_up.txt', 'w');
 for row = 1:size(Ir_line_mag_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ir_line_mag_Md_up, 2)) '\n'], Ir_line_mag_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ir_line_ang_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ir_line_ang_Md_up.txt', 'w');
 for row = 1:size(Ir_line_ang_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ir_line_ang_Md_up, 2)) '\n'], Ir_line_ang_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('If_line_mag_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/If_line_mag_Md_up.txt', 'w');
 for row = 1:size(If_line_mag_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_mag_Md_up, 2)) '\n'], If_line_mag_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('If_line_ang_Md_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/If_line_ang_Md_up.txt', 'w');
 for row = 1:size(If_line_ang_Md_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_ang_Md_up, 2)) '\n'], If_line_ang_Md_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ic_line_mag_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ic_line_mag_Md_down.txt', 'w');
 for row = 1:size(Ic_line_mag_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_mag_Md_down, 2)) '\n'], Ic_line_mag_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ic_line_ang_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ic_line_ang_Md_down.txt', 'w');
 for row = 1:size(Ic_line_ang_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_ang_Md_down, 2)) '\n'], Ic_line_ang_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ir_line_mag_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ir_line_mag_Md_down.txt', 'w');
 for row = 1:size(Ir_line_mag_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ir_line_mag_Md_down, 2)) '\n'], Ir_line_mag_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('Ir_line_ang_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/Ir_line_ang_Md_down.txt', 'w');
 for row = 1:size(Ir_line_ang_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ir_line_ang_Md_down, 2)) '\n'], Ir_line_ang_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('If_line_mag_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/If_line_mag_Md_down.txt', 'w');
 for row = 1:size(If_line_mag_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_mag_Md_down, 2)) '\n'], If_line_mag_Md_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('If_line_ang_Md_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/If_line_ang_Md_down.txt', 'w');
 for row = 1:size(If_line_ang_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_ang_Md_down, 2)) '\n'], If_line_ang_Md_down(row, :));
 end
@@ -400,104 +390,100 @@ fclose(fileID);
 %     fprintf(fileID, [repmat('%.16g ', 1, size(s_apprant_power_MVA_mag, 2)) '\n'], s_apprant_power_MVA_mag(row, :));
 % end
 % fclose(fileID);
-
-fileID = fopen('train_number.txt', 'w');
+fileID = fopen('../SCA_double_text_files/train_number.txt', 'w');
 for row = 1:size(train_number, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(train_number, 2)) '\n'], train_number(row, :));
 end
 fclose(fileID);
 
-
-fileID = fopen('track_type.txt', 'w');
+fileID = fopen('../SCA_double_text_files/track_type.txt', 'w');
 for row = 1:size(track_type, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(track_type, 2)) '\n'], track_type(row, :));
 end
 fclose(fileID);
 
-
-fileID = fopen('train_type.txt', 'w');
+fileID = fopen('../SCA_double_text_files/train_type.txt', 'w');
 for row = 1:size(train_type, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(train_type, 2)) '\n'], train_type(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('start_time.txt', 'w');
+fileID = fopen('../SCA_double_text_files/start_time.txt', 'w');
 for row = 1:size(start_time, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(start_time, 2)) '\n'], start_time(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('each_stop_train_data_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/each_stop_train_data_up.txt', 'w');
 for row = 1:size(each_stop_train_data_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(each_stop_train_data_up, 2)) '\n'], each_stop_train_data_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('rapid_train_data_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/rapid_train_data_up.txt', 'w');
 for row = 1:size(rapid_train_data_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(rapid_train_data_up, 2)) '\n'], rapid_train_data_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('each_stop_train_data_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/each_stop_train_data_down.txt', 'w');
 for row = 1:size(each_stop_train_data_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(each_stop_train_data_down, 2)) '\n'], each_stop_train_data_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('rapid_train_data_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/rapid_train_data_down.txt', 'w');
 for row = 1:size(rapid_train_data_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(rapid_train_data_down, 2)) '\n'], rapid_train_data_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('track_length.txt', 'w');
+fileID = fopen('../SCA_double_text_files/track_length.txt', 'w');
 for row = 1:size(track_length, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(track_length, 2)) '\n'], track_length(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('n_tss_fault.txt', 'w');
+fileID = fopen('../SCA_double_text_files/n_tss_fault.txt', 'w');
 for row = 1:size(n_tss_fault, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(n_tss_fault, 2)) '\n'], n_tss_fault(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('faulted_winding_side.txt', 'w');
+fileID = fopen('../SCA_double_text_files/faulted_winding_side.txt', 'w');
 for row = 1:size(faulted_winding_side, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(faulted_winding_side, 2)) '\n'], faulted_winding_side(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('linedata_dTSS_T_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/linedata_dTSS_T_down.txt', 'w');
 for row = 1:size(linedata_dTSS_T_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(linedata_dTSS_T_down, 2)) '\n'], linedata_dTSS_T_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('linedata_dTSS_M_down.txt', 'w');
+fileID = fopen('../SCA_double_text_files/linedata_dTSS_M_down.txt', 'w');
 for row = 1:size(linedata_dTSS_M_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(linedata_dTSS_M_down, 2)) '\n'], linedata_dTSS_M_down(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('linedata_dTSS_T_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/linedata_dTSS_T_up.txt', 'w');
 for row = 1:size(linedata_dTSS_T_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(linedata_dTSS_T_up, 2)) '\n'], linedata_dTSS_T_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('linedata_dTSS_M_up.txt', 'w');
+fileID = fopen('../SCA_double_text_files/linedata_dTSS_M_up.txt', 'w');
 for row = 1:size(linedata_dTSS_M_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(linedata_dTSS_M_up, 2)) '\n'], linedata_dTSS_M_up(row, :));
 end
 fclose(fileID);
 
-fileID = fopen('time_instant_short.txt', 'w');
+fileID = fopen('../SCA_double_text_files/time_instant_short.txt', 'w');
 for row = 1:size(time_instant_short, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(time_instant_short, 2)) '\n'], time_instant_short(row, :));
 end
 fclose(fileID);
-
 
 
