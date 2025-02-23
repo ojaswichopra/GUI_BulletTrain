@@ -9,7 +9,7 @@ function short_circuit_studies_for_user_input(TSS, AT, SP, Vp, Vs, Rp, Xp, Rs, X
     % time_instant_short= input('Enter the time instant (sec) for short circuit');
     t_s_i=time_instant_short;
     % track_up_down=input('Enter 1 for UP track short circuit and 2 for Down track short circuit');
-    total_distance_from_start_point= input('Enter the distance from starting point (Mumbai) for voltage profile of entire day in kM');
+    % total_distance_from_start_point= input('Enter the distance from starting point (Mumbai) for voltage profile of entire day in kM');
     total_distance_from_start_point=total_distance_from_start_point*1000;
 
     d_index_length=length(d);
@@ -80,8 +80,8 @@ function short_circuit_studies_for_user_input(TSS, AT, SP, Vp, Vs, Rp, Xp, Rs, X
     % start of short circuit
 
     n_tss_fault = track_TSS_no;
-    fault_type = input('Enter the code for the "type of fault" as 1 - CR fault 2 -RF fault 3 - CF fault 4 - CRF fault');
-    Z_fault=input('Enter the fault resistance in ohm');
+    % fault_type = input('Enter the code for the "type of fault" as 1 - CR fault 2 -RF fault 3 - CF fault 4 - CRF fault');
+    % Z_fault=input('Enter the fault resistance in ohm');
     n_trac=n_tss_fault;
     nt=(n_trac-1)*y + t_s_i;
     line_data_short_circuit_double_pre;

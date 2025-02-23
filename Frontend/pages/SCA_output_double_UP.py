@@ -46,12 +46,12 @@ def main():
     
     
     
-    st.markdown("<h1 class='title'>Output of Short Circuit Analysis</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Output of Short Circuit Analysis - UP track</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
     with col1:
         if st.button('Voltage Profile of the track at the time instant of fault'):
-            image_path = '../Plots_SCA/voltage_profile.png'
+            image_path = '../Plots_SCA_double/voltage_profile.png'
             img = Image.open(image_path)
             st.image(img, caption="", use_column_width=True)
 
@@ -65,7 +65,7 @@ def main():
 
     with col2:
         if st.button('Line Current Profile of the track at the time instant of fault'):
-            image_path = '../Plots_SCA/current_profile.png'
+            image_path = '../Plots_SCA_double/current_profile.png'
             img = Image.open(image_path)
             st.image(img, caption="", use_column_width=True)
 
