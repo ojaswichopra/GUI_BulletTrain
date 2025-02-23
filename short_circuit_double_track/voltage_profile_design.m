@@ -69,7 +69,12 @@ for jj_track_no=1:1:length(d_modified)
     profile_winding_position=profile_winding_position+1;
 
 end
+figure;
+graphics_toolkit ("gnuplot")
+figureHandle = figure;
+screenSize = get(0, 'ScreenSize');
 
+set(figureHandle, 'Position', [100, 100, 1830, 1500]);
 
 subplot(3,1,1)
 plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole(:,2)));
@@ -87,3 +92,6 @@ plot((Voltage_distance_matrix_whole(:,1)/1000),abs(Voltage_distance_matrix_whole
 title('Feeder wire Voltage magnitude')
 xlabel('Distance (kM)')
 ylabel('Voltage magnitude (kV)')
+
+desired_filename = '../Plots_SCA_double/voltage_profile.png';
+saveas(gcf, desired_filename);

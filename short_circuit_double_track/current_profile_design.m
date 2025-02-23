@@ -71,6 +71,12 @@ for jj_track_no=1:1:length(d_modified)
 end
 
 figure;
+graphics_toolkit ("gnuplot")
+figureHandle = figure;
+screenSize = get(0, 'ScreenSize');
+
+set(figureHandle, 'Position', [100, 100, 1830, 1500]);
+
 subplot(3,1,1)
 plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,2)));
 title('Contact wire current magnitude')
@@ -87,3 +93,7 @@ plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole
 title('Feeder wire current magnitude')
 xlabel('Distance (kM)')
 ylabel('current magnitude (kA)')
+
+
+desired_filename = '../Plots_SCA_double/current_profile.png';
+saveas(gcf, desired_filename);

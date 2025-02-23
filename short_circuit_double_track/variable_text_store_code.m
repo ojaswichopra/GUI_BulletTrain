@@ -87,7 +87,6 @@ for row = 1:size(Vf_ang_Td_down, 1)
 end
 fclose(fileID);
 
-%%
 fileID = fopen('Vc_mag_Td_up.txt', 'w');
 for row = 1:size(Vc_mag_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vc_mag_Td_up, 2)) '\n'], Vc_mag_Td_up(row, :));
@@ -123,7 +122,6 @@ for row = 1:size(Vf_ang_Td_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_ang_Td_up, 2)) '\n'], Vf_ang_Td_up(row, :));
 end
 fclose(fileID);
-%%
 
 
 % fileID = fopen('dTSS_T.txt', 'w');
@@ -168,7 +166,6 @@ for row = 1:size(If_line_ang_Td_up, 1)
 end
 fclose(fileID);
 
-%%
 fileID = fopen('Ic_line_mag_Td_down.txt', 'w');
 for row = 1:size(Ic_line_mag_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_mag_Td_down, 2)) '\n'], Ic_line_mag_Td_down(row, :));
@@ -204,8 +201,6 @@ for row = 1:size(If_line_ang_Td_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_ang_Td_down, 2)) '\n'], If_line_ang_Td_down(row, :));
 end
 fclose(fileID);
-%%
-
 
 % Open the file for writing complex variable z1
 fileID = fopen('z1.txt', 'w');
@@ -254,7 +249,6 @@ for row = 1:size(Vf_ang_Md_up, 1)
 end
 fclose(fileID);
 
-%%
 
 fileID = fopen('Vc_mag_Md_down.txt', 'w');
 for row = 1:size(Vc_mag_Md_down, 1)
@@ -291,7 +285,6 @@ for row = 1:size(Vf_ang_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_ang_Md_down, 2)) '\n'], Vf_ang_Md_down(row, :));
 end
 fclose(fileID);
-%%
 
 % fileID = fopen('dTSS_M.txt', 'w');
 % for row = 1:size(dTSS_M, 1)
@@ -335,7 +328,6 @@ for row = 1:size(If_line_ang_Md_up, 1)
 end
 fclose(fileID);
 
-%%
 fileID = fopen('Ic_line_mag_Md_down.txt', 'w');
 for row = 1:size(Ic_line_mag_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Ic_line_mag_Md_down, 2)) '\n'], Ic_line_mag_Md_down(row, :));
@@ -371,7 +363,6 @@ for row = 1:size(If_line_ang_Md_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(If_line_ang_Md_down, 2)) '\n'], If_line_ang_Md_down(row, :));
 end
 fclose(fileID);
-%%
 
 
 % fileID = fopen('train_data.txt', 'w');
