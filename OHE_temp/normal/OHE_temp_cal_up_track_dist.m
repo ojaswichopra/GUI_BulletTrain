@@ -19,7 +19,6 @@ function OHE_temp_cal_up_track_dist(dist)
     % Set the figure to match the screen size
     set(figureHandle, 'Position', [100, 100, 1830, 1300]);
 
-
     time=[0,1:y];  % time (seconds)
     figure('Name','OHE temperature at a particular distance for entire durations of train simulation')
     for ii=1:length(d)-1

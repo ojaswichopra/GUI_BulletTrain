@@ -49,7 +49,6 @@ function OHE_temp_cal_down_track_time(time_instant)
     desired_filename = '../../Plots_OHE/OHE_temp_cal_down_track_time.png';
     saveas(gcf, desired_filename);
 
-
     toc
 
 
