@@ -14,7 +14,7 @@
 % AUTOTRANSFORMER DATA
 zg = lresistance + lreactance*1i;    % leakage impedance
 zm = mresistance + mreactance*1i;    % magetising impedance
-
+freq=f;
 % inserting the data for OHE PARAMETER Calculation 
 % row = 100;               % homogenous earth conducting resistivity
 % f = 50;                  % frequency

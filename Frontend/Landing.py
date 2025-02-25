@@ -149,7 +149,7 @@ def main():
         if st.button('Perform Harmonic Analysis'):
             st.write("Button 1 clicked!")
         if st.button('Calculate Induced Voltage'):
-            st.write("Button 1 clicked!")
+            st.switch_page("pages/IVV_input.py")
 
     with col2:
         if st.button('Prepare Train Timetable'):

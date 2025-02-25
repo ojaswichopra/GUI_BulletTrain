@@ -60,14 +60,14 @@ def main():
     
     with col2:
         if st.button('Output of OHE Temperature Rise Calculation'):
-            st.switch_page("")
+            st.switch_page("pages/OHE_output_options.py")
         if st.button('Output of harmonic analysis'):
             st.switch_page("")
             
     c1,c2,c3,c4 = st.columns(4)
     with c2:
         if st.button('Output of induced voltage calculations'):
-            st.switch_page("")
+            st.switch_page("pages/IVV_output_options.py")
         
 
 if __name__ == "__main__":

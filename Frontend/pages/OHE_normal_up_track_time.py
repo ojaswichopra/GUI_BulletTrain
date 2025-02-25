@@ -7,6 +7,7 @@ import pages.OHE_config as OHE_config
 from oct2py import Oct2Py
 oc = Oct2Py() 
 oc.eval('cd("../OHE_temp/normal")') 
+import os
 
 def main():
     st.markdown(
@@ -35,80 +36,36 @@ def main():
             unsafe_allow_html=True,
         )
 
-    st.markdown("<h1 class='title'>OHE Temperatue at a particular time instant for the entire track</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>OHE Temperature at a particular time instant for the entire track</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
     time_instant = st.number_input("Enter the time instant (in second) at which OHE temperature along the track needs to be observed", min_value=0)
 
     if st.button("Submit"):
-        oc.eval("setenv('GNUTERM', 'gnuplot')")
+        if not os.path.isfile('../OHE_temp/normal/d.mat') or not os.path.isfile('../OHE_temp/normal/y.mat') or not os.path.isfile('../OHE_temp/T_c_track_up.mat') or not os.path.isfile('../OHE_temp/normal/T_r_track_up.mat') or not os.path.isfile('../OHE_temp/normal/T_f_track_up.mat') or not os.path.isfile('../OHE_temp/normal/T_c_initial_up.mat') or not os.path.isfile('../OHE_temp/normal/T_r_initial_up.mat') or not os.path.isfile('../OHE_temp/normal/T_f_initial_up.mat'):
+            oc.eval("setenv('GNUTERM', 'gnuplot')")
 
-        Ic_line_mag_Td_up = normal_variables['Ic_line_mag_Td_up']
-        oc.push('Ic_line_mag_Td_up', Ic_line_mag_Td_up)
+            oc.eval(f"OHE_temp_cal_up_track_time({time_instant})")
+            image_path = '../Plots_OHE/OHE_temp_cal_up_track_time.png'
+            img = Image.open(image_path)
+            st.image(img, caption="", use_column_width=True)
 
-        Ir_line_mag_Td_up = normal_variables['Ir_line_mag_Td_up']
-        oc.push('Ir_line_mag_Td_up', Ir_line_mag_Td_up)
-
-        If_line_mag_Td_up = normal_variables['If_line_mag_Td_up']
-        oc.push('If_line_mag_Td_up', If_line_mag_Td_up)
-
-        Ic_line_mag_Md_up = normal_variables['Ic_line_mag_Md_up']
-        oc.push('Ic_line_mag_Md_up', Ic_line_mag_Md_up)
-
-        Ir_line_mag_Md_up = normal_variables['Ir_line_mag_Md_up']
-        oc.push('Ir_line_mag_Md_up', Ir_line_mag_Md_up)
-
-        If_line_mag_Md_up = normal_variables['If_line_mag_Md_up']
-        oc.push('If_line_mag_Md_up', If_line_mag_Md_up)
-
-        y = normal_variables['y']
-        oc.push('y', y)
-
-        N_TSS = normal_variables['N_TSS']
-        oc.push('N_TSS', N_TSS)
-
-        d = normal_variables['d']
-        oc.push('d', d)
-
-        rad_C = normal_variables['rad_C']
-        oc.push('rad_C', rad_C)
-
-        rad_R1 = normal_variables['rad_R1']
-        oc.push('rad_R1', rad_R1)
-
-        rad_F = normal_variables['rad_F']
-        oc.push('rad_F', rad_F)
-
-        Resistance_C = normal_variables['Resistance_C']
-        oc.push('Resistance_C', Resistance_C)
-
-        Resistance_R1 = normal_variables['Resistance_R1']
-        oc.push('Resistance_R1', Resistance_R1)
-
-        Resistance_F = normal_variables['Resistance_F']
-        oc.push('Resistance_F', Resistance_F)
-                
-        oc.eval(f"OHE_temp_cal_up_track_time({time_instant}, Ic_line_mag_Td_up, Ir_line_mag_Td_up, If_line_mag_Td_up, Ic_line_mag_Md_up, Ir_line_mag_Md_up, If_line_mag_Md_up, y, N_TSS, d, rad_C, rad_R1, rad_F, Resistance_C, Resistance_R1, Resistance_F, {OHE_config.Q_s}, {OHE_config.T_a}, {OHE_config.V_w}, {OHE_config.theta}, {OHE_config.e}, {OHE_config.a}, {OHE_config.T_0}, {OHE_config.mCp_c}, {OHE_config.mCp_r}, {OHE_config.mCp_f}, {OHE_config.alpha_c}, {OHE_config.alpha_r}, {OHE_config.alpha_f})")
-        image_path = '../Plots_OHE/OHE_temp_cal_up_track_time.png'
-        img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
-
-        with open(image_path, "rb") as file:
-            btn = st.download_button(
-                label="Download Plot",
-                data=file,
-                file_name="OHE_temp_cal_up_track_time.png",  # Replace with the desired download filename
-                mime="image/png"
-            )
+            with open(image_path, "rb") as file:
+                btn = st.download_button(
+                    label="Download Plot",
+                    data=file,
+                    file_name="OHE_temp_cal_up_track_time.png",  # Replace with the desired download filename
+                    mime="image/png"
+                )
+        else:
+            st.warning("Please run the Calculation!")
 
 
 if __name__ == "__main__":
     main()
-    # if st.button("Back"):
-    #     st.switch_page("pages/Load_Flow_Output.py")
     st.markdown(
         f"""
-        <a href="/OHE_normal_up_track" target="_self" class="custom-button">Back</a>
+        <a href="/OHE_output_normal_up_track" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )
