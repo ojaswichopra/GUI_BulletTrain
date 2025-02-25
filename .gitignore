@@ -17,6 +17,8 @@ tTo_double_text_files/
 backend_codes/octave-workspace
 Frontend/octave-workspace
 short_circuit_analysis/octave-workspace 
+IVV/normal/octave-workspace
+OHE_temp/normal/octave-workspace
 EN-50641/required_variable_load_flow_standard.mat
 Load Flow Input/
 bfg.jar
