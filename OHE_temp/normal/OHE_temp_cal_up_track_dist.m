@@ -30,12 +30,21 @@ function OHE_temp_cal_up_track_dist(dist)
             plot(time/60,[T_f_initial,T_f_track((ii-1)*y+1:ii*y)'],"Color",'b');
             xlabel('Time (minute)')
             ylabel('Temperature (deg cel)')
-            legend('Contact wire','Rail','Feeder wire','Location','best')
+            % legend_handle = legend('Contact wire','Rail','Feeder wire','Location','best');
+            % set(legend_handle, 'FontSize', 8);
+            % legend_position = get(legend_handle, 'Position'); % Get current position
+            % legend_position(3) = legend_position(3) * 0.7; % Reduce width
+            % legend_position(4) = legend_position(4) * 0.7; % Reduce height
+            % set(legend_handle, 'Position', legend_position);
             allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
             set(allAxes, 'XLim', [0 time(end)/60], 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
             allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
             set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
         end
+        % Move the legend outside the loop
+        legend_handle = legend('Contact wire','Rail','Feeder wire','Location','best');
+        set(legend_handle, 'FontSize', 8);  % Reduce font size and ensure single column
+        
     end
     desired_filename = '../../Plots_OHE/OHE_temp_cal_up_track_dist.png';
     saveas(gcf, desired_filename);

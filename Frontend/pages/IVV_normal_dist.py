@@ -34,7 +34,7 @@ def main():
             unsafe_allow_html=True,
         )
 
-    st.markdown("<h1 class='title'>IInduced Voltage in the victim wire at a particular distance for the entire duration of train simulation</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Induced Voltage in the victim wire at a particular distance for the entire duration of train simulation</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
     dist = st.number_input("Enter the distance (in km) at which induced voltage over entire durations of train simualtion needs to be observed", min_value=0)

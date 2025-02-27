@@ -36,7 +36,7 @@ def main():
             unsafe_allow_html=True,
         )
 
-    st.markdown("<h1 class='title'>OHE Temperatue at a particular distance for the entire track</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>OHE Temperature at a particular distance for the entire duration of train simulation</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
     dist = st.number_input("Enter the distance (in km) at which OHE temperature over entire durations of train simualtion needs to be observed", min_value=0)

@@ -219,10 +219,10 @@ Z_fault=st.number_input('Enter the fault resistance in ohm', min_value=0)
 
 direction = st.radio("Select direction of track short circuit", ('UP', 'DOWN'))
 
-    if(direction == "UP"):
-        track_up_down = 1
-    else:
-        track_up_down = 2
+if(direction == "UP"):
+    track_up_down = 1
+else:
+    track_up_down = 2
 
 if st.button("Submit"):
     if not system_data_file or not timetable_file_1 or not timetable_file_2 or not timetable_file_3 or not timetable_file_4 or not chart or train_time <= 0 or time_instant_short<=0 or total_distance_from_start_point<=0 or fault_type<=0 or Z_fault<0:

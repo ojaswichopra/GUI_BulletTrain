@@ -49,7 +49,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Calculate Induced Voltage</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Output of Induced Voltage Calculation</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 

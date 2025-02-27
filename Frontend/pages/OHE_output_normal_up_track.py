@@ -60,11 +60,11 @@ def main():
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button('OHE Temperatue at a particular time instant for the entire track'):
+        if st.button('OHE Temperature at a particular time instant for the entire track'):
             st.switch_page("pages/OHE_normal_up_track_time.py")
     
     with col2:
-        if st.button('OHE Temperatue at a particular distance for the entire duration of train simulation'):
+        if st.button('OHE Temperature at a particular distance for the entire duration of train simulation'):
             st.switch_page("pages/OHE_normal_up_track_dist.py")
 
 if __name__ == "__main__":
