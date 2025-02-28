@@ -1,9 +1,7 @@
 function Induced_voltage_victim_time(time_instant)
     tic
     graphics_toolkit ("gnuplot")
-    load('y.mat')
-    load('d.mat')
-    load('V_track.mat')
+    load('Induced_voltage_variables.mat')
 
     figureHandle = figure;
 
@@ -12,6 +10,10 @@ function Induced_voltage_victim_time(time_instant)
 
     % Set the figure to match the screen size
     set(figureHandle, 'Position', [100, 100, 1830, 1300]);
+
+    %array initialization
+    track_distance=zeros(d(end),1);
+    track_V=zeros(d(end),1);
 
     for i_e=1:length(d)-1
         for i_f=d(i_e)+1:d(i_e+1)
@@ -33,4 +35,5 @@ function Induced_voltage_victim_time(time_instant)
     saveas(gcf, desired_filename);
 
     toc
+
 end

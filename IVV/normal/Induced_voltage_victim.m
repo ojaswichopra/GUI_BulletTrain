@@ -1,68 +1,5 @@
 function Induced_voltage_victim(rad_C, rad_R1, rad_F, rad_M1, rad_G, Resistance_C, Resistance_R1, Resistance_F, Resistance_M1, Resistance_G, Ch, nFd, nFh, Mh, gd, gh, freq, row, Ic_line_mag_Td_up, Ir_line_mag_Td_up, If_line_mag_Td_up, Ic_line_mag_Md_up, Ir_line_mag_Md_up, If_line_mag_Md_up, Ic_line_ang_Td_up, Ir_line_ang_Td_up, If_line_ang_Td_up, Ic_line_ang_Md_up, Ir_line_ang_Md_up, If_line_ang_Md_up, Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_line_mag_Td_down, Ic_line_mag_Md_down, Ir_line_mag_Md_down, If_line_mag_Md_down, Ic_line_ang_Td_down, Ir_line_ang_Td_down, If_line_ang_Td_down, Ic_line_ang_Md_down, Ir_line_ang_Md_down, If_line_ang_Md_down, y, N_TSS, d, victim_wire_d, victim_wire_h, track_spacing, rad_victim_mm, resistance_victim_wire, ke, kt)
     tic
-    % load("mum_to_sab_double_track_load_flow_variables.mat");
-    % rad_C=load("rad_C.txt");
-    % rad_R1=load("rad_R1.txt");
-    % rad_F=load("rad_F.txt");
-    % rad_M1=load("rad_M1.txt");
-    % rad_G=load("rad_G.txt");
-    % Resistance_C=load("Resistance_C.txt");
-    % Resistance_R1=load("Resistance_R1.txt");
-    % Resistance_F=load("Resistance_F.txt");
-    % Resistance_M1=load("Resistance_M1.txt");
-    % Resistance_G=load("Resistance_G.txt");
-    % Ch=load("Ch.txt");
-    % nFd=load("nFd.txt");
-    % nFh=load("nFh.txt");
-    % Mh=load("Mh.txt");
-    % gd=load("gd.txt");
-    % gh=load("gh.txt");
-    % freq=load("freq.txt");
-    % row=load("row.txt");
-    % % Up-track OHE line currents obtained from the power flow program   
-    % Ic_line_mag_Td_up=load("Ic_line_mag_Td_up.txt");  %contact wire line currents (magnitude) of all teaser windings in kA
-    % Ir_line_mag_Td_up=load("Ir_line_mag_Td_up.txt");  %rail line currents (magnitude) of all teaser windings in kA
-    % If_line_mag_Td_up=load("If_line_mag_Td_up.txt");  %feeder wire line currents (magnitude) of all teaser windings in kA
-    % Ic_line_mag_Md_up=load("Ic_line_mag_Md_up.txt");  %contact wire line currents (magnitude) of all main windings in kA
-    % Ir_line_mag_Md_up=load("Ir_line_mag_Md_up.txt");  %rail line currents (magnitude) of all main windings in kA
-    % If_line_mag_Md_up=load("If_line_mag_Md_up.txt");  %feeder wire line currents (magnitude) of all main windings in kA
-
-    % Ic_line_ang_Td_up=load("Ic_line_ang_Td_up.txt");  %contact wire line currents (angle) of all teaser windings in degree
-    % Ir_line_ang_Td_up=load("Ir_line_ang_Td_up.txt");  %rail line currents (angle) of all teaser windings in degree
-    % If_line_ang_Td_up=load("If_line_ang_Td_up.txt");  %feeder wire line currents (angle) of all teaser windings in degree
-    % Ic_line_ang_Md_up=load("Ic_line_ang_Md_up.txt");  %contact wire line currents (angle) of all main windings in degree
-    % Ir_line_ang_Md_up=load("Ir_line_ang_Md_up.txt");  %rail line currents (angle) of all main windings in degree
-    % If_line_ang_Md_up=load("If_line_ang_Md_up.txt");  %feeder wire line currents (angle) of all main windings in degree
-
-    % % Down-track OHE line currents obtained from the power flow program   
-    % Ic_line_mag_Td_down=load("Ic_line_mag_Td_down.txt");  %contact wire line currents (magnitude) of all teaser windings in kA
-    % Ir_line_mag_Td_down=load("Ir_line_mag_Td_down.txt");  %rail line currents (magnitude) of all teaser windings in kA
-    % If_line_mag_Td_down=load("If_line_mag_Td_down.txt");  %feeder wire line currents (magnitude) of all teaser windings in kA
-    % Ic_line_mag_Md_down=load("Ic_line_mag_Md_down.txt");  %contact wire line currents (magnitude) of all main windings in kA
-    % Ir_line_mag_Md_down=load("Ir_line_mag_Md_down.txt");  %rail line currents (magnitude) of all main windings in kA
-    % If_line_mag_Md_down=load("If_line_mag_Md_down.txt");  %feeder wire line currents (magnitude) of all main windings in kA
-
-    % Ic_line_ang_Td_down=load("Ic_line_ang_Td_down.txt");  %contact wire line currents (angle) of all teaser windings in degree
-    % Ir_line_ang_Td_down=load("Ir_line_ang_Td_down.txt");  %rail line currents (angle) of all teaser windings in degree
-    % If_line_ang_Td_down=load("If_line_ang_Td_down.txt");  %feeder wire line currents (angle) of all teaser windings in degree
-    % Ic_line_ang_Md_down=load("Ic_line_ang_Md_down.txt");  %contact wire line currents (angle) of all main windings in degree
-    % Ir_line_ang_Md_down=load("Ir_line_ang_Md_down.txt");  %rail line currents (angle) of all main windings in degree
-    % If_line_ang_Md_down=load("If_line_ang_Md_down.txt");  %feeder wire line currents (angle) of all main windings in degree
-
-    % y=load("y.txt");  %total time instants (seconds) of operation for each winding (depends on train scheduling)
-    % N_TSS=load("N_TSS.txt");  %total no of TSS aong the track
-    % d=load("d.txt");
-
-    %to be taken from the user
-    % Track-1 rail is taken as the reference point i.e. origin (0,0) and the distance of all
-    % % other conductors of track-1 and track-2 are measured from this reference point
-    % victim_wire_d=4.5;  % Horizontal distance (m) of victim wire measured from rail of track-1
-    % victim_wire_h=12;   % Vertical distance or height (m) of victim wire measured from rail of track-1
-    % track_spacing=4;   % Distance (m) between track-1 rail and track-2 rail
-    % rad_victim_mm=7.5;  % Radius (mm) of victim wire 
-    % resistance_victim_wire=0.3;  % Resistance (ohm/km) of victim wire 
-    % ke=0.24;  % Screening factor of victim wire
-    % kt=1;   % Screening factor of traction conductors
 
     rad_victim=rad_victim_mm/1000;  % radius of victim wire in meter
 
@@ -88,6 +25,12 @@ function Induced_voltage_victim(rad_C, rad_R1, rad_F, rad_M1, rad_G, Resistance_
     c=9.86e-7*freq;
     h=2*pi*freq*2e-7;
     de=659*sqrt(row/freq);  % equivalent depth of earth return in meter
+
+    %array initialization
+    d_c=zeros(k);
+    riii=zeros(k);
+    gmr=zeros(k);
+    Z=zeros(k);
 
     for i=1:k
         for m=1:k
@@ -188,6 +131,11 @@ function Induced_voltage_victim(rad_C, rad_R1, rad_F, rad_M1, rad_G, Resistance_
     Ir_T_down_max=max(Ir_T_down,[],2); %maximum value of rail line currents (kA) of all teaser windings (complex rectangular form)
     If_T_down_max=max(If_T_down,[],2); %maximum value of feeder line currents (kA) of all teaser windings (complex rectangular form)
 
+    %array initialisation
+    winding_length=zeros(1,2*N_TSS); 
+    winding_length_T=zeros(1,N_TSS);
+    winding_length_M=zeros(1,N_TSS);
+
     for i_a=1:(2*N_TSS)
         winding_length(i_a)=(d(i_a+1)-d(i_a))/1000;  %length of all windings in km
     end
@@ -204,10 +152,10 @@ function Induced_voltage_victim(rad_C, rad_R1, rad_F, rad_M1, rad_G, Resistance_
         end
         condition_odd=mod(check,2);
         if (condition_odd==1)
-            winding_length_T(count_T)=winding_length(i_a);
+            winding_length_T(count_T)=winding_length(i_a);  %length of all teaser windings in km
             count_T=count_T+1;
         else
-            winding_length_M(count_M)=winding_length(i_a);
+            winding_length_M(count_M)=winding_length(i_a);  %length of all main windings in km
             count_M=count_M+1;
         end
     end
@@ -255,41 +203,7 @@ function Induced_voltage_victim(rad_C, rad_R1, rad_F, rad_M1, rad_G, Resistance_
         end
     end
 
-    save('y.mat', 'y');
-    save('d.mat', 'd');
-    save('V_track.mat', 'V_track');
+    save('Induced_voltage_variables.mat','d','y','V_track')
 
-    % time_instant=input('Enter the time instant (in second) at which induced voltage along the track needs to be observed: ');
-
-    % for i_e=1:length(d)-1
-    %     for i_f=d(i_e)+1:d(i_e+1)
-    %         track_distance(i_f,1)=i_f;   % distance (m)
-    %         track_V(i_f,1)=V_track((i_e-1)*y+time_instant);  % induced voltage magnitude (kV)
-    %     end
-    % end
-
-    % figure('Name','Induced voltage along the track at a particular time instant')
-    % plot(track_distance/1000,track_V)
-    % xlabel('Distance (km)')
-    % ylabel('Induced voltage magnitude (kV)')
-    % allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
-    % set(allAxes, 'XLim', [0 d(end)/1000], 'XTick', d/1000, 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
-    % allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
-    % set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
-
-    % dist=input('Enter the distance (in km) at which induced voltage over entire durations of train simualtion needs to be observed: ');
-    % time=1:y;  % time (seconds)
-    % figure('Name','Induced voltage at a particular distance for entire durations of train simulation')
-    % for ii=1:length(d)-1
-    %     if dist>=d(ii)/1000 && dist<d(ii+1)/1000
-    %         plot(time/60,V_track((ii-1)*y+1:ii*y));
-    %         xlabel('Time (minute)')
-    %         ylabel('Induced voltage magnitude (kV)')
-    %         allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
-    %         set(allAxes, 'XLim', [0 time(end)/60], 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
-    %         allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
-    %         set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
-    %     end
-    % end
     toc
 end

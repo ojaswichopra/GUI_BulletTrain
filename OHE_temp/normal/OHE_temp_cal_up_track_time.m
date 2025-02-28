@@ -1,25 +1,27 @@
 function OHE_temp_cal_up_track_time(time_instant) 
     tic
     graphics_toolkit ("gnuplot")
-    load("y.mat")
-    load("d.mat")
-    load('T_c_track_up.mat');
-    load('T_r_track_up.mat');
-    load('T_f_track_up.mat');
-    load('T_c_initial_up.mat');
-    load('T_r_initial_up.mat');
-    load('T_f_initial_up.mat');
+    load('OHE_temp_up_track_variables.mat')
+
+    % time_instant=input('Enter the time instant (in second) at which OHE temperature along the track needs to be observed: ');
+    % time_instant=10000;
+
+    %array initialization
+    track_distance=zeros(d(end),1);
+    track_temp_c=zeros(d(end),1);
+    track_temp_r=zeros(d(end),1);
+    track_temp_f=zeros(d(end),1);
 
     for i_e=1:length(d)-1
         % for i_f=(d(i_e)/1000)+1:d(i_e+1)/1000   % for distance in Km
         for i_f=d(i_e)+1:d(i_e+1)   % for distance in m
             track_distance(i_f,1)=i_f;
-            track_temp_c(i_f,1)=T_c_track((i_e-1)*y+time_instant);
-            track_temp_r(i_f,1)=T_r_track((i_e-1)*y+time_instant);
-            track_temp_f(i_f,1)=T_f_track((i_e-1)*y+time_instant);
+            track_temp_c(i_f,1)=T_c_track_up((i_e-1)*y+time_instant);
+            track_temp_r(i_f,1)=T_r_track_up((i_e-1)*y+time_instant);
+            track_temp_f(i_f,1)=T_f_track_up((i_e-1)*y+time_instant);
         end
     end
-   figureHandle = figure;
+    figureHandle = figure;
 
     % Get screen size from root object (0)
     screenSize = get(0, 'ScreenSize');
@@ -41,7 +43,6 @@ function OHE_temp_cal_up_track_time(time_instant)
     xlabel('Distance (km)')
     ylabel('Feeder wire temp (deg cel)')
 
-    
     allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
     set(allAxes, 'XLim', [0 d(end)/1000], 'XTick', d/1000, 'FontSize', 8); % Set font size and weight
     allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
@@ -51,6 +52,4 @@ function OHE_temp_cal_up_track_time(time_instant)
     saveas(gcf, desired_filename);
 
     toc
-
-
 end

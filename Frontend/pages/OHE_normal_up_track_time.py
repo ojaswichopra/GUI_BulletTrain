@@ -42,9 +42,8 @@ def main():
     time_instant = st.number_input("Enter the time instant (in second) at which OHE temperature along the track needs to be observed", min_value=0)
 
     if st.button("Submit"):
-        if not os.path.isfile('../OHE_temp/normal/d.mat') or not os.path.isfile('../OHE_temp/normal/y.mat') or not os.path.isfile('../OHE_temp/T_c_track_up.mat') or not os.path.isfile('../OHE_temp/normal/T_r_track_up.mat') or not os.path.isfile('../OHE_temp/normal/T_f_track_up.mat') or not os.path.isfile('../OHE_temp/normal/T_c_initial_up.mat') or not os.path.isfile('../OHE_temp/normal/T_r_initial_up.mat') or not os.path.isfile('../OHE_temp/normal/T_f_initial_up.mat'):
+        if os.path.isfile('../OHE_temp/normal/OHE_temp_up_track_variables.mat'):
             oc.eval("setenv('GNUTERM', 'gnuplot')")
-
             oc.eval(f"OHE_temp_cal_up_track_time({time_instant})")
             image_path = '../Plots_OHE/OHE_temp_cal_up_track_time.png'
             img = Image.open(image_path)

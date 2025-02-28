@@ -42,7 +42,7 @@ def main():
     dist = st.number_input("Enter the distance (in km) at which OHE temperature over entire durations of train simualtion needs to be observed", min_value=0)
 
     if st.button("Submit"):
-        if not os.path.isfile('../OHE_temp/normal/d.mat') or not os.path.isfile('../OHE_temp/normal/y.mat') or not os.path.isfile('../OHE_temp/T_c_track_up.mat') or not os.path.isfile('../OHE_temp/normal/T_r_track_up.mat') or not os.path.isfile('../OHE_temp/normal/T_f_track_up.mat') or not os.path.isfile('../OHE_temp/normal/T_c_initial_up.mat') or not os.path.isfile('../OHE_temp/normal/T_r_initial_up.mat') or not os.path.isfile('../OHE_temp/normal/T_f_initial_up.mat'):
+        if os.path.isfile('../OHE_temp/normal/OHE_temp_up_track_variables.mat'):
             oc.eval("setenv('GNUTERM', 'gnuplot')")
 
 
