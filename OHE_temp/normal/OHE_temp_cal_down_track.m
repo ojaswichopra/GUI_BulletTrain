@@ -1,7 +1,7 @@
+
 function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_line_mag_Td_down, Ic_line_mag_Md_down, Ir_line_mag_Md_down, If_line_mag_Md_down, y, N_TSS, d, rad_C, rad_R1, rad_F, Resistance_C, Resistance_R1, Resistance_F, Q_s, T_a, V_w, theta, e, a, T_0, mCp_c, mCp_r, mCp_f, alpha_c, alpha_r, alpha_f) 
     tic
     graphics_toolkit ("gnuplot")
- 
 
     % OHE data
     D_c=2*rad_C;      %diameter of contact wire in m
@@ -16,7 +16,7 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
 
     H_e=0;      %conductor (i.e. contact wire, rail, feeder wire) elevation in m
 
-    
+
     T_c_initial=T_a;        %initial assumption (at t=0 sec) of contact wire temp in deg cel
     T_r_initial=T_a;        %initial assumption (at t=0 sec) of rail temp in deg cel
     T_f_initial=T_a;        %initial assumption (at t=0 sec) of feeder wire temp in deg cel
@@ -182,9 +182,10 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     end
     end
 
-    T_c_track=zeros(2*N_TSS*y,1);   %contact temperature of all windings along the track (array initialization) 
-    T_r_track=zeros(2*N_TSS*y,1);   %rail temperature of all windings along the track (array initialization)
-    T_f_track=zeros(2*N_TSS*y,1);   %feeder temperature of all windings along the track (array initialization)
+
+    T_c_track_down=zeros(2*N_TSS*y,1);   %contact temperature of all windings along the track (array initialization) 
+    T_r_track_down=zeros(2*N_TSS*y,1);   %rail temperature of all windings along the track (array initialization)
+    T_f_track_down=zeros(2*N_TSS*y,1);   %feeder temperature of all windings along the track (array initialization)
 
     %Suppose Teaser winding is the 1st winding from mumbai (starting point)
 
@@ -200,28 +201,22 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
         end
         condition_odd=mod(check,2);
         if (condition_odd==1)
-            T_c_track(ii)=T_c_T(count_T);
-            T_r_track(ii)=T_r_T(count_T);
-            T_f_track(ii)=T_f_T(count_T);
+            T_c_track_down(ii)=T_c_T(count_T);
+            T_r_track_down(ii)=T_r_T(count_T);
+            T_f_track_down(ii)=T_f_T(count_T);
             count_T=count_T+1;
         else
-            T_c_track(ii)=T_c_M(count_M);
-            T_r_track(ii)=T_r_M(count_M);
-            T_f_track(ii)=T_f_M(count_M);
+            T_c_track_down(ii)=T_c_M(count_M);
+            T_r_track_down(ii)=T_r_M(count_M);
+            T_f_track_down(ii)=T_f_M(count_M);
             count_M=count_M+1;
         end
     end
 
-    save('y.mat', 'y');
-    save('d.mat', 'd');
-    save('T_c_track_down.mat', 'T_c_track');
-    save('T_r_track_down.mat', 'T_r_track');
-    save('T_f_track_down.mat', 'T_f_track');
-    save('T_c_initial_down.mat', 'T_c_initial');
-    save('T_r_initial_down.mat', 'T_r_initial');
-    save('T_f_initial_down.mat', 'T_f_initial');
+    save('OHE_temp_down_track_variables.mat','d','y','T_c_track_down','T_r_track_down','T_f_track_down',...
+        'T_c_initial','T_r_initial','T_f_initial')
 
     toc
 
-
 end
+

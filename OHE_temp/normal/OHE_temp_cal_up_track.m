@@ -1,14 +1,13 @@
 function OHE_temp_cal_up_track(Ic_line_mag_Td_up, Ir_line_mag_Td_up, If_line_mag_Td_up, Ic_line_mag_Md_up, Ir_line_mag_Md_up, If_line_mag_Md_up, y, N_TSS, d, rad_C, rad_R1, rad_F, Resistance_C, Resistance_R1, Resistance_F, Q_s, T_a, V_w, theta, e, a, T_0, mCp_c, mCp_r, mCp_f, alpha_c, alpha_r, alpha_f) 
     tic
-    graphics_toolkit ("gnuplot")
-   
+    
 
     % OHE data
     D_c=2*rad_C;      %diameter of contact wire in m
     D_r=2*rad_R1;     %diameter of rail in m
     D_f=2*rad_F;      %diameter of feeder wire in m
 
-    % T_0=20;  %temperature (deg cel) at which OHE resistances are specified (to be taken from the user)
+
 
     R_c_T0=Resistance_C/1000;   %resistance of contact wire at temp T_0 in ohms/m
     R_r_T0=Resistance_R1/1000;  %resistance of rail at temp T_0 in ohms/m
@@ -30,7 +29,7 @@ function OHE_temp_cal_up_track(Ic_line_mag_Td_up, Ir_line_mag_Td_up, If_line_mag
 
     k_angle=1.194-cosd(theta)+0.194*cosd(2*theta)+0.368*sind(2*theta);  %wind direction factor
 
-    q_s_c=a*Q_s*D_c;   %solar heat gain (for contact wire) rate in W/m 
+    q_s_c=a*Q_s*D_c;   %solar heat gain (for contact wire) rate in W/m
     q_s_r=a*Q_s*D_r;   %solar heat gain (for rail) rate in W/m
     q_s_f=a*Q_s*D_f;   %solar heat gain (for feeder wire) rate in W/m
 
@@ -182,9 +181,10 @@ function OHE_temp_cal_up_track(Ic_line_mag_Td_up, Ir_line_mag_Td_up, If_line_mag
     end
     end
 
-    T_c_track=zeros(2*N_TSS*y,1);   %contact temperature of all windings along the track (array initialization) 
-    T_r_track=zeros(2*N_TSS*y,1);   %rail temperature of all windings along the track (array initialization)
-    T_f_track=zeros(2*N_TSS*y,1);   %feeder temperature of all windings along the track (array initialization)
+   
+    T_c_track_up=zeros(2*N_TSS*y,1);   %contact temperature of all windings along the track (array initialization)
+    T_r_track_up=zeros(2*N_TSS*y,1);   %rail temperature of all windings along the track (array initialization)
+    T_f_track_up=zeros(2*N_TSS*y,1);   %feeder temperature of all windings along the track (array initialization)
 
     %Suppose Teaser winding is the 1st winding from mumbai (starting point)
 
@@ -200,27 +200,22 @@ function OHE_temp_cal_up_track(Ic_line_mag_Td_up, Ir_line_mag_Td_up, If_line_mag
         end
         condition_odd=mod(check,2);
         if (condition_odd==1)
-            T_c_track(ii)=T_c_T(count_T);
-            T_r_track(ii)=T_r_T(count_T);
-            T_f_track(ii)=T_f_T(count_T);
+            T_c_track_up(ii)=T_c_T(count_T);
+            T_r_track_up(ii)=T_r_T(count_T);
+            T_f_track_up(ii)=T_f_T(count_T);
             count_T=count_T+1;
         else
-            T_c_track(ii)=T_c_M(count_M);
-            T_r_track(ii)=T_r_M(count_M);
-            T_f_track(ii)=T_f_M(count_M);
+            T_c_track_up(ii)=T_c_M(count_M);
+            T_r_track_up(ii)=T_r_M(count_M);
+            T_f_track_up(ii)=T_f_M(count_M);
             count_M=count_M+1;
         end
     end
-    save('y.mat', 'y');
-    save('d.mat', 'd');
-    save('T_c_track_up.mat', 'T_c_track');
-    save('T_r_track_up.mat', 'T_r_track');
-    save('T_f_track_up.mat', 'T_f_track');
-    save('T_c_initial_up.mat', 'T_c_initial');
-    save('T_r_initial_up.mat', 'T_r_initial');
-    save('T_f_initial_up.mat', 'T_f_initial');
+
+    save('OHE_temp_up_track_variables.mat','d','y','T_c_track_up','T_r_track_up','T_f_track_up',...
+        'T_c_initial','T_r_initial','T_f_initial')
 
     toc
-
-
 end
+
+
