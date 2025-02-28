@@ -1,6 +1,19 @@
 Station,distance,Arrival,Departure
 sabarmati,0.0,0,0
 ahmedabad,5.56,6,8
+<<<<<<< HEAD
 vadodara,108.69,33,35
 surat,241.17,67,69
 mumbai,505.75,127,127
+=======
+anand,58.37,25,26
+vadodara,108.69,42,44
+bharuch,182.64,65,66
+surat,241.17,84,86
+bilimora,289.17,102,103
+vapi,337.81,118,119
+boisar,401.49,138,139
+virar,440.58,153,154
+thane,477.8,167,168
+mumbai,505.75,178,178
+>>>>>>> 3a1f7b6572c063a72ee6ac56d23738f68ddec940

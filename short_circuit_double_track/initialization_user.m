@@ -116,12 +116,12 @@ fclose(fileID);
 rapid_train_data_down = cell2mat(dataRows);
 
 % Read the data from the Excel file
-train_simulation_data_table = readtable('train simulation chart.xlsx', 'VariableNamingRule', 'preserve');
-train_simulation_data=table2array(train_simulation_data_table);
-train_number=train_simulation_data(:,1);  % train number
-track_type=train_simulation_data(:,2);  % track type (1-Up, 2-Down)
-train_type=train_simulation_data(:,3);  % train type (1-Each stop, 2-Rapid)
-start_time=train_simulation_data(:,4);  % train starting time (in minute)
+train_simulation_data = dlmread('train simulation chart.csv', ',', 1, 0);
+
+train_number = train_simulation_data(:,1);  % Train number
+track_type = train_simulation_data(:,2);    % Track type (1-Up, 2-Down)
+train_type = train_simulation_data(:,3);    % Train type (1-Each stop, 2-Rapid)
+start_time = train_simulation_data(:,4); 
 
 n_up_each_stop=0;  % total no. of up-track each stop trains (initialisation)
 n_up_rapid=0;  % total no. of up-track rapid trains (initialisation)

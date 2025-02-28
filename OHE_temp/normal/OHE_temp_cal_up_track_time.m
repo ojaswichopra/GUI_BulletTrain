@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function OHE_temp_cal_up_track_time(time_instant, Ic_line_mag_Td_up, Ir_line_mag_Td_up, If_line_mag_Td_up, Ic_line_mag_Md_up, Ir_line_mag_Md_up, If_line_mag_Md_up, y, N_TSS, d, rad_C, rad_R1, rad_F, Resistance_C, Resistance_R1, Resistance_F, Q_s, T_a, V_w, theta, e, a, T_0, mCp_c, mCp_r, mCp_f, alpha_c, alpha_r, alpha_f) 
     tic
     graphics_toolkit ("gnuplot")
@@ -330,6 +331,19 @@ function OHE_temp_cal_up_track_time(time_instant, Ic_line_mag_Td_up, Ir_line_mag
     end
 
     % time_instant=input('Enter the time instant (in second) at which OHE temperature along the track needs to be observed: ');
+=======
+function OHE_temp_cal_up_track_time(time_instant) 
+    tic
+    graphics_toolkit ("gnuplot")
+    load("y.mat")
+    load("d.mat")
+    load('T_c_track_up.mat');
+    load('T_r_track_up.mat');
+    load('T_f_track_up.mat');
+    load('T_c_initial_up.mat');
+    load('T_r_initial_up.mat');
+    load('T_f_initial_up.mat');
+>>>>>>> 3a1f7b6572c063a72ee6ac56d23738f68ddec940
 
     for i_e=1:length(d)-1
         % for i_f=(d(i_e)/1000)+1:d(i_e+1)/1000   % for distance in Km
@@ -371,6 +385,7 @@ function OHE_temp_cal_up_track_time(time_instant, Ic_line_mag_Td_up, Ir_line_mag
     desired_filename = '../../Plots_OHE/OHE_temp_cal_up_track_time.png';
     saveas(gcf, desired_filename);
 
+<<<<<<< HEAD
 
     % dist=input('Enter the distance (in km) at which OHE temperature over entire durations of train simualtion needs to be observed: ');
     % time=[0,1:y];  % time (seconds)
@@ -391,6 +406,8 @@ function OHE_temp_cal_up_track_time(time_instant, Ic_line_mag_Td_up, Ir_line_mag
     %         set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
     %     end
     % end
+=======
+>>>>>>> 3a1f7b6572c063a72ee6ac56d23738f68ddec940
     toc
 
 

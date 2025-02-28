@@ -547,3 +547,9 @@ for row1 = 1:size(row, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(row, 2)) '\n'], row(row1, :));
 end
 fclose(fileID);
+
+fileID = fopen('../normal_text_files/rad_G.txt', 'w');
+for row1 = 1:size(rad_G, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(rad_G, 2)) '\n'], rad_G(row1, :));
+end
+fclose(fileID);

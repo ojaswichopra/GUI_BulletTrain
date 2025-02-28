@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function OHE_temp_cal_down_track_dist(dist, Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_line_mag_Td_down, Ic_line_mag_Md_down, Ir_line_mag_Md_down, If_line_mag_Md_down, y, N_TSS, d, rad_C, rad_R1, rad_F, Resistance_C, Resistance_R1, Resistance_F, Q_s, T_a, V_w, theta, e, a, T_0, mCp_c, mCp_r, mCp_f, alpha_c, alpha_r, alpha_f) 
     tic
     graphics_toolkit ("gnuplot")
@@ -340,6 +341,20 @@ function OHE_temp_cal_down_track_dist(dist, Ic_line_mag_Td_down, Ir_line_mag_Td_
     %         track_temp_f(i_f,1)=T_f_track((i_e-1)*y+time_instant);
     %     end
     % end
+=======
+function OHE_temp_cal_down_track_dist(dist) 
+    tic
+    graphics_toolkit ("gnuplot")
+    load("y.mat")
+    load("d.mat")
+    load('T_c_track_down.mat');
+    load('T_r_track_down.mat');
+    load('T_f_track_down.mat');
+    load('T_c_initial_down.mat');
+    load('T_r_initial_down.mat');
+    load('T_f_initial_down.mat');
+
+>>>>>>> 3a1f7b6572c063a72ee6ac56d23738f68ddec940
     figureHandle = figure;
 
     % Get screen size from root object (0)
@@ -347,6 +362,7 @@ function OHE_temp_cal_down_track_dist(dist, Ic_line_mag_Td_down, Ir_line_mag_Td_
 
     % Set the figure to match the screen size
     set(figureHandle, 'Position', [100, 100, 1830, 1300]);
+<<<<<<< HEAD
 
     % figure('Name','OHE Temperature Along the Track at a Particular Time Instant')
     % subplot(3,1,1)
@@ -367,6 +383,9 @@ function OHE_temp_cal_down_track_dist(dist, Ic_line_mag_Td_down, Ir_line_mag_Td_
     % set(allAxes, 'XLim', [0 d(end)/1000], 'XTick', d/1000, 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
     % allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
     % set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
+=======
+       % Set the line width to 1.5
+>>>>>>> 3a1f7b6572c063a72ee6ac56d23738f68ddec940
 
     % dist=input('Enter the distance (in km) at which OHE temperature over entire durations of train simualtion needs to be observed: ');
     time=[0,1:y];  % time (seconds)
@@ -380,12 +399,21 @@ function OHE_temp_cal_down_track_dist(dist, Ic_line_mag_Td_down, Ir_line_mag_Td_
             plot(time/60,[T_f_initial,T_f_track((ii-1)*y+1:ii*y)'],"Color",'b');
             xlabel('Time (minute)')
             ylabel('Temperature (deg cel)')
+<<<<<<< HEAD
             legend('Contact wire','Rail','Feeder wire','Location','best')
+=======
+            % legend('Contact wire','Rail','Feeder wire','Location','best')
+>>>>>>> 3a1f7b6572c063a72ee6ac56d23738f68ddec940
             allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
             set(allAxes, 'XLim', [0 time(end)/60], 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
             allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
             set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
         end
+<<<<<<< HEAD
+=======
+        legend_handle = legend('Contact wire','Rail','Feeder wire','Location','best');
+        set(legend_handle, 'FontSize', 8);  % Reduce font size and ensure single column
+>>>>>>> 3a1f7b6572c063a72ee6ac56d23738f68ddec940
     end
     desired_filename = '../../Plots_OHE/OHE_temp_cal_down_track_dist.png';
     saveas(gcf, desired_filename);

@@ -137,7 +137,7 @@ def main():
     )
 
     
-    st.markdown("<h1 class='title'>Graphical User Interface</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Indigenous Simulation Model for Design Validation of Traction Power Supply Network</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
@@ -149,7 +149,7 @@ def main():
         if st.button('Perform Harmonic Analysis'):
             st.write("Button 1 clicked!")
         if st.button('Calculate Induced Voltage'):
-            st.write("Button 1 clicked!")
+            st.switch_page("pages/IVV_input.py")
 
     with col2:
         if st.button('Prepare Train Timetable'):

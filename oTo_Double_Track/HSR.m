@@ -27,7 +27,7 @@
 % short_ckt_MVA = 5000; % TSS (source side) short circuit MVA
 zg = lresistance + lreactance*1i;    % leakage impedance
 zm = mresistance + mreactance*1i;    % magetising impedance
-
+freq=f;
 % busdata FORMAT: bus_no, type (1 = TSS, 2 = train, 3 = AT), P_load (MW), power
 % factor
 % busdata = [...
