@@ -40,7 +40,7 @@ def main():
     dist = st.number_input("Enter the distance (in km) at which induced voltage over entire durations of train simualtion needs to be observed", min_value=0)
 
     if st.button("Submit"):
-        if not os.path.isfile('../IVV/normal/d.mat') or not os.path.isfile('../IVV/normal/y.mat') or not os.path.isfile('../IVV/V_track.mat'):
+        if os.path.isfile('../IVV/normal/Induced_voltage_variables.mat'):
             oc.eval("setenv('GNUTERM', 'gnuplot')")
 
             oc.eval(f"Induced_voltage_victim_dist({dist})")
