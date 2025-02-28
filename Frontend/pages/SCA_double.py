@@ -55,11 +55,11 @@ def extract_system_data(file_content):
     # Extract data into a structured format
     tss_distances_raw = data_dict.get('Distance (in km) of all the TSSs measured from the starting point:', '')
     at_distances_raw = data_dict.get('Distance (in km) of all the ATs measured from the starting point:', '')
+    sp_distances_raw = data_dict.get('Distance (in km) of all the Section Posts (SPs) measured from the starting point:', '')
     data = {
-        'num_tss': int(data_dict.get('Number of TSS:', 0)),
         'tss_distances': [float(x) for x in tss_distances_raw.split()] if tss_distances_raw else [],
-        'num_at': int(data_dict.get('Number of AT:', 0)),
         'at_distances': [float(x) for x in at_distances_raw.split()] if at_distances_raw else [],
+        'sp_distances': [float(x) for x in sp_distances_raw.split()] if at_distances_raw else [],
         'tss_primary_voltage': float(data_dict.get('TSS primary voltage (Kv):', 0)),
         'tss_secondary_voltage': float(data_dict.get('TSS secondary voltage (Kv):', 0)),
         'primary_resistance': float(data_dict.get('Primary side resistance (ohm):', 0)),
@@ -74,7 +74,7 @@ def extract_system_data(file_content):
         'at_magnetising_reactance': float(data_dict.get('AT magnetising reactance (ohm):', 0)),
         'earth_resistivity': float(data_dict.get('Homogenous earth conducting resistivity:', 0)),
         'frequency': float(data_dict.get('Frequency (Hz):', 0)),
-        'num_conductors': int(data_dict.get('Number of conductors:', 0)),
+        'num_conductors': int(data_dict.get('Number of conductors (contact, rail, feeder, messenger, earth):', 0)),
         'contact_wire_height': float(data_dict.get('Contact wire height (m) measured from rail:', 0)),
         'messenger_wire_height': float(data_dict.get('Messenger wire height (m) measured from rail:', 0)),
         'feeder_wire_height': float(data_dict.get('Feeder wire height (m) measured from rail:', 0)),
@@ -225,7 +225,7 @@ else:
     track_up_down = 2
 
 if st.button("Submit"):
-    if not system_data_file or not timetable_file_1 or not timetable_file_2 or not timetable_file_3 or not timetable_file_4 or not chart or train_time <= 0 or time_instant_short<=0 or total_distance_from_start_point<=0 or fault_type<=0 or Z_fault<0:
+    if not system_data_file or not timetable_file_1 or not timetable_file_2 or not timetable_file_3 or not timetable_file_4 or not chart or time_instant_short<=0 or total_distance_from_start_point<=0 or fault_type<=0 or Z_fault<0:
         st.warning("Please provide all the inputs correctly!")
     else:
         st.success("Short Circuit Analysis Initiated!!")
