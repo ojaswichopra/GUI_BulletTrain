@@ -1,12 +1,7 @@
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from PIL import Image
-# Create an Oct2Py instance once
-from pages.normal_workspace import normal_variables
-import pages.OHE_config as OHE_config
-from oct2py import Oct2Py
-oc = Oct2Py() 
-oc.eval('cd("../OHE_temp/normal")') 
+
  
 title = "Output Options"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/

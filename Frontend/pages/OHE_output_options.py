@@ -58,8 +58,10 @@ def main():
             st.switch_page("pages/OHE_output_normal_options.py")
     
     with col2:
-        if st.button('TSS Outage Condition'):
-            st.switch_page("pages/.py")
+        if st.button('One TSS Outage Condition'):
+            st.switch_page("pages/OHE_output_oTo_options.py")
+        if st.button('Two TSS Outage Condition'):
+            st.switch_page("pages/OHE_output_tTo_options.py")
             
 
 if __name__ == "__main__":
