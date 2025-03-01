@@ -10,8 +10,6 @@ function Induced_voltage_victim(rad_C, rad_R1, rad_F, rad_M1, rad_G, Resistance_
     x_M2=track_spacing;  % Horizontal distance (m) of messenger wire of track-2 measured from rail of track-1
     x_G2=track_spacing+gd;  % Horizontal distance (m) of ground wire of track-2 measured from rail of track-1
 
-    % C1 R1 F1 M1 G1 : Track-1 conductors (contact, rail, feeder, messenger, ground)
-    % C2 R2 F2 M2 G2 : Track-2 conductors (contact, rail, feeder, messenger, ground)
     % V : Victim conductor 
     x_d=[0   0  -nFd  x_C2  x_R2  x_F2  -victim_wire_d  0  -gd  x_M2  x_G2];  % x-coordinates of C1 R1 F1 C2 R2 F2 V M1 G1 M2 G2
     y_d=[Ch  0   nFh   Ch    0    nFh    victim_wire_h  Mh  gh   Mh    gh ];  % y-coordinates of C1 R1 F1 C2 R2 F2 V M1 G1 M2 G2

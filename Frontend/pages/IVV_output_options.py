@@ -59,7 +59,7 @@ def main():
     
     with col2:
         if st.button('TSS Outage Condition'):
-            st.switch_page("pages/.py")
+            st.switch_page("pages/IVV_tss_output_options.py")
             
 
 if __name__ == "__main__":
