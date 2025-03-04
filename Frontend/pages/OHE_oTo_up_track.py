@@ -95,6 +95,15 @@ def main():
     d = oTo_double_workspace['d']
     oc.push('d', d)
 
+    N_TSS_O = oTo_double_workspace['N_TSS_O']
+    oc.push('N_TSS_O', N_TSS_O)
+
+    j_a = oTo_double_workspace['j_a']
+    oc.push('j_a', j_a)
+
+    j_b = oTo_double_workspace['j_b']
+    oc.push('j_b', j_b)
+
     rad_C = oTo_double_workspace['rad_C']
     oc.push('rad_C', rad_C)
 
@@ -115,7 +124,7 @@ def main():
     
     st.success("Initiated the process")
     
-    oc.eval(f"OHE_temp_cal_up_track(Ic_line_mag_Td_up, Ir_line_mag_Td_up, If_line_mag_Td_up, Ic_line_mag_Md_up, Ir_line_mag_Md_up, If_line_mag_Md_up, y, N_TSS, d, rad_C, rad_R1, rad_F, Resistance_C, Resistance_R1, Resistance_F, {OHE_config.Q_s}, {OHE_config.T_a}, {OHE_config.V_w}, {OHE_config.theta}, {OHE_config.e}, {OHE_config.a}, {OHE_config.T_0}, {OHE_config.mCp_c}, {OHE_config.mCp_r}, {OHE_config.mCp_f}, {OHE_config.alpha_c}, {OHE_config.alpha_r}, {OHE_config.alpha_f})")
+    oc.eval(f"OHE_temp_cal_up_track(Ic_line_mag_Td_up, Ir_line_mag_Td_up, If_line_mag_Td_up, Ic_line_mag_Md_up, Ir_line_mag_Md_up, If_line_mag_Md_up, y, N_TSS, d, N_TSS_O, j_a, j_b, rad_C, rad_R1, rad_F, Resistance_C, Resistance_R1, Resistance_F, {OHE_config.Q_s}, {OHE_config.T_a}, {OHE_config.V_w}, {OHE_config.theta}, {OHE_config.e}, {OHE_config.a}, {OHE_config.T_0}, {OHE_config.mCp_c}, {OHE_config.mCp_r}, {OHE_config.mCp_f}, {OHE_config.alpha_c}, {OHE_config.alpha_r}, {OHE_config.alpha_f})")
     st.success("Success!!")
             
 

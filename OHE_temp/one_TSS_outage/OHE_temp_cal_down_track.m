@@ -1,27 +1,36 @@
-function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_line_mag_Td_down, Ic_line_mag_Md_down, Ir_line_mag_Md_down, If_line_mag_Md_down, y, N_TSS, d, rad_C, rad_R1, rad_F, Resistance_C, Resistance_R1, Resistance_F, Q_s, T_a, V_w, theta, e, a, T_0, mCp_c, mCp_r, mCp_f, alpha_c, alpha_r, alpha_f)
+function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_line_mag_Td_down, Ic_line_mag_Md_down, Ir_line_mag_Md_down, If_line_mag_Md_down, y, N_TSS, d,N_TSS_O, j_a, j_b, rad_C, rad_R1, rad_F, Resistance_C, Resistance_R1, Resistance_F, Q_s, T_a, V_w, theta, e, a, T_0, mCp_c, mCp_r, mCp_f, alpha_c, alpha_r, alpha_f)
 
     tic
+    % load('Double_track_TSS1_outage_load_flow_variables.mat');
+    % load('Double_track_TSS5_outage_load_flow_variables.mat');
+    % load('Double_track_TSS11_outage_load_flow_variables.mat');
+
     % OHE line currents obtained from the power flow program
-    % load('mum_to_sab_double_track_load_flow_variables.mat', 'Ic_line_mag_Td_down')    %contact wire line currents of all teaser windings in kA
+    % load('Double_track_TSS1_outage_load_flow_variables.mat', 'Ic_line_mag_Td_down')    %contact wire line currents of all teaser windings in kA
     % Ic_line_mag_Td_down=load("Ic_line_mag_Td_down.txt");
-    % % load('mum_to_sab_double_track_load_flow_variables.mat', 'Ir_line_mag_Td_down')    %rail line currents of all teaser windings in kA
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'Ir_line_mag_Td_down')    %rail line currents of all teaser windings in kA
     % Ir_line_mag_Td_down=load("Ir_line_mag_Td_down.txt");
-    % % load('mum_to_sab_double_track_load_flow_variables.mat', 'If_line_mag_Td_down')    %feeder wire line currents of all teaser windings in kA
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'If_line_mag_Td_down')    %feeder wire line currents of all teaser windings in kA
     % If_line_mag_Td_down=load("If_line_mag_Td_down.txt");
-    % % load('mum_to_sab_double_track_load_flow_variables.mat', 'Ic_line_mag_Md_down')    %contact wire line currents of all main windings in kA
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'Ic_line_mag_Md_down')    %contact wire line currents of all main windings in kA
     % Ic_line_mag_Md_down=load("Ic_line_mag_Md_down.txt");
-    % % load('mum_to_sab_double_track_load_flow_variables.mat', 'Ir_line_mag_Md_down')    %rail line currents of all main windings in kA
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'Ir_line_mag_Md_down')    %rail line currents of all main windings in kA
     % Ir_line_mag_Md_down=load("Ir_line_mag_Md_down.txt");
-    % % load('mum_to_sab_double_track_load_flow_variables.mat', 'If_line_mag_Md_down')    %feeder wire line currents of all main windings in kA
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'If_line_mag_Md_down')    %feeder wire line currents of all main windings in kA
     % If_line_mag_Md_down=load("If_line_mag_Md_down.txt");
 
-    % % load('mum_to_sab_double_track_load_flow_variables.mat', 'y')       %total time instants (seconds) of operation for each winding (depends on train scheduling)
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'y')       %total time instants (seconds) of operation for each winding (depends on train scheduling)
     % y=load("y.txt");
-    % % load('mum_to_sab_double_track_load_flow_variables.mat', 'N_TSS');   %total no of TSS aong the track
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'N_TSS_new');   %total no of TSS aong the track
     % N_TSS=load("N_TSS.txt");
-    % % load('mum_to_sab_double_track_load_flow_variables.mat', 'd')
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'd')
     % d=load("d.txt");
-    % % load('mum_to_sab_double_track_load_flow_variables.mat', 'rad_C','rad_R1','rad_F','Resistance_C','Resistance_R1','Resistance_F')  
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'N_TSS_O')   % Outage TSS number
+    % N_TSS_O=load("N_TSS_O.txt");
+    % % load("Double_track_TSS1_outage_load_flow_variables.mat","j_a","j_b")  % Outage windings
+    % j_a=load("j_a.txt"); 
+    % j_b=load("j_b.txt");
+    % % load('Double_track_TSS1_outage_load_flow_variables.mat', 'rad_C','rad_R1','rad_F','Resistance_C','Resistance_R1','Resistance_F')  
     % rad_C=load("rad_C.txt");
     % rad_R1=load("rad_R1.txt");
     % rad_F=load("rad_F.txt");
@@ -51,11 +60,11 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     H_e=0;      %conductor (i.e. contact wire, rail, feeder wire) elevation in m
 
     %to be taken from the user
-    % mCp_c=1310;   %total heat capacity of contact wire in J/m-deg cel 
-    % mCp_r=1310;   %total heat capacity of rail in J/m-deg cel
-    % mCp_f=1310;   %total heat capacity of feeder wire in J/m-deg cel
+    mCp_c=1310;   %total heat capacity of contact wire in J/m-deg cel 
+    mCp_r=1310;   %total heat capacity of rail in J/m-deg cel
+    mCp_f=1310;   %total heat capacity of feeder wire in J/m-deg cel
 
-    % %to be taken from the user
+    %to be taken from the user
     % alpha_c=0.004;  %temperature coefficient of resistance (per deg cel) of contact wire  
     % alpha_r=0.003;  %temperature coefficient of resistance (per deg cel) of rail 
     % alpha_f=0.004;  %temperature coefficient of resistance (per deg cel) of feeder wire 
@@ -77,18 +86,20 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     q_s_r=a*Q_s*D_r;   %solar heat gain (for rail) rate in W/m
     q_s_f=a*Q_s*D_f;   %solar heat gain (for feeder wire) rate in W/m
 
-    T_c_M=zeros(N_TSS*y,1);  %contact temperature of all main windings (array initialization)
-    T_r_M=zeros(N_TSS*y,1);  %rail temperature of all main windings (array initialization)
-    T_f_M=zeros(N_TSS*y,1);  %feeder temperature of all main windings (array initialization)
+    N_TSS_new=N_TSS-1;  % updated number of TSS after outage of one TSS
 
-    T_c_T=zeros(N_TSS*y,1);  %contact temperature of all teaser windings (array initialization)
-    T_r_T=zeros(N_TSS*y,1);  %rail temperature of all teaser windings (array initialization)
-    T_f_T=zeros(N_TSS*y,1);  %feeder temperature of all teaser windings (array initialization)
+    T_c_M=zeros(N_TSS_new*y,1);  %contact temperature of all main windings (array initialization)
+    T_r_M=zeros(N_TSS_new*y,1);  %rail temperature of all main windings (array initialization)
+    T_f_M=zeros(N_TSS_new*y,1);  %feeder temperature of all main windings (array initialization)
+
+    T_c_T=zeros(N_TSS_new*y,1);  %contact temperature of all teaser windings (array initialization)
+    T_r_T=zeros(N_TSS_new*y,1);  %rail temperature of all teaser windings (array initialization)
+    T_f_T=zeros(N_TSS_new*y,1);  %feeder temperature of all teaser windings (array initialization)
 
     del_t=1;   %time step in sec
 
     %temperature rise calculation of all main windings
-    for i_b=1:y:(N_TSS*y)
+    for i_b=1:y:(N_TSS_new*y)
 
         T_c=T_c_initial;
         T_r=T_r_initial;
@@ -156,7 +167,7 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     end
 
     %temperature rise calculation of all teaser windings
-    for i_b=1:y:(N_TSS*y)
+    for i_b=1:y:(N_TSS_new*y)
 
         T_c=T_c_initial;
         T_r=T_r_initial;
@@ -226,7 +237,7 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     end
 
     % figure('Name','contact maximum line current of all main windings')
-    % for i_d=1:N_TSS
+    % for i_d=1:N_TSS_new
     % subplot(3,4,i_d);
     % plot(time,[0,Ic_M((i_d-1)*y+1:i_d*y)'],"Color",'r');
     % xlabel('time (sec)')
@@ -234,7 +245,7 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     % end
     % 
     % figure('Name','Rail maximum line current of all main windings')
-    % for i_d=1:N_TSS
+    % for i_d=1:N_TSS_new
     % subplot(3,4,i_d);
     % plot(time,[0,Ir_M((i_d-1)*y+1:i_d*y)'],"Color",'g');
     % xlabel('time (sec)')
@@ -242,7 +253,7 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     % end
     % 
     % figure('Name','Feeder maximum line current of all main windings')
-    % for i_d=1:N_TSS
+    % for i_d=1:N_TSS_new
     % subplot(3,4,i_d);
     % plot(time,[0,If_M((i_d-1)*y+1:i_d*y)'],"Color",'b');
     % xlabel('time (sec)')
@@ -250,7 +261,7 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     % end
     % 
     % figure('Name','contact maximum line current of all teaser windings')
-    % for i_d=1:N_TSS
+    % for i_d=1:N_TSS_new
     % subplot(3,4,i_d);
     % plot(time,[0,Ic_T((i_d-1)*y+1:i_d*y)'],"Color",'r');
     % xlabel('time (sec)')
@@ -258,7 +269,7 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     % end
     % 
     % figure('Name','Rail maximum line current of all teaser windings')
-    % for i_d=1:N_TSS
+    % for i_d=1:N_TSS_new
     % subplot(3,4,i_d);
     % plot(time,[0,Ir_T((i_d-1)*y+1:i_d*y)'],"Color",'g');
     % xlabel('time (sec)')
@@ -266,15 +277,15 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     % end
     % 
     % figure('Name','Feeder maximum line current of all teaser windings')
-    % for i_d=1:N_TSS
+    % for i_d=1:N_TSS_new
     % subplot(3,4,i_d);
     % plot(time,[0,If_T((i_d-1)*y+1:i_d*y)'],"Color",'b');
     % xlabel('time (sec)')
     % ylabel('Feeder current (Amp)')
     % end
-    % 
+    % time=[0,1:y];  % time (seconds)
     % figure('Name','OHE temperature of all main windings')
-    % for i_d=1:N_TSS
+    % for i_d=1:N_TSS_new
     % subplot(3,4,i_d);
     % plot(time,[T_c_initial,T_c_M((i_d-1)*y+1:i_d*y)'],"Color",'r');
     % hold on
@@ -287,7 +298,7 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     % end
     % 
     % figure('Name','OHE temperature of all teaser windings')
-    % for i_d=1:N_TSS
+    % for i_d=1:N_TSS_new
     % subplot(3,4,i_d);
     % plot(time,[T_c_initial,T_c_T((i_d-1)*y+1:i_d*y)'],"Color",'r');
     % hold on
@@ -299,9 +310,9 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     % legend('contact','rail','feeder')
     % end
 
-    T_c_track_down=zeros(2*N_TSS*y,1);   %contact temperature of all windings along the track (array initialization) 
-    T_r_track_down=zeros(2*N_TSS*y,1);   %rail temperature of all windings along the track (array initialization)
-    T_f_track_down=zeros(2*N_TSS*y,1);   %feeder temperature of all windings along the track (array initialization)
+    T_c_track_down=zeros(2*N_TSS_new*y,1);   %contact temperature of all windings along the track (array initialization) 
+    T_r_track_down=zeros(2*N_TSS_new*y,1);   %rail temperature of all windings along the track (array initialization)
+    T_f_track_down=zeros(2*N_TSS_new*y,1);   %feeder temperature of all windings along the track (array initialization)
 
     %Suppose Teaser winding is the 1st winding from mumbai (starting point)
 
@@ -310,33 +321,92 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     count_T=1;
     count_M=1;
 
-    for ii=1:2*N_TSS*y
-        if ii==(2*winding_position+1)*y+1
-            check=check+1;
-            winding_position=winding_position+1;
+    if N_TSS_O==1   % First TSS outage
+        check=check-1;
+        for ii=1:2*N_TSS_new*y
+            if ii==(2*winding_position+1)*y+1
+                check=check+1;
+                winding_position=winding_position+1;
+            end
+            condition_odd=mod(check,2);
+            if (condition_odd==1)
+                T_c_track_down(ii)=T_c_T(count_T);
+                T_r_track_down(ii)=T_r_T(count_T);
+                T_f_track_down(ii)=T_f_T(count_T);
+                count_T=count_T+1;
+            else
+                T_c_track_down(ii)=T_c_M(count_M);
+                T_r_track_down(ii)=T_r_M(count_M);
+                T_f_track_down(ii)=T_f_M(count_M);
+                count_M=count_M+1;
+            end
         end
-        condition_odd=mod(check,2);
-        if (condition_odd==1)
-            T_c_track_down(ii)=T_c_T(count_T);
-            T_r_track_down(ii)=T_r_T(count_T);
-            T_f_track_down(ii)=T_f_T(count_T);
-            count_T=count_T+1;
-        else
-            T_c_track_down(ii)=T_c_M(count_M);
-            T_r_track_down(ii)=T_r_M(count_M);
-            T_f_track_down(ii)=T_f_M(count_M);
-            count_M=count_M+1;
+    elseif N_TSS_O==N_TSS    % Last TSS outage
+        for ii=1:2*N_TSS_new*y
+            if ii==(2*winding_position+1)*y+1
+                check=check+1;
+                winding_position=winding_position+1;
+            end
+            condition_odd=mod(check,2);
+            if (condition_odd==1)
+                T_c_track_down(ii)=T_c_T(count_T);
+                T_r_track_down(ii)=T_r_T(count_T);
+                T_f_track_down(ii)=T_f_T(count_T);
+                count_T=count_T+1;
+            else
+                T_c_track_down(ii)=T_c_M(count_M);
+                T_r_track_down(ii)=T_r_M(count_M);
+                T_f_track_down(ii)=T_f_M(count_M);
+                count_M=count_M+1;
+            end
+        end
+    else   % Any intermediate TSS outage
+        for ii=1:2*N_TSS_new*y
+            if ii==(2*winding_position+1)*y+1
+                check=check+1;
+                winding_position=winding_position+1;
+            end
+            if check==N_TSS_O
+                if ii==(2*winding_position)*y+1
+                    check=check+1;
+                end
+            end
+            condition_odd=mod(check,2);
+            if (condition_odd==1)
+                T_c_track_down(ii)=T_c_T(count_T);
+                T_r_track_down(ii)=T_r_T(count_T);
+                T_f_track_down(ii)=T_f_T(count_T);
+                count_T=count_T+1;
+            else
+                T_c_track_down(ii)=T_c_M(count_M);
+                T_r_track_down(ii)=T_r_M(count_M);
+                T_f_track_down(ii)=T_f_M(count_M);
+                count_M=count_M+1;
+            end
         end
     end
 
-    save('OHE_temp_down_track_variables.mat','d','y','T_c_track_down','T_r_track_down','T_f_track_down',...
+    d_new=zeros(1,2*N_TSS_new+1);
+    if N_TSS_O==1   % First TSS outage
+        d_new(j_b)=d(j_b+2);
+        d_new(j_b+1:end)=d(j_b+3:end);
+    elseif N_TSS_O==N_TSS    % Last TSS outage
+        d_new(1:j_a-1)=d(1:j_a-1);
+        d_new(j_a)=d(j_b+1);
+    else   % Any intermediate TSS outage
+        d_new(1:j_a-1)=d(1:j_a-1);
+        d_new(j_a)=d(j_b);
+        d_new(j_b:end)=d(j_b+2:end);
+    end
+
+    save('OHE_temp_down_track_variables_1_TSS_outage.mat','d_new','y','T_c_track_down','T_r_track_down','T_f_track_down',...
         'T_c_initial','T_r_initial','T_f_initial')
 
-    % % time_instant=input('Enter the time instant (in second) at which OHE temperature along the track needs to be observed: ');
-    % time_instant=10000;
-    % for i_e=1:length(d)-1
+    % time_instant=input('Enter the time instant (in second) at which OHE temperature along the track needs to be observed: ');
+    % 
+    % for i_e=1:length(d_new)-1
     %     % for i_f=(d(i_e)/1000)+1:d(i_e+1)/1000   % for distance in Km
-    %     for i_f=d(i_e)+1:d(i_e+1)   % for distance in m
+    %     for i_f=d_new(i_e)+1:d_new(i_e+1)   % for distance in m
     %         track_distance(i_f,1)=i_f;
     %         track_temp_c(i_f,1)=T_c_track_down((i_e-1)*y+time_instant);
     %         track_temp_r(i_f,1)=T_r_track_down((i_e-1)*y+time_instant);
@@ -359,16 +429,15 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     % ylabel('Feeder wire temp (deg cel)')
     % 
     % allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
-    % set(allAxes, 'XLim', [0 d(end)/1000], 'XTick', d/1000, 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
+    % set(allAxes, 'XLim', [0 d_new(end)/1000], 'XTick', d_new/1000, 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
     % allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
     % set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
 
-    % % dist=input('Enter the distance (in km) at which OHE temperature over entire durations of train simualtion needs to be observed: ');
-    % dist=10;
+    % dist=input('Enter the distance (in km) at which OHE temperature over entire durations of train simualtion needs to be observed: ');
     % time=[0,1:y];  % time (seconds)
     % figure('Name','OHE temperature at a particular distance for entire durations of train simulation')
-    % for ii=1:length(d)-1
-    %     if dist>=d(ii)/1000 && dist<d(ii+1)/1000
+    % for ii=1:length(d_new)-1
+    %     if dist>=d_new(ii)/1000 && dist<d_new(ii+1)/1000
     %         plot(time/60,[T_c_initial,T_c_track_down((ii-1)*y+1:ii*y)'],"Color",'r');
     %         hold on
     %         plot(time/60,[T_r_initial,T_r_track_down((ii-1)*y+1:ii*y)'],"Color",'g');
@@ -384,4 +453,7 @@ function OHE_temp_cal_down_track(Ic_line_mag_Td_down, Ir_line_mag_Td_down, If_li
     %     end
     % end
     toc
+
+
+
 end

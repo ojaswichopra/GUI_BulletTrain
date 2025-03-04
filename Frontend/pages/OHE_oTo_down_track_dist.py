@@ -41,7 +41,7 @@ def main():
     dist = st.number_input("Enter the distance (in km) at which OHE temperature over entire durations of train simualtion needs to be observed", min_value=0)
 
     if st.button("Submit"):
-        if os.path.isfile('../OHE_temp/one_TSS_outage/OHE_temp_down_track_variables.mat'):
+        if os.path.isfile('../OHE_temp/one_TSS_outage/OHE_temp_down_track_variables_1_TSS_outage.mat'):
             oc.eval("setenv('GNUTERM', 'gnuplot')")
 
 

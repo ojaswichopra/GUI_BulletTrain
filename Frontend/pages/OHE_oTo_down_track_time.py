@@ -42,7 +42,7 @@ def main():
     time_instant = st.number_input("Enter the time instant (in second) at which OHE temperature along the track needs to be observed", min_value=0)
 
     if st.button("Submit"):
-        if os.path.isfile('../OHE_temp/one_TSS_outage/OHE_temp_down_track_variables.mat'):
+        if os.path.isfile('../OHE_temp/one_TSS_outage/OHE_temp_down_track_variables_1_TSS_outage.mat'):
             oc.eval("setenv('GNUTERM', 'gnuplot')")
             oc.eval(f"OHE_temp_cal_down_track_time({time_instant})")
             image_path = '../Plots_OHE/OHE_temp_cal_oTo_down_track_time.png'

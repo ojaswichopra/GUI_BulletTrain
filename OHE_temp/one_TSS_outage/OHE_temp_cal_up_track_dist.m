@@ -1,22 +1,21 @@
 function OHE_temp_cal_up_track_dist(dist)
     tic
-    graphics_toolkit ("gnuplot")
 
-    load('OHE_temp_up_track_variables.mat')
+    load('OHE_temp_up_track_variables_1_TSS_outage.mat')
 
     % dist=input('Enter the distance (in km) at which OHE temperature over entire durations of train simualtion needs to be observed: ');
-    % dist=10;
     time=[0,1:y];  % time (seconds)
-    figureHandle = figure;
+    graphics_toolkit ("gnuplot")
+        figureHandle = figure;
 
-    % Get screen size from root object (0)
-    screenSize = get(0, 'ScreenSize');
+        % Get screen size from root object (0)
+        screenSize = get(0, 'ScreenSize');
 
-    % Set the figure to match the screen size
-    set(figureHandle, 'Position', [100, 100, 1830, 1300]);
+        % Set the figure to match the screen size
+        set(figureHandle, 'Position', [100, 100, 1830, 1300]);
     figure('Name','OHE temperature at a particular distance for entire durations of train simulation')
-    for ii=1:length(d)-1
-        if dist>=d(ii)/1000 && dist<d(ii+1)/1000
+    for ii=1:length(d_new)-1
+        if dist>=d_new(ii)/1000 && dist<d_new(ii+1)/1000
             plot(time/60,[T_c_initial,T_c_track_up((ii-1)*y+1:ii*y)'],"Color",'r');
             hold on
             plot(time/60,[T_r_initial,T_r_track_up((ii-1)*y+1:ii*y)'],"Color",'g');
@@ -32,6 +31,6 @@ function OHE_temp_cal_up_track_dist(dist)
         end
     end
     desired_filename = '../../Plots_OHE/OHE_temp_cal_oTo_up_track_dist.png';
-    saveas(gcf, desired_filename);
+        saveas(gcf, desired_filename);
     toc
 end

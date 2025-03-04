@@ -1,28 +1,26 @@
 function OHE_temp_cal_down_track_time(time_instant)
-
     tic
 
-    graphics_toolkit ("gnuplot")
-    load('OHE_temp_down_track_variables.mat')
+    load('OHE_temp_down_track_variables_1_TSS_outage.mat')
 
     % time_instant=input('Enter the time instant (in second) at which OHE temperature along the track needs to be observed: ');
-    % time_instant=10000;
 
     %array initialization
-    track_distance=zeros(d(end),1);
-    track_temp_c=zeros(d(end),1);
-    track_temp_r=zeros(d(end),1);
-    track_temp_f=zeros(d(end),1);
+    track_distance=zeros(d_new(end),1);
+    track_temp_c=zeros(d_new(end),1);
+    track_temp_r=zeros(d_new(end),1);
+    track_temp_f=zeros(d_new(end),1);
 
-    for i_e=1:length(d)-1
+    for i_e=1:length(d_new)-1
         % for i_f=(d(i_e)/1000)+1:d(i_e+1)/1000   % for distance in Km
-        for i_f=d(i_e)+1:d(i_e+1)   % for distance in m
+        for i_f=d_new(i_e)+1:d_new(i_e+1)   % for distance in m
             track_distance(i_f,1)=i_f;
             track_temp_c(i_f,1)=T_c_track_down((i_e-1)*y+time_instant);
             track_temp_r(i_f,1)=T_r_track_down((i_e-1)*y+time_instant);
             track_temp_f(i_f,1)=T_f_track_down((i_e-1)*y+time_instant);
         end
     end
+    graphics_toolkit ("gnuplot")
     figureHandle = figure;
 
     % Get screen size from root object (0)
@@ -45,10 +43,9 @@ function OHE_temp_cal_down_track_time(time_instant)
     ylabel('Feeder wire temp (deg cel)')
 
     allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
-    set(allAxes, 'XLim', [0 d(end)/1000], 'XTick', d/1000, 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
+    set(allAxes, 'XLim', [0 d_new(end)/1000], 'XTick', d_new/1000, 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
     allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
     set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
-
     desired_filename = '../../Plots_OHE/OHE_temp_cal_oTo_down_track_time.png';
     saveas(gcf, desired_filename);
     toc
