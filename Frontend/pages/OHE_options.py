@@ -85,7 +85,7 @@ def load_normal_workspace():
 
 def load_oTo_workspace():
     variable_names = [
-        'Ic_line_mag_Td_up', 'Ir_line_mag_Td_up', 'If_line_mag_Td_up', 'Ic_line_mag_Md_up', 'Ir_line_mag_Md_up', 'If_line_mag_Md_up', 'Ic_line_mag_Td_down', 'Ir_line_mag_Td_down', 'If_line_mag_Td_down', 'Ic_line_mag_Md_down', 'Ir_line_mag_Md_down', 'If_line_mag_Md_down', 'y', 'N_TSS', 'd', 'rad_C', 'rad_R1', 'rad_F', 'Resistance_C', 'Resistance_R1', 'Resistance_F' ]
+        'Ic_line_mag_Td_up', 'Ir_line_mag_Td_up', 'If_line_mag_Td_up', 'Ic_line_mag_Md_up', 'Ir_line_mag_Md_up', 'If_line_mag_Md_up', 'Ic_line_mag_Td_down', 'Ir_line_mag_Td_down', 'If_line_mag_Td_down', 'Ic_line_mag_Md_down', 'Ir_line_mag_Md_down', 'If_line_mag_Md_down', 'y', 'N_TSS', 'd', 'N_TSS_O', 'j_a', 'j_b', 'rad_C', 'rad_R1', 'rad_F', 'Resistance_C', 'Resistance_R1', 'Resistance_F' ]
 
     for var in variable_names:
         # First, try pulling from the Octave workspace
@@ -93,6 +93,18 @@ def load_oTo_workspace():
         
         ## Reading from text file - 
         oTo_double_workspace[var] = read_text_file(f'../oTo_double_text_files/{var}.txt')
+
+def load_tTo_workspace():
+    variable_names = [
+        'Ic_line_mag_Td_up', 'Ir_line_mag_Td_up', 'If_line_mag_Td_up', 'Ic_line_mag_Md_up', 'Ir_line_mag_Md_up', 'If_line_mag_Md_up', 'Ic_line_mag_Td_down', 'Ir_line_mag_Td_down', 'If_line_mag_Td_down', 'Ic_line_mag_Md_down', 'Ir_line_mag_Md_down', 'If_line_mag_Md_down', 'y', 'N_TSS', 'd', 'N_TSS_O', 'j_a', 'j_b', 'j_c', 'j_d', 'rad_C', 'rad_R1', 'rad_F', 'Resistance_C', 'Resistance_R1', 'Resistance_F' ]
+
+    for var in variable_names:
+        # First, try pulling from the Octave workspace
+        # workspace_variables[var] = oc.pull(var)
+        
+        ## Reading from text file - 
+        tTo_double_workspace[var] = read_text_file(f'../tTo_double_text_files/{var}.txt')
+
 
 def main():
 
@@ -149,6 +161,7 @@ def main():
             load_oTo_workspace()
             st.switch_page("pages/OHE_oTo_options.py")
         if st.button('Two TSS Outage Condition'):
+            load_tTo_workspace()
             st.switch_page("pages/OHE_tTo_options.py")
             
 
