@@ -141,7 +141,7 @@ def main():
             st.switch_page("pages/IVV_oTo.py")
     
     with col2:
-        if st.button('Two TSS Outage'):
+        if st.button('Two Adjacent TSS Outage'):
             load_tTo_workspace()
             st.switch_page("pages/IVV_tTo.py")
             

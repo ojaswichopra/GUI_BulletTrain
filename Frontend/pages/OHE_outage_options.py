@@ -71,18 +71,7 @@ def is_numeric(value):
     except ValueError:
         return False
     
-def load_normal_workspace():
-        # List of variable names to pull and read from text files
-    variable_names = [
-        'Ic_line_mag_Td_up', 'Ir_line_mag_Td_up', 'If_line_mag_Td_up', 'Ic_line_mag_Md_up', 'Ir_line_mag_Md_up', 'If_line_mag_Md_up', 'Ic_line_mag_Td_down', 'Ir_line_mag_Td_down', 'If_line_mag_Td_down', 'Ic_line_mag_Md_down', 'Ir_line_mag_Md_down', 'If_line_mag_Md_down', 'y', 'N_TSS', 'd', 'rad_C', 'rad_R1', 'rad_F', 'Resistance_C', 'Resistance_R1', 'Resistance_F' ]
 
-    # Loop through each variable name
-    for var in variable_names:
-        # First, try pulling from the Octave workspace
-        # workspace_variables[var] = oc.pull(var)
-        
-        ## Reading from text file - 
-        normal_variables[var] = read_text_file(f'../normal_text_files/{var}.txt')
 
 def load_oTo_workspace():
     variable_names = [
@@ -148,18 +137,18 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Calculate OHE Temperature Rise</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Calculate OHE Temperature Rise - TSS Outage condition</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button('Normal Condition'):
-            load_normal_workspace()
-            st.switch_page("pages/OHE_normal_options.py")
+        if st.button('One TSS outage'):
+            load_oTo_workspace()
+            st.switch_page("pages/OHE_oTo_options.py")
     
     with col2:
-        if st.button('TSS outage condition'):
-            st.switch_page("pages/OHE_outage_options.py")
+        if st.button('Two adjacent TSS outage'):
+            st.switch_page("pages/OHE_tTo_options.py")
         # if st.button('One TSS Outage Condition'):
         #     load_oTo_workspace()
         #     st.switch_page("pages/OHE_oTo_options.py")
@@ -172,7 +161,7 @@ if __name__ == "__main__":
     main()
     st.markdown(
         f"""
-        <a href="/OHE_input" target="_self" class="custom-button">Back</a>
+        <a href="/OHE_options" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )

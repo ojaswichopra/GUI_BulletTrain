@@ -48,7 +48,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Two TSS Outage Condition</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Two Adjacent TSS Outage Condition</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 

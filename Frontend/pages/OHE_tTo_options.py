@@ -49,7 +49,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Two TSS outage Condition</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Two adjacent TSS outage</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     main()
     st.markdown(
         f"""
-        <a href="/OHE_options" target="_self" class="custom-button">Back</a>
+        <a href="/OHE_outage_options" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )
