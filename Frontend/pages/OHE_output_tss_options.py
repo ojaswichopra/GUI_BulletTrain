@@ -49,24 +49,24 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Two TSS Outage Condition</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Output of OHE Temperature Rise Calculation - TSS outage condition</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button('Up Track'):
-            st.switch_page("pages/OHE_output_tTo_up_track.py")
+        if st.button('One TSS Outage '):
+            st.switch_page("pages/OHE_output_oTo_options.py")
     
     with col2:
-        if st.button('Down Track'):
-            st.switch_page("pages/OHE_output_tTo_down_track.py")
+        if st.button('Two adjacent TSS outage'):
+            st.switch_page("pages/OHE_output_tTo_options.py")
             
 
 if __name__ == "__main__":
     main()
     st.markdown(
         f"""
-        <a href="/OHE_output_tss_options" target="_self" class="custom-button">Back</a>
+        <a href="/OHE_output_options" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )
