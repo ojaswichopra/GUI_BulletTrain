@@ -51,31 +51,33 @@ def main():
     col1, col2 = st.columns(2)
     with col1:
         if st.button('Voltage Profile of the track at the time instant of fault'):
-            image_path = '../Plots_SCA_double/voltage_profile.png'
-            img = Image.open(image_path)
-            st.image(img, caption="", use_column_width=True)
+            # image_path = '../Plots_SCA_double/voltage_profile.png'
+            # img = Image.open(image_path)
+            # st.image(img, caption="", use_column_width=True)
 
-            with open(image_path, "rb") as file:
-                btn = st.download_button(
-                    label="Download Plot",
-                    data=file,
-                    file_name="voltage_profile_SCA.png",  # Replace with the desired download filename
-                    mime="image/png"
-                )
+            # with open(image_path, "rb") as file:
+            #     btn = st.download_button(
+            #         label="Download Plot",
+            #         data=file,
+            #         file_name="voltage_profile_SCA.png",  # Replace with the desired download filename
+            #         mime="image/png"
+            #     )
+            st.switch_page("pages/SCA_output_double_down_voltage.py")
 
     with col2:
         if st.button('Line Current Profile of the track at the time instant of fault'):
-            image_path = '../Plots_SCA_double/current_profile.png'
-            img = Image.open(image_path)
-            st.image(img, caption="", use_column_width=True)
+            # image_path = '../Plots_SCA_double/current_profile.png'
+            # img = Image.open(image_path)
+            # st.image(img, caption="", use_column_width=True)
 
-            with open(image_path, "rb") as file:
-                btn = st.download_button(
-                    label="Download Plot",
-                    data=file,
-                    file_name="current_profile_SCA.png",  # Replace with the desired download filename
-                    mime="image/png"
-                )
+            # with open(image_path, "rb") as file:
+            #     btn = st.download_button(
+            #         label="Download Plot",
+            #         data=file,
+            #         file_name="current_profile_SCA.png",  # Replace with the desired download filename
+            #         mime="image/png"
+            #     )
+            st.switch_page("pages/SCA_output_double_down_current.py")
                 
 if __name__ == "__main__":
     main()

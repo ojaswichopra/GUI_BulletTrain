@@ -148,6 +148,7 @@ def main():
     
     with col2:
         if st.button('Two adjacent TSS outage'):
+            load_tTo_workspace()
             st.switch_page("pages/OHE_tTo_options.py")
         # if st.button('One TSS Outage Condition'):
         #     load_oTo_workspace()

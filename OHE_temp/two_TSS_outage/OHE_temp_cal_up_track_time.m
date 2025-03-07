@@ -43,7 +43,7 @@ function OHE_temp_cal_up_track_time(time_instant)
     ylabel('Feeder wire temp (deg cel)')
 
     allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
-    set(allAxes, 'XLim', [0 d_new(end)/1000], 'XTick', d_new/1000, 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
+    set(allAxes, 'XLim', [0 d_new(end)/1000], 'XTick', d_new/1000, 'FontSize',8); % Set font size and weight
     allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
     set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
     

@@ -5,7 +5,7 @@ from pages.oTo_double_Workspace import oTo_double_workspace
 from pages.tTo_double_Workspace import tTo_double_workspace
 import numpy as np
  
-title = "Output Options"
+title = "OHE Options"
 page_icon = ":bullet_train:"  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 layout = "centered"
 
