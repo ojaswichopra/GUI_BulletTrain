@@ -7,6 +7,7 @@ import pages.OHE_config as OHE_config
 from oct2py import Oct2Py
 oc = Oct2Py() 
 oc.eval('cd("../OHE_temp/normal")') 
+import os
 
 def main():
     st.markdown(
