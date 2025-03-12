@@ -55,6 +55,7 @@ def main():
                     file_name="Induced_voltage_victim_dist_oTo.png",  # Replace with the desired download filename
                     mime="image/png"
                 )
+
         else:
             st.warning("Please run the Calculation!")
 
