@@ -4,8 +4,8 @@ import numpy as np
 from oct2py import Oct2Py
 
 
-
 def main():
+
 
     # Settings
     # st.set_page_config(page_title=title, page_icon=page_icon, layout=layout)
@@ -62,7 +62,7 @@ def main():
         if st.button('Output of OHE Temperature Rise Calculation'):
             st.switch_page("pages/OHE_output_options.py")
         if st.button('Output of harmonic analysis'):
-            st.switch_page("")
+            st.switch_page("pages/Harmonic_output.py")
             
     c1,c2,c3,c4 = st.columns(4)
     with c2:
