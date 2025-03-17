@@ -20,18 +20,6 @@ def main():
         [data-testid="collapsedControl"] {
             display: none
         }
-        .stButton button {
-            width: 300px;
-            height: 120px;
-            background-color: #007BFF;
-            color: white;
-            font-size: 20px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
         .title {
             text-align: center;
         }
@@ -48,6 +36,8 @@ def main():
                 margin: 10px 0;
             }
     </style>
+
+    
     """,
         unsafe_allow_html=True,
     )
