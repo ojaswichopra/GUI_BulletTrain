@@ -20,6 +20,7 @@ for row1 = 1:size(dTSS_T_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_T_up, 2)) '\n'], dTSS_T_up(row1, :));
 end
 fclose(fileID);
+
 fileID = fopen('../normal_text_files/dTSS_T_down.txt', 'w');
 for row1 = 1:size(dTSS_T_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_T_down, 2)) '\n'], dTSS_T_down(row1, :));
@@ -470,6 +471,12 @@ for row1 = 1:size(rad_M1, 1)
 end
 fclose(fileID);
 
+fileID = fopen('../normal_text_files/rad_G.txt', 'w');
+for row1 = 1:size(rad_G, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(rad_G, 2)) '\n'], rad_G(row1, :));
+end
+fclose(fileID);
+
 fileID = fopen('../normal_text_files/Resistance_C.txt', 'w');
 for row1 = 1:size(Resistance_C, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Resistance_C, 2)) '\n'], Resistance_C(row1, :));
@@ -548,8 +555,131 @@ for row1 = 1:size(row, 1)
 end
 fclose(fileID);
 
-fileID = fopen('../normal_text_files/rad_G.txt', 'w');
-for row1 = 1:size(rad_G, 1)
-    fprintf(fileID, [repmat('%.16g ', 1, size(rad_G, 2)) '\n'], rad_G(row1, :));
+fileID = fopen('../normal_text_files/pTSS_T_up.txt', 'w');
+for row1 = 1:size(pTSS_T_up, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(pTSS_T_up, 2)) '\n'], pTSS_T_up(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/pTSS_M_up.txt', 'w');
+for row1 = 1:size(pTSS_M_up, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(pTSS_M_up, 2)) '\n'], pTSS_M_up(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/pTSS_T_down.txt', 'w');
+for row1 = 1:size(pTSS_T_down, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(pTSS_T_down, 2)) '\n'], pTSS_T_down(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/pTSS_M_down.txt', 'w');
+for row1 = 1:size(pTSS_M_down, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(pTSS_M_down, 2)) '\n'], pTSS_M_down(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/tTSS_T_up.txt', 'w');
+for row1 = 1:size(tTSS_T_up, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(tTSS_T_up, 2)) '\n'], tTSS_T_up(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/tTSS_M_up.txt', 'w');
+for row1 = 1:size(tTSS_M_up, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(tTSS_M_up, 2)) '\n'], tTSS_M_up(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/tTSS_T_down.txt', 'w');
+for row1 = 1:size(tTSS_T_down, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(tTSS_T_down, 2)) '\n'], tTSS_T_down(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/tTSS_M_down.txt', 'w');
+for row1 = 1:size(tTSS_M_down, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(tTSS_M_down, 2)) '\n'], tTSS_M_down(row1, :));
+end
+fclose(fileID);
+
+% Open the file for writing complex variable YcrfT
+fileID = fopen('../normal_text_files/YcrfT.txt', 'w');
+
+% Write real and imaginary parts
+for row1 = 1:size(YcrfT, 1)
+    fprintf(fileID, [repmat('%.16g, %.16g ', 1, size(YcrfT, 2)) '\n'], real(YcrfT(row1, :)), imag(YcrfT(row1, :)));
+end
+
+% Close the file
+fclose(fileID);
+
+% Open the file for writing complex variable YcrfM
+fileID = fopen('../normal_text_files/YcrfM.txt', 'w');
+
+% Write real and imaginary parts
+for row1 = 1:size(YcrfM, 1)
+    fprintf(fileID, [repmat('%.16g, %.16g ', 1, size(YcrfM, 2)) '\n'], real(YcrfM(row1, :)), imag(YcrfM(row1, :)));
+end
+
+% Close the file
+fclose(fileID);
+
+% Open the file for writing complex variable YcrfT
+fileID = fopen('../normal_text_files/Yat.txt', 'w');
+
+% Write real and imaginary parts
+for row1 = 1:size(Yat, 1)
+    fprintf(fileID, [repmat('%.16g, %.16g ', 1, size(Yat, 2)) '\n'], real(Yat(row1, :)), imag(Yat(row1, :)));
+end
+
+% Close the file
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/Vc_mag_Td.txt', 'w');
+for row1 = 1:size(Vc_mag_Td, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vc_mag_Td, 2)) '\n'], Vc_mag_Td(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/Vc_ang_Td.txt', 'w');
+for row1 = 1:size(Vc_ang_Td, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vc_ang_Td, 2)) '\n'], Vc_ang_Td(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/Vc_mag_Md.txt', 'w');
+for row1 = 1:size(Vc_mag_Md, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vc_mag_Md, 2)) '\n'], Vc_mag_Md(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/Vc_ang_Md.txt', 'w');
+for row1 = 1:size(Vc_ang_Md, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vc_ang_Md, 2)) '\n'], Vc_ang_Md(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/VR_mag_Td.txt', 'w');
+for row1 = 1:size(VR_mag_Td, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(VR_mag_Td, 2)) '\n'], VR_mag_Td(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/Vf_mag_Td.txt', 'w');
+for row1 = 1:size(Vf_mag_Td, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vf_mag_Td, 2)) '\n'], Vf_mag_Td(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/VR_mag_Md.txt', 'w');
+for row1 = 1:size(VR_mag_Md, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(VR_mag_Md, 2)) '\n'], VR_mag_Md(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/Vf_mag_Md.txt', 'w');
+for row1 = 1:size(Vf_mag_Md, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vf_mag_Md, 2)) '\n'], Vf_mag_Md(row1, :));
 end
 fclose(fileID);
