@@ -117,7 +117,7 @@ function harmonic_analysis(dTSS_T_up, dTSS_M_up, dTSS_T_down, dTSS_M_down, pTSS_
     end
 
     % Saving the required workspace variables
-    save("harmonic_analysis_variables.mat","THD_C_T_up","THD_C_M_up","THD_C_T_down","THD_C_M_down") 
+    save("../Harmonic_output/normal/harmonic_analysis_variables.mat","THD_C_T_up","THD_C_M_up","THD_C_T_down","THD_C_M_down") 
     toc
 end
 

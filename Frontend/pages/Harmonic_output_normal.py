@@ -104,7 +104,7 @@ def main():
         y = harmonic_workspace_normal['y']
         oc.push('y', y)
         
-        oc.eval(f"Train_contact_terminal_THD({entered_train_number}, {train_number}, {track_type}, {train_type}, {start_time}, {each_stop_train_data_up}, {rapid_train_data_up}, {each_stop_train_data_down}, {rapid_train_data_down}, {track_length}, {d}, {dTSS_up}, {dTSS_down}, {N_TSS}, {y})")        
+        oc.eval(f"Train_contact_terminal_THD({entered_train_number}, train_number, track_type, train_type, start_time, each_stop_train_data_up, rapid_train_data_up, each_stop_train_data_down, rapid_train_data_down, track_length, d, dTSS_up, dTSS_down, N_TSS, y)")        
 
         image_path = '../Plots_harmonic/Train_contact_terminal_THD_normal.png'
         img = Image.open(image_path)
