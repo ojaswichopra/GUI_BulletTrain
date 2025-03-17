@@ -264,8 +264,6 @@ function train_sheduling_program_code(M, g, delt, eff, m_decl, a, b, c, max_spee
         % fclose(fid);
         % %     clear best_sol;
     end
-    final_compile;
-    plot_all;
 end
 
 

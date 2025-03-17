@@ -158,12 +158,12 @@ function initialization_user_chart(TSS, AT, SP)
 
     D_up_each_stop=each_stop_train_data_up(:,3)*1000;   %distance covered (m) at each second for up-track each stop train
     D_up_rapid=rapid_train_data_up(:,3)*1000;   %distance covered (m) at each second for up-track rapid train
-    track_length=D_up_each_stop(end)/1000; % track length (kM)
     P_up_each_stop=each_stop_train_data_up(:,4)*1000;   %power consumed (kW) at each second for up-track each stop train
     P_up_rapid=rapid_train_data_up(:,4)*1000;   %power consumed (kW) at each second for up-track rapid train
 
     D_down_each_stop=each_stop_train_data_down(:,3)*1000;   %distance covered (m) at each second for down-track each stop train
     D_down_rapid=rapid_train_data_down(:,3)*1000;   %distance covered (m) at each second for down-track rapid train
+    track_length=max(D_down_each_stop(end),D_down_rapid(end))/1000; % track length (kM)
     P_down_each_stop=each_stop_train_data_down(:,4)*1000;   %power consumed (kW) at each second for down-track each stop train
     P_down_rapid=rapid_train_data_down(:,4)*1000;   %power consumed (kW) at each second for down-track rapid train
 
@@ -368,7 +368,6 @@ function initialization_user_chart(TSS, AT, SP)
     d(1)=0; %starting point
     d(2:2:l_a)=TSS;
     d(3:2:l_a+1)=SP;
-    %distance (in meter) of all the TSSs and the section posts measured from Mumbai i.e. [0 TSS1 SP1 TSS2 SP2..........TSSn SPn].
     desired_filename = '../Plots_tTo_double/Simulation_Chart.png';
     saveas(gcf, desired_filename);
 end

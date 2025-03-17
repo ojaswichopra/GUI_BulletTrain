@@ -67,6 +67,7 @@ def main():
             with open(timetable_file_path, "wb") as file:
                 file.write(uploaded_file.getbuffer())  # Save file buffer to disk
             uploaded_files[section_number] = timetable_file_path
+            st.success("File Uploaded!!")
     
     if st.button("Run Backend Process"):
         # Check if all files are uploaded before running backend process
