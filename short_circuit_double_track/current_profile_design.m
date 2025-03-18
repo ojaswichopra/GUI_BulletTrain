@@ -79,20 +79,23 @@ set(figureHandle, 'Position', [100, 100, 1830, 1500]);
 
 subplot(3,1,1)
 plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,2)));
-title('Contact wire current magnitude')
-xlabel('Distance (kM)')
-ylabel('current magnitude (kA)')
+title('Contact Wire Current Magnitude', 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Current Magnitude (kA)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
 %set(gca,'XTick',[5 55 105 155 205 255 305 355 405 455 505],'XTickLabel',{'TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS','TSS'})
  subplot(3,1,2)
 plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,3)));
-title('Rail wire current magnitude')
-xlabel('Distance (kM)')
-ylabel('current magnitude (kA)')
+title('Rail Current Magnitude', 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Current Magnitude (kA)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
 subplot(3,1,3)
 plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,4)));
-title('Feeder wire current magnitude')
-xlabel('Distance (kM)')
-ylabel('current magnitude (kA)')
+title('Feeder Wire Current Magnitude', 'FontWeight', 'bold', 'FontSize', 14);
+xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+ylabel('Current Magnitude (kA)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca, 'FontSize', 12); % Set axis tick font size
 
 
 desired_filename = '../Plots_SCA_double/current_profile.png';
