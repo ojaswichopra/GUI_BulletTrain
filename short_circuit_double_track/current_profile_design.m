@@ -75,7 +75,7 @@ graphics_toolkit ("gnuplot")
 figureHandle = figure;
 screenSize = get(0, 'ScreenSize');
 
-set(figureHandle, 'Position', [100, 100, 1830, 1500]);
+set(figureHandle, 'Position', screenSize);
 
 subplot(3,1,1)
 plot((current_distance_matrix_whole(:,1)/1000),abs(current_distance_matrix_whole(:,2)));
