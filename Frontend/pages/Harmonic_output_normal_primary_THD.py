@@ -41,6 +41,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
+    
     st.markdown("<h1 class='title'>TSS primary side voltage THD profile</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 

@@ -42,7 +42,7 @@ function TSS_THD_profile(N_TSS, y, TSS_No)
         allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
         set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
         
-        desired_filename = '../Plots_harmonic/TSS_THD_profile.png';
+        desired_filename = '../../Plots_harmonic/TSS_THD_profile.png';
         saveas(gcf, desired_filename);
 
     end

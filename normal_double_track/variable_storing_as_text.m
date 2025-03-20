@@ -683,3 +683,33 @@ for row1 = 1:size(Vf_mag_Md, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(Vf_mag_Md, 2)) '\n'], Vf_mag_Md(row1, :));
 end
 fclose(fileID);
+
+fileID = fopen('../normal_text_files/a1.txt', 'w');
+for row1 = 1:size(a1, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(a1, 2)) '\n'], a1(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/a2.txt', 'w');
+for row1 = 1:size(a2, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(a2, 2)) '\n'], a2(row1, :));
+end
+fclose(fileID);
+
+% Open the file for writing complex variable Zshort
+fileID = fopen('../normal_text_files/Zshort.txt', 'w');
+
+% Write real and imaginary parts
+for row1 = 1:size(Zshort, 1)
+    fprintf(fileID, [repmat('%.16g, %.16g ', 1, size(Zshort, 2)) '\n'], real(Zshort(row1, :)), imag(Zshort(row1, :)));
+end
+
+% Close the file
+fclose(fileID);
+
+fileID = fopen('../normal_text_files/Vp.txt', 'w');
+for row1 = 1:size(Vp, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vp, 2)) '\n'], Vp(row1, :));
+end
+fclose(fileID);
+

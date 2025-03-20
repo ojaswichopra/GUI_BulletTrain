@@ -221,7 +221,7 @@ function Train_contact_terminal_THD(entered_train_number, train_number, track_ty
         allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
         set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
                 
-        desired_filename = '../Plots_harmonic/Train_contact_terminal_THD_normal.png';
+        desired_filename = '../../Plots_harmonic/Train_contact_terminal_THD_normal.png';
         saveas(gcf, desired_filename);
     else
         fprintf('Invalid train number. Please enter a valid train number.\n');
