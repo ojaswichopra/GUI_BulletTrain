@@ -2,8 +2,8 @@ function Train_contact_terminal_THD(entered_train_number, train_number, track_ty
     tic
 
     % This .mat file is generated after performing harmonic analysis
-    load('harmonic_analysis_variables.mat')
-    graphics_toolkit ("gnuplot")
+    load("harmonic_analysis_variables.mat","THD_C_T_up","THD_C_M_up","THD_C_T_down","THD_C_M_down")
+
     % These text files are generated after executing the load flow under normal condition
     % train_number=load("train_number.txt");
     % track_type = load("track_type.txt");
@@ -66,7 +66,7 @@ function Train_contact_terminal_THD(entered_train_number, train_number, track_ty
         end
     end
 
-    % Contact terminal THD profile of a particular train
+    % Contact terminal voltage THD profile of a particular train
 
     % Display available train numbers
     fprintf('Available train numbers: ');
@@ -74,11 +74,11 @@ function Train_contact_terminal_THD(entered_train_number, train_number, track_ty
     fprintf('\n');
 
     % This is to be taken from the user
-    % entered_train_number = input('Enter the train number to see its Contact terminal THD profile: ');
+    % entered_train_number = input('Enter the train number to see its Contact terminal voltage THD profile: ');
 
     % Check if the entered train number exists in the list
     if ismember(entered_train_number, train_number)
-        fprintf('Train number %d exists. Displaying its Contact terminal THD profile...\n', entered_train_number);
+        fprintf('Train number %d exists. Displaying its Contact terminal voltage THD profile...\n', entered_train_number);
 
         entered_train_indx=find(entered_train_number==train_number);
         entered_track_type=track_type(entered_train_indx);   % Track type (1=up or 2=down) of the entered train number
@@ -205,24 +205,23 @@ function Train_contact_terminal_THD(entered_train_number, train_number, track_ty
                 end
             end
         end
+        graphics_toolkit ("gnuplot")
         figureHandle = figure;
-
-        % Get screen size from root object (0)
         screenSize = get(0, 'ScreenSize');
         
-        % Set the figure to match the screen size
-        set(figureHandle, 'Position', [100, 100, 2000, 1500]);
-        
-        figure('Name','Contact terminal THD profile of a particular train')
+        set(figureHandle, 'Position', screenSize);
+
+        figure('Name','Contact terminal voltage THD profile of a particular train')
         plot(train_time_instant/60,THD_Train_C)
-        title(['Contact terminal THD profile of Train ',num2str(entered_train_number)])
+        title(['Contact terminal voltage THD profile of Train ',num2str(entered_train_number)])
         xlabel('Travel time (minute)')
-        ylabel('Contact terminal THD (%)')
+        ylabel('Contact terminal voltage THD (%)')
         allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
         set(allAxes, 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
         allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
         set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
-        desired_filename = '../../Plots_harmonic/Train_contact_terminal_THD_normal.png';  % Replace 'desired_name' with your file name
+                
+        desired_filename = '../Plots_harmonic/Train_contact_terminal_THD_normal.png';
         saveas(gcf, desired_filename);
     else
         fprintf('Invalid train number. Please enter a valid train number.\n');
