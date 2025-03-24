@@ -63,7 +63,7 @@ def main():
     oc.eval(f"TSS_maximum_MVA_outage(TSS, N_TSS_O, dTSS_T_up, Unb, tt_time, s_apprant_power_MVA_mag)")
     image_path = '../Plots_tTo_double/TSS_maximum_MVA_outage.png'
     img = Image.open(image_path)
-    st.image(img, caption="", use_column_width=True)
+    st.image(img, caption="", use_container_width=True)
 
     with open(image_path, "rb") as file:
         btn = st.download_button(

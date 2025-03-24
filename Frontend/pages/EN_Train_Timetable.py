@@ -56,7 +56,7 @@ def main():
     oc.eval(f"timetable_plot(HS_train_A_F_data,HS_train_F_A_data,FR_train_A_F_data,SUB_train_A_F_data)")
     image_path = '../Plots/timetable_plot.png'
     img = Image.open(image_path)
-    st.image(img, caption="", use_column_width=True)
+    st.image(img, caption="", use_container_width=True)
 
     with open(image_path, "rb") as file:
         btn = st.download_button(

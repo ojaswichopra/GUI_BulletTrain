@@ -63,7 +63,7 @@ def main():
         oc.eval(f"AT_MVA_profile_outage({AT_input_no}, {AT_UP_down}, AT_mva_mag_up, AT_mva_mag_down, tt_time)")
         image_path = '../Plots_tTo_double/AT_MVA_profile_outage.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(

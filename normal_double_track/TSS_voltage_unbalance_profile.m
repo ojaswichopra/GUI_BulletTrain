@@ -17,10 +17,12 @@ function TSS_voltage_unbalance_profile(TSS_input_no, Unb)
     % Set the figure to match the screen size
     set(figureHandle, 'Position', [100, 100, 1830, 1500]);
 
-    plot(Unb(:,TSS_input_no))
-    title(['Voltage unbalance profile of TSS number ',num2str(TSS_input_no)])
-    xlabel('Time (sec)','FontWeight','bold')
-    ylabel('Voltage unbalance (%)','FontWeight','bold')
+    plot(Unb(:,TSS_input_no),'Linewidth',2)
+    title(['Voltage unbalance profile of TSS number ',num2str(TSS_input_no)],'Fontsize',16,'FontWeight','bold')
+    xlabel('Time (sec)','FontWeight','bold','Fontsize',14)
+    ylabel('Voltage unbalance (%)','FontWeight','bold','Fontsize',14)
+    allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+    set(allAxes, 'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
     desired_filename = '../Plots_normal/TSS_voltage_unbalance_profile.png';  % Replace 'desired_name' with your file name
     saveas(gcf, desired_filename);
     toc

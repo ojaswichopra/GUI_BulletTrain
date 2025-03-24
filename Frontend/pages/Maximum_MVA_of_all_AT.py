@@ -46,7 +46,7 @@ def main():
     oc.eval(f"AT_maximum_MVA(AT_mva_mag, AT)")
     image_path = '../Plots/AT_maximum_MVA.png'
     img = Image.open(image_path)
-    st.image(img, caption="", use_column_width=True)
+    st.image(img, caption="", use_container_width=True)
 
     with open(image_path, "rb") as file:
         btn = st.download_button(

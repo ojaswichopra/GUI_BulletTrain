@@ -1,2 +1,4 @@
-This is the code repo for the GUI of a Traction Power Supply Network simulation model using Python, enabling interactive visualisation and control. 
-Python oct2py is utilized to connect to the backend, to execute simulation algorithms and data processing in the backend via GNU Octave.
+-> To run the application, first ensure that python and GNU Octave are properly installed in the system as the application's main engine is octave.
+-> Ensure that python and GNU Octave are set in system path variables.
+-> Run the script.bat file (present in this folder) to run the application.
+-> The input files for each module is present in the "Input files" folder.

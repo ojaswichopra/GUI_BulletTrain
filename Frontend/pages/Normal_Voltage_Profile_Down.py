@@ -99,9 +99,6 @@ def main():
         If_line_ang_Td_down = normal_variables['If_line_ang_Td_down']
         oc.push('If_line_ang_Td_down', If_line_ang_Td_down)
 
-        z1_loaded = normal_variables['z1']
-        oc.push('z1_loaded', z1_loaded)
-
         Vc_mag_Md_down = normal_variables['Vc_mag_Md_down']
         oc.push('Vc_mag_Md_down', Vc_mag_Md_down)
 
@@ -142,10 +139,10 @@ def main():
         oc.push('If_line_ang_Md_down', If_line_ang_Md_down)
 
 
-        oc.eval(f"Full_DOWN_track_voltage_profile_instant_t({track_time_1},{x_reso},d, TSS, AT, y, Vc_mag_Td_down, Vc_ang_Td_down, VR_mag_Td_down, VR_ang_Td_down, Vf_mag_Td_down, Vf_ang_Td_down, dTSS_T_down, Ic_line_mag_Td_down, Ic_line_ang_Td_down, Ir_line_mag_Td_down, Ir_line_ang_Td_down, If_line_mag_Td_down, If_line_ang_Td_down, z1_loaded, Vc_mag_Md_down, Vc_ang_Md_down, VR_mag_Md_down, VR_ang_Md_down, Vf_mag_Md_down, Vf_ang_Md_down, dTSS_M_down, Ic_line_mag_Md_down, Ic_line_ang_Md_down, Ir_line_mag_Md_down, Ir_line_ang_Md_down, If_line_mag_Md_down, If_line_ang_Md_down)")
+        oc.eval(f"Full_DOWN_track_voltage_profile_instant_t({track_time_1},{x_reso},d, TSS, AT, y, Vc_mag_Td_down, Vc_ang_Td_down, VR_mag_Td_down, VR_ang_Td_down, Vf_mag_Td_down, Vf_ang_Td_down, dTSS_T_down, Ic_line_mag_Td_down, Ic_line_ang_Td_down, Ir_line_mag_Td_down, Ir_line_ang_Td_down, If_line_mag_Td_down, If_line_ang_Td_down, Vc_mag_Md_down, Vc_ang_Md_down, VR_mag_Md_down, VR_ang_Md_down, Vf_mag_Md_down, Vf_ang_Md_down, dTSS_M_down, Ic_line_mag_Md_down, Ic_line_ang_Md_down, Ir_line_mag_Md_down, Ir_line_ang_Md_down, If_line_mag_Md_down, If_line_ang_Md_down)")
         image_path = '../Plots_normal/Full_DOWN_track_voltage_profile_instant_t.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(
@@ -169,7 +166,7 @@ def main():
                 oc.eval(f"voltage_profile_design_predetermine_TSS(Voltage_distance_matrix_whole,AT,TSS)")
                 image_path = '../Plots_normal/voltage_profile_design_predetermine_TSS.png'
                 img = Image.open(image_path)
-                st.image(img, caption="", use_column_width=True)
+                st.image(img, caption="", use_container_width=True)
 
                 with open(image_path, "rb") as file:
                     btn = st.download_button(
@@ -184,7 +181,7 @@ def main():
                 oc.eval(f"voltage_profile_design_predetermine_AT(Voltage_distance_matrix_whole,AT,TSS)")
                 image_path = '../Plots_normal/voltage_profile_design_predetermine_AT.png'
                 img = Image.open(image_path)
-                st.image(img, caption="", use_column_width=True)
+                st.image(img, caption="", use_container_width=True)
 
                 with open(image_path, "rb") as file:
                     btn = st.download_button(

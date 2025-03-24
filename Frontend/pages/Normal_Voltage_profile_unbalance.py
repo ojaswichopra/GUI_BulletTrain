@@ -52,7 +52,7 @@ def main():
         oc.eval(f"TSS_voltage_unbalance_profile({TSS_input_no}, Unb)")
         image_path = '../Plots_normal/TSS_voltage_unbalance_profile.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(

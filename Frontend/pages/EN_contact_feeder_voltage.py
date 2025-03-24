@@ -53,7 +53,7 @@ def main():
     oc.eval(f"sub_station_voltage_plot(Vc_mag_Td,Vf_mag_Td)")
     image_path = '../Plots/sub_station_voltage.png'
     img = Image.open(image_path)
-    st.image(img, caption="", use_column_width=True)
+    st.image(img, caption="", use_container_width=True)
 
     with open(image_path, "rb") as file:
         btn = st.download_button(

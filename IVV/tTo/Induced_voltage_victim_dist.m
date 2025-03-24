@@ -18,12 +18,12 @@ function Induced_voltage_victim_dist(dist)
     for ii=1:length(d_new)-1
         if dist>=d_new(ii)/1000 && dist<d_new(ii+1)/1000
             plot(time/60,V_track((ii-1)*y+1:ii*y));
-            xlabel('Time (minute)')
-            ylabel('Induced voltage magnitude (kV)')
+            xlabel('Time (minute)','FontSize', 10, 'FontWeight','bold')
+            ylabel('Induced voltage magnitude (kV)','FontSize', 10, 'FontWeight','bold')
             allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
             set(allAxes, 'XLim', [0 time(end)/60], 'FontSize', 8); % Set font size and weight
             allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
-            set(allLines, 'LineWidth', 1.2);          % S      % Set the line width to 1.5
+            set(allLines, 'LineWidth', 1.5);          % S      % Set the line width to 1.5
         end
     end
     desired_filename = '../../Plots_IVV/Induced_voltage_victim_dist_tTo.png';

@@ -147,7 +147,7 @@ def main():
         
         image_path = '../Plots_oTo/Full_track_voltage_profile_instant_t_outage_load.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
         
         with open(image_path, "rb") as file:
             btn = st.download_button(
@@ -173,7 +173,7 @@ def main():
                 oc.eval(f"voltage_profile_design_predetermine_TSS_outage(Voltage_distance_matrix_whole,AT,TSS,N_TSS_O)")
                 image_path = '../Plots_oTo/voltage_profile_design_predetermine_TSS_outage.png'
                 img = Image.open(image_path)
-                st.image(img, caption="", use_column_width=True)
+                st.image(img, caption="", use_container_width=True)
 
                 with open(image_path, "rb") as file:
                     btn = st.download_button(
@@ -188,7 +188,7 @@ def main():
                 oc.eval(f"voltage_profile_design_predetermine_AT_outage(Voltage_distance_matrix_whole,AT,TSS,N_TSS_O)")
                 image_path = '../Plots_oTo/voltage_profile_design_predetermine_AT_outage.png'
                 img = Image.open(image_path)
-                st.image(img, caption="", use_column_width=True)
+                st.image(img, caption="", use_container_width=True)
 
                 with open(image_path, "rb") as file:
                     btn = st.download_button(

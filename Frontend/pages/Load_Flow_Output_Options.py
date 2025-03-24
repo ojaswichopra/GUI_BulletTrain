@@ -158,12 +158,12 @@ def main():
 
     with col1:
         if st.button('Normal Operating Condition'):
-            load_workspace_variables()
-            st.switch_page("pages/Load_Flow_Output.py")
-        
-        if st.button('Double Track'):
             load_normal_variables()
             st.switch_page("pages/Normal_Load_Flow_Output.py")
+        
+        # if st.button('Double Track'):
+        #     load_normal_variables()
+        #     st.switch_page("pages/Normal_Load_Flow_Output.py")
     
     with col2:
         if st.button('TSS Outage Condition'):

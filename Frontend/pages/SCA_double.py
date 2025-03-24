@@ -123,7 +123,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.markdown("<h1 class='title'>Perform Short Circuit Analysis - double track</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='title'>Perform Short Circuit Analysis</h1>", unsafe_allow_html=True)
 
 add_vertical_space(1)
 # File uploads for system data and train timetable
@@ -236,7 +236,7 @@ if st.button("Submit"):
 
 st.markdown(
         f"""
-        <a href="/SCA_execute_options" target="_self" class="custom-button">Back</a>
+        <a href="/Landing" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )

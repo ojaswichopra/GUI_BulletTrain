@@ -52,7 +52,7 @@ def main():
     oc.eval(f"speed_TE_plot(HS_train_A_F_data)")
     image_path = '../Plots/speed_te_plot.png'
     img = Image.open(image_path)
-    st.image(img, caption="", use_column_width=True)
+    st.image(img, caption="", use_container_width=True)
 
     with open(image_path, "rb") as file:
         btn = st.download_button(

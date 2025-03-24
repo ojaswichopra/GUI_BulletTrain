@@ -53,7 +53,7 @@ def main():
         if st.button('Voltage Profile of the track at the time instant of fault'):
             image_path = '../Plots_SCA/voltage_profile.png'
             img = Image.open(image_path)
-            st.image(img, caption="", use_column_width=True)
+            st.image(img, caption="", use_container_width=True)
 
             with open(image_path, "rb") as file:
                 btn = st.download_button(
@@ -67,7 +67,7 @@ def main():
         if st.button('Line Current Profile of the track at the time instant of fault'):
             image_path = '../Plots_SCA/current_profile.png'
             img = Image.open(image_path)
-            st.image(img, caption="", use_column_width=True)
+            st.image(img, caption="", use_container_width=True)
 
             with open(image_path, "rb") as file:
                 btn = st.download_button(

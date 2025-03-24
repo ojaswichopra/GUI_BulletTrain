@@ -42,18 +42,18 @@ function sub_station_current_plot(sub_station_catenary_current,sub_station_feede
     plot(sub_station_feeder_current_abs, 'LineWidth', 2, 'Color', [0.8500 0.3250 0.0980]); % Red
 
     % Add labels with bold text
-    xlabel('Time (sec)', 'FontWeight', 'bold', 'FontSize', 16);
-    ylabel('Current Magnitude (Amp)', 'FontWeight', 'bold', 'FontSize', 16);
+    xlabel('Time (sec)', 'FontWeight', 'bold', 'FontSize', 14);
+    ylabel('Current Magnitude (Amp)', 'FontWeight', 'bold', 'FontSize', 14);
 
     % Add legend with bold font
     legend({'Contact line total current', 'Negative feeder total current'}, ...
-        'FontWeight', 'bold', 'FontSize', 14, 'Location', 'best');
+        'FontWeight', 'bold', 'FontSize', 10, 'Location', 'best');
 
     % Improve grid visibility
     grid on;
 
     % Set axis font size and line width
-    set(gca, 'FontSize', 16, 'LineWidth', 1.5);
+    set(gca, 'FontSize', 12, 'LineWidth', 1.8);
 
     % Set tight axis limits for better visualization
     axis tight;

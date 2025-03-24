@@ -31,6 +31,10 @@ function TSS_voltage_unbalance_profile_outage(TSS_input_no,TSS, N_TSS_O, dTSS_T_
         title(['Voltage unbalance profile of TSS number ',num2str(nn_track_name)])
         xlabel('Time (min)','FontWeight','bold')
         ylabel('Percentage unbalance','FontWeight','bold')
+        allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+        set(allAxes,'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
+        allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
+        set(allLines, 'LineWidth', 2);          % Set the line width to 1.5
 
     elseif TSS_input_no==N_TSS_O(1)|| TSS_input_no==N_TSS_O(2)
         outage_TSS_condition=zeros(length(Unb(:,1)),1);
@@ -48,9 +52,13 @@ function TSS_voltage_unbalance_profile_outage(TSS_input_no,TSS, N_TSS_O, dTSS_T_
         title(['Voltage unbalance profile of TSS number ',num2str(nn_track_name)])
         xlabel('Time (min)','FontWeight','bold')
         ylabel('Percentage unbalance','FontWeight','bold')
+        allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+        set(allAxes,'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
+        allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
+        set(allLines, 'LineWidth', 2);          % Set the line width to 1.5
     else
-        TSS_input_no=TSS_input_no-1
-        nn_track_name=TSS_input_no+1;
+        TSS_input_no=TSS_input_no-2;
+        nn_track_name=TSS_input_no+2;
         % Create a figure handle
         figureHandle = figure;
 
@@ -64,6 +72,10 @@ function TSS_voltage_unbalance_profile_outage(TSS_input_no,TSS, N_TSS_O, dTSS_T_
         title(['Voltage unbalance profile of TSS number ',num2str(nn_track_name)])
         xlabel('Time (min)','FontWeight','bold')
         ylabel('Percentage unbalance','FontWeight','bold')
+        allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+        set(allAxes,'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
+        allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
+        set(allLines, 'LineWidth', 2);          % Set the line width to 1.5
     end
     desired_filename = '../Plots_tTo_double/TSS_voltage_unbalance_profile_outage.png';  % Replace 'desired_name' with your file name
     saveas(gcf, desired_filename);

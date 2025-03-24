@@ -1,8 +1,8 @@
 %
 g_print = 100;      % for printing the result during run-time
 num_gen = 5000;        % number of generation
-toler = 0.6;        % tolerance for convergence
-toler_ga = 0.1;      % tolerance for GA convergence
+toler = 0.1;        % tolerance for convergence
+toler_ga = 0.7;      % tolerance for GA convergence
 no_of_pop = 50;         % population size
 
 % used for mutation

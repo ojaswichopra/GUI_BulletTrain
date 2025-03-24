@@ -1,4 +1,4 @@
-function Full_UP_track_voltage_profile_instant_t(track_time_1, x_reso, d, TSS, AT, y, Vc_mag_Td_up, Vc_ang_Td_up, VR_mag_Td_up, VR_ang_Td_up, Vf_mag_Td_up, Vf_ang_Td_up, dTSS_T_up, Ic_line_mag_Td_up, Ic_line_ang_Td_up, Ir_line_mag_Td_up, Ir_line_ang_Td_up, If_line_mag_Td_up, If_line_ang_Td_up, z1_loaded, Vc_mag_Md_up, Vc_ang_Md_up, VR_mag_Md_up, VR_ang_Md_up, Vf_mag_Md_up, Vf_ang_Md_up, dTSS_M_up, Ic_line_mag_Md_up, Ic_line_ang_Md_up, Ir_line_mag_Md_up, Ir_line_ang_Md_up, If_line_mag_Md_up, If_line_ang_Md_up)
+function Full_UP_track_voltage_profile_instant_t(track_time_1, x_reso, d, TSS, AT, y, Vc_mag_Td_up, Vc_ang_Td_up, VR_mag_Td_up, VR_ang_Td_up, Vf_mag_Td_up, Vf_ang_Td_up, dTSS_T_up, Ic_line_mag_Td_up, Ic_line_ang_Td_up, Ir_line_mag_Td_up, Ir_line_ang_Td_up, If_line_mag_Td_up, If_line_ang_Td_up, Vc_mag_Md_up, Vc_ang_Md_up, VR_mag_Md_up, VR_ang_Md_up, Vf_mag_Md_up, Vf_ang_Md_up, dTSS_M_up, Ic_line_mag_Md_up, Ic_line_ang_Md_up, Ir_line_mag_Md_up, Ir_line_ang_Md_up, If_line_mag_Md_up, If_line_ang_Md_up)
 
     % clearvars
     format longG

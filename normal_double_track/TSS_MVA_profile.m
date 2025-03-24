@@ -17,10 +17,14 @@ function TSS_MVA_profile(TSS_input_no, s_apprant_power_MVA_mag)
     % Set the figure to match the screen size
     set(figureHandle, 'Position', [100, 100, 1830, 1500]);
 
-    plot(s_apprant_power_MVA_mag(:,TSS_input_no))
-    title(['MVA profile of TSS number ',num2str(TSS_input_no)])
-    xlabel('Time (sec)','FontWeight','bold')
-    ylabel('MVA','FontWeight','bold')
+    plot(s_apprant_power_MVA_mag(:,TSS_input_no),'LineWidth', 1.7)
+    title(['MVA profile of TSS number ',num2str(TSS_input_no)],'FontWeight','bold','Fontsize',16)
+    xlabel('Time (sec)','FontWeight','bold','Fontsize',16)
+    ylabel('MVA','FontWeight','bold','Fontsize',16)
+    allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+    set(allAxes, 'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
+    allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
+    set(allLines, 'LineWidth', 2);          % Set the line width to 1.5
 
     desired_filename = '../Plots_normal/TSS_MVA_profile.png';  % Replace 'desired_name' with your file name
     saveas(gcf, desired_filename);

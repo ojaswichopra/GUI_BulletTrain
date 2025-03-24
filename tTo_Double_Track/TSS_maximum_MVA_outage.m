@@ -42,9 +42,11 @@ function TSS_maximum_MVA_outage(TSS, N_TSS_O, dTSS_T_up, Unb, tt_time, s_apprant
 
     bar(maximum_mva)
     xticks(1:1:length(TSS))
-    xlabel('TSS Number','FontWeight','bold')
-    ylabel('Maximum MVA','FontWeight','bold')
-    title('Maximum MVA for all TSS', 'FontWeight', 'bold');
+    xlabel('TSS Number','FontWeight','bold', 'Fontsize',16)
+    ylabel('Maximum MVA','FontWeight','bold', 'Fontsize',16)
+    title('Maximum MVA of all TSS', 'FontWeight', 'bold', 'Fontsize',16);
+    allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+    set(allAxes,'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
 
     desired_filename = '../Plots_tTo_double/TSS_maximum_MVA_outage.png';  % Replace 'desired_name' with your file name
     saveas(gcf, desired_filename);

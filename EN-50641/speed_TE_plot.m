@@ -41,13 +41,13 @@ function speed_TE_plot(HS_train_A_F_data)
 
     % Add a legend with bold font
     legend({'Speed (km/h)', 'Tractive Effort Electric (kN)'}, ...
-        'FontWeight', 'bold', 'FontSize', 14, 'Location', 'best');
+        'FontWeight', 'bold', 'FontSize', 12, 'Location', 'best');
 
     % Add grid for better readability
     grid on;
 
     % Set axis font size and line width
-    set(gca, 'FontSize', 14, 'LineWidth', 1.5);
+    set(gca, 'FontSize', 12, 'LineWidth', 2);
 
     % Save the plot with high resolution
     desired_filename = '../Plots/speed_te_plot.png';

@@ -28,7 +28,7 @@ function voltage_profile_design_predetermine_AT(Voltage_distance_matrix_whole,AT
 
     % Set the figure to match the screen size
     set(figureHandle, 'Position', screenSize);
-    x_spacing = 2;
+    x_spacing = 1;
     
     subplot(3, 1, 1);
     bar(abs(pre_det_Voltage_distance_matrix_whole(:,1)), abs(pre_det_Voltage_distance_matrix_whole(:,2)));

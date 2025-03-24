@@ -84,7 +84,7 @@ def main():
         oc.eval(f"train_voltage_profile_train_number_adjacent_outage_load_file({train_number}, N_train_per_hour, each_stop_train_data, d, N_TSS_O, N_TSS, Vc_mag_Td, VR_mag_Td, Vf_mag_Td, Vc_ang_Td, VR_ang_Td, Vf_ang_Td, Vc_mag_Md, VR_mag_Md, Vf_mag_Md, Vc_ang_Md, VR_ang_Md, Vf_ang_Md, dTSS, y)")
         image_path = '../Plots_tTo/tTo_train_voltage.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(

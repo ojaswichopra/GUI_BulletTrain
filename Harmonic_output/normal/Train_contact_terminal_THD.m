@@ -214,12 +214,11 @@ function Train_contact_terminal_THD(entered_train_number, train_number, track_ty
         figure('Name','Contact terminal voltage THD profile of a particular train')
         plot(train_time_instant/60,THD_Train_C)
         title(['Contact terminal voltage THD profile of Train ',num2str(entered_train_number)])
-        xlabel('Travel time (minute)')
-        ylabel('Contact terminal voltage THD (%)')
+        xlabel('Travel time (minute)', 'FontSize', 10, 'FontWeight', 'bold')
+        ylabel('Contact terminal voltage THD (%)', 'FontSize', 10, 'FontWeight', 'bold')
         allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
-        set(allAxes, 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
         allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
-        set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
+        set(allLines, 'LineWidth', 2);          % Set the line width to 1.5
                 
         desired_filename = '../../Plots_harmonic/Train_contact_terminal_THD_normal.png';
         saveas(gcf, desired_filename);

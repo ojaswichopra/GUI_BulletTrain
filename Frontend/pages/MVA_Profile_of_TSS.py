@@ -48,7 +48,7 @@ def main():
         oc.eval(f"TSS_MVA_profile({TSS_no}, s_apprant_power_MVA_mag)")
         image_path = '../Plots/TSS_MVA_profile.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(

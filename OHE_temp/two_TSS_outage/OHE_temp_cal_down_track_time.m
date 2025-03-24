@@ -32,21 +32,21 @@ function OHE_temp_cal_down_track_time(time_instant)
     figure('Name','OHE Temperature Along the Track at a Particular Time Instant')
     subplot(3,1,1)
     plot(track_distance/1000,track_temp_c,"color",'r')
-    xlabel('Distance (km)')
-    ylabel('Contact wire temp (deg cel)')
+    xlabel('Distance (km)','FontSize', 10, 'FontWeight','bold')
+    ylabel('Contact wire temp (deg cel)','FontSize', 10, 'FontWeight','bold')
     subplot(3,1,2)
     plot(track_distance/1000,track_temp_r,"color",'g')
-    xlabel('Distance (km)')
-    ylabel('Rail temp (deg cel)')
+    xlabel('Distance (km)','FontSize', 10, 'FontWeight','bold')
+    ylabel('Rail temp (deg cel)','FontSize', 10, 'FontWeight','bold')
     subplot(3,1,3)
     plot(track_distance/1000,track_temp_f,"color",'b')
-    xlabel('Distance (km)')
-    ylabel('Feeder wire temp (deg cel)')
+    xlabel('Distance (km)','FontSize', 10, 'FontWeight','bold')
+    ylabel('Feeder wire temp (deg cel)','FontSize', 10, 'FontWeight','bold')
 
     allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
-    set(allAxes, 'XLim', [0 d_new(end)/1000], 'XTick', d_new/1000, 'FontSize', 8); % Set font size and weight
+    set(allAxes, 'XLim', [0 d_new(end)/1000], 'XTick', d_new/1000, 'FontSize', 7); % Set font size and weight
     allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
-    set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
+    set(allLines, 'LineWidth', 1.8);          % Set the line width to 1.5
     desired_filename = '../../Plots_OHE/OHE_temp_cal_tTo_down_track_time.png';
     saveas(gcf, desired_filename);
     toc

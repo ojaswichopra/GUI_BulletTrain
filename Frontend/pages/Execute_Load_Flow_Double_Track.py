@@ -210,7 +210,7 @@ if st.button("Show Train Simulation Chart"):
         oc.eval(f"""initialization_user_chart({TSS},{AT},{SP})""")
         image_path = '../Plots_normal/Simulation_Chart.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(

@@ -133,6 +133,18 @@ def main():
         .title {
             text-align: center;
         }
+        .custom-button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 4px 16px;
+            font-size: 20px;
+            color: #007BFF;
+            border: 2px solid #007BFF; /* Adding a white border */
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin: 10px 0;
+        }
     </style>
     """,
         unsafe_allow_html=True,
@@ -143,28 +155,28 @@ def main():
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button('Normal track'):
-            sca_var = load_sca_var()
-            push_variables_to_octave(sca_var)
+        # if st.button('Normal track'):
+        #     sca_var = load_sca_var()
+        #     push_variables_to_octave(sca_var)
 
-            oc.eval('cd("../short_circuit_analysis")')
-            oc.eval(
-                "Full_track_voltage_profile_instant_t_short_circuit(TSS, d, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, "
-                "Vf_mag_Td, Vf_ang_Td, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_T, dTSS_M, "
-                "Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, "
-                "Ic_line_mag_Md, Ic_line_ang_Md, Ir_line_mag_Md, Ir_line_ang_Md, If_line_mag_Md, If_line_ang_Md, "
-                "time_instant_short, n_tss_fault, faulted_winding_side, linedata_dTSS_T, linedata_dTSS_M)"
-            )
-            st.switch_page("pages/SCA_output.py")
-
-    with col2:
-        if st.button('Double track - UP'):
+        #     oc.eval('cd("../short_circuit_analysis")')
+        #     oc.eval(
+        #         "Full_track_voltage_profile_instant_t_short_circuit(TSS, d, y, Vc_mag_Td, Vc_ang_Td, VR_mag_Td, VR_ang_Td, "
+        #         "Vf_mag_Td, Vf_ang_Td, Vc_mag_Md, Vc_ang_Md, VR_mag_Md, VR_ang_Md, Vf_mag_Md, Vf_ang_Md, dTSS_T, dTSS_M, "
+        #         "Ic_line_mag_Td, Ic_line_ang_Td, Ir_line_mag_Td, Ir_line_ang_Td, If_line_mag_Td, If_line_ang_Td, "
+        #         "Ic_line_mag_Md, Ic_line_ang_Md, Ir_line_mag_Md, Ir_line_ang_Md, If_line_mag_Md, If_line_ang_Md, "
+        #         "time_instant_short, n_tss_fault, faulted_winding_side, linedata_dTSS_T, linedata_dTSS_M)"
+        #     )
+        #     st.switch_page("pages/SCA_output.py")
+        if st.button('Up track'):
             sca_var_up = load_sca_var_up()
             push_variables_to_octave(sca_var_up)
             oc.eval('cd("../short_circuit_double_track")')
             oc.eval("Full_track_up_Current_voltage_profile_short_circuit_load_txt(TSS, d, y, Vc_mag_Td_up, Vc_ang_Td_up, VR_mag_Td_up, VR_ang_Td_up, Vf_mag_Td_up, Vf_ang_Td_up, Vc_mag_Md_up, Vc_ang_Md_up, VR_mag_Md_up, VR_ang_Md_up, Vf_mag_Md_up, Vf_ang_Md_up, dTSS_T_up, dTSS_M_up, Ic_line_mag_Td_up, Ic_line_ang_Td_up, Ir_line_mag_Td_up, Ir_line_ang_Td_up, If_line_mag_Td_up, If_line_ang_Td_up, Ic_line_mag_Md_up, Ic_line_ang_Md_up, Ir_line_mag_Md_up, Ir_line_ang_Md_up, If_line_mag_Md_up, If_line_ang_Md_up, time_instant_short, n_tss_fault, faulted_winding_side, linedata_dTSS_T_up, linedata_dTSS_M_up)")
             st.switch_page("pages/SCA_output_double_UP.py")
-        if st.button('Double track - DOWN'):
+
+    with col2:
+        if st.button('Down track'):
             sca_var_down = load_sca_var_down()
             push_variables_to_octave(sca_var_down)
             oc.eval('cd("../short_circuit_double_track")')

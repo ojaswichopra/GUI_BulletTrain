@@ -23,11 +23,11 @@ function OHE_temp_cal_up_track_dist(dist)
             plot(time/60,[T_r_initial,T_r_track_up((ii-1)*y+1:ii*y)'],"Color",'g');
             hold on
             plot(time/60,[T_f_initial,T_f_track_up((ii-1)*y+1:ii*y)'],"Color",'b');
-            xlabel('Time (minute)')
-            ylabel('Temperature (deg cel)')
+            xlabel('Time (minute)','FontSize', 10, 'FontWeight','bold')
+            ylabel('Temperature (deg cel)','FontSize', 10, 'FontWeight','bold')
             % legend('Contact wire','Rail','Feeder wire','Location','best')
             allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
-            set(allAxes, 'XLim', [0 time(end)/60], 'FontSize', 12, 'FontWeight', 'bold'); % Set font size and weight
+            set(allAxes, 'XLim', [0 time(end)/60], 'FontSize', 8); % Set font size and weight
             allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
             set(allLines, 'LineWidth', 1.5);          % Set the line width to 1.5
         end

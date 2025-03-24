@@ -43,8 +43,11 @@ function TSS_maximum_voltage_unbalance_outage(TSS, N_TSS_O, dTSS_T_up, Unb, tt_t
     xticks(1:1:length(TSS))
     xlabel('TSS Number','FontWeight','bold')
     ylabel('Percentage Voltage unbalance','FontWeight','bold')
-    title('Maximum Voltage Unbalnce for all TSS', 'FontWeight', 'bold');
-
+    title('Maximum Voltage Unbalnce of all TSS', 'FontWeight', 'bold');
+    allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+    set(allAxes,'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
+    allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
+    set(allLines, 'LineWidth', 2);          % Set the line width to 1.5
     
     desired_filename = '../Plots_tTo_double/TSS_maximum_voltage_unbalance_outage.png';  % Replace 'desired_name' with your file name
     saveas(gcf, desired_filename);

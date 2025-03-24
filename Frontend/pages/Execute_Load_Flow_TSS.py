@@ -46,15 +46,15 @@ def main():
     add_vertical_space(1)
     c1,c2 = st.columns(2)
     with c1:
+        # if st.button("One TSS Outage"):
+        #     st.switch_page("pages/Execute_Load_Flow_one.py")
         if st.button("One TSS Outage"):
-            st.switch_page("pages/Execute_Load_Flow_one.py")
-        if st.button("One TSS Outage Double Track"):
             st.switch_page("pages/Execute_Load_Flow_oTo.py")
     
     with c2:
-        if st.button("Two Adjacent TSS Outage"): 
-            st.switch_page("pages/Execute_Load_Flow_two.py")
-        if st.button("Two Adjacent TSS Outage Double Track"):
+        # if st.button("Two Adjacent TSS Outage"): 
+        #     st.switch_page("pages/Execute_Load_Flow_two.py")
+        if st.button("Two Adjacent TSS Outage"):
             st.switch_page("pages/Execute_Load_Flow_tTo.py")
 
 

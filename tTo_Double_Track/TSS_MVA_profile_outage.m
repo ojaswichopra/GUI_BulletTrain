@@ -25,10 +25,12 @@ function TSS_MVA_profile_outage(TSS_input_no, s_apprant_power_MVA_mag, TSS, N_TS
 
         % Set the figure to match the screen size
         set(figureHandle, 'Position', screenSize);
-        plot(tt_time/60,s_apprant_power_MVA_mag(:,TSS_input_no))
-        title(['MVA profile of TSS number ',num2str(nn_track_name)])
-        xlabel('Time (min)','FontWeight','bold')
-        ylabel('MVA','FontWeight','bold')
+        plot(tt_time/60,s_apprant_power_MVA_mag(:,TSS_input_no),'Linewidth',2)
+        title(['MVA profile of TSS number ',num2str(nn_track_name)],'Fontsize',16)
+        xlabel('Time (min)','FontWeight','bold','Fontsize',16)
+        ylabel('MVA','FontWeight','bold','Fontsize',16)
+        allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+        set(allAxes,'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
 
     elseif TSS_input_no==N_TSS_O(1)|| TSS_input_no==N_TSS_O(2)
         outage_TSS_condition=zeros(length(s_apprant_power_MVA_mag(:,1)),1);
@@ -41,13 +43,15 @@ function TSS_MVA_profile_outage(TSS_input_no, s_apprant_power_MVA_mag, TSS, N_TS
 
         % Set the figure to match the screen size
         set(figureHandle, 'Position', screenSize);
-        plot(tt_time/60,outage_TSS_condition(:,1));
-        title(['MVA profile of TSS number ',num2str(nn_track_name)])
-        xlabel('Time (min)','FontWeight','bold')
-        ylabel('MVA','FontWeight','bold')
+        plot(tt_time/60,outage_TSS_condition(:,1),'Linewidth',2);
+        title(['MVA profile of TSS number ',num2str(nn_track_name)],'Fontsize',16)
+        xlabel('Time (min)','FontWeight','bold','Fontsize',16)
+        ylabel('MVA','FontWeight','bold','Fontsize',16)
+        allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+        set(allAxes,'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
     else
-        TSS_input_no=TSS_input_no-1
-        nn_track_name=TSS_input_no+1;
+        TSS_input_no=TSS_input_no-2;
+        nn_track_name=TSS_input_no+2;
         % Create a figure handle
         figureHandle = figure;
 
@@ -56,10 +60,12 @@ function TSS_MVA_profile_outage(TSS_input_no, s_apprant_power_MVA_mag, TSS, N_TS
 
         % Set the figure to match the screen size
         set(figureHandle, 'Position', screenSize);
-        plot(tt_time/60,s_apprant_power_MVA_mag(:,TSS_input_no));
-        title(['MVA profile of TSS number ',num2str(nn_track_name)])
-        xlabel('Time (min)','FontWeight','bold')
-        ylabel('MVA','FontWeight','bold')
+        plot(tt_time/60,s_apprant_power_MVA_mag(:,TSS_input_no),'Linewidth',2);
+        title(['MVA profile of TSS number ',num2str(nn_track_name)],'Fontsize',16)
+        xlabel('Time (min)','FontWeight','bold','Fontsize',16)
+        ylabel('MVA','FontWeight','bold','Fontsize',16)
+        allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+        set(allAxes,'FontSize', 16, 'FontWeight', 'bold'); % Set font size and weight
     end
     desired_filename = '../Plots_tTo_double/TSS_MVA_profile_outage.png';  % Replace 'desired_name' with your file name
     saveas(gcf, desired_filename);

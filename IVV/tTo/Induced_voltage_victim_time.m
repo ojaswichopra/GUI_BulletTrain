@@ -24,12 +24,12 @@ function Induced_voltage_victim_time(time_instant)
 
     figure('Name','Induced voltage along the track at a particular time instant')
     plot(track_distance/1000,track_V)
-    xlabel('Distance (km)')
-    ylabel('Induced voltage magnitude (kV)')
+    xlabel('Distance (km)','FontSize', 10, 'FontWeight','bold')
+    ylabel('Induced voltage magnitude (kV)','FontSize', 10, 'FontWeight','bold')
     allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
     set(allAxes, 'XLim', [0 d_new(end)/1000], 'XTick', d_new/1000, 'FontSize', 8'); % Set font size and weight
     allLines = findall(gcf, 'Type', 'line'); % Find all line objects in the figure
-    set(allLines, 'LineWidth', 1.2);        % Set the line width to 1.5
+    set(allLines, 'LineWidth', 2);        % Set the line width to 1.5
 
     desired_filename = '../../Plots_IVV/Induced_voltage_victim_time_tTo.png';
     saveas(gcf, desired_filename);

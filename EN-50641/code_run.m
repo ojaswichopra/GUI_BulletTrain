@@ -1,6 +1,8 @@
 function code_run (TSS, AT, Vp, Vs, Rp, Xp, Rs, Xs, Zn, short_ckt_MVA, lresistance, lreactance, mresistance, mreactance, row, f, n1, Ch, Mh, nFh, nFd, gh, gd, contact_wire_diameter, Resistance_C, messenger_wire_diameter, Resistance_M1, earth_wire_diameter, Resistance_G, feeder_wire_diameter, Resistance_F, rail_diameter, Resistance_R1)
     tic
     format longG;
+        fprintf('n1: ')
+display(n1);
 
     % Create a file to store the progress
     progress_file = 'progress_file.txt';

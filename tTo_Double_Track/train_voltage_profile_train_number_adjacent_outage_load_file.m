@@ -1,4 +1,4 @@
-function train_voltage_profile_train_number_adjacent_outage_load_file(entered_train_number,d, dTSS_T_up, Vc_mag_Td_up, Vc_ang_Td_up, VR_mag_Td_up, VR_ang_Td_up, Vf_mag_Td_up, Vf_ang_Td_up, dTSS_M_down, Vc_mag_Md_down, Vc_ang_Md_down, VR_mag_Md_down, VR_ang_Md_down, Vf_mag_Md_down, Vf_ang_Md_down, y, dTSS_M_up, dTSS_up, dTSS_down, Vc_mag_Md_up, Vc_ang_Md_up, VR_mag_Md_up, VR_ang_Md_up, Vf_mag_Md_up, Vf_ang_Md_up, dTSS_T_down, Vc_mag_Td_down, Vc_ang_Td_down, VR_mag_Td_down, VR_ang_Td_down, Vf_mag_Td_down, Vf_ang_Td_down, train_number, track_type, train_type, start_time, each_stop_train_data_up, rapid_train_data_up, each_stop_train_data_down, rapid_train_data_down, track_length)
+function train_voltage_profile_train_number_adjacent_outage_load_file(N_TSS_O, N_TSS,entered_train_number,d, dTSS_T_up, Vc_mag_Td_up, Vc_ang_Td_up, VR_mag_Td_up, VR_ang_Td_up, Vf_mag_Td_up, Vf_ang_Td_up, dTSS_M_down, Vc_mag_Md_down, Vc_ang_Md_down, VR_mag_Md_down, VR_ang_Md_down, Vf_mag_Md_down, Vf_ang_Md_down, y, dTSS_M_up, dTSS_up, dTSS_down, Vc_mag_Md_up, Vc_ang_Md_up, VR_mag_Md_up, VR_ang_Md_up, Vf_mag_Md_up, Vf_ang_Md_up, dTSS_T_down, Vc_mag_Td_down, Vc_ang_Td_down, VR_mag_Td_down, VR_ang_Td_down, Vf_mag_Td_down, Vf_ang_Td_down, train_number, track_type, train_type, start_time, each_stop_train_data_up, rapid_train_data_up, each_stop_train_data_down, rapid_train_data_down, track_length)
     format longG
     tic
     
@@ -293,29 +293,31 @@ function train_voltage_profile_train_number_adjacent_outage_load_file(entered_tr
 
         % Get screen size from root object (0)
         screenSize = get(0, 'ScreenSize');
-
+ 
         % Set the figure to match the screen size
-        set(figureHandle, 'Position', screenSize);
+        set(figureHandle, 'Position', [100, 100, 1000, 1600]);
         subplot(4,1,1)
         plot(train1_time/60,voltage_train_abs);
-        title(['Contact voltage of train no ', int2str(entered_train_number),' vs Time'])
+        title(['Contact voltage of train no ', int2str(entered_train_number),' vs Time'], 'Fontsize',14)
         xlabel('Time (minute)','FontWeight','bold')
         ylabel('Voltage Magnitude (kV)','FontWeight','bold')
         subplot(4,1,2)
         plot(train_distance_from_start/1000,voltage_train_abs);
-        title(['Contact voltage of train no ', int2str(entered_train_number),' vs Distance'])
+        title(['Contact voltage of train no ', int2str(entered_train_number),' vs Distance'], 'Fontsize',14)
         xlabel('Distance (Km) Mumbai- Sabarmati','FontWeight','bold')
         ylabel('Voltage Magnitude (kV)','FontWeight','bold')
         subplot(4,1,3)
         plot(train1_time/60,voltage_train_rail_abs);
-        title(['Rail voltage of train no ', int2str(entered_train_number),' vs Time'])
+        title(['Rail voltage of train no ', int2str(entered_train_number),' vs Time'], 'Fontsize',14)
         xlabel('Time (minute)','FontWeight','bold')
         ylabel('Voltage Magnitude (kV)','FontWeight','bold')
         subplot(4,1,4)
         plot(train_distance_from_start/1000,voltage_train_rail_abs);
-        title(['Rail voltage of train no ', int2str(entered_train_number),' vs Distance'])
+        title(['Rail voltage of train no ', int2str(entered_train_number),' vs Distance'], 'Fontsize',14)
         xlabel('Distance (Km) Mumbai-Sabarmati','FontWeight','bold')
         ylabel('Voltage Magnitude (kV)','FontWeight','bold')
+        desired_filename = '../Plots_tTo_double/train_voltage_profile_train_number_adjacent_outage_load_file.png';  % Replace 'desired_name' with your file name
+    saveas(gcf, desired_filename);
     else  %%down track
         if enter_train_type==1 %% each stop down
 

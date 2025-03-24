@@ -46,7 +46,7 @@ def main():
             oc.eval(f"Induced_voltage_victim_time({time_instant})")
             image_path = '../Plots_IVV/Induced_voltage_victim_time_tTo.png'
             img = Image.open(image_path)
-            st.image(img, caption="", use_column_width=True)
+            st.image(img, caption="", use_container_width=True)
 
             with open(image_path, "rb") as file:
                 btn = st.download_button(

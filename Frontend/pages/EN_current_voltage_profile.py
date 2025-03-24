@@ -73,7 +73,7 @@ def main():
     oc.eval(f"train_101_voltage_current_profile(HS_train_A_F_data,d,line_data_M_emp,dTSS,y_whole,Vc_mag_Td,y,Vc_ang_Td,VR_mag_Td,VR_ang_Td,pTSS_T)")
     image_path = '../Plots/voltage_current_profile.png'
     img = Image.open(image_path)
-    st.image(img, caption="", use_column_width=True)
+    st.image(img, caption="", use_container_width=True)
 
     with open(image_path, "rb") as file:
         btn = st.download_button(

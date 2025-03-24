@@ -75,7 +75,7 @@ def extract_system_data(file_content):
         'at_magnetising_reactance': float(data_dict.get('AT magnetising reactance (ohm):', 0)),
         'earth_resistivity': float(data_dict.get('Homogenous earth conducting resistivity:', 0)),
         'frequency': float(data_dict.get('Frequency (Hz):', 0)),
-        'num_conductors': int(data_dict.get('Number of conductors:', 0)),
+        'num_conductors': int(data_dict.get('Number of conductors (contact, rail, feeder, messenger, earth):', 0)),
         'contact_wire_height': float(data_dict.get('Contact wire height (m) measured from rail:', 0)),
         'messenger_wire_height': float(data_dict.get('Messenger wire height (m) measured from rail:', 0)),
         'feeder_wire_height': float(data_dict.get('Feeder wire height (m) measured from rail:', 0)),

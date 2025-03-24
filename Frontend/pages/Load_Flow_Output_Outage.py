@@ -175,19 +175,19 @@ def main():
 
     with col1:
         if st.button('One TSS Outage'):
-            load_oTo_workspace()
-            st.switch_page("pages/oTo_output_options.py")
-        if st.button('One TSS Outage - Double track'):
             load_oTo_double_workspace()
             st.switch_page("pages/oTo_output_options_double.py")
+        # if st.button('One TSS Outage - Double track'):
+        #     load_oTo_double_workspace()
+        #     st.switch_page("pages/oTo_output_options_double.py")
     
     with col2:
         if st.button('Two Adjacent TSS Outage'):
-            load_tTo_workspace()
-            st.switch_page("pages/tTo_output_options.py")
-        if st.button('Two Adjacent TSS Outage - Double track'):
             load_tTo_double_workspace()
             st.switch_page("pages/tTo_output_options_double.py")
+        # if st.button('Two Adjacent TSS Outage - Double track'):
+        #     load_tTo_double_workspace()
+        #     st.switch_page("pages/tTo_output_options_double.py")
             
 
 if __name__ == "__main__":

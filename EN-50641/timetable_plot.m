@@ -82,7 +82,7 @@ function timetable_plot(HS_train_A_F_data,HS_train_F_A_data,FR_train_A_F_data,SU
     xlim([0 100.02]);
     xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 14);
     ylabel('Time (minute)', 'FontWeight', 'bold', 'FontSize', 14);
-    set(gca, 'FontSize', 14, 'LineWidth', 1.5);
+    set(gca, 'FontSize', 14, 'LineWidth', 2);
 
     % Add a legend (without NumColumns)
     legend({'Train 101', 'Train 102', 'Train 103', 'Train 104', 'Train 201', 'Train 301'}, ...

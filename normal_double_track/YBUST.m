@@ -47,8 +47,7 @@ for s = 1:1:N
                         end
                     end
                 end
-            else (bus_type(s) == 3)
-             
+            else (bus_type(s) == 3);
                 h = 3 * s - 2;
                 for l = 1:1:3
                     g = 3 * s - 2;

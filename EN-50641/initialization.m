@@ -3,14 +3,14 @@
 % close all
 % format long;
 datafile;
-D=HS_train_A_F_data(2:end,3);   %distance covered (km) at each second for up-track high-speed trains (101 & 103)
-P=HS_train_A_F_data(2:end,4);   %power consumed (MW) at each second for up-track high-speed trains (101 & 103)
-D_SUB=SUB_train_A_F_data(2:end,3);  %distance covered (km) at each second for sub-urban train 201
-P_SUB=SUB_train_A_F_data(2:end,4);  %power consumed (MW) at each second for sub-urban train 201
-D_FR=FR_train_A_F_data(2:end,3); %distance covered (km) at each second for Freight train 301
-P_FR=FR_train_A_F_data(2:end,4); %power consumed (MW) at each second for Freight train 301
-D_F_A=HS_train_F_A_data(2:end,3); %distance covered (km) at each second for down-track high-speed trains (102 & 104)
-P_F_A=HS_train_F_A_data(2:end,4); %power consumed (MW) at each second for down-track high-speed trains (102 & 104)
+D=HS_train_A_F_data(1:end,3);   %distance covered (km) at each second for up-track high-speed trains (101 & 103)
+P=HS_train_A_F_data(1:end,4);   %power consumed (MW) at each second for up-track high-speed trains (101 & 103)
+D_SUB=SUB_train_A_F_data(1:end,3);  %distance covered (km) at each second for sub-urban train 201
+P_SUB=SUB_train_A_F_data(1:end,4);  %power consumed (MW) at each second for sub-urban train 201
+D_FR=FR_train_A_F_data(1:end,3); %distance covered (km) at each second for Freight train 301
+P_FR=FR_train_A_F_data(1:end,4); %power consumed (MW) at each second for Freight train 301
+D_F_A=HS_train_F_A_data(1:end,3); %distance covered (km) at each second for down-track high-speed trains (102 & 104)
+P_F_A=HS_train_F_A_data(1:end,4); %power consumed (MW) at each second for down-track high-speed trains (102 & 104)
 % N=input('enter the no. of trains running per hour = ');
 % N=2; %number of trains running per hour
 % N_hr=16;    % the no. of hours of train scheduling per day (from morning 6 am to night 10 pm)
@@ -27,8 +27,8 @@ start_time_2_F_A=40*60; %starting time (sec) of 2nd down-track train
 % time_rapid_train=7620;   %time taken by one rapid train (Mumbai to Sabarmati) is 2hr 7min i.e 7620 sec 
 % time_each_stop_train=10680;   %time taken by one each stop train (Mumbai to Sabarmati) is 2hr 58min i.e 10680 sec
 HS_train_time=32*60;  % time (sec) taken by high-speed trains to travel from station A to station F (or) F to A
-SUB_train_time=length(SUB_train_A_F_data(2:end,1)); % time (sec) taken by sub-urban train (201) to travel from A to F
-FR_train_time=length(FR_train_A_F_data(2:end,1)); % time (sec) taken by Freight train (301) to travel from A to F
+SUB_train_time=length(SUB_train_A_F_data(1:end,1)); % time (sec) taken by sub-urban train (201) to travel from A to F
+FR_train_time=length(FR_train_A_F_data(1:end,1)); % time (sec) taken by Freight train (301) to travel from A to F
 % y=x+time_each_stop_train;    %ending time of last train in second i.e no. of rows
 y=start_time_4+FR_train_time;   %ending time of last up-track train in second i.e no. of rows (no. of time instants (sec) of operation of up-track)   
 y_F_A=start_time_2_F_A+HS_train_time;   %ending time of last down-track train in second i.e no. of rows (no. of time instants (sec) of operation of down-track)

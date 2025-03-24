@@ -34,7 +34,7 @@ function sub_station_voltage_plot(Vc_mag_Td,Vf_mag_Td)
     grid on;
 
     % Set axis font size and line width
-    set(gca, 'FontSize', 16, 'LineWidth', 1.5);
+    set(gca, 'FontSize', 16, 'LineWidth', 2);
 
     % Save the plot with high resolution
     desired_filename = '../Plots/sub_station_voltage.png';

@@ -33,7 +33,7 @@ function voltage_profile_design_predetermine_TSS(Voltage_distance_matrix_whole,A
     % Define x-axis values and labels
     x_values = abs(pre_det_Voltage_distance_matrix_whole(:, 1)); % TSS numbers
     x_labels = 1:length(x_values); % Sequential numbers as labels
-    x_spacing = 2; % Adjust this value for wider spacing
+    x_spacing = 1; % Adjust this value for wider spacing
     
     subplot(3, 1, 1);
     bar(abs(pre_det_Voltage_distance_matrix_whole(:, 1)), abs(pre_det_Voltage_distance_matrix_whole(:, 2)));

@@ -4,11 +4,11 @@ function train_101_voltage_current_profile(HS_train_A_F_data,d,line_data_M_emp,d
     tic
     % load('required_variable_load_flow_standard.mat')
     graphics_toolkit ("gnuplot")
-    train1_position=length(HS_train_A_F_data(:,1))-1;
+    train1_position=length(HS_train_A_F_data(:,1));
     for t_i= 1:1:train1_position
-        ct_train_pos=HS_train_A_F_data(t_i+1,3);%*1000;
-        train1_time(t_i)=HS_train_A_F_data(t_i+1,1);
-        train_distance_from_start(t_i)=HS_train_A_F_data(t_i+1,3);%/1000;
+        ct_train_pos=HS_train_A_F_data(t_i,3);%*1000;
+        train1_time(t_i)=HS_train_A_F_data(t_i,1);
+        train_distance_from_start(t_i)=HS_train_A_F_data(t_i,3);%/1000;
         d_index_length=length(d);
         for i_ddd=1:1:d_index_length
             if ct_train_pos<=d(i_ddd)
@@ -104,18 +104,18 @@ function train_101_voltage_current_profile(HS_train_A_F_data,d,line_data_M_emp,d
     subplot(2,1,1);
     plot(train_distance_from_start, train_current_abs, 'LineWidth', 2, 'Color', [0 0.4470 0.7410]); % Blue
     ylim([-300 400]);
-    xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 14);
-    ylabel('Train Current (Amp)', 'FontWeight', 'bold', 'FontSize', 14);
+    xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+    ylabel('Train Current (Amp)', 'FontWeight', 'bold', 'FontSize', 12);
     grid on;
-    set(gca, 'FontSize', 14, 'LineWidth', 1.5);
+    set(gca, 'FontSize', 10, 'LineWidth', 2);
 
     % Plot train voltage profile in the second subplot
     subplot(2,1,2);
     plot(train_distance_from_start, voltage_train_abs, 'LineWidth', 2, 'Color', [0.8500 0.3250 0.0980]); % Red
-    xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 14);
-    ylabel('Train Voltage (kV)', 'FontWeight', 'bold', 'FontSize', 14);
+    xlabel('Distance (km)', 'FontWeight', 'bold', 'FontSize', 12);
+    ylabel('Train Voltage (kV)', 'FontWeight', 'bold', 'FontSize', 12);
     grid on;
-    set(gca, 'FontSize', 14, 'LineWidth', 1.5);
+    set(gca, 'FontSize', 10, 'LineWidth', 2);
 
     % Save the plot with high resolution
     desired_filename = '../Plots/voltage_current_profile.png';

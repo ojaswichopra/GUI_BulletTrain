@@ -129,11 +129,15 @@ function initialization_user_chart(TSS, AT, SP)
     % Read the Excel file
     train_simulation_data = dlmread('train simulation chart.csv', ',', 1, 0);
 
-    train_number=train_simulation_data(:,1);  % train number
-    track_type=train_simulation_data(:,2);  % track type (1-Up, 2-Down)
-    train_type=train_simulation_data(:,3);  % train type (1-Each stop, 2-Rapid)
-    start_time=train_simulation_data(:,4);  % train starting time (in minute)
-
+    train_number = train_simulation_data(:,1);  % Train number
+    track_type = train_simulation_data(:,2);    % Track type (1-Up, 2-Down)
+    train_type = train_simulation_data(:,3);    % Train type (1-Each stop, 2-Rapid)
+    start_time = train_simulation_data(:,4);    % Start time in minutes  % train starting time (in minute)
+    % disp(length(train_simulation_data))
+    % disp(train_number)
+    % disp(track_type)
+    % disp(train_type)
+    % disp(start_time)
     n_up_each_stop=0;  % total no. of up-track each stop trains (initialisation)
     n_up_rapid=0;  % total no. of up-track rapid trains (initialisation)
     n_down_each_stop=0;   % total no. of down-track each stop trains (initialisation)
@@ -370,6 +374,7 @@ function initialization_user_chart(TSS, AT, SP)
     d(1)=0; %starting point
     d(2:2:l_a)=TSS;
     d(3:2:l_a+1)=SP;
+    % graphics_toolkit("gnuplot"); % Set gnuplot as the graphics backend
     %distance (in meter) of all the TSSs and the section posts measured from Mumbai i.e. [0 TSS1 SP1 TSS2 SP2..........TSSn SPn].
     desired_filename = '../Plots_normal/Simulation_Chart.png';
     saveas(gcf, desired_filename);

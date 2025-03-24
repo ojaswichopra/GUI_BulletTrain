@@ -47,9 +47,9 @@ def main():
     c1,c2 = st.columns(2)
     with c1:
         if st.button("Normal Operating Condition"):
-            st.switch_page("pages/Execute_Load_Flow.py")
-        if st.button("Double Track"):
             st.switch_page("pages/Execute_Load_Flow_Double_Track.py")
+        # if st.button("Double Track"):
+        #     st.switch_page("pages/Execute_Load_Flow_Double_Track.py")
     
     with c2:
         if st.button("TSS Outage Condition"): 

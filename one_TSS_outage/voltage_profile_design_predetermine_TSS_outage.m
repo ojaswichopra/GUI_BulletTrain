@@ -9,7 +9,7 @@ function voltage_profile_design_predetermine_TSS_outage(Voltage_distance_matrix_
     TSS_points=find(ind_TSS_cond==1);
     PRE_det_posi=[TSS_points];
     PRE_det_position=sort(PRE_det_posi,'ascend');
-    n_length_det_posi= length(PRE_det_position);
+    n_length_det_posi= length(PRE_det_position)-1;
     pre_det_Voltage_distance_matrix_whole=zeros(n_length_det_posi/2,4);
     n_jj=1;
     for n_j=1:2:n_length_det_posi

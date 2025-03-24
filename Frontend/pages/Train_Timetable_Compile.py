@@ -7,21 +7,21 @@ from oct2py import Oct2Py
 oc = Oct2Py() 
 oc.eval('cd("../train_timetable")') 
 
-# Read the Excel file
-train_operation_data = pd.read_excel("../train_timetable/stopage_data_train_time_rapid.xlsx")
-
-# Extract necessary columns
-station_names = train_operation_data["Station"].tolist()
-
-# Determine sections
-number_of_sections = len(station_names) - 1  # Sections are between stations
-sections = [
-    f"Section {i+1} - {station_names[i]} to {station_names[i+1]}"
-    for i in range(number_of_sections)
-]
 
 
 def main():
+    # Read the Excel file
+    train_operation_data = pd.read_csv("../train_timetable/stopage_data_train_time_rapid.csv")
+
+    # Extract necessary columns
+    station_names = train_operation_data["Station"].tolist()
+
+    # Determine sections
+    number_of_sections = len(station_names) - 1  # Sections are between stations
+    sections = [
+        f"Section {i+1} - {station_names[i]} to {station_names[i+1]}"
+        for i in range(number_of_sections)
+    ]
 
     st.markdown(
         """
@@ -86,9 +86,9 @@ def main():
                     
                 # Provide a download button for the file
                 st.download_button(
-                    label="Download All_Stop.txt",
+                    label="Download file",
                     data=file_content,
-                    file_name="All_Stop.txt",
+                    file_name="Timetable.txt",
                     mime="text/plain"
                 )
             except FileNotFoundError:

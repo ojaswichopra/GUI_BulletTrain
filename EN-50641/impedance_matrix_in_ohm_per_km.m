@@ -2,10 +2,12 @@
 for j=1:1:n1
     for k=1:1:n1
         if (j==k)
-            Z(j,k)=R(j)+(9.869*(10^-4)*f)+ i*w*(2*10^-4)*(log(1/(0.7788*D(j,j)))+log(658.87*sqrt(row/f)));
+        fprintf('This line is here')
+            Z(j,k)=R(j)+(9.869*(10^-4)*f)+ i*w*(2*10^-4)*(log(1/(0.7788*DD(j,j)))+log(658.87*sqrt(row/f)));
         end
         if (j~=k)
-            Z(j,k)=(9.869*(10^-4)*f)+ i*w*(2*10^-4)*(log(1/D(j,k))+log(658.87*sqrt(row/f)));
+        fprintf('This line is here')
+            Z(j,k)=(9.869*(10^-4)*f)+ i*w*(2*10^-4)*(log(1/DD(j,k))+log(658.87*sqrt(row/f)));
         end
     end
 end

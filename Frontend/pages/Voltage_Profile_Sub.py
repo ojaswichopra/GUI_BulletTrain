@@ -53,7 +53,7 @@ with col1:
         st.session_state.oc.eval(f"voltage_profile_design_predetermine_TSS(Voltage_distance_matrix_whole)")
         image_path = '../Plots/voltage_profile_design_predetermine_TSS.png'
         img = Image.open(image_path)
-        st.image(img, caption="voltage_profile_design_predetermine_TSS", use_column_width=True)
+        st.image(img, caption="voltage_profile_design_predetermine_TSS", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(
@@ -68,7 +68,7 @@ with col2:
         st.session_state.oc.eval(f"voltage_profile_design_predetermine_AT(Voltage_distance_matrix_whole)")
         image_path = '../Plots/voltage_profile_design_predetermine_AT.png'
         img = Image.open(image_path)
-        st.image(img, caption="voltage_profile_design_predetermine_AT", use_column_width=True)
+        st.image(img, caption="voltage_profile_design_predetermine_AT", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(

@@ -98,7 +98,7 @@ def main():
 
         image_path = '../Plots_harmonic/Train_contact_terminal_THD_normal.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(

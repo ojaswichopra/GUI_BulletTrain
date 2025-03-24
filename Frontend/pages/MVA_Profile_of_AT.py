@@ -53,7 +53,7 @@ def main():
         oc.eval(f"AT_MVA_profile({AT_no}, AT_mva_mag)")
         image_path = '../Plots/AT_MVA_profile.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(

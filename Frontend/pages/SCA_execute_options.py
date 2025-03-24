@@ -46,15 +46,15 @@ def main():
     
     st.markdown("<h1 class='title'>Select the type of analysis</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
-    col1, col2 = st.columns(2)
+    #col1, col2 = st.columns(2)
 
-    with col1:
-        if st.button('Normal track'):
-            st.switch_page("pages/Short_Circuit_Analysis.py")
+    # with col1:
+    #     if st.button('Normal track'):
+    #         st.switch_page("pages/Short_Circuit_Analysis.py")
 
-    with col2:
-        if st.button('Double track'):
-            st.switch_page("pages/SCA_double.py")
+    # with col2:
+    if st.button('Double track'):
+        st.switch_page("pages/SCA_double.py")
 
 
 

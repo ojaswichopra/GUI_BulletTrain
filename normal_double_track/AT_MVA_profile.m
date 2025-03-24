@@ -19,10 +19,12 @@ function AT_MVA_profile(AT_mva_mag_up, AT_mva_mag_down, AT_UP_down, AT_input_no)
         % Set the figure to match the screen size
         set(figureHandle, 'Position', screenSize);
 
-        plot(AT_mva_mag_up(:,AT_input_no))
-        title(['MVA profile of UP AT number ',num2str(AT_input_no)])
-        xlabel('Time (sec)','FontWeight','bold')
-        ylabel('MVA','FontWeight','bold')
+        plot(AT_mva_mag_up(:,AT_input_no),'LineWidth', 2)
+        title(['MVA profile of up-track AT number ',num2str(AT_input_no)],'FontWeight','bold','Fontsize',16)
+        xlabel('Time (sec)','FontWeight','bold','Fontsize',14)
+        ylabel('MVA','FontWeight','bold','Fontsize',14)
+        allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+        set(allAxes, 'FontSize', 14, 'FontWeight', 'bold'); % Set font size and weight
     else
         % Create a figure handle
         figureHandle = figure;
@@ -33,10 +35,12 @@ function AT_MVA_profile(AT_mva_mag_up, AT_mva_mag_down, AT_UP_down, AT_input_no)
         % Set the figure to match the screen size
         set(figureHandle, 'Position', screenSize);
 
-        plot(AT_mva_mag_down(:,AT_input_no))
-        title(['MVA profile of down AT number ',num2str(AT_input_no)])
-        xlabel('Time (sec)','FontWeight','bold')
-        ylabel('MVA','FontWeight','bold')
+        plot(AT_mva_mag_down(:,AT_input_no),'LineWidth', 2)
+        title(['MVA profile of down-track AT number ',num2str(AT_input_no)],'FontWeight','bold','Fontsize',16)
+        xlabel('Time (sec)','FontWeight','bold','Fontsize',14)
+        ylabel('MVA','FontWeight','bold','Fontsize',14)
+        allAxes = findall(gcf, 'Type', 'axes'); % Find all axes in the current figure
+        set(allAxes, 'FontSize', 14, 'FontWeight', 'bold'); % Set font size and weight
     end
     desired_filename = '../Plots_normal/AT_MVA_profile.png';  % Replace 'desired_name' with your file name
     saveas(gcf, desired_filename);

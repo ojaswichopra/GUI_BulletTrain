@@ -57,7 +57,9 @@
         %     tot_err = 1.0;
             d_dura_modi=round(dura/time_var);
         %     d_dura_modi=100;
-        while (tot_err > toler_ga)
+        count_err=0;
+        tot_err_pre=tot_err;
+        while ((tot_err > toler_ga) && count_err<=11000)
             for ij = 1:no_of_pop
 
                 for jj=1:time_var
@@ -197,6 +199,12 @@
 
                 % execute GA
                 execute_GA;
+                if tot_err==tot_err_pre
+                    count_err=count_err+1;
+                else
+                    count_err=0;
+                end
+                tot_err_pre=tot_err;
 
             end
             gen_count_temp = 0;

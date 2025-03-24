@@ -41,7 +41,7 @@ def main():
     add_vertical_space(1)
     direction = st.radio("Select the direction of the train", ('UP', 'DOWN'))
     #no_of_train = st.number_input("Enter the number of trains running per hour", min_value=0)
-    AT_input_no = st.number_input("Enter the train number to see its voltage profile", min_value=0)
+    AT_input_no = st.number_input("Enter the AT number to see its MVA profile", min_value=0)
     
     if direction == 'UP':
         AT_UP_down = 1
@@ -62,7 +62,7 @@ def main():
         oc.eval(f"AT_MVA_profile(AT_mva_mag_up, AT_mva_mag_down, {AT_UP_down}, {AT_input_no})")
         image_path = '../Plots_normal/AT_MVA_profile.png'
         img = Image.open(image_path)
-        st.image(img, caption="", use_column_width=True)
+        st.image(img, caption="", use_container_width=True)
 
         with open(image_path, "rb") as file:
             btn = st.download_button(
