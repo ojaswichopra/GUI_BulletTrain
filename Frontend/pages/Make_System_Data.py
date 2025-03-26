@@ -246,7 +246,7 @@ def main():
 
     elif selected == "Edit Existing Data":
         
-        uploaded_file = st.file_uploader("Upload a .txt file", type="txt")
+        uploaded_file = st.file_uploader("Upload a .csv file", type="csv")
 
         if uploaded_file is not None:
             # Read the uploaded file
@@ -264,8 +264,8 @@ def main():
                 st.download_button(
                     label="Download updated file",
                     data=edited_content,
-                    file_name="system_data.txt",  # File name for download
-                    mime="text/plain"
+                    file_name="system_data.csv",  # File name for download
+                    mime="text/csv"
                 )
 
 

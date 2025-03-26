@@ -116,7 +116,7 @@ def main():
     
     with col2:
         if st.button('TSS outage condition'):
-            st.switch_page("pages/.py")
+            st.switch_page("pages/Harmonic_output_tss.py")
         
 
 if __name__ == "__main__":

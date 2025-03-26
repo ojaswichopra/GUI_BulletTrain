@@ -38,6 +38,7 @@ for row1 = 1:size(dTSS_T_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_T_up, 2)) '\n'], dTSS_T_up(row1, :));
 end
 fclose(fileID);
+
 fileID = fopen('../oTo_double_text_files/dTSS_T_down.txt', 'w');
 for row1 = 1:size(dTSS_T_down, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(dTSS_T_down, 2)) '\n'], dTSS_T_down(row1, :));
@@ -373,7 +374,7 @@ for row1 = 1:size(If_line_ang_Md_down, 1)
 end
 fclose(fileID);
 
-fileID = fopen('../oTo_double_text_filesv/AT_mva_mag_up.txt', 'w');
+fileID = fopen('../oTo_double_text_files/AT_mva_mag_up.txt', 'w');
 for row1 = 1:size(AT_mva_mag_up, 1)
     fprintf(fileID, [repmat('%.16g ', 1, size(AT_mva_mag_up, 2)) '\n'], AT_mva_mag_up(row1, :));
 end
@@ -579,3 +580,160 @@ for row1 = 1:size(row, 1)
 end
 fclose(fileID);
 
+fileID = fopen('../oTo_double_text_files/pTSS_T_up.txt', 'w');
+for row1 = 1:size(pTSS_T_up, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(pTSS_T_up, 2)) '\n'], pTSS_T_up(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/pTSS_M_up.txt', 'w');
+for row1 = 1:size(pTSS_M_up, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(pTSS_M_up, 2)) '\n'], pTSS_M_up(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/pTSS_T_down.txt', 'w');
+for row1 = 1:size(pTSS_T_down, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(pTSS_T_down, 2)) '\n'], pTSS_T_down(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/pTSS_M_down.txt', 'w');
+for row1 = 1:size(pTSS_M_down, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(pTSS_M_down, 2)) '\n'], pTSS_M_down(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/tTSS_T_up.txt', 'w');
+for row1 = 1:size(tTSS_T_up, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(tTSS_T_up, 2)) '\n'], tTSS_T_up(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/tTSS_M_up.txt', 'w');
+for row1 = 1:size(tTSS_M_up, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(tTSS_M_up, 2)) '\n'], tTSS_M_up(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/tTSS_T_down.txt', 'w');
+for row1 = 1:size(tTSS_T_down, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(tTSS_T_down, 2)) '\n'], tTSS_T_down(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/tTSS_M_down.txt', 'w');
+for row1 = 1:size(tTSS_M_down, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(tTSS_M_down, 2)) '\n'], tTSS_M_down(row1, :));
+end
+fclose(fileID);
+
+% Open the file for writing complex variable YcrfT
+fileID = fopen('../oTo_double_text_files/YcrfT.txt', 'w');
+
+% Write real and imaginary parts
+for row1 = 1:size(YcrfT, 1)
+    fprintf(fileID, [repmat('%.16g, %.16g ', 1, size(YcrfT, 2)) '\n'], real(YcrfT(row1, :)), imag(YcrfT(row1, :)));
+end
+
+% Close the file
+fclose(fileID);
+
+% Open the file for writing complex variable YcrfM
+fileID = fopen('../oTo_double_text_files/YcrfM.txt', 'w');
+
+% Write real and imaginary parts
+for row1 = 1:size(YcrfM, 1)
+    fprintf(fileID, [repmat('%.16g, %.16g ', 1, size(YcrfM, 2)) '\n'], real(YcrfM(row1, :)), imag(YcrfM(row1, :)));
+end
+
+% Close the file
+fclose(fileID);
+
+% Open the file for writing complex variable Yat
+fileID = fopen('../oTo_double_text_files/Yat.txt', 'w');
+
+% Write real and imaginary parts
+for row1 = 1:size(Yat, 1)
+    fprintf(fileID, [repmat('%.16g, %.16g ', 1, size(Yat, 2)) '\n'], real(Yat(row1, :)), imag(Yat(row1, :)));
+end
+
+% Close the file
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/Vc_mag_Td.txt', 'w');
+for row1 = 1:size(Vc_mag_Td, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vc_mag_Td, 2)) '\n'], Vc_mag_Td(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/Vc_ang_Td.txt', 'w');
+for row1 = 1:size(Vc_ang_Td, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vc_ang_Td, 2)) '\n'], Vc_ang_Td(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/Vc_mag_Md.txt', 'w');
+for row1 = 1:size(Vc_mag_Md, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vc_mag_Md, 2)) '\n'], Vc_mag_Md(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/Vc_ang_Md.txt', 'w');
+for row1 = 1:size(Vc_ang_Md, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vc_ang_Md, 2)) '\n'], Vc_ang_Md(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/VR_mag_Td.txt', 'w');
+for row1 = 1:size(VR_mag_Td, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(VR_mag_Td, 2)) '\n'], VR_mag_Td(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/Vf_mag_Td.txt', 'w');
+for row1 = 1:size(Vf_mag_Td, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vf_mag_Td, 2)) '\n'], Vf_mag_Td(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/VR_mag_Md.txt', 'w');
+for row1 = 1:size(VR_mag_Md, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(VR_mag_Md, 2)) '\n'], VR_mag_Md(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/Vf_mag_Md.txt', 'w');
+for row1 = 1:size(Vf_mag_Md, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vf_mag_Md, 2)) '\n'], Vf_mag_Md(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/a1.txt', 'w');
+for row1 = 1:size(a1, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(a1, 2)) '\n'], a1(row1, :));
+end
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/a2.txt', 'w');
+for row1 = 1:size(a2, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(a2, 2)) '\n'], a2(row1, :));
+end
+fclose(fileID);
+
+% Open the file for writing complex variable Zshort
+fileID = fopen('../oTo_double_text_files/Zshort.txt', 'w');
+
+% Write real and imaginary parts
+for row1 = 1:size(Zshort, 1)
+    fprintf(fileID, [repmat('%.16g, %.16g ', 1, size(Zshort, 2)) '\n'], real(Zshort(row1, :)), imag(Zshort(row1, :)));
+end
+
+% Close the file
+fclose(fileID);
+
+fileID = fopen('../oTo_double_text_files/Vp.txt', 'w');
+for row1 = 1:size(Vp, 1)
+    fprintf(fileID, [repmat('%.16g ', 1, size(Vp, 2)) '\n'], Vp(row1, :));
+end
+fclose(fileID);

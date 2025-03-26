@@ -23,6 +23,9 @@ OHE_temp/normal/octave-workspace
 IVV/oTo/octave-workspace
 IVV/tTo/octave-workspace
 Harmonic/normal/octave-workspace
+Harmonic/oTo/octave-workspace
+Harmonic_output/normal/octave-workspace
+Harmonic_output/oTo/octave-workspace
 EN-50641/required_variable_load_flow_standard.mat
 Load Flow Input/
 bfg.jar
