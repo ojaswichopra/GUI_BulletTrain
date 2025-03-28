@@ -52,7 +52,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Normal Condition</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>One TSS outage Condition</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
 
     dTSS_T_up = harmonic_oTo_vars['dTSS_T_up']

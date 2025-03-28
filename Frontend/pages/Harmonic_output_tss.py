@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 import numpy as np
 from pages.Harmonic_Workspace_oTo import harmonic_workspace_oTo
+from pages.Harmonic_Workspace_tTo import harmonic_workspace_tTo
 
 # Helper function to check if a string can be converted to a float
 def is_numeric(value):
@@ -61,6 +62,16 @@ def load_harmonic_workspace():
         harmonic_workspace_oTo[var] = read_text_file(f'../oTo_double_text_files/{var}.txt')
 
 
+def load_harmonic_workspace_tTo():
+    variable_names = [
+        'train_number', 'track_type', 'train_type', 'start_time', 'each_stop_train_data_up', 'rapid_train_data_up', 'each_stop_train_data_down', 'rapid_train_data_down', 'track_length', 'd', 'dTSS_up', 'dTSS_down', 'N_TSS', 'y', 'j_a', 'j_b', 'j_d', 'N_TSS_O'
+    ]
+
+    for var in variable_names:
+        harmonic_workspace_tTo[var] = read_text_file(f'../tTo_double_text_files/{var}.txt')
+
+
+
 def main():
 
 
@@ -114,6 +125,7 @@ def main():
     
     with col2:
         if st.button('Two Adjacent TSS Outage'):
+            load_harmonic_workspace_tTo()
             st.switch_page("pages/Harmonic_output_tTo.py")
         
 
