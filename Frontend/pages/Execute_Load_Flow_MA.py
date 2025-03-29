@@ -42,7 +42,7 @@ def main():
     """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 class='title'>Mumbai Ahemadabad Track</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Mumbai Ahmedabad Track</h1>", unsafe_allow_html=True)
     add_vertical_space(1)
     c1,c2 = st.columns(2)
     with c1:

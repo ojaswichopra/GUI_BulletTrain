@@ -236,7 +236,7 @@ if st.button("Submit"):
 
 st.markdown(
         f"""
-        <a href="/Landing" target="_self" class="custom-button">Back</a>
+        <a href="/" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )

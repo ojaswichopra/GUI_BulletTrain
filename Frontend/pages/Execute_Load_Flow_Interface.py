@@ -51,7 +51,7 @@ def main():
         
     
     with c2:
-        if st.button("Mumbai Ahemadabad Track"):
+        if st.button("Mumbai Ahmedabad Track"):
             st.switch_page("pages/Execute_Load_Flow_MA.py")
 
 
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     # Adding a styled back button
     st.markdown(
         f"""
-        <a href="/Landing" target="_self" class="custom-button">Back</a>
+        <a href="/" target="_self" class="custom-button">Back</a>
         """,
         unsafe_allow_html=True
     )
