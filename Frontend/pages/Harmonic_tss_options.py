@@ -83,7 +83,7 @@ def load_oTo_workspace():
 
 def load_tTo_workspace():
         # List of variable names to pull and read from text files
-    variable_names = []
+    variable_names = ['dTSS_T_up', 'dTSS_M_up', 'dTSS_T_down', 'dTSS_M_down', 'pTSS_T_up', 'pTSS_M_up', 'pTSS_T_down', 'pTSS_M_down', 'tTSS_T_up', 'tTSS_M_up', 'tTSS_T_down', 'tTSS_M_down', 'Vc_mag_Td', 'Vc_mag_Md', 'Vc_ang_Td', 'Vc_ang_Md', 'VR_mag_Td', 'Vf_mag_Td', 'VR_mag_Md', 'Vf_mag_Md', 'N_TSS', 'y', 'a1', 'a2', 'Ic_line_mag_Td_up', 'Ic_line_ang_Td_up', 'If_line_mag_Td_up', 'If_line_ang_Td_up', 'Ic_line_mag_Td_down', 'Ic_line_ang_Td_down', 'If_line_mag_Td_down', 'If_line_ang_Td_down', 'Ic_line_mag_Md_up', 'Ic_line_ang_Md_up', 'If_line_mag_Md_up', 'If_line_ang_Md_up', 'Ic_line_mag_Md_down', 'Ic_line_ang_Md_down', 'If_line_mag_Md_down', 'If_line_ang_Md_down', 'Vp']
 
     # Loop through each variable name
     for var in variable_names:
